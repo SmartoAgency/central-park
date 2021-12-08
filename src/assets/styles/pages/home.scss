@@ -1,0 +1,10 @@
+.main-screen {
+    background: linear-gradient(180deg, #263D6A 3.59%, #DCF7FF 100%);
+    &__render {
+        width: 100vw;
+        height: calc(100vw / 1920 * 1756);
+    }
+    &__text {
+        padding-left: var(--page-side-fields);
+    }
+}
