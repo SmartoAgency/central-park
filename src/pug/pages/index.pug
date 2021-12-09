@@ -11,11 +11,31 @@ block scripts
 block content
   .main-screen 
     .main-screen__text
-      .title Central Park – затишок в дрібницях 
-      p Група «Еталон» з гордістю представляє масштабний проект у центрі Вінниці. Це місто в місті, яке не підлаштовується під старі рамки.
-      button.button Обрати квартиру
+      .title 
+        .text-white Central Park – 
+        .text-beige.fw-300 затишок в дрібницях 
+      p.subtitle.text-white Група «Еталон» з гордістю представляє масштабний проект у центрі Вінниці. Це місто в місті, яке не підлаштовується під старі рамки.
+      button.button.button--dark 
+        +svg('key')
+        span Обрати квартиру
     +img('screen1.png').main-screen__render
-    +img('clouds.png')
+    +img('screen1-clouds.png').main-screen__cloud-1
+    +img('screen1-clouds-2.png').main-screen__cloud-2
+  .screen2 
+    .img-with-logo
+      +svg('logo-mini').img-with-logo__decor
+      .img-with-logo__wrap
+        +img('screen2/Rectangle 3967.jpg')
+    .screen2__text 
+      .title-h2 Про проєкт
+      p Forest Home запустив віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання ви могли побачити розташування кімнат і навіть оцінити вид з вікон.  віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання.
+      button(type="button" class="button button--dark") Дізнатися більше
+    .img-with-logo
+      +svg('logo-mini').img-with-logo__decor
+      .img-with-logo__wrap
+        +img('screen2/212518407.jpg')
+      
+
 block footer
   include ../includes/footer.pug
 

@@ -8,6 +8,21 @@
 	font-style: normal;
 }
 @font-face {
+	font-family: 'Nunito Sans';
+	font-display: swap;
+	src: local('SuisseIntl'),
+		url('../fonts/Inter-Light.ttf') format('truetype');
+		font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Nunito Sans';
+	font-display: swap;
+	src: local('SuisseIntl'),
+		url('../fonts/Inter-Regular.ttf') format('truetype');
+	font-style: normal;
+}
+@font-face {
 	font-family: 'Corporate A';
 	font-display: swap;
 	src: local('Corporate A'),

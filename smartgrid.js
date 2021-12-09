@@ -3,10 +3,10 @@
 /* It's principal settings in smart grid project */
 var settings = {
     outputStyle: 'scss', /* less || scss || sass || styl */
-    columns: 12, /* number of grid columns */
-    offset: '50px', /* gutter width px || % || rem */
+    columns: 24, /* number of grid columns */
+    offset: '20px', /* gutter width px || % || rem */
     mobileFirst: false, /* mobileFirst ? 'min-width' : 'max-width' */
-    fields: '100px',
+    fields: '72px',
     container: {
         maxWidth: '1360px', /* max-width оn very large screen */
         fields: '30px' /* side fields */
