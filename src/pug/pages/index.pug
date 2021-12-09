@@ -27,14 +27,57 @@ block content
       .img-with-logo__wrap
         +img('screen2/Rectangle 3967.jpg')
     .screen2__text 
-      .title-h2 Про проєкт
+      .title-h2.text-black Про проєкт
       p Forest Home запустив віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання ви могли побачити розташування кімнат і навіть оцінити вид з вікон.  віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання.
       button(type="button" class="button button--dark") Дізнатися більше
     .img-with-logo
       +svg('logo-mini').img-with-logo__decor
       .img-with-logo__wrap
         +img('screen2/212518407.jpg')
-      
+  -
+    var slides = [
+      { img: './assets/images/screen3/251624276_prev_url=detail.jpg',text: '2,4 гаплоща забудови', },
+      { img: './assets/images/screen3/Rectangle 3962.jpg',text: '5 будівель різної висоти ', },
+      { img: './assets/images/screen3/Rectangle 3962-1.jpg',text: '10 секцій у кожному будинку', },
+      { img: './assets/images/screen3/Rectangle 3962-2.jpg',text: '178 квартир у першій будівлі ', },
+      { img: './assets/images/screen3/Rectangle 3962-3.jpg',text: '650 паркомісць у паркінгу', },
+      //- { img: '',text: '10 поверхів', },
+    ];
+
+    //- 
+        
+        
+
+
+
+
+        
+        
+
+  .screen3
+    .screen3__decor
+    .screen3__top
+      .title-h2.text-beige комплекс у цифрах
+      div(data-screen3-prev)
+        <svg  width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="39.5" stroke="#464851"/>
+          <path d="M35.1896 32C33.7584 34.1224 28.3358 40 27 40M27 40C28.3517 40 33.5994 45.4694 35.1896 48M27 40L53 40" stroke="#464851"/>
+          </svg>
+      div(data-screen3-next)
+        <svg  width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="39.5" fill="#464851" stroke="#464851"/>
+          <path d="M44.8104 32C46.2416 34.1224 51.6642 40 53 40M53 40C51.6483 40 46.4006 45.4694 44.8104 48M53 40L27 40" stroke="#E5CDB7"/>
+          </svg>
+    .zoom-slider-wrapper
+      .zoom-slider.swiper-wrapper
+        each val in slides 
+          .slide.swiper-slide
+            img(src=val.img)
+            .text-beige #{val.text}
+          .slide.swiper-slide
+            img(src=val.img)
+            .text-beige #{val.text}
+
 
 block footer
   include ../includes/footer.pug
