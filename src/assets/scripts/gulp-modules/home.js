@@ -66,6 +66,20 @@ document.querySelectorAll('[data-screen4-video]').forEach(el => {
 })
 // headerHandle();
 
+gsap.timeline({
+  scrollTrigger: {
+    trigger: '.screen5',
+    scrub: true,
+    // start: '0 top',
+    end: `${document.querySelector('.screen5').getBoundingClientRect().height} bottom`,
+    pin: '.screen5__inner',
+    markers: true
+  }
+})
+.to('.screen5-hor-block', { x: (el, target) => {
+  return (target.getBoundingClientRect().width + 75) * -1;
+} })
+
 
 // const pageContainer = document.querySelector(".scroller-container");
 

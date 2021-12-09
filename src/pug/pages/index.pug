@@ -91,18 +91,19 @@ block content
           </svg>
         video(poster="./assets/images/screen4/poster.jpg")
   .screen5(style="min-height: 100vh; position: relative; z-index:2")
-    .section-decor
-      +svg('logo-mini')
-    .title-h2.text-beige Переваги 
-    .screen5-hor-block
-      each val, index in scr5
-        .screen5-hor-block__item
-            img(src=val.img)
-            .screen5-hor-block__item-text
-              .title.text-beige #{val.title}
-              p.text-beige #{val.text}
-              div #{index + 1} / #{scr5.length}
-
+    .screen5__inner
+      .section-decor
+        +svg('logo-mini')
+      .title-h2.text-beige Переваги 
+      .screen5-hor-block
+        each val, index in scr5
+          .screen5-hor-block__item
+              img(src=val.img)
+              .screen5-hor-block__item-text
+                .title.text-beige #{val.title}
+                p.text-beige #{val.text}
+                div.text-beige #{index + 1} / #{scr5.length}
+  .screen6(style="min-height: 100vh; position: relative; z-index:2")
 
 block footer
   include ../includes/footer.pug
