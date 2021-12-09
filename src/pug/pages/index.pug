@@ -1,5 +1,15 @@
 extends ../layout/main
 block variable
+  - 
+    var scr5 = [
+      { 
+        img: './assets/images/screen5/226959776.jpg',
+        title: "Надійний забудовник",
+        text: "З віком запитів стає набагато більше: вид з вікна, привітні сусіди, безпечні майданчики для дітей, супермаркети на першому поверсі, хімчистки, ресторани, пекарні, кафе в будинку, місце для машини.",},
+      { title: "Дворівневий підземний паркінг",
+        img: './assets/images/screen5/291632337.jpg',
+      text: "З віком запитів стає набагато більше: вид з вікна, привітні сусіди, безпечні майданчики для дітей, супермаркети на першому поверсі, хімчистки, ресторани, пекарні, кафе в будинку, місце для машини.   ",},
+    ];
 block meta
   title= 'Главная'
   meta(name='description' content='')
@@ -68,11 +78,30 @@ block content
             img(src=val.img)
             .text-beige #{val.text}
   .screen4
+    .section-decor
+      +svg('logo-mini')
     .screen4__inner
       .screen4__title 
         div ДИВИТИСЯ 
         div ВІДЕО
-      video(poster="./assets/images/screen4/poster.jpg")
+      .screen4__video(data-screen4-video)
+        <svg class="screen4__video-play" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="50" fill="#23242B"/>
+          <path d="M44 63V37L63 50L44 63Z" fill="white"/>
+          </svg>
+        video(poster="./assets/images/screen4/poster.jpg")
+  .screen5(style="min-height: 100vh; position: relative; z-index:2")
+    .section-decor
+      +svg('logo-mini')
+    .title-h2.text-beige Переваги 
+    .screen5-hor-block
+      each val, index in scr5
+        .screen5-hor-block__item
+            img(src=val.img)
+            .screen5-hor-block__item-text
+              .title.text-beige #{val.title}
+              p.text-beige #{val.text}
+              div #{index + 1} / #{scr5.length}
 
 
 block footer
