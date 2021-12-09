@@ -43,19 +43,9 @@ block content
       { img: './assets/images/screen3/Rectangle 3962-3.jpg',text: '650 паркомісць у паркінгу', },
       //- { img: '',text: '10 поверхів', },
     ];
-
-    //- 
-        
-        
-
-
-
-
-        
-        
-
   .screen3
-    .screen3__decor
+    .section-decor
+      +svg('logo-mini')
     .screen3__top
       .title-h2.text-beige комплекс у цифрах
       div(data-screen3-prev)
@@ -77,6 +67,12 @@ block content
           .slide.swiper-slide
             img(src=val.img)
             .text-beige #{val.text}
+  .screen4
+    .screen4__inner
+      .screen4__title 
+        div ДИВИТИСЯ 
+        div ВІДЕО
+      video(poster="./assets/images/screen4/poster.jpg")
 
 
 block footer
