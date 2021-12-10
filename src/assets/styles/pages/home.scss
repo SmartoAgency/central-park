@@ -589,7 +589,34 @@
     padding: 150px var(--page-side-fields);
     @include row-flex();
     &__text {
-
+        @include size(4);
+        @include shift(1);
+    }
+    &__slider {
+        @include size(18);
+        @include shift(0);
+        display: flex;
+    }
+    .screen10-slide {
+        width: 33.3%;
+        flex-shrink: 0;
+    }
+}
+.screen10-slide {
+    position: relative;
+    height: 62.5vh;
+    .curtain,
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+    .curtain {
+        background: linear-gradient(180deg, rgba(35, 36, 43, 0) 0%, #23242B 100%);
     }
 }
 .icon--auto,

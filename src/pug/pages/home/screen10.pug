@@ -1,7 +1,20 @@
+
 .screen10
   .screen10__text
     .title-h2.text-black Новини
     p Останні новини у житловому комплексі Central Park
     a.button.button--dark(href="#") Більше новин
   .screen10__slider
+    - 
+      var slides = [  
+        { date: '01.12.2021', img: './assets/images/screen10/Rectangle 3974.jpg', text: 'Група «Еталон» з гордістю представляє масштабний проект у центрі Вінниці.',}  ,
+        { date: '02.12.2021', img: './assets/images/screen10/Rectangle 3975.jpg', text: 'Група «Еталон» представляє проект у Вінниці.',}  ,
+        { date: '03.12.2021', img: './assets/images/screen10/Rectangle 3976.jpg', text: 'Група «Еталон» з гордістю представляє проект у центрі Вінниці.',},
+        ];
+    each val in slides
+      .screen10-slide 
+        .text-white #{val.date}
+        img(src=val.img)
+        .curtain
+        .text-white #{val.text}
     

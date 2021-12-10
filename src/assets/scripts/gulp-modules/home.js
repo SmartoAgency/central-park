@@ -114,3 +114,20 @@ frames.forEach(frame => {
     frame.removeEventListener('click', changeSrc);
   })
 })
+
+
+
+
+document.querySelectorAll('.screen10-slide').forEach((el, index, array) => {
+  const innactiveSlides = document.querySelectorAll(`.screen10-slide:not(:nth-child(${index + 1}))`);
+  console.log(innactiveSlides);
+  el.addEventListener('mouseenter', () => {
+    gsap.timeline({
+      defaults: {
+        duration: 0.75
+      }
+    })
+      .to(el, { width: '50%' })
+      .to(innactiveSlides, { width: '25%' }, '<')
+  })
+})
