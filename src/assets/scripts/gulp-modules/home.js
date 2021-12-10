@@ -72,7 +72,8 @@ gsap.timeline({
   }
 })
 .to('.screen5-hor-block', { x: (el, target) => {
-  return (target.getBoundingClientRect().width + 75) * -1;
+  const horBlocksItems = document.querySelectorAll('.screen5-hor-block__item');
+  return (horBlocksItems[0].getBoundingClientRect().width) * (horBlocksItems.length - 1) * -1;
 } })
 gsap.timeline({
   scrollTrigger: {
@@ -102,3 +103,14 @@ function genplatListStaggerHightlight() {
   return tl;
 }
 
+
+const frames = document.querySelectorAll('[data-vr-frame]');
+frames.forEach(frame => {
+  frame.addEventListener('click', function changeSrc() {
+    const iframe = frame.querySelector('iframe');
+    const frameOtherEls = frame.querySelectorAll(':not(iframe)');
+    gsap.to(frameOtherEls, { y: 50, autoAlpha: 0, clearProps: 'transform' })
+    iframe.src = iframe.dataset.src;
+    frame.removeEventListener('click', changeSrc);
+  })
+})

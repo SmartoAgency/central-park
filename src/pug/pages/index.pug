@@ -9,6 +9,9 @@ block variable
       { title: "Дворівневий підземний паркінг",
         img: './assets/images/screen5/291632337.jpg',
       text: "З віком запитів стає набагато більше: вид з вікна, привітні сусіди, безпечні майданчики для дітей, супермаркети на першому поверсі, хімчистки, ресторани, пекарні, кафе в будинку, місце для машини.   ",},
+      { title: "Дворівневий підземний паркінг",
+        img: './assets/images/screen5/291632337.jpg',
+      text: "З віком запитів стає набагато більше: вид з вікна, привітні сусіди, безпечні майданчики для дітей, супермаркети на першому поверсі, хімчистки, ресторани, пекарні, кафе в будинку, місце для машини.   ",},
     ];
     var genplanList = [
       {icon: 'park',text: 'Зелені зони',},
@@ -158,26 +161,8 @@ block content
         span обрати квартиру
     .screen8__render
       img(src="./assets/images/screen8/render.png")
-  .screen9
-    .section-decor
-      +svg('logo-mini')
-    <svg width="1921" preserveAspectRatio="xMidYMid slice" height="1268" viewBox="0 0 1921 1268" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 0H1921V1268H0V0Z" fill="white"/>
-      <rect width="960" height="1268" fill="#23242B"/>
-      <path d="M838.204 306.104H762V911.702H838.204V306.104Z" fill="white"/>
-      <path d="M945.134 235H868.93V971.769H945.134V235Z" fill="white"/>
-      <path d="M1052.07 235H975.866V971.769H1052.07V235Z" fill="#23242B"/>
-      <path d="M1159 306.104H1082.8V911.702H1159V306.104Z" fill="#23242B"/>
-      </svg>
-    .screen9__left
-      .title-h2.text-beige 3D тур
-    .screen9__center
-      iframe(style="background-image: url(./assets/images/screen8/216397374.jpg)"  data-src="https://ua-maps3d.vrnet.io/view5.16a/?model=ua/bmu6/forresthome/1zhe")
-    .screen9__right
-      p Площа квартири 46,7 м2. Містка гардеробна. Кухня площею 15,6 м2 із зоною для приготування та споживання улюблених страв. Спальня площею 17,7 м2 з ліжком, телевізором, трюмо та зоною для зберігання. Панорамні вікна з виглядом на лісопаркову зону. Скористайтесь функцією 3D-туру квартирою, і Ви впевнитесь у зручності її планування та функціональності.
-      a.button.button--dark(href="#") Детальніше
-      div 01 / 02
-    .screen9__title-l 3d tour
+  include home/screen9.pug
+  include home/screen10.pug
 
 
 
