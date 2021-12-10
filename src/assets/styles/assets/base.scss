@@ -30,6 +30,9 @@ body {
 	line-height: 140%;
 	color: var(--text-color);
 	// background-color: var(--color-black);
+	@include to(1680px){
+		font-size: 14px;
+	}
 }
 .page__inner {
 	width: 100%;
@@ -307,6 +310,8 @@ html.has-scroll-dragging {
 	text-decoration: none;
 	@include to(1720px){
 		font-size: 12px;
+		padding: 17px 31px;
+		height: 46px;
 	}
 	&--small {
 		padding: 16px 40px;
@@ -321,6 +326,10 @@ html.has-scroll-dragging {
 			width: 22px;
 			height: 22px;
 			margin-right: 15px;
+			@include to(1680px){
+				width: 18px;
+				height: 17px;
+			}
 		}
 	}
 }
@@ -328,7 +337,7 @@ html.has-scroll-dragging {
 	font-size: 100px;
 	line-height: 90%;
 	font-weight: normal;
-	@include to(1720px){
+	@include to(1680px){
 		font-size: 64px;
 	}
 }
@@ -339,10 +348,16 @@ html.has-scroll-dragging {
 	// text-align: center;
 	letter-spacing: -0.03em;
 	text-transform: uppercase;
+	@include to(1680px){
+		font-size: 36px;
+	}
 }
 .subtitle {
 	font-size: 24px;
 	line-height: 140%;
+	@include to(1680px){
+		font-size: 18px;
+	}
 }
 
 .scroller-container {
