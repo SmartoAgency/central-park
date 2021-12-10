@@ -10,6 +10,12 @@ block variable
         img: './assets/images/screen5/291632337.jpg',
       text: "З віком запитів стає набагато більше: вид з вікна, привітні сусіди, безпечні майданчики для дітей, супермаркети на першому поверсі, хімчистки, ресторани, пекарні, кафе в будинку, місце для машини.   ",},
     ];
+    var genplanList = [
+      {icon: 'park',text: 'Зелені зони',},
+      {icon: 'man',text: 'Пішохідні маршрути, що виключають рух автомобілів',},
+      {icon: 'bycicle',text: 'На мікромобільному транспорті',},
+      {icon: 'auto',text: 'Автомобілем',},
+    ]
 block meta
   title= 'Главная'
   meta(name='description' content='')
@@ -103,7 +109,22 @@ block content
                 .title.text-beige #{val.title}
                 p.text-beige #{val.text}
                 div.text-beige #{index + 1} / #{scr5.length}
-  .screen6(style="min-height: 100vh; position: relative; z-index:2")
+  .screen6(style="min-height: 100vh; position: relative; z-index:2").genplan
+    .genplan__inner
+      .genplan__text
+        .title-h2.text-black Продумані маршрути
+        .genplan__text-block-wrapper
+          .genplan__text1
+            p Forest Home запустив віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання ви могли побачити розташування кімнат і навіть оцінити вид з вікон.  віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання.
+            a(class="button button--dark") Хід будівництва
+          ul.genplan__text2.genplan__list
+            each val in genplanList
+              li 
+                +svg(val.icon)
+                div #{val.text}
+      .genplan__img
+        +img('screen6/genplan.jpg')
+
 
 block footer
   include ../includes/footer.pug
