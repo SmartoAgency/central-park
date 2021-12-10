@@ -1,5 +1,5 @@
 .main-screen {
-    --top-offset: 80px;
+    --top-offset: calc(80px + var(--header-h));
     background: linear-gradient(180deg, #263D6A 3.59%, #DCF7FF 100%);
     width: 100vw;
     height: calc(100vw / 1920 * 1756);
@@ -137,6 +137,14 @@
     [data-screen3-prev],
     [data-screen3-next] {
         cursor: pointer;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        @include to(1680px){
+            width: 60px;
+            height: 60px;   
+        }
     }
     [data-screen3-next] {
         margin-left: 10px;
@@ -468,6 +476,63 @@
             object-fit: cover;
             object-position: bottom right;
         }
+    }
+}
+
+
+.screen9 { 
+    position: relative;
+    min-height: 100vh;
+    --v-padding: 175px;
+    @include row-flex();
+    align-content: center;
+    padding: var(--v-padding) var(--page-side-fields) 0 var(--page-side-fields);
+    &__left {
+        @include size(3);
+        @include shift-left(1);
+        @include shift-right(1);
+    }
+    &__right {
+        @include size(4);
+        @include shift-left(1);
+        @include shift-right(1);
+    }
+    &__center {
+        
+        @include size(12);
+        @include shift-left(1);
+        @include shift-right(0);
+        &>:nth-child(1) {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__title-l {
+        width: 100%;
+        margin-left:  calc(var(--page-side-fields) * -1);
+        // margin-bottom: calc(var(--v-padding) * -1);
+        margin-top: auto;
+        font-weight: 300;
+        font-size: 288px;
+        line-height: 100%;
+        /* identical to box height, or 190px */
+
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+
+        color: #DFDFDF;
+
+    }
+    iframe {
+        background-size: cover;
+    }
+    &>svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
     }
 }
 .icon--auto,
