@@ -8,6 +8,9 @@
     padding-right: var(--page-side-fields);
     padding-top: var(--top-offset);
     overflow: hidden;
+    @include from-to(576px, 1024px){
+        height: calc(100vw / 770 * 868);
+    }
     &__render {
         position: absolute;
         right: 0;
@@ -16,6 +19,7 @@
         height: 100%;
         pointer-events: none;
         z-index: 3;
+        object-fit: cover;
     }
     &__text {
         
@@ -26,9 +30,16 @@
         @include to(1024px){
             
             @include shift-left(0);
+            @include size(12);
         }
         &>:nth-last-child(n+2) {
             margin-bottom: 50px;
+            @include to(1680px){
+                margin-bottom: 30px;
+            }
+            @include to(1024px){
+                margin-bottom: 20px;
+            }
         }
         p {
             width: calc(100% / 8 * 6);
@@ -66,8 +77,15 @@
         padding-top: 110px;
         padding-bottom: 110px;
     }
+    @include to(992px){
+        &>:nth-last-child(n+2) {
+            margin-bottom: 80px;
+        }
+    }
     img {
-        min-height: calc(100vh - 280px);
+            @include from(993px){
+                min-height: calc(100vh - 280px);
+            }
     }
     p {
         color: #717280;
@@ -82,13 +100,19 @@
         align-items: center;
         flex-direction: column;
         @include size(10);
+        
         @include shift(0);
         @include shift-padding(2);
+        @include size-md(24);
 
     }
     .img-with-logo {
         @include size(7);
         @include shift(0);
+        @include size-md(24);
+        @include to(992px){
+            height: 250px;
+        }
     }
 }
 
@@ -127,6 +151,7 @@
     .swiper-slide {
         height: 45vh;
         color: #B2A9A0;
+        font-size: 18px;
         @include to(1680px){
             height: 60vh;
         }
@@ -163,6 +188,15 @@
     --logo-w: 31px;
     --logo-h: calc(var(--logo-w) / 31 * 60);
     padding-top: calc(var(--logo-h) / 2 );
+    img {
+        object-fit: cover;
+    }
+    @include to(992px){
+        overflow: hidden;
+        img {
+            height: 100%;
+        }
+    }
     &__decor {
         position: absolute;
         left: 50%;
@@ -174,6 +208,9 @@
     }
     &__wrap {
         overflow: hidden;
+        @include to(992px){
+            height: 100%;
+        }
     }
 }
 
@@ -203,6 +240,9 @@
         @include to(1680px){
             font-size: 200px;
         }
+        @include to(992px){
+            font-size: 120px;
+        }
     }
     &__video {
         position: absolute;
@@ -211,6 +251,11 @@
         width: 100%;
         height: calc(100% - var(--v-padding) * 2);
         z-index: 0;
+        @include from-to(576px, 992px){
+            width: 84%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
         video {
             width: 100%;
             height: 100%;

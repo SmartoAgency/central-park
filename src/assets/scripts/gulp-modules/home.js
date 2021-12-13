@@ -3,17 +3,25 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 import LocomotiveScroll from 'locomotive-scroll';
 import Swiper, { Navigation } from 'swiper';
 
-
-
-console.log(Swiper);
-
-
 const swiper = new Swiper('.zoom-slider-wrapper', {
   // Optional parameters
   modules: [ Navigation],
   slidesPerView: 4.5,
   loop: true,
   spaceBetween: 40,
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 1.7,
+      spaceBetween: 40
+    },
+    // when window width is >= 480px
+    993: {
+      slidesPerView: 4.5,
+      spaceBetween: 40
+    },
+    // when window width is >= 640px
+  },
   navigation: {
     nextEl: document.querySelector('[data-screen3-next]'),
     prevEl: document.querySelector('[data-screen3-prev]'),

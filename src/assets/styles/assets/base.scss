@@ -365,6 +365,10 @@ html.has-scroll-dragging {
 	@include to(1680px){
 		font-size: 18px;
 	}
+	@include to(1024px){
+		font-size: 14px;
+		line-height: 140%;
+	}
 }
 
 .scroller-container {
