@@ -317,6 +317,10 @@ html.has-scroll-dragging {
 		padding: 16px 40px;
 		font-size: 12px;
 	}
+	&--bordered {
+		border-radius: 100px;
+		border: 2px solid #5D5755;
+	}
 	&--dark {
 		color: var(--color-beige);
 		background-color: var(--color-black);

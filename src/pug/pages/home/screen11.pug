@@ -2,19 +2,27 @@
     .section-decor
         +svg('logo-mini')
     .title-h2.text-beige Контакти
-    button(type="button" class="button") Замовити дзвінок
-    button(type="button" class="button") Показати на мапі
-    button(type="button" class="button") Показати на карті
-    a(href="mailto:central-park@com.ua").link-l central-park@com.ua
-    a(href="mailto:+380441106104").link-l +38 (044) 110 61 04
-    .contacts-subtitle Відділ продажу:
-    .contacts-subtitle Будівництво:
-    .contacts-subtitle Графік роботи:
-    .contacts-subtitle Соцмережі:
-    .contacts-text м. Вінниця, вул. Максимовича, 6
-    .contacts-text Пн-Сб: 09:00-19:00
-    .contacts-text Нд: 10:00-17:00
-    a(href="#" target='_blank').contacts-link facebook
-    a(href="#" target='_blank').contacts-link instagram
-    .contacts-text м. Вінниця, вул. Максимовича, 6
+    .screen11__left
+        .screen11__group
+            .contacts-subtitle Відділ продажу:
+            .contacts-text м. Вінниця, вул. Максимовича, 6
+            button(type="button" class="button button--bordered button--dark") Показати на карті
+        .screen11__group
+            .contacts-subtitle Графік роботи:
+            .contacts-text 
+                div Пн-Сб: 09:00-19:00
+                div Нд: 10:00-17:00
+        .screen11__group
+            .contacts-subtitle Будівництво:
+            .contacts-text м. Вінниця, вул. Максимовича, 6
+            button(type="button" class="button button--bordered button--dark") Показати на мапі
+    .screen11__right
+        .screen11__group
+            .contacts-subtitle Соцмережі:
+            a(href="#" target='_blank').contacts-link facebook
+            a(href="#" target='_blank').contacts-link instagram
+        .screen11__group-l
+            a(href="mailto:central-park@com.ua").link-l central-park@com.ua
+            a(href="tel:+380441106104").link-l +38 (044) 110 61 04
+            button(type="button" class="button") Замовити дзвінок
 

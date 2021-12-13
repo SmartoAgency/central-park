@@ -645,6 +645,24 @@
 .screen11 {
     background-color: var(--color-black); 
     position: relative;
+    padding: 210px var(--page-side-fields);
+    @include row-flex();
+    .title-h2 {
+        @include size(23);
+        @include shift-left(1);
+        @include shift-right(0);
+        margin-bottom: 50px;
+
+    }
+    &__left {
+        @include size(4);
+        @include shift-left(1);
+        @include shift-right(0);
+    }
+    &__right {
+        @include size(14);
+        @include shift-left(5);
+    }
     .link-l {
         font-size: 64px;
         @include to(1680px){
@@ -672,7 +690,34 @@
             font-size: 18px;
         }
         color: #E5CDB7;
-
+    }
+    &__group:nth-last-child(n+2) {
+        margin-bottom: 50px;
+    }
+    &__group {
+        &>:nth-child(1) {
+            margin-bottom: 10px;
+        }
+        &>:nth-child(2) {
+            margin-bottom: 20px;
+        }
+    }
+    &__group-l {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        a[href*="tel"] {
+            text-decoration: none;
+        }
+        .button {
+            margin-top: 50px;
+        }
+        a:nth-child(n+2) {
+            margin-top: 30px;
+        }
+    }
+    .contacts-link~.contacts-link {
+        margin-left: 40px;
     }
 }
 
