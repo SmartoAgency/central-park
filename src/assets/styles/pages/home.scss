@@ -281,12 +281,19 @@
         text-align: center;
         letter-spacing: -0.03em;
         text-transform: uppercase;
-            mix-blend-mode: screen;
+        mix-blend-mode: screen;
         @include to(1680px){
             font-size: 200px;
         }
         @include to(992px){
             font-size: 120px;
+        }
+        @include to(575px){
+            font-size: 48px;
+            height: 3.3em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     }
     &__video {
@@ -301,6 +308,9 @@
             left: 50%;
             transform: translateX(-50%);
         }
+        @include to(575px){
+            padding: var(--page-side-fields);
+        }
         video {
             width: 100%;
             height: 100%;
@@ -312,6 +322,11 @@
         top: 50%;
         width: 100px;
         height: 100px;
+        @include to(575px){
+            width: 60px;
+            height: 60px;
+
+        }
         transform: translate(-50%,-50%);
 
     }
@@ -363,6 +378,11 @@
             width: 110vw;
             padding-right: 50px;
         }
+        @include to(575px){
+            
+            width: 180vw;
+            padding-right: 20px;
+        }
         img {
             width: 50%;
             height: 100%;
@@ -378,6 +398,9 @@
             @include to(992px){
                 padding-top: 40px;
                 padding-left: 50px;
+            }
+            @include to(575px){
+                padding-left: 30px;   
             }
             :last-child {
                 margin-top: auto;
@@ -430,6 +453,11 @@
             align-items: center;
             text-align: center;
         }
+        @include to(575px){
+            margin-top: 30px;
+            padding-left: 0;
+            // text-align: left;
+        }
         .title-h2 {
             margin-bottom: 40px;
         }
@@ -445,6 +473,9 @@
     &__text2 {
         opacity: 0;
         visibility: hidden;
+        @include to(575px){
+            text-align: left;
+        }
     }
     &__img {
         @include size(18);
@@ -457,6 +488,9 @@
             margin-right: 0;
             margin-bottom: auto;
             transform: none;
+        }
+        @include to(575px){
+            margin-bottom: 0px;
         }
     }
     &__list {
@@ -481,6 +515,9 @@
                 width: 50px;
                 height: 50px;
                 padding: 10px;
+            }
+            @include to(575px){
+                margin-right: 20px;
             }
         }
     }
