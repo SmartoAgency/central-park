@@ -82,7 +82,7 @@ formsWithTel.forEach(form => {
 /** ******************************* */
 
 const formWrapper = document.querySelector('[data-form-wrapper]');
-const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call]');
+const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call], [data-call-form-popup]');
 formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
     gsap.to( formWrapper, { autoAlpha: 1 } )
     
@@ -115,3 +115,21 @@ formWrapper.querySelectorAll('[class*="close"]').forEach(closeBtn => {
 //   }, 2000);
 // });
 
+
+/** Mobile callback popup */
+function mobPopupHandler() {
+  function close(el) {
+    gsap.to(el, { autoAlpha: 0 });
+  }
+  function open(el) {
+    gsap.to(el, { autoAlpha: 1 });
+  }
+  const popup = document.querySelector('[data-mobile-callback-popup]');
+  const call = document.querySelectorAll('[data-call-mobile-callback-popup]');
+  const closeEl = document.querySelector('[data-mobile-callback-close]');
+  closeEl.addEventListener('click', () => close(popup));
+  call.forEach(el => el.addEventListener('click', () => open(popup)));
+  call.forEach(el => el.addEventListener('touchstart', () => open(popup)));
+}
+
+mobPopupHandler();

@@ -55,6 +55,21 @@
 
 		}
 	}
+	a[href*="tel"],
+	[data-form-wrapper-call] {
+		@include to(992px){
+			display: none;
+		}
+	}
+	[data-call-mobile-callback-popup] {
+		svg {
+			width: 50px;
+			height: 50px;
+		}
+		@include from(993px){
+			display: none;
+		}
+	}
 }
 .langs-header {
 	// line-height: 46px;
@@ -134,3 +149,43 @@
 		}
 	}
 }
+
+.mobile-callback-popup {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100%;
+	// height: fill-available;
+	// height: -moz-available;          /* WebKit-based browsers will ignore this. */
+	min-height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+	background-color: #737373;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	align-content: flex-end;
+	justify-content: flex-end;
+	padding: 10px;
+	font-size: 15px;
+  line-height: 100%;
+  opacity: 0;
+  visibility: hidden;
+	&>* {
+	  text-decoration: none;
+	  width: 100%;
+	  height: 50px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  background: #F3EFE9;
+	  border-radius: 10px;
+	  color: var(--color-black);
+	}
+	&>:nth-child(n+2) {
+	  margin-top: 10px;
+	}
+	&__close {
+	  background-color: var(--color-black);
+	  color: var(--color-milk);
+	}
+  }

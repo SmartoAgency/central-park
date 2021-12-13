@@ -20,6 +20,9 @@
     letter-spacing: -0.03em;
     /* Светлый */
     color: #E5CDB7;
+    @include to(992px){
+        font-size: 48px;
+    }
 }
 .form-wrapper {
     position: relative;
@@ -31,11 +34,28 @@
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
+    @include to(992px){
+        align-content: flex-start;
+        padding-top: 100px;
+        --side-padding: calc(100% / 10);
+        .form-title {
+            margin-bottom: 40px;
+            width: 50%;
+        }
+    }
     &-left {
         width: 50%;
+        @include to(992px){
+         width: 100%;   
+         margin-bottom: 40px;
+        }
     }
     &-right {
         width: 50%;
+        @include to(992px){
+         width: 100%;   
+         margin-bottom: auto;
+        }
     }
     p {
         color: #B3A9A0;
@@ -44,6 +64,7 @@
             font-size: 18px;
             line-height: 140%;
         }
+        
     }
     &-close {
         position: absolute;
@@ -67,7 +88,17 @@
         padding-left: var(--side-padding);
         padding-right: var(--side-padding);
         padding-top: 160px;
-        @include autoAlpha(0);
+        @include autoAlpha(1);
+        @include to(992px){
+            padding-top: 100px;
+            background: linear-gradient(180deg, #23242B 0%, rgba(35, 36, 43, 0.805237) 34.76%, rgba(35, 36, 43, 0) 69.7%),  url('../images/form/succes-bg.jpg') center no-repeat;;
+            
+        }
+        p {
+            @include to(992px){
+                margin-bottom: 40px;
+            }
+        }
     }
     .form-wrapper-bg {
         position: absolute;
