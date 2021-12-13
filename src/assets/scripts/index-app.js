@@ -22,7 +22,7 @@ global.axios = axios;
  */
 lazyImages();
 lazyPosters();
-const formsWithTel = ['[data-form]'];
+const formsWithTel = ['[data-home-contact]'];
 
 formsWithTel.forEach(form => {
   const $form = document.querySelector(form);
@@ -34,7 +34,9 @@ formsWithTel.forEach(form => {
       elements: {
         $form,
         showSuccessMessage: false,
-        successAction: 'toster',
+        successAction: () => {
+          gsap.to('.form-wrapper-succes-layer', { autoAlpha: 1 })
+        },
         $btnSubmit: $form.querySelector('[data-btn-submit]'),
         fields: {
           name: {
@@ -81,35 +83,7 @@ formsWithTel.forEach(form => {
 const formWrapper = document.querySelector('[data-form-wrapper]');
 const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call]');
 formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
-  gsap.timeline({
-  })
-    .to(formWrapper, { autoAlpha: 1, duration: 0.25 })
-    .fromTo('.form-wrapper__curtains div', {
-      scaleY: 0
-    }, {
-      scaleY: 1,
-      stagger: 0.15,
-      duration: 1.75,
-      transformOrigin: '50% 100%',
-      ease: 'power4.out'
-    }, '<+0.5')
-    .fromTo('.form-wrapper__layout [data-splited-line]', {
-      // autoAlpha: 0,
-      yPercent: 100
-    }, {
-      // autoAlpha: 1,
-      yPercent: 0,
-      ease: 'power3.out'
-    },'>-55%')
-    .fromTo('.subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
-      autoAlpha: 0,
-    }, {
-      // autoAlpha: 1,
-      autoAlpha: 1,
-      ease: 'power3.out',
-      stagger: 0.15
-    },'<')
-    .set('.form-wrapper__layout', { backgroundColor: 'var(--color-red)' })
+    gsap.to( formWrapper, { autoAlpha: 1 } )
     
 }))
 const splitTolines = document.querySelectorAll('[data-split-to-lines]');
@@ -126,48 +100,17 @@ splitTolines.forEach(elem => {
 function closeForm() {
   gsap.timeline({
   })
-    .fromTo('.subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
-      autoAlpha: 1,
-    }, {
-      autoAlpha: 0,
-      ease: 'power3.out',
-      stagger: 0.15
-    },'<')
-    .set('.form-wrapper__layout', { backgroundColor: '' },' <')
-    .fromTo('.form-wrapper__layout [data-splited-line]', {
-      // autoAlpha: 0,
-      yPercent: 0
-    }, {
-      // autoAlpha: 1,
-      yPercent: 100,
-      ease: 'power3.out'
-    },'>-55%')
-    .fromTo('.form-wrapper__curtains div', {
-      scaleY: 1
-    }, {
-      scaleY: 0,
-      stagger: -0.15,
-      duration: 1.5,
-      transformOrigin: '50% 100%',
-
-      ease: 'power4.out'
-    }, '<')
     
-    
-    .to(formWrapper, { autoAlpha: 0, duration: 0.25 }).timeScale(2);
+    .to('.form-wrapper-succes-layer', { autoAlpha: 0, duration: 0.25 })
+    .to(formWrapper, { autoAlpha: 0, duration: 0.25 }, '<');
 
 }
-formWrapper.querySelector('[class*="close"]').addEventListener('click',closeForm);
+formWrapper.querySelectorAll('[class*="close"]').forEach(closeBtn => {
+  closeBtn.addEventListener('click',closeForm);
+})
 window.addEventListener('succesFormSend',function(evt){
   setTimeout(() => {
     closeForm();
   }, 2000);
 });
 
-
-const screen1Image = document.querySelector('.screen1 image');
-if (isMobile()) {
-  screen1Image.dataset.hrefMob && screen1Image.setAttribute('xlink:href', screen1Image.dataset.hrefMob);
-} else {
-  screen1Image.dataset.href && screen1Image.setAttribute('xlink:href', screen1Image.dataset.href);
-}

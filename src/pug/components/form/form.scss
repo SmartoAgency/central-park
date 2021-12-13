@@ -1,0 +1,126 @@
+.form-layout  {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 10vh var(--page-side-fields);
+    z-index: 50;
+    background-color: #4A4B50;
+    @include autoAlpha(0);
+}
+
+.form-title {
+    font-weight: 300;
+    font-size: 100px;
+    line-height: 90%;
+    /* or 90px */
+    margin-bottom: 40px;
+    
+    letter-spacing: -0.03em;
+    /* Светлый */
+    color: #E5CDB7;
+}
+.form-wrapper {
+    position: relative;
+    height: 100%;
+    --side-padding: calc(100% / 17);
+    padding-left: var(--side-padding);
+    padding-right: var(--side-padding);
+    padding-top: 160px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    &-left {
+        width: 50%;
+    }
+    &-right {
+        width: 50%;
+    }
+    p {
+        color: #B3A9A0;
+        max-width: 310px;
+        @include from(1681px){
+            font-size: 18px;
+            line-height: 140%;
+        }
+    }
+    &-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        top: 40px;
+        right: 40px;
+    }
+    &-succes-layer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: greenyellow;
+        z-index: 10;
+        background: linear-gradient(90deg, #23242B 0%, rgba(35, 36, 43, 0.805237) 49.87%, rgba(35, 36, 43, 0) 100%), url('../images/form/succes-bg.jpg') center no-repeat;
+        background-size: cover;
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        padding-top: 160px;
+        @include autoAlpha(0);
+    }
+    .form-wrapper-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(90deg, #23242B 0%, rgba(35, 36, 43, 0.805237) 49.87%, rgba(35, 36, 43, 0) 100%);;
+    }
+    .form-wrapper-gradient {
+        background: linear-gradient(90deg, #23242B 0%, rgba(35, 36, 43, 0.805237) 49.87%, rgba(35, 36, 43, 0) 100%);;
+    }
+    .form-wrapper-gradient,
+    .form-wrapper-img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    [data-status="field--error"] .input-message {
+        color: red;
+    }
+}
+
+[data-btn-submit] {
+    min-width: 260px;
+    text-align: center;
+    justify-content: center;
+}
+.form-field {
+    width: 100%;
+    margin-bottom: 50px;
+    input {
+        height: 100px;
+        width: 100%;
+        padding-left: 35px;
+        font-size: 24px;
+        line-height: 100%;
+        /* identical to box height, or 24px */
+        display: flex;
+        align-items: flex-end;
+        letter-spacing: -0.03em;
+        /* Black */
+        color: var(--color-black);
+    }
+    .input-message {
+        font-size: 18px;
+        line-height: 140%;
+        /* or 25px */
+        color: #B3A9A0;
+        margin-bottom: 10px;
+    }
+}

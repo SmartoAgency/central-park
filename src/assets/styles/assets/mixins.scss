@@ -63,3 +63,12 @@ $screen-height: 720;
 	margin-left: calc(#{$offset} / 2);
 	margin-right: calc(#{$offset} / 2);
 }
+@mixin autoAlpha($value) {
+	@if $value == 0 {
+		visibility: hidden;
+		opacity: 0;
+	} @else {
+		visibility: visible;
+		opacity: $value;
+	}
+}
