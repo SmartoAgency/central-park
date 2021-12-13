@@ -287,6 +287,9 @@
         margin-left: auto;
         text-align: left;
         margin-bottom: 12.6vh;
+        @include to(992px){
+         margin-bottom: 50px;   
+        }
     }
     .title {
         font-weight: 300;
@@ -296,8 +299,14 @@
 .screen5-hor-block {
     display: flex;
     height: calc(100vh - 35vh - 12.6vh);
+    @include from-to(576px, 992px){
+        height: calc(100vh - 35vh - 50px);
+    }
     &__item:nth-child(n+2) {
         padding-left: 94px;
+        @include to(992px){
+            padding-left: 0px;
+        }
     }
     &__item {
         width: 70vw;
@@ -305,6 +314,10 @@
         flex-shrink: 0;
         display: flex;
         flex-wrap: wrap;
+        @include to(992px){
+            width: 110vw;
+            padding-right: 50px;
+        }
         img {
             width: 50%;
             height: 100%;
@@ -317,6 +330,10 @@
             flex-direction: column;
             align-items: flex-start;
             align-content: flex-start;
+            @include to(992px){
+                padding-top: 40px;
+                padding-left: 50px;
+            }
             :last-child {
                 margin-top: auto;
             }
@@ -333,12 +350,20 @@
 
 .genplan {
     height: 500vh;
+    @include to(992px){
+        height: 700vh;
+    }
     &__inner {
         display: flex;
         // @include row-flex();
         flex-wrap: wrap;
         align-items: center;
+
         height: 100vh;
+        @include to(992px){
+          flex-direction: row-reverse;   
+          flex-direction: column-reverse;
+        }
     }
     &__text {
         position: relative;
@@ -351,11 +376,25 @@
         @include shift-right(-1);
         @include shift-left(1);
         padding-left: var(--page-side-fields);
+        @include to(992px){
+            
+            @include size(24);
+            @include shift(0);
+            margin-bottom: auto;
+            margin-top: auto;
+            align-items: center;
+            text-align: center;
+        }
         .title-h2 {
             margin-bottom: 40px;
         }
         p {
             margin-bottom: 60px;
+        }
+    }
+    .button {
+        @include to(992px){
+            margin: auto;
         }
     }
     &__text2 {
@@ -366,6 +405,14 @@
         @include size(18);
         @include shift-left(0);
         transform: translateX(30px);
+        @include to(992px){
+            
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: auto;
+            transform: none;
+        }
     }
     &__list {
         display: flex;
@@ -416,16 +463,28 @@
     --side-blocks-w: 40.2vw;
     --side-blocks-h: 39vh;
     --gutter: 70px;
+    @include to(992px){
+        --gutter: 18px;
+        --side-blocks-w: 60.2vw;
+
+    }
     .title-h2 {
         width: 100%;
         padding-bottom: var(--gutter);
         text-align: center;
+        @include to(992px){
+            
+            padding-bottom: calc(var(--gutter) * 2.5);
+        }
     }
     &__content {
         display: flex;
         align-items: center;
         justify-content: center;
         margin-left: -7.5vw;
+        @include to(992px){
+            margin-left: -40.5vw;
+        }
     }
     &__head-block {
         width: 37.9vw;
@@ -433,6 +492,9 @@
         padding-left: var(--gutter);
         padding-right: var(--gutter);
         position: relative;
+        @include to(992px){
+            width: 61vw;
+        }
         img {
             height: 100%;
             object-fit: cover;
@@ -483,11 +545,21 @@
     padding-left: var(--page-side-fields);
     padding-right: var(--page-side-fields);
     background: linear-gradient(180deg, #23242B 0%, rgba(35, 36, 43, 0) 76.62%),  linear-gradient(180deg, #263D6A 3.59%, #DCF7FF 100%);
+    @include to(992px){
+        --right-img-v-margin: -50px;
+    }
     &__text {
         @include size(6);
         @include shift-left(2);
         @include shift-right(0);
         height: 0;
+        @include to(992px){
+            @include shift(0);
+            height: auto;
+            @include size(12);
+            height: 120px;
+            margin-top: 50px;
+        }
         @include from(1681px){
             &>:nth-last-child(n+2) {
                 margin-bottom: 60px;
@@ -506,26 +578,43 @@
         }
     }
     .img-left {
+        position: relative;
         @include size(6);
         @include shift-left(2);
         @include shift-right(2);
         align-self: flex-start;
         margin-top: 175px;
+        @include to(992px){
+            z-index: 1;
+            @include size(8);
+            @include shift(0);
+
+        }
     }
     .img-center {
         position: relative;
         @include size(11);
         @include shift-left(0);
         @include shift-right(0);
+        @include to(992px){
+            @include size(17);
+            @include shift-left(-5);
+            z-index: 0;
+
+        }
         &:before {
             content: '';
             position: absolute;
         }
     }
     .img-right {
-        @include size(4);
+        position: relative;
         @include shift-left(-2);
         margin-bottom: var(--right-img-v-margin);
+        @include to(992px){
+            z-index: 3;
+            @include size(6);
+        }
     }
     &__render {
         width: calc(100vw + (var(--page-side-fields) * 2));
@@ -554,6 +643,15 @@
         @include size(3);
         @include shift-left(1);
         @include shift-right(1);
+        @include to(992px){
+            @include size(24);
+            @include shift(0);
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 100px;
+
+        }
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -562,20 +660,31 @@
     }
     .nav-wrap {
         display: flex;
-        margin-top: auto;
+        @include from(993px){
+            margin-top: auto;
+            
+        }
         :nth-child(2) {
             margin-left: 10px;
         }
+        svg {
+            @include to(992px){
+                width: 60px;
+                height: 60px;
+            }
+        }
     }
     &__right {
-        @include size(5);
-        @include shift-left(1);
         @include shift-right(0);
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
         align-content: center;
+        @include to(992px){
+            @include size(24);
+            @include shift(0);
+        }
         p {
             margin-bottom: 30px;
             overflow: hidden;
@@ -602,6 +711,12 @@
         @include shift-left(1);
         @include shift-right(0);
         margin-bottom: 60px;
+        @include to(992px){
+            
+            @include size(20);
+            @include shift(2);
+            height: 35vh;
+        }
         &>:nth-child(1) {
             width: 100%;
             height: 100%;
@@ -635,6 +750,9 @@
         text-transform: uppercase;
         @include to(1680px){
             font-size: 200px;
+        }
+        @include to(1024px){
+            font-size: 120px;
         }
         span{
             width: 50%;
@@ -676,9 +794,22 @@
     &__text {
         @include size(4);
         @include shift(1);
+        @include size-md(24);
+        @include shift-md(0);
+        @include to(992px){
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            margin-bottom: 50px;
+            p {
+                width: 160px;
+            }
+        }
     }
     &__slider {
         @include size(18);
+        @include size-md(24);
         @include shift(0);
         display: flex;
     }
