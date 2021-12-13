@@ -12,7 +12,7 @@
         { date: '03.12.2021', img: './assets/images/screen10/Rectangle 3976.jpg', text: 'Група «Еталон» з гордістю представляє проект у центрі Вінниці.',},
         ];
     each val in slides
-      .screen10-slide 
+      a(href="#").screen10-slide 
         .text-white #{val.date}
         img(src=val.img)
         .curtain

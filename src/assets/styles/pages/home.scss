@@ -588,6 +588,11 @@
 .screen10 {
     padding: 150px var(--page-side-fields);
     @include row-flex();
+    @include from(1025px){
+        &__text>:nth-last-child(n+2) {
+            margin-bottom: 30px;
+        }   
+    }
     &__text {
         @include size(4);
         @include shift(1);
@@ -605,6 +610,13 @@
 .screen10-slide {
     position: relative;
     height: 62.5vh;
+    --padding: 40px;
+    padding-left: var(--padding);
+    padding-top: var(--padding);
+    padding-bottom: calc(var(--padding) * 1.95);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
     .curtain,
     img {
         position: absolute;
@@ -614,11 +626,56 @@
         height: 100%;
         object-fit: cover;
         z-index: -1;
+        filter: saturate(0);
     }
     .curtain {
         background: linear-gradient(180deg, rgba(35, 36, 43, 0) 0%, #23242B 100%);
+        background: linear-gradient(180deg, rgba(35, 36, 43, 0.438) 0%, rgba(35, 36, 43, 0.438) 100%);
+    }
+    .text-white {
+        width: 350px;
+    }
+    .text-white:last-child {
+        margin-top: auto;
     }
 }
+
+
+
+.screen11 {
+    background-color: var(--color-black); 
+    position: relative;
+    .link-l {
+        font-size: 64px;
+        @include to(1680px){
+            font-size: 48px;
+        }
+        line-height: 100%;
+        color: #E5CDB7;
+    }
+    .contacts-text {
+        color: #B2A9A0;
+        font-size: 24px;
+        line-height: 140%;
+    }
+    .contacts-subtitle {
+        color: #E5CDB7;
+        font-size: 18px;
+        line-height: 160%;
+        @include to(1680px){
+         font-size: 14px;   
+        }
+    }
+    .contacts-link {
+        font-size: 24px;
+        @include to(1680px){
+            font-size: 18px;
+        }
+        color: #E5CDB7;
+
+    }
+}
+
 .icon--auto,
 .icon--man,
 .icon--bycicle,
