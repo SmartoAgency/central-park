@@ -88,7 +88,7 @@
         padding-left: var(--side-padding);
         padding-right: var(--side-padding);
         padding-top: 160px;
-        @include autoAlpha(1);
+        @include autoAlpha(0);
         @include to(992px){
             padding-top: 100px;
             background: linear-gradient(180deg, #23242B 0%, rgba(35, 36, 43, 0.805237) 34.76%, rgba(35, 36, 43, 0) 69.7%),  url('../images/form/succes-bg.jpg') center no-repeat;;

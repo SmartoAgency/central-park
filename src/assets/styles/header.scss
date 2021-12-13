@@ -19,6 +19,10 @@
 	@include to(1024px){
 		--between-margin: 20px;
 	}
+	@include to(575px){
+		--between-margin: 10px;
+		background: linear-gradient(180deg, rgba(39, 41, 54, 0.6) 0%, rgba(39, 41, 54, 0) 100%);
+	}
     &>:nth-child(n+2) {
         margin-left: var(--between-margin);
     }
@@ -48,9 +52,14 @@
 				display: none;
 			}
 		}
+		
 		svg {
 			@include from(1025px){
 				margin-left: 15px; 
+			}
+			@include to(575px){
+				width: 36px;
+				height: 36px;	
 			}
 
 		}
@@ -65,9 +74,23 @@
 		svg {
 			width: 50px;
 			height: 50px;
+			@include to(575px){
+				width: 36px;
+				height: 36px;	
+			}
 		}
 		@include from(993px){
 			display: none;
+		}
+	}
+	.button  {
+		@include to(575px){
+		display: none;
+		}
+	}
+	[data-mob-choose-link] {
+		@include from(576px){
+			display: none;	
 		}
 	}
 }

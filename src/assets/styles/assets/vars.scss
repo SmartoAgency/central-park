@@ -61,15 +61,6 @@ $gold: #cfa46e;
     --sliceFigure-big: 362px;
   }
 }
-@media (max-width: 1200px) {
-  :root {
-    --h1-size: 61px;
-    --h2-size: 33px;
-    --h3-size: 22px;
-    // --h4-size: 18px;
-    // --h5-size: 16px;
-  }
-}
 @media (max-width: 1024px) {
   :root {
     --h1-size: 58px;
@@ -96,6 +87,8 @@ $gold: #cfa46e;
     --header-h: 56px;
     --sliceFigure: 100px;
     --sliceFigure-big: 100px;
+    --page-side-fields: 20px;
+    --header-h: 61px;
   }
 }
 @media (max-width: 576px) {

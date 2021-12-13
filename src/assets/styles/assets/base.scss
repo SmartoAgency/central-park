@@ -347,6 +347,9 @@ html.has-scroll-dragging {
 	@include to(1024px){
 		font-size: 48px;
 	}
+	@include to(575px){
+		font-size: 32px;
+	}
 }
 .title-h2 {
 	font-size: 48px;
@@ -357,6 +360,10 @@ html.has-scroll-dragging {
 	text-transform: uppercase;
 	@include to(1680px){
 		font-size: 36px;
+	}
+
+	@include to(575px){
+		font-size: 24px;
 	}
 }
 .subtitle {
