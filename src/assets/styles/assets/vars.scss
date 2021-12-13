@@ -70,7 +70,7 @@ $gold: #cfa46e;
     // --h5-size: 16px;
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   :root {
     --h1-size: 58px;
     --h2-size: 30px;
@@ -79,7 +79,7 @@ $gold: #cfa46e;
     --h5-size: 14px;
     --h6-size: 10px;
 
-
+    --page-side-fields: 30px;
     --sliceFigure-big: 44px;
   }
 }

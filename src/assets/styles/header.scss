@@ -16,6 +16,9 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 100%;
+	@include to(1024px){
+		--between-margin: 20px;
+	}
     &>:nth-child(n+2) {
         margin-left: var(--between-margin);
     }
@@ -40,8 +43,16 @@
 		text-transform: uppercase;
 		color: var(--color-beige);
 		font-family: $default-font;
+		@include to(1024px){
+			span {
+				display: none;
+			}
+		}
 		svg {
-			margin-left: 15px; 
+			@include from(1025px){
+				margin-left: 15px; 
+			}
+
 		}
 	}
 }

@@ -96,13 +96,18 @@
 }
 
 [data-btn-submit] {
-    min-width: 260px;
     text-align: center;
     justify-content: center;
+    @include from(1681px){
+        min-width: 260px;
+    }
 }
 .form-field {
     width: 100%;
     margin-bottom: 50px;
+    @include to(1680px){
+        margin-bottom: 40px;
+    }
     input {
         height: 100px;
         width: 100%;
@@ -113,8 +118,15 @@
         display: flex;
         align-items: flex-end;
         letter-spacing: -0.03em;
+        font-weight: 600;
+
         /* Black */
         color: var(--color-black);
+        @include to(1680px){
+            height: 70px;
+            font-size: 18px;
+            line-height: 100%;
+        }
     }
     .input-message {
         font-size: 18px;

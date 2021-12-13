@@ -310,7 +310,7 @@ html.has-scroll-dragging {
 	text-decoration: none;
 	@include to(1720px){
 		font-size: 12px;
-		padding: 17px 31px;
+		padding: 17px 42px;
 		height: 46px;
 	}
 	&--small {
@@ -343,6 +343,9 @@ html.has-scroll-dragging {
 	font-weight: normal;
 	@include to(1680px){
 		font-size: 64px;
+	}
+	@include to(1024px){
+		font-size: 48px;
 	}
 }
 .title-h2 {
