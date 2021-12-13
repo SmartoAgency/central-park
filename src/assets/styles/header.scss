@@ -48,28 +48,43 @@
 .langs-header {
 	// line-height: 46px;
 	position: relative;
-	width: 20px;
+	width: 50px;
 	height: 1em;
-	height: 1.3em;
+	height: 1.5em;
 	overflow: hidden;
+	background-color: #27314B;
+	
 	ul {
 		position: absolute;
 		left: 0;
 		top: 0;
 		width: 100%;
+		background-color: #27314B;
+		border-radius: 20%;
 	}
 	li {
 		position: relative;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
+		padding: 5px 5px 5px 10px;
+	}
+	li:first-child:after {
+		content: '';
+		position: absolute;
+		right: -10px;
+		top: 50%;
+		width: 4px;
+		height: 4px;
+		background-color: red;
+		z-index: 4;
 	}
 	li:after {
 		content: '';
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		background-color: var(--color-grey);
+		// background-color: var(--color-grey);
 		width: 200%;
 		height: 200%;
 		// border-radius: 50%;
@@ -87,7 +102,7 @@
 	}
 	a {
 		transition: color .3s ease-in-out;
-		color: var(--color-white);
+		color: var(--color-beige);
 		text-decoration: none;
 	}
 	&:hover li~li {
@@ -97,14 +112,14 @@
 		overflow: visible;
 	}
 	@include from(1680px){
-		width: 25px;
+		// width: 50px;
 	}
 	@include to(575px){
 		display: none;	
 	}
 	@include from(951px){
 		a:hover {
-			color: var(--color-gold);		
+			color: var(--color-white);		
 		}
 	}
 }
