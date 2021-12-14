@@ -2,6 +2,7 @@
     position: relative;
     min-height: 100vh;
     --v-padding: 175px;
+    overflow: hidden;
     @include row-flex();
     padding: var(--v-padding) var(--page-side-fields) 0 var(--page-side-fields);
     @include to(575px){
