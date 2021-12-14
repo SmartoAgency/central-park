@@ -2,6 +2,10 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 // import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 import Swiper, { Navigation } from 'swiper';
+import paralax from '../modules/effects/paralax';
+// import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
+
+
 
 const swiper = new Swiper('.zoom-slider-wrapper', {
   // Optional parameters
@@ -40,12 +44,14 @@ gsap.core.globals("ScrollTrigger", ScrollTrigger);
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
 gsap.defaults({
-  // ease: 'power3.out',
-  duration: 2.5,
+  ease: 'power3.out',
+  duration: 0.5,
 })
 gsap.registerPlugin(ScrollTrigger);
 
-
+paralax('.img-with-logo img, .screen7__left-block img , .screen7__right-block img')
+paralax('.img-center img')
+paralax('.screen3 img')
 gsap.timeline({
   scrollTrigger: {
     trigger: '.screen4',
@@ -81,7 +87,13 @@ gsap.timeline({
 })
 .to('.screen5-hor-block', { x: (el, target) => {
   const horBlocksItems = document.querySelectorAll('.screen5-hor-block__item');
-  return (horBlocksItems[0].getBoundingClientRect().width) * (horBlocksItems.length - 1) * -1;
+  
+  // return (horBlocksItems[0].getBoundingClientRect().width) * (horBlocksItems.length - 1) * -1;
+  return innerWidth + Array.from(horBlocksItems).reduce((acc, el) => {
+    console.log(acc);
+    acc -= el.getBoundingClientRect().width;
+    return acc;
+  }, 0);
 } })
 gsap.timeline({
   scrollTrigger: {
@@ -148,3 +160,4 @@ document.querySelectorAll('.screen10-slide').forEach((el, index, array) => {
       .set(innactiveImages, { filter: 'saturate(0)' })
   })
 })
+

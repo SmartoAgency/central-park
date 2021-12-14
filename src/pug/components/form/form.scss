@@ -8,6 +8,9 @@
     z-index: 50;
     background-color: #4A4B50;
     @include autoAlpha(0);
+    @include to(575px){
+        padding: 20px var(--page-side-fields);
+    }
 }
 
 .form-title {
@@ -22,6 +25,9 @@
     color: #E5CDB7;
     @include to(992px){
         font-size: 48px;
+    }
+    @include to(575px){
+        font-size: 32px;
     }
 }
 .form-wrapper {
@@ -43,11 +49,20 @@
             width: 50%;
         }
     }
+    @include to(575px){
+        padding-top: 40px;
+        .form-title {
+            margin-bottom: 20px;
+        }
+    }
     &-left {
         width: 50%;
         @include to(992px){
          width: 100%;   
          margin-bottom: 40px;
+        }
+        @include to(575px){
+            margin-bottom: 20px;
         }
     }
     &-right {
@@ -74,6 +89,12 @@
         height: 60px;
         top: 40px;
         right: 40px;
+        @include to(575px){
+            width: 36px;
+            height: 36px;
+            top: 20px;
+            right: 20px;
+        }
     }
     &-succes-layer {
         position: absolute;
@@ -108,6 +129,9 @@
         height: 100%;
         z-index: -1;
         background: linear-gradient(90deg, #23242B 0%, rgba(35, 36, 43, 0.805237) 49.87%, rgba(35, 36, 43, 0) 100%);;
+        @include to(575px){
+            background: linear-gradient(90deg, #23242B 0%, rgba(35, 36, 43, 0.805237) 49.87%, rgba(35, 36, 43, 0) 100%);
+        }
     }
     .form-wrapper-gradient {
         background: linear-gradient(90deg, #23242B 0%, rgba(35, 36, 43, 0.805237) 49.87%, rgba(35, 36, 43, 0) 100%);;
@@ -123,6 +147,9 @@
     }
     [data-status="field--error"] .input-message {
         color: red;
+        @include to(575px){
+            font-size: 10px;
+        }
     }
 }
 
@@ -132,12 +159,18 @@
     @include from(1681px){
         min-width: 260px;
     }
+    @include to(575px){
+        width: 200px;
+    }
 }
 .form-field {
     width: 100%;
     margin-bottom: 50px;
     @include to(1680px){
         margin-bottom: 40px;
+    }
+    @include to(575px){
+        margin-bottom: 20px;
     }
     input {
         height: 100px;
@@ -158,6 +191,10 @@
             font-size: 18px;
             line-height: 100%;
         }
+        @include to(575px){
+            height: 50px;   
+            padding-left: 20px;
+        }
     }
     .input-message {
         font-size: 18px;
@@ -165,5 +202,8 @@
         /* or 25px */
         color: #B3A9A0;
         margin-bottom: 10px;
+        @include to(575px){
+            font-size: 14px;
+        }
     }
 }

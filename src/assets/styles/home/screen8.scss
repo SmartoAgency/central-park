@@ -93,7 +93,7 @@
     }
     .img-right {
         position: relative;
-        @include shift-left(-2);
+        @include shift-left(-3);
         margin-bottom: var(--right-img-v-margin);
         &__decor {
             position: absolute;

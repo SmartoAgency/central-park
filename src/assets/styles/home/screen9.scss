@@ -5,8 +5,8 @@
     @include row-flex();
     padding: var(--v-padding) var(--page-side-fields) 0 var(--page-side-fields);
     @include to(575px){
-        --v-padding: 102px;
         background: linear-gradient(90deg, rgba(35,36,43,1) 50%, rgba(255,255,255,1) 50%);
+        --v-padding: 102px;
     }
     &__left {
         @include size(3);
@@ -56,6 +56,8 @@
         }
     }
     &__right {
+        @include size(5);
+        @include shift-left(1);
         @include shift-right(0);
         display: flex;
         position: relative;
