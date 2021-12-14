@@ -99,7 +99,7 @@ block content
           <path d="M44 63V37L63 50L44 63Z" fill="white"/>
           </svg>
         video(poster="./assets/images/screen4/poster.jpg")
-  .screen5(style="min-height: 100vh; position: relative; z-index:2")
+  .screen5()
     .screen5__inner
       .section-decor
         +svg('logo-mini')
@@ -112,7 +112,7 @@ block content
                 .title.text-beige #{val.title}
                 p.text-beige #{val.text}
                 div.text-beige #{index + 1} / #{scr5.length}
-  .screen6(style="min-height: 100vh; position: relative; z-index:2").genplan
+  .screen6().genplan
     .genplan__inner
       .genplan__text
         .title-h2.text-black Продумані маршрути

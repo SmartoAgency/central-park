@@ -16,6 +16,9 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 100%;
+	@include from-to(1025px, 1360px){
+		--between-margin: 15px;
+	}
 	@include to(1024px){
 		--between-margin: 20px;
 	}
@@ -54,6 +57,9 @@
 		}
 		
 		svg {
+			circle {
+				transition: fill .3s ease-out;
+			}
 			@include from(1025px){
 				margin-left: 15px; 
 			}
@@ -61,7 +67,14 @@
 				width: 36px;
 				height: 36px;	
 			}
-
+		}
+		@include from(1025px){
+			&:hover circle {
+				fill: var(--color-black);
+			}
+			&:hover path {
+				fill: var(--color-beige);
+			}
 		}
 	}
 	a[href*="tel"],

@@ -3,6 +3,9 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 import LocomotiveScroll from 'locomotive-scroll';
 import Swiper, { Navigation } from 'swiper';
 import paralax from '../modules/effects/paralax';
+import fadeInUp from '../modules/effects/fadeInUp'; 
+import splitToLinesAndFadeUp from '../modules/effects/splitToLinesAndFadeUp'; 
+import buttonHover from '../modules/effects/buttonHover';
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
 window.addEventListener('load',homeInit);
@@ -31,13 +34,18 @@ function homeInit() {
       prevEl: document.querySelector('[data-screen3-prev]'),
     },
   });
-  
+  // document.querySelector('.zoom-slider-wrapper').addEventListener('mousedown', () => {
+  //   gsap.to('.zoom-slider-wrapper', { scale: 0.95, duration: 0.5, ease: 'power4.out' });
+
+  // })
   swiper.on('touchStart', () => {
-    gsap.to('.zoom-slider-wrapper', { scale: 0.95, duration: 0.5, ease: 'power4.out' });
+    // gsap.to('.zoom-slider-wrapper', { scale: 0.95, duration: 0.5, ease: 'power4.out' });
+    document.querySelector('.zoom-slider-wrapper').classList.add('drag')
   
   })
   swiper.on('touchEnd', () => {
-    gsap.to('.zoom-slider-wrapper', { scale: 1, duration: 1.5, ease: 'power4.out' });
+    // gsap.to('.zoom-slider-wrapper', { scale: 1, duration: 0.5, ease: 'power4.out' });
+    document.querySelector('.zoom-slider-wrapper').classList.remove('drag')
   })
   global.gsap = gsap;
   gsap.core.globals("ScrollTrigger", ScrollTrigger);
@@ -172,6 +180,11 @@ function homeInit() {
     }, {
       yPercent: 0 
     })
-  
+
+
+  splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
+  fadeInUp('.screen11__group');
+
+  buttonHover('.button');
 }
 
