@@ -127,6 +127,7 @@ frames.forEach(frame => {
 
 
 document.querySelectorAll('.screen10-slide').forEach((el, index, array) => {
+  if (isMobile()) return;
   const innactiveSlides = document.querySelectorAll(`.screen10-slide:not(:nth-child(${index + 1}))`);
   const innactiveCurtains = document.querySelectorAll(`.screen10-slide:not(:nth-child(${index + 1})) .curtain`);
   const innactiveImages = document.querySelectorAll(`.screen10-slide:not(:nth-child(${index + 1})) img`);

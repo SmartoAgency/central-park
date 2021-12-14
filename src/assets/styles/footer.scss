@@ -5,6 +5,14 @@
     border-top: 1px solid rgba(229, 205, 183, 0.2);
     padding-bottom: 60px;
     color: #5D5755;
+    @include to(575px){
+        color: #E5CDB7;
+    }
+    &>div {
+        @include to(575px){
+            width: 155px;
+        }
+    }
     &:after {
         content: '';
         position: absolute;

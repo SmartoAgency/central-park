@@ -1,0 +1,77 @@
+.screen7 {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--color-black);
+    position: relative;
+    padding-top: 180px;
+    padding-bottom: 180px;
+    --side-blocks-w: 40.2vw;
+    --side-blocks-h: 39vh;
+    --gutter: 70px;
+    @include to(992px){
+        --gutter: 18px;
+        --side-blocks-w: 60.2vw;
+
+    }
+    .title-h2 {
+        width: 100%;
+        padding-bottom: var(--gutter);
+        text-align: center;
+        @include to(992px){
+            
+            padding-bottom: calc(var(--gutter) * 2.5);
+        }
+    }
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -7.5vw;
+        @include to(992px){
+            margin-left: -40.5vw;
+        }
+    }
+    &__head-block {
+        width: 37.9vw;
+        height: 67vh;
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
+        position: relative;
+        @include to(992px){
+            width: 61vw;
+        }
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__left-block {
+        width: var(--side-blocks-w);
+        height: var(--side-blocks-h);
+        display: grid;
+        grid-template-rows: 1fr;
+        gap: var(--gutter);
+        grid-template-columns: 1fr 1fr;
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__right-block {
+        width: var(--side-blocks-w);
+        height: var(--side-blocks-h);
+        display: grid;
+        gap: var(--gutter);
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+        & > :nth-child(2) {
+            grid-area: 1/2/3/2;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

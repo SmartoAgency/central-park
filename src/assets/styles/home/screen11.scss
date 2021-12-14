@@ -1,0 +1,120 @@
+.screen11 {
+    background-color: var(--color-black); 
+    position: relative;
+    padding: 210px var(--page-side-fields);
+    @include to(992px){
+        padding: 150px var(--page-side-fields);
+    }
+    @include to(575px){
+        
+        padding: 100px var(--page-side-fields);
+    }
+    @include row-flex();
+    .title-h2 {
+        @include size(23);
+        @include shift-left(1);
+        @include shift-right(0);
+        margin-bottom: 50px;
+        @include to(992px){ 
+            @include shift-left(0);
+        }
+
+    }
+    &__left {
+        @include size(4);
+        @include shift-left(1);
+        @include shift-right(0);
+        @include to(992px){ 
+            @include size(8);
+            @include shift-left(0);
+        }
+        @include to(575px){
+            @include size(24);
+            @include shift(0);
+            margin-bottom: 30px;
+        }
+    }
+    &__right {
+        @include size(14);
+        @include shift-left(5);
+        @include to(992px){ 
+            @include shift-left(2);
+        }
+        @include to(575px){
+            @include size(24);
+            @include shift(0);
+        }
+    }
+    .link-l {
+        font-size: 64px;
+        @include to(1680px){
+            font-size: 48px;
+        }
+        @include to(992px){
+            font-size: 36px;
+        }
+        @include to(575px){
+            font-size: 30px;
+        }
+        line-height: 100%;
+        color: #E5CDB7;
+    }
+    .contacts-text {
+        color: #B2A9A0;
+        font-size: 24px;
+        line-height: 140%;
+        @include to(1680px){
+            font-size: 18px;   
+        }
+    }
+    .contacts-subtitle {
+        color: #E5CDB7;
+        font-size: 18px;
+        line-height: 160%;
+        @include to(1680px){
+         font-size: 14px;   
+        }
+    }
+    .contacts-link {
+        font-size: 24px;
+        @include to(1680px){
+            font-size: 18px;
+        }
+        color: #E5CDB7;
+    }
+    &__group:nth-last-child(n+2) {
+        margin-bottom: 50px;
+        @include to(992px){
+            margin-bottom: 30px;
+        }
+    }
+    &__group {
+        &>:nth-child(1) {
+            margin-bottom: 10px;
+        }
+        &>:nth-child(2) {
+            margin-bottom: 20px;
+        }
+    }
+    &__group-l {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        a[href*="tel"] {
+            text-decoration: none;
+        }
+        .button {
+            margin-top: 50px;
+        }
+        a:nth-child(n+2) {
+            margin-top: 30px;
+            @include to(992px){
+                
+                margin-top: 15px;
+            }
+        }
+    }
+    .contacts-link~.contacts-link {
+        margin-left: 40px;
+    }
+}
