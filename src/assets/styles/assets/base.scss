@@ -303,25 +303,50 @@ html.has-scroll-dragging {
 	padding: 23px 47px;
 	background-color: var(--color-beige);
 	border-radius: 30px;
+	border-color: transparent;
 	text-transform: uppercase;
 	font-family: $default-font;
 	display: flex;
 	align-items: center;
 	width: max-content;
 	text-decoration: none;
+	outline: none;
 	overflow: hidden;
+	transform: translateZ(0);
+	-webkit-mask-image: -webkit-radial-gradient(#fff,#000);
+	-webkit-appearance: button;
+	transition: background-color 1s ease-out;
+	backface-visibility: hidden;
 	&__hover {
 		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background-color: aqua;
-		z-index: -1;
-	} 
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%,-50%);
+		width: calc(100% + 5px);
+		height: calc(100% + 5px);
+		background-color: var(--color-black);
+		clip-path: circle(0% at 0% 100%);
+		border-radius: 30px;
+		-webkit-clip-path: circle(0% at 0% 100%);
+		backface-visibility: hidden;
+		z-index: 0;
+		
+	}
+	&--dark &__hover {
+		background-color: var(--color-beige);
+	}
+	&>:not(.button__hover) {
+		position: relative;
+		z-index: 1;
+	}
 	@include from(1025px){
-		&:hover {
+		&.with-hover:hover {
 			background-color: transparent;
+			color: var(--color-beige);
+		}
+		&--dark.with-hover:hover {
+			background-color: transparent;
+			color: var(--color-black);
 		}
 	}
 	@include to(1720px){

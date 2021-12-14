@@ -4,54 +4,52 @@ export default function buttonHover(selector) {
     buttons.forEach(button => {
         const hoverEl = button.querySelector('.button__hover');
         if (hoverEl === null) return;
-        console.log(hoverEl);
         button.addEventListener('mouseenter',openingEffect);
         button.addEventListener('mouseleave',closingEffect);
     })
-    // console.log(buttons);
 }
 function getPercentOfEnterButton(button, { clientX, clientY }) {
-    const { left, top, width } = button.getBoundingClientRect();
-    const startPercentValue = left * 100 / (left + width);
-    const cordPercentValue = (clientX) * 100 / (left + width);
-    console.log(cordPercentValue * 0.54);
-    return cordPercentValue * 0.54;
+    const { left, top, width, height, right, bottom } = button.getBoundingClientRect();
+
+    const cordPercentValue = (clientX - left) * 100 / (right);
+    const cordPercentValueY = ((clientY  - top) * 100 / (bottom))
+    return {
+        x: cordPercentValue / (width / right),
+        y: cordPercentValueY / (height / bottom),
+    };
 }
 function openingEffect({clientX , clientY, target}) {
-// console.log(clientX, clientY);
     const hoverEl = target.querySelector('.button__hover');
     if (hoverEl === null) return;
-    const xPercent = getPercentOfEnterButton(target, {
+    const cords = getPercentOfEnterButton(target, {
         clientX,
         clientY
     })
     gsap.timeline().fromTo(
         hoverEl, 
-        { webkitClipPath: `circle(0% at ${xPercent}% ${100}%)` }, 
+        { webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)` }, 
         { 
-            webkitClipPath: `circle(140% at ${xPercent}% ${100}%)`, 
+            webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
             duration: 1, 
             ease: 'power4.easeOut' 
         }
     );
 }
 function closingEffect({clientX , clientY, target}) {
-// console.log(clientX, clientY);
     const hoverEl = target.querySelector('.button__hover');
     if (hoverEl === null) return;
-    const xPercent = getPercentOfEnterButton(target, {
+    const cords = getPercentOfEnterButton(target, {
         clientX,
         clientY
     })
     gsap.timeline()
-        .set(target, { backgroundColor: 'transparent' }).fromTo(
+        .fromTo(
         hoverEl, 
-        { webkitClipPath: `circle(140% at ${xPercent}% ${100}%)`, }, 
+        { webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, }, 
         { 
-            webkitClipPath: `circle(0% at ${xPercent}% ${100}%)`,
+            webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
             duration: 1, 
             ease: 'power4.easeOut' 
         }
-    ).set(target, { backgroundColor: '' })
-    ;
+    );
 }

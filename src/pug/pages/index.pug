@@ -48,7 +48,9 @@ block content
     .screen2__text 
       .title-h2.text-black Про проєкт
       p Forest Home запустив віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання ви могли побачити розташування кімнат і навіть оцінити вид з вікон.  віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання.
-      button(type="button" class="button button--dark") Дізнатися більше
+      button(type="button" class="button button--dark with-hover") 
+        .button__hover 
+        span Дізнатися більше
     .img-with-logo
       +svg('logo-mini').img-with-logo__decor
       .img-with-logo__wrap
@@ -119,7 +121,9 @@ block content
         .genplan__text-block-wrapper
           .genplan__text1
             p Forest Home запустив віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання ви могли побачити розташування кімнат і навіть оцінити вид з вікон.  віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання.
-            a(class="button button--dark") Хід будівництва
+            a(class="button button--dark with-hover") 
+              .button__hover
+              span Хід будівництва
           ul.genplan__text2.genplan__list
             each val in genplanList
               li 
@@ -160,8 +164,9 @@ block content
     .screen8__text 
       .title.text-beige Обрати квартиру
       p.text-white Група «Еталон» з гордістю представляє масштабний проект у центрі Вінниці. Це місто в місті, яке не підлаштовується під старі рамки, а задає нову планку та стандарт житлового району.
-      a.button.button--dark(href="#") 
+      a.button.button--dark.with-hover(href="#") 
         +svg('key')
+        .button__hover
         span обрати квартиру
     .screen8__render
       img(src="./assets/images/screen8/render.png")
