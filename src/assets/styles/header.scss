@@ -50,6 +50,12 @@
 		text-transform: uppercase;
 		color: var(--color-beige);
 		font-family: $default-font;
+		.circle-hover {
+			transform: scale(0);
+			transform-origin: center;
+			transform-box: fill-box;
+			transition: .5s ease-out;
+		}
 		@include to(1024px){
 			span {
 				display: none;
@@ -69,8 +75,12 @@
 			}
 		}
 		@include from(1025px){
-			&:hover circle {
-				fill: var(--color-black);
+			&:hover circle:not(.circle-hover) {
+				// fill: var(--color-black);
+				fill: transparent;
+			}
+			&:hover .circle-hover{
+				transform: scale(1);
 			}
 			&:hover path {
 				fill: var(--color-beige);

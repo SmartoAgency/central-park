@@ -37,7 +37,7 @@
     &__text {
         
         @include shift-left(0.5);
-        @include size(9.5);
+        @include size(11);
         position: relative;
         z-index: 4;
         @include to(1024px){
