@@ -37,6 +37,7 @@
     }
     &__head-block {
         width: 37.9vw;
+        width: calc(100vw - (var(--side-blocks-w)) - ((var(--gutter) * 2)));
         height: 67vh;
         height: auto;
         // padding-left: var(--gutter);
