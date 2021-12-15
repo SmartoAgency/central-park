@@ -1,6 +1,7 @@
 .screen7 {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     background-color: var(--color-black);
     position: relative;
     padding-top: 180px;
@@ -25,8 +26,11 @@
     &__content {
         display: flex;
         align-items: center;
+        align-content: flex-start;
         justify-content: center;
-        margin-left: -7.5vw;
+        flex-wrap: wrap;
+        width: 100%;
+        // margin-left: -7.5vw;
         @include to(992px){
             margin-left: -40.5vw;
         }
@@ -34,11 +38,26 @@
     &__head-block {
         width: 37.9vw;
         height: 67vh;
-        padding-left: var(--gutter);
-        padding-right: var(--gutter);
+        height: auto;
+        // padding-left: var(--gutter);
+        // padding-right: var(--gutter);
         position: relative;
+        overflow: hidden;
         @include to(992px){
             width: 61vw;
+        }
+        &-text {
+            position: absolute;
+            left: 50%;
+            width: 100%;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;justify-content: center;
+            bottom: 50px;
+            transform: translateX(-50%);
+            z-index: 2;
+            @include autoAlpha(0);
         }
         img {
             height: 100%;
@@ -52,6 +71,10 @@
         grid-template-rows: 1fr;
         gap: var(--gutter);
         grid-template-columns: 1fr 1fr;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateX(-50%) translateY(-50%);
         img {
             height: 100%;
             object-fit: cover;
@@ -64,6 +87,11 @@
         gap: var(--gutter);
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateX(50%)  translateY(-50%);
+        
         img {
             height: 100%;
             object-fit: cover;
@@ -73,5 +101,15 @@
             height: 100%;
             object-fit: cover;
         }
+    }
+
+    .screen7-title {
+        font-weight: 300;
+        font-size: calc(100px / 100 * 38);
+        line-height: 100%;
+        /* or 90px */
+        letter-spacing: -0.03em;
+        /* Светлый */
+        color: #E5CDB7;
     }
 }

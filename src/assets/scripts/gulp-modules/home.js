@@ -6,10 +6,12 @@ import paralax from '../modules/effects/paralax';
 import fadeInUp from '../modules/effects/fadeInUp'; 
 import splitToLinesAndFadeUp from '../modules/effects/splitToLinesAndFadeUp'; 
 import buttonHover from '../modules/effects/buttonHover';
+import galleryEffect from '../modules/home/gallery';
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
 window.addEventListener('load',homeInit);
 function homeInit() {
+  galleryEffect();
   const swiper = new Swiper('.zoom-slider-wrapper', {
     // Optional parameters
     modules: [ Navigation],
