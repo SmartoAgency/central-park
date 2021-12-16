@@ -14,9 +14,13 @@ export default function screen3Effects() {
           },
           // when window width is >= 480px
           993: {
+            slidesPerView: 3.5,
+            spaceBetween: 30
+          },
+          1440: {
             slidesPerView: 4.5,
             spaceBetween: 40
-          },
+          }
           // when window width is >= 640px
         },
         navigation: {

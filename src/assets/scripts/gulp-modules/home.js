@@ -13,6 +13,7 @@ import screen6 from './home/screen6';
 import screen10 from './home/screen10';
 import smoothScrollBar from '../modules/smooth-scrolls/smooth-scrollbar';
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
+import screen9Handler from './home/screen9';
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
 
@@ -69,5 +70,6 @@ function homeInit() {
   splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
   fadeInUp('.screen11__group');
   buttonHover('.button');
+  screen9Handler();
 }
 

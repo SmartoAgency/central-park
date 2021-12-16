@@ -38,6 +38,7 @@
     }
     .nav-wrap {
         display: flex;
+        
         @include from(993px){
             margin-top: auto;
             
@@ -55,6 +56,17 @@
                 height: 46px;
             }
         }
+    }
+    .curtain {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: var(--color-black);
+        transform-origin: right center;
+        transform: scaleX(0);
     }
     &__right {
         @include size(5);
@@ -89,8 +101,15 @@
                 justify-content: center;
             }
         }
-        p {
+        .curtain-wrap {
             margin-bottom: 30px;
+            position: relative;
+            height: calc(1.4em * 10);
+            overflow: hidden;
+            
+        }
+        p {
+            
             overflow: hidden;
             text-overflow: ellipsis;
             display: -moz-box;
@@ -196,6 +215,7 @@
         height: 100%;
         border: none;
         z-index: 0;
+        user-select: none;
     }
     &>svg {
         position: absolute;
@@ -207,5 +227,19 @@
         @include to(575px){
             height: 70%;
         }
+    }
+    &>svg path {
+        transform-box: fill-box;
+        transition: 1s ease-out;
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+    &>svg path.effecting-out {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    &>svg path.effecting-in {
+        transform: scaleX(0);
+        transform-origin: left;
     }
 }
