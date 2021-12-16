@@ -2,8 +2,8 @@
     padding: 150px var(--page-side-fields);
     position: relative;
     @include row-flex();
-    background-color: var(--color-white);
     @include from(1025px){
+        background-color: var(--color-white);
         &__text>:nth-last-child(n+2) {
             margin-bottom: 30px;
         }   

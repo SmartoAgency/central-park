@@ -52,7 +52,7 @@ function homeInit() {
   screen4();
   screen5();
   screen6();
-  paralax('.img-with-logo img, .screen7__left-block img , .screen7__right-block img');
+  paralax('.img-with-logo img');
   paralax('.img-center img');
   
   const frames = document.querySelectorAll('[data-vr-frame]');
