@@ -46,6 +46,18 @@ export default function screen9Handler() {
             currentIndex = nextIndex;
         })
     })
+    navPrev.addEventListener('click', () => {
+        scaleDownAndUp(svgBg);
+        curtainOpenCloseWithCallback(container.querySelectorAll('.curtain'), () => {
+            let nextIndex = currentIndex === 0  ? testData.length - 1 : currentIndex - 1;
+            textBlock.textContent = testData[nextIndex];
+            frame.dataset.src = testSrc[nextIndex];
+            frame.src = '';
+            gsap.to(frameOtherEls, { y: 0, autoAlpha: 1, clearProps: 'transform' })
+            if (counterCurrent) counterCurrent.textContent = nextIndex + 1;
+            currentIndex = nextIndex;
+        })
+    })
     
 }
 function scaleDownAndUp($el) {

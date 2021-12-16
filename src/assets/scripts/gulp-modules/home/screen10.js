@@ -15,11 +15,17 @@ export default function screen10() {
             .set(el, { zIndex: 2 })
             .set(innactiveSlides, { zIndex: 1 })
             .to(el, { width: '40%' },'<')
-            .set(el.querySelector('.img'), { filter: 'saturate(1)' },'<')
+            .set(el.querySelector('img'), { filter: 'none' },'<')
             .to(el.querySelector('.curtain'), { autoAlpha: 0 },'<')
             .to(innactiveCurtains, { autoAlpha: 1 }, '<')
             .to(innactiveSlides, { width: '30%' }, '<')
-            .set(innactiveImages, { filter: 'saturate(0)' })
+        })
+        el.addEventListener('mouseleave', () => {
+          gsap.timeline({
+            defaults: {
+              duration: 0.75
+            }
+          }).set(el.querySelector('img'), { filter: '' },'<')
         })
       })
       gsap.timeline({

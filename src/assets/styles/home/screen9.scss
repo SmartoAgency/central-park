@@ -62,11 +62,12 @@
         left: 0;
         top: 0;
         width: 100%;
-        height: 100%;
+        height: calc(100% + 1px) !important;
         z-index: 2;
         background-color: var(--color-black);
         transform-origin: right center;
         transform: scaleX(0);
+        // will-change: transform;
     }
     &__right {
         @include size(5);
@@ -229,17 +230,80 @@
         }
     }
     &>svg path {
+        // transform-box: fill-box;
+        // transition: 1s ease-out;
+        // transform-origin: left;
+        // transform: scaleX(1);
+    }
+    // &>svg path.effecting-out {
+    //     transform: scaleX(1);
+    //     transform-origin: left;
+    // }
+    // &>svg path.effecting-in {
+    //     transform: scaleX(0);
+    //     transform-origin: left;
+    // }
+}
+
+.effecting-in {
+    animation: pathesHide 1s cubic-bezier(0.13, 0.29, 0, 1) 1;
+}
+.effecting-out {
+    animation: pathesShow 1s cubic-bezier(0.13, 0.29, 0, 1) 1;
+
+}
+@keyframes pathesHide {
+    from {
+        clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+    }
+    to {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+}
+
+@keyframes pathesShow {
+    from {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+    to {
+        clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+    }
+}
+
+[data-circle-with-hover] {
+    cursor: pointer;
+    --transition: .35s ease-in-out;
+    &[disabled] [data-circle-with-hover-default] {
+        fill: transparent;
+        stroke:  #464851;
+        stroke-width: 1px;
+    }
+    [data-circle-with-hover-default] {
+        fill: #464851;
+        transition: var(--transition);
+        transform-origin: center;
         transform-box: fill-box;
-        transition: 1s ease-out;
-        transform-origin: left;
-        transform: scaleX(1);
     }
-    &>svg path.effecting-out {
-        transform: scaleX(1);
-        transform-origin: left;
+    [data-circle-with-hover-hover] {
+        transition: .35s ease-in-out;
+        fill: var(--color-beige);
+        transform-origin: center;
+        transform-box: fill-box;
+        transform: scale(0);
     }
-    &>svg path.effecting-in {
-        transform: scaleX(0);
-        transform-origin: left;
+    path {
+        stroke: var(--color-beige);
+        transition: var(--transition);
+    }
+    @include from(1025px){
+        &:hover path {
+            stroke: var(--color-black)
+        }
+        &:hover [data-circle-with-hover-default]{
+            transform: scale(0);
+        }
+        &:hover [data-circle-with-hover-hover]{
+            transform: scale(1);
+        }
     }
 }
