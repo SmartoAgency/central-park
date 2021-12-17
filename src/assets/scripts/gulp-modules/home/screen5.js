@@ -1,8 +1,9 @@
-export default function screen5() {
+export default function screen5(scroller) {
     gsap.timeline({
         scrollTrigger: {
           trigger: '.screen5',
           scrub: true,
+          scroller: scroller ? scroller : null,
           // start: '0 top',
           end: `${document.querySelector('.screen5').getBoundingClientRect().height} bottom`,
           pin: '.screen5__inner',

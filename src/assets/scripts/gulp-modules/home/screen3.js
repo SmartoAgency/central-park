@@ -1,5 +1,5 @@
 import Swiper, { Navigation } from 'swiper';
-export default function screen3Effects() {
+export default function screen3Effects(scroller) {
     const swiper = new Swiper('.zoom-slider-wrapper', {
         // Optional parameters
         modules: [ Navigation],

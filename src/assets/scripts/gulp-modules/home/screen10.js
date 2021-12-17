@@ -1,4 +1,4 @@
-export default function screen10() {
+export default function screen10(scroller) {
     const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
     document.querySelectorAll('.screen10-slide').forEach((el, index, array) => {
         if (isMobile()) return;
@@ -19,18 +19,13 @@ export default function screen10() {
             .to(el.querySelector('.curtain'), { autoAlpha: 0 },'<')
             .to(innactiveCurtains, { autoAlpha: 1 }, '<')
             .to(innactiveSlides, { width: '30%' }, '<')
-        })
-        el.addEventListener('mouseleave', () => {
-          gsap.timeline({
-            defaults: {
-              duration: 0.75
-            }
-          }).set(el.querySelector('img'), { filter: '' },'<')
+            .set(innactiveImages, { filter: '' })
         })
       })
       gsap.timeline({
         scrollTrigger: {
           trigger: '.screen9__title-l',
+          scroller: scroller ? scroller : null,
           once: true
         }
       })

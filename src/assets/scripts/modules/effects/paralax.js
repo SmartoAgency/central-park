@@ -2,7 +2,7 @@
 import {gsap, ScrollTrigger} from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger)
-export default function paralax(selector, curtainColor) {
+export default function paralax(selector, scroller) {
   const paralaxImages = document.querySelectorAll(selector)
   paralaxImages.forEach((image) => {
     const wrap = document.createElement('div');
@@ -31,6 +31,7 @@ export default function paralax(selector, curtainColor) {
         trigger: image,
         start: '20% bottom',
         once: true,
+        scroller: scroller ? scroller : null,
       }
     })
       .to(curtain, { scaleY: 1 })

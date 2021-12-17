@@ -1,8 +1,9 @@
-export default function screen4() {
+export default function screen4(scroller) {
     gsap.timeline({
         scrollTrigger: {
           trigger: '.screen4',
           scrub: true,
+          scroller: scroller ? scroller : null,
           // start: '0 top',
           end: `${document.querySelector('.screen4').getBoundingClientRect().height} bottom`,
           pin: '.screen4__inner',

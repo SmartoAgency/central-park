@@ -1,4 +1,4 @@
-export default function fadeInUp(selector) {
+export default function fadeInUp(selector, scroller) {
     document.querySelectorAll(selector).forEach(text => {
         // const parent = text.parentElement;
         // const wrapper = wrap();
@@ -9,6 +9,7 @@ export default function fadeInUp(selector) {
             // paused: true,
             scrollTrigger: {
               trigger: text,
+              scroller: scroller ? scroller : null,
               once: true,
             },
           })

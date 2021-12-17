@@ -1,5 +1,5 @@
 import {gsap, ScrollTrigger} from 'gsap/all';
-export default function galleryEffect() {
+export default function galleryEffect(scroller) {
     if (window.matchMedia('(max-width: 575px)').matches) return;
     const gallery = document.querySelector('.screen7');
     gsap.set(gallery, { height: '350vh' });
@@ -20,6 +20,7 @@ export default function galleryEffect() {
         },
         scrollTrigger: {
             trigger: gallery,
+            scroller: scroller ? scroller : null,
             scrub: true,
             end: `${gallery.getBoundingClientRect().height} bottom`,
             pin: inner

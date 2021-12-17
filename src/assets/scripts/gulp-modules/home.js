@@ -14,6 +14,7 @@ import screen10 from './home/screen10';
 import smoothScrollBar from '../modules/smooth-scrolls/smooth-scrollbar';
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import screen9Handler from './home/screen9';
+import screen1 from './home/screen1';
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
 
@@ -22,39 +23,25 @@ window.addEventListener('load',homeInit);
 function homeInit() {
   global.gsap = gsap;
   gsap.core.globals("ScrollTrigger", ScrollTrigger);
+  const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
   
 
 
   // smoothScrollBar();
-  // locoScroll('.scroller-container');
-  /* SMOOTH SCROLL */
-  // const scroller = new LocomotiveScroll({
-  //   el: document.querySelector('.scroller-container'),
-  //   smooth: true,
-  //   smoothMobile: false,
-  //   // // inertia: 1.1,
-  //   // multiplier: 0.5,
-  //   // lerp: 0.05,
-  // });
-  // window.scroller = scroller;
-  const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
-  // gsap.defaults({
-  //   ease: 'power3.out',
-  //   duration: 0.5,
-  // })
-  // gsap.registerPlugin(ScrollTrigger);
+  const scroller = locoScroll('.scroller-container');
+  window.scroller = scroller;
+  const $scroller = document.querySelector('.scroller-container');
+  screen1($scroller);
 
-  // const locoScroll = new LocomotiveScroll({
-    
-  // })
-
-  galleryEffect();
+  galleryEffect($scroller);
   screen3Effects();
-  screen4();
-  screen5();
-  screen6();
-  paralax('.img-with-logo img');
-  paralax('.img-center img');
+  screen4($scroller);
+  screen5($scroller);
+  screen6($scroller);
+  screen9Handler($scroller);
+  screen10($scroller);
+  paralax('.img-with-logo img', $scroller);
+  paralax('.img-center img', $scroller);
   
   const frames = document.querySelectorAll('[data-vr-frame]');
   frames.forEach(frame => {
@@ -66,10 +53,8 @@ function homeInit() {
       frame.removeEventListener('click', changeSrc);
     })
   })
-  screen10();
-  splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
-  fadeInUp('.screen11__group');
+  // splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
+  fadeInUp('.screen11__group', $scroller);
   buttonHover('.button');
-  screen9Handler();
 }
 

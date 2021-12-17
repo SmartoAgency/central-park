@@ -1,8 +1,9 @@
-export default function screen6() {
+export default function screen6(scroller) {
     gsap.timeline({
         scrollTrigger: {
           trigger: '.genplan',
           scrub: true,
+          scroller: scroller ? scroller : null,
           // start: '0 top',
           end: `${document.querySelector('.genplan').getBoundingClientRect().height} bottom`,
           pin: '.genplan__inner',
