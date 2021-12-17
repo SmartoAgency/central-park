@@ -15,6 +15,7 @@ import smoothScrollBar from '../modules/smooth-scrolls/smooth-scrollbar';
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import screen9Handler from './home/screen9';
 import screen1 from './home/screen1';
+import screen8 from './home/screen8';
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
 
@@ -38,10 +39,18 @@ function homeInit() {
   screen4($scroller);
   screen5($scroller);
   screen6($scroller);
+  ScrollTrigger.create({
+    once: true,
+    scroller: $scroller,
+    trigger: '.screen8',
+    onEnter: () => scroller.update(),
+  })
+  screen8($scroller);
+  paralax('.screen8 .img-left img, .screen8 .img-right img', $scroller);
   screen9Handler($scroller);
   screen10($scroller);
-  paralax('.img-with-logo img', $scroller);
   paralax('.img-center img', $scroller);
+  paralax('.screen2 img', $scroller);
   
   const frames = document.querySelectorAll('[data-vr-frame]');
   frames.forEach(frame => {

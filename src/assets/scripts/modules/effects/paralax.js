@@ -43,6 +43,7 @@ export default function paralax(selector, scroller) {
       scrollTrigger: {
         trigger: wrap,
         scrub: 0.5,
+        scroller: scroller ? scroller : null,
         // markers: true,
       },
     })
