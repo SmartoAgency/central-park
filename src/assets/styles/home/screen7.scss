@@ -31,9 +31,9 @@
         flex-wrap: wrap;
         width: 100%;
         // margin-left: -7.5vw;
-        @include to(992px){
-            margin-left: -40.5vw;
-        }
+        // @include to(992px){
+        //     margin-left: -40.5vw;
+        // }
     }
     &__head-block {
         width: 37.9vw;
@@ -45,7 +45,7 @@
         position: relative;
         overflow: hidden;
         @include to(992px){
-            width: 61vw;
+            // width: 61vw;
         }
         &-text {
             position: absolute;
@@ -132,6 +132,9 @@
         color: #E5CDB7;
         @include to(1680px){
             font-size: 64px;
+        }
+        @include to(575px){
+            font-size: 30px;
         }
     }
 }

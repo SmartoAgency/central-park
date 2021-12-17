@@ -1,6 +1,6 @@
 import {gsap, ScrollTrigger} from 'gsap/all';
 export default function galleryEffect(scroller) {
-    if (window.matchMedia('(max-width: 575px)').matches) return;
+    // if (window.matchMedia('(max-width: 575px)').matches) return;
     const gallery = document.querySelector('.screen7');
     gsap.set(gallery, { height: '350vh' });
     const inner = gallery.querySelector('.screen7__content');

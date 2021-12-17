@@ -18,11 +18,12 @@ export default function screen6(scroller) {
       function genplatListStaggerHightlight() {
         const tl = gsap.timeline();
         const $list = document.querySelectorAll('.genplan li');
+        gsap.set($list, {  autoAlpha: 0 })
         $list.forEach((item, index, array) => {
           
           const notActiveLinks = Array.from(array).slice(index, index + 1);
-          tl.to(notActiveLinks, { autoAlpha: 0 })
-          tl.to(item, { autoAlpha: 1 }, '<');
+          // tl.to(notActiveLinks, { autoAlpha: 0 })
+          tl.fromTo(item, { autoAlpha: 0 }, { autoAlpha: 1 });
         });
       
         return tl;

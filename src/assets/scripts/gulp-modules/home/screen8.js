@@ -1,7 +1,7 @@
 export default function screen8(scroller) {
     console.log(scroller);
     const  screen1 = document.querySelector('.screen8');
-    if (screen1 === null) return;
+    if (screen1 === null || window.matchMedia('(max-width: 1024px)').matches) return;
     const cloud1 = screen1.querySelector('.screen8__cloud-1'),
         render = screen1.querySelector('.screen8__render'),
         textBlock = screen1.querySelector('.screen8__text');
