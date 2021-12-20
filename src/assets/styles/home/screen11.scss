@@ -118,7 +118,9 @@
     font-size: 24px;
     position: relative;
     overflow: hidden;
+    display: inline-block;
     text-decoration: none;
+    padding-bottom: 7px;
     @include to(1680px){
         font-size: 18px;
     }
@@ -134,12 +136,12 @@
         transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
         // width: 100%;
         // height: 100%;
+        stroke: var(--color-beige);
         @include from(1023px){
-            transform: translateX(-30px);
+            transform: translateX(0px);
         }
     }
     &:hover svg {
-    transform: translate3d(-66.6%, 0, 0);
-    stroke: #ffffff;
+        transform: translate3d(-66.6%, 0, 0);
     }
 }

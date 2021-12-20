@@ -124,6 +124,7 @@
 	height: 1em;
 	height: 1.5em;
 	overflow: hidden;
+	cursor: pointer;
 	background-color: #27314B;
 	
 	ul {
@@ -132,7 +133,7 @@
 		top: 0;
 		width: 100%;
 		background-color: #27314B;
-		border-radius: 20%;
+		border-radius: 10px;
 		&:after {
 			content: '';
 			position: absolute; 
@@ -144,6 +145,8 @@
 			right: 3px;
 			width: 10px;
 			height: 5px;
+			transform-origin: center;
+			transition: .3s ease-in-out;
 			// background-color: red;
 			z-index: 4;
 		}
@@ -165,6 +168,7 @@
 		width: 200%;
 		height: 200%;
 		// border-radius: 50%;
+
 		transform: translate(-50%,-50%);
 		z-index: -1;
 	}
@@ -173,7 +177,7 @@
 		border-bottom-right-radius: 20px;
 	}
 	li~li {
-		margin-top: 10px;
+		margin-top: 0px;
 		opacity: 0;
 		transition: opacity .3s ease-in-out;
 	}
@@ -181,6 +185,9 @@
 		transition: color .3s ease-in-out;
 		color: var(--color-beige);
 		text-decoration: none;
+	}
+	&:hover ul:after {
+		transform:  rotate(180deg);
 	}
 	&:hover li~li {
 		opacity: 1;
