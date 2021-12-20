@@ -1,3 +1,6 @@
+import splitToLinesAndFadeUp from "../../modules/effects/splitToLinesAndFadeUp";
+import ztext from "../../modules/ztext/ztext";
+
 export default function screen5(scroller) {
     gsap.timeline({
         scrollTrigger: {
@@ -20,4 +23,25 @@ export default function screen5(scroller) {
           return acc;
         }, 0);
       } })
+
+      document.querySelectorAll('.screen5-hor-block__item p').forEach((el, index, array) => {
+        new ztext(`.screen5-hor-block__item:nth-child(${index + 1}) p`, {
+          depth: "5px",
+          layers: 4,
+          fade: true,
+          // direction: "forwards",
+          event: "pointer",
+          eventRotation: "10deg"
+      })
+     })
+     document.querySelectorAll('.screen5-hor-block__item .title').forEach((el, index, array) => {
+        new ztext(`.screen5-hor-block__item:nth-child(${index + 1}) .title`, {
+          depth: "5px",
+          layers: 4,
+          fade: true,
+          // direction: "forwards",
+          event: "pointer",
+          eventRotation: "10deg"
+      })
+     })
 }

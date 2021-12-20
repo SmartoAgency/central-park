@@ -165,8 +165,8 @@
     }
 }
 .screen3 {
+    background-color: var(--color-black);
     @include to(1024px){
-        background-color: var(--color-black);
     }
     --v-padding: 140px;
     padding-top: var(--v-padding);
@@ -313,6 +313,7 @@
         letter-spacing: -0.03em;
         text-transform: uppercase;
         mix-blend-mode: screen;
+        pointer-events: none;
         @include to(1680px){
             font-size: 200px;
         }

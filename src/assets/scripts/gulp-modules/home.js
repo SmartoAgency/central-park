@@ -16,6 +16,10 @@ import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import screen9Handler from './home/screen9';
 import screen1 from './home/screen1';
 import screen8 from './home/screen8';
+import ztext from '../modules/ztext/ztext';
+
+
+
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
 
@@ -27,7 +31,15 @@ function homeInit() {
   const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
   const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
   
-
+  var ztxt = new ztext(".screen2 p", {
+    depth: "5px",
+    layers: 4,
+    // fade: true,
+    // direction: "forwards",
+    event: "pointer",
+    eventRotation: "10deg"
+ });
+ 
 
   // smoothScrollBar();
   const scroller = locoScroll('.scroller-container');
@@ -70,20 +82,30 @@ function homeInit() {
   buttonHover('.button');
 
 
-  !isMobile() && gsap.timeline({
-    scrollTrigger: {
-      scroller: $scroller,
-      trigger: '.screen2',
-      scrub: true,
-      pin: '.screen3-5-bg',
-      endTrigger: '.screen4',
-      onEnter: () => console.log('enter'),
-      onLeave: () => console.log('leave'),
+
+  function handleHeader(scroller) {
+    const header = document.querySelector('.header');
+    header.state = 'open';
+    let prevScrollPosition = 0;
+    scroller.on('scroll', ({ scroll }) => {
+      const tempState = prevScrollPosition > scroll.y ? 'open' : 'close';
+      prevScrollPosition = scroll.y;
+      if (tempState === header.state) return;
+      header.state = tempState;
+      changeState[tempState]();
+
+    });
+
+
+    const changeState = {
+      open: () => {
+        gsap.to(header, { yPercent : 0 });
+      },
+      close: () => {
+        gsap.to(header, { yPercent : -100 });
+      }
     }
-  })
-  .to('.screen3-5-bg', { backgroundColor: '#23242B',duration: 0.5 })
-  .to('.screen3-5-bg', { backgroundColor: 'rgba(255,255,255,1)',duration: 0.5 })
-  .to('.screen3-5-bg', { backgroundColor: 'rgba(255,255,255,1)' })
-  .to('.screen3-5-bg', { backgroundColor: 'rgba(255,255,255,1)' })
+  }
+  handleHeader(scroller)
 }
 

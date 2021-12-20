@@ -1,3 +1,5 @@
+import {gsap, ScrollTrigger} from "gsap/all";
+const videoChangeStateEvent = new CustomEvent('toggle');
 export default function screen4(scroller) {
     gsap.timeline({
         scrollTrigger: {
@@ -15,10 +17,25 @@ export default function screen4(scroller) {
         .to('.screen4__title :last-child', { z: 0 })
       
       document.querySelectorAll('[data-screen4-video]').forEach(el => {
-        el.addEventListener('click', () => {
-          const video = el.querySelector('video');
+        const video = el.querySelector('video');
+        video.addEventListener(videoChangeStateEvent.type, ({ target }) => {
           if (video === null) return;
           video.paused ? video.play() : video.pause();
+          gsap.set('.screen4__video-play',  { autoAlpha:  video.paused ? 1 : 0  })
+          gsap.set('.screen4__video',  { zIndex:  video.paused ? 0 : 3  })
+        });
+        el.addEventListener('click', () => {
+          video.dispatchEvent(videoChangeStateEvent);
+        });
+        ScrollTrigger.create({
+          trigger: '.screen4',
+          scroller: scroller ? scroller : null,
+          onLeave: () => {
+            if (!video.paused) video.dispatchEvent(videoChangeStateEvent);
+          },
+          onLeaveBack: () => {
+            if (!video.paused) video.dispatchEvent(videoChangeStateEvent);
+          }
         })
       })
 }
