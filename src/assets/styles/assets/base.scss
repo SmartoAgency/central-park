@@ -313,8 +313,6 @@ html.has-scroll-dragging {
 	outline: none;
 	overflow: hidden;
 	transform: translateZ(0);
-	-webkit-mask-image: -webkit-radial-gradient(#fff,#000);
-	-webkit-appearance: button;
 	transition: background-color 1s ease-out;
 	backface-visibility: hidden;
 	&__hover {
