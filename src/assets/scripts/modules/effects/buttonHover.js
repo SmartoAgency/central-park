@@ -50,7 +50,7 @@ function closingEffect({clientX , clientY, target}) {
         { 
             webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
             clipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
-            duration: 0.5, 
+            duration: 1, 
             ease: 'power4.easeOut' 
         }
     );

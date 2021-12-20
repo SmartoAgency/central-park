@@ -47,7 +47,7 @@ function homeInit() {
     onEnter: () => scroller.update(),
   })
   screen8($scroller);
-  paralax('.screen8 .img-left img, .screen8 .img-right img', $scroller);
+  paralax('.screen8 .img-left img:first-child, .screen8 .img-right img:first-child', $scroller);
   screen9Handler($scroller);
   screen10($scroller);
   paralax('.img-center img', $scroller);
