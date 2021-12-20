@@ -27,9 +27,10 @@ function openingEffect({clientX , clientY, target}) {
     })
     gsap.timeline().fromTo(
         hoverEl, 
-        { webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)` }, 
+        { webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`, clipPath: `circle(0% at ${cords.x}% ${cords.y}%)` }, 
         { 
             webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
+            clipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
             duration: 1, 
             ease: 'power4.easeOut' 
         }
@@ -45,10 +46,11 @@ function closingEffect({clientX , clientY, target}) {
     gsap.timeline()
         .fromTo(
         hoverEl, 
-        { webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, }, 
+        { clipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)` }, 
         { 
             webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
-            duration: 1, 
+            clipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
+            duration: 0.5, 
             ease: 'power4.easeOut' 
         }
     );

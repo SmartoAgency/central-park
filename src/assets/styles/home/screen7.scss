@@ -12,7 +12,12 @@
     @include to(992px){
         --gutter: 18px;
         --side-blocks-w: 60.2vw;
-
+    }
+    @include to(575px){
+        --side-blocks-w: 20.2vw;
+        align-content: center;
+        padding-top: 80px;
+        padding-bottom: 80px;
     }
     .title-h2 {
         width: 100%;
@@ -30,6 +35,10 @@
         justify-content: center;
         flex-wrap: wrap;
         width: 100%;
+        @include to(575px){
+            height: 80vh;
+            // align-content: flex-start;
+        }
         // margin-left: -7.5vw;
         // @include to(992px){
         //     margin-left: -40.5vw;
@@ -46,6 +55,9 @@
         overflow: hidden;
         @include to(992px){
             // width: 61vw;
+        }
+        @include to(575px){
+            height: 100%;
         }
         &-text {
             position: absolute;
@@ -79,6 +91,9 @@
         justify-content: center;
         width: 60vw;
         @include autoAlpha(0);
+        @include to(575px){
+            width: 90vw;
+        }
         .screen7-title {
             margin-bottom: 40px;
         }

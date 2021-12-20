@@ -37,10 +37,11 @@ block content
       button.button.button--dark 
         +svg('key')
         span Обрати квартиру
-    +img('screen1.png').main-screen__render
+    +img('screen1-min.png').main-screen__render
     +img('screen1-clouds.png').main-screen__cloud-1
     +img('screen1-clouds-2.png').main-screen__cloud-2
-  .screen2 
+  .screen2
+    .screen3-5-bg
     .img-with-logo
       +svg('logo-mini').img-with-logo__decor
       .img-with-logo__wrap
@@ -70,14 +71,16 @@ block content
     .screen3__top
       .title-h2.text-beige комплекс у цифрах
       div(data-screen3-prev)
-        <svg  width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="39.5" fill="#464851"  stroke="#464851"/>
-          <path d="M35.1896 32C33.7584 34.1224 28.3358 40 27 40M27 40C28.3517 40 33.5994 45.4694 35.1896 48M27 40L53 40" stroke="#E5CDB7"/>
+        <svg data-circle-with-hover width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle data-circle-with-hover-default cx="40" cy="40" r="39.5" />
+          <circle data-circle-with-hover-hover cx="40" cy="40" r="39.5" />
+          <path d="M35.1896 32C33.7584 34.1224 28.3358 40 27 40M27 40C28.3517 40 33.5994 45.4694 35.1896 48M27 40L53 40"/>
           </svg>
       div(data-screen3-next)
-        <svg  width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="39.5" fill="#464851" stroke="#464851"/>
-          <path d="M44.8104 32C46.2416 34.1224 51.6642 40 53 40M53 40C51.6483 40 46.4006 45.4694 44.8104 48M53 40L27 40" stroke="#E5CDB7"/>
+        <svg data-circle-with-hover width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle data-circle-with-hover-default cx="40" cy="40" r="39.5" />
+          <circle data-circle-with-hover-hover cx="40" cy="40" r="39.5" />
+          <path d="M44.8104 32C46.2416 34.1224 51.6642 40 53 40M53 40C51.6483 40 46.4006 45.4694 44.8104 48M53 40L27 40"/>
           </svg>
     .zoom-slider-wrapper
       .zoom-slider.swiper-wrapper

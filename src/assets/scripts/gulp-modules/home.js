@@ -25,6 +25,7 @@ function homeInit() {
   global.gsap = gsap;
   gsap.core.globals("ScrollTrigger", ScrollTrigger);
   const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
+  const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
   
 
 
@@ -64,6 +65,25 @@ function homeInit() {
   })
   // splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
   fadeInUp('.screen11__group', $scroller);
+  splitToLinesAndFadeUp('.main-screen .title', $scroller);
+  splitToLinesAndFadeUp('.title-h2', $scroller);
   buttonHover('.button');
+
+
+  !isMobile() && gsap.timeline({
+    scrollTrigger: {
+      scroller: $scroller,
+      trigger: '.screen2',
+      scrub: true,
+      pin: '.screen3-5-bg',
+      endTrigger: '.screen4',
+      onEnter: () => console.log('enter'),
+      onLeave: () => console.log('leave'),
+    }
+  })
+  .to('.screen3-5-bg', { backgroundColor: '#23242B',duration: 0.5 })
+  .to('.screen3-5-bg', { backgroundColor: 'rgba(255,255,255,1)',duration: 0.5 })
+  .to('.screen3-5-bg', { backgroundColor: 'rgba(255,255,255,1)' })
+  .to('.screen3-5-bg', { backgroundColor: 'rgba(255,255,255,1)' })
 }
 
