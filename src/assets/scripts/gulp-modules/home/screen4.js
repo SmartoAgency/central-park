@@ -5,10 +5,12 @@ export default function screen4(scroller) {
         scrollTrigger: {
           trigger: '.screen4',
           scrub: true,
+          start: '0 top',
           scroller: scroller ? scroller : null,
           // start: '0 top',
           end: `${document.querySelector('.screen4').getBoundingClientRect().height} bottom`,
           pin: '.screen4__inner',
+          pinSpacing: false,
         //   markers: true
         }
       })

@@ -22,8 +22,10 @@ export default function galleryEffect(scroller) {
         scrollTrigger: {
             trigger: gallery,
             scroller: scroller ? scroller : null,
+            start: `${getComputedStyle(gallery).paddingTop} top`,
             scrub: true,
             end: `${gallery.getBoundingClientRect().height} bottom`,
+            pinSpacing: false,
             pin: inner
         }
     })

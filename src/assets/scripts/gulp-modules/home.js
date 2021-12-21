@@ -43,6 +43,7 @@ function homeInit() {
 
   // smoothScrollBar();
   const scroller = locoScroll('.scroller-container');
+  scroller.update();
   window.scroller = scroller;
   const $scroller = document.querySelector('.scroller-container');
   screen1($scroller);

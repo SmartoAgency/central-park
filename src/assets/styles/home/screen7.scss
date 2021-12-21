@@ -79,11 +79,13 @@
     }
     &__faded-title {
         position: absolute;
-        bottom: 50%;
+        top: 40vh;
         left: 50%;
         width: 50%;
         height: auto;
+        height: 0;
         transform: translateX(-50%) translateY(50%);
+        margin: auto;
         z-index: 2;
         text-align: center;
         display: flex;

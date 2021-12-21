@@ -419,6 +419,7 @@ html.has-scroll-dragging {
 
 .scroller-container {
 	max-width: 100vw;
+	// height: 100vh;
 	overflow-x: hidden;
 	overflow-y: visible;
 	@include from(1025px){
@@ -429,7 +430,13 @@ html.has-scroll-dragging {
 	// width: 100vw;
 	// height: 100vh;
 }
-
+body {
+	@include from(1025px){
+	
+		
+		min-height: 100vh;
+	}
+}
 .hidden {
 	visibility: hidden;
 }
