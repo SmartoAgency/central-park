@@ -31,7 +31,7 @@ function openingEffect({clientX , clientY, target}) {
         { 
             webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
             clipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
-            duration: 1, 
+            duration: 0.5, 
             ease: 'power4.easeOut' 
         }
     );
@@ -50,7 +50,7 @@ function closingEffect({clientX , clientY, target}) {
         { 
             webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
             clipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
-            duration: 1, 
+            duration: 0.5, 
             ease: 'power4.easeOut' 
         }
     );

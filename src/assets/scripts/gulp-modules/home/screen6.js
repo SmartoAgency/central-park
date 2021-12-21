@@ -1,3 +1,5 @@
+import gsap from "gsap/all";
+
 export default function screen6(scroller) {
     gsap.timeline({
         scrollTrigger: {
@@ -7,6 +9,9 @@ export default function screen6(scroller) {
           // start: '0 top',
           end: `${document.querySelector('.genplan').getBoundingClientRect().height} bottom`,
           pin: '.genplan__inner',
+          onUpdate: ({ progress }) => {
+            gsap.set('.genplan__inner-progress-bar', { scaleX: progress })
+          },
         //   markers: true
         }
       })

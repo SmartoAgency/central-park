@@ -23,7 +23,7 @@ export default function screen1(scroller) {
     })
     .to(
         textBlock.querySelectorAll('[style*="overflow"]>*'), 
-        { yPercent: 100, duration: 0.1 },
+        { yPercent: 100, duration: 0.05 },
         
         )
     .to(cloud1, { xPercent: -70 }, '<')

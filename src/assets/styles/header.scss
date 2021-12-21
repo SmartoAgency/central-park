@@ -50,6 +50,7 @@
 		text-transform: uppercase;
 		color: var(--color-beige);
 		font-family: $default-font;
+		padding: 0;
 		.circle-hover {
 			transform: scale(0);
 			transform-origin: center;

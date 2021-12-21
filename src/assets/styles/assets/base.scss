@@ -313,7 +313,7 @@ html.has-scroll-dragging {
 	outline: none;
 	overflow: hidden;
 	transform: translateZ(0);
-	transition: background-color 1s ease-out;
+	transition: background-color .5s ease-out;
 	backface-visibility: hidden;
 	&__hover {
 		position: absolute;
