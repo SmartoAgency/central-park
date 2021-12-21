@@ -83,37 +83,36 @@ formsWithTel.forEach(form => {
 
 const formWrapper = document.querySelector('[data-form-wrapper]');
 const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call], [data-call-form-popup]');
-formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
-    gsap.to( formWrapper, { autoAlpha: 1 } )
-    
-}))
-// const splitTolines = document.querySelectorAll('[data-split-to-lines]');
-// splitTolines.forEach(elem => {
-//   const text = elem.innerHTML.split('~').reduce((acc, el) => {
-//     acc += `<span style="white-space:nowrap; overflow:hidden; display: inline-block">
-//       <span data-splited-line style="display:inline-block">${el}</span>
-//     </span>`;
-//     return acc;
-//   }, '');
-//   elem.innerHTML = text;
-// });
+formWrapperCall.forEach(el => {
+  el.addEventListener('click',function(evt){
+    gsap.timeline()
+      .to( formWrapper, { autoAlpha: 1 } )
+      .fromTo( 
+        '.form-wrapper-left>*, .form-wrapper-right form>*', 
+        { webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', stagger: 0.15 }, 
+        { webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'power2.out' },
+        '<'
+      )
+  })
+})
 
 function closeForm() {
   gsap.timeline({
   })
     
     .to('.form-wrapper-succes-layer', { autoAlpha: 0, duration: 0.25 })
-    .to(formWrapper, { autoAlpha: 0, duration: 0.25 }, '<');
+    .fromTo( 
+      '.form-wrapper-left>*, .form-wrapper-right form>*', 
+      {webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', stagger: 0.15 }, 
+      {webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', ease: 'power2.out' },
+      '<'
+    )
+    .to(formWrapper, { autoAlpha: 0, duration: 0.25 }, '<+0.5');
 
 }
 formWrapper.querySelectorAll('[class*="close"]').forEach(closeBtn => {
   closeBtn.addEventListener('click',closeForm);
 })
-// window.addEventListener('succesFormSend',function(evt){
-//   setTimeout(() => {
-//     closeForm();
-//   }, 2000);
-// });
 
 
 /** Mobile callback popup */

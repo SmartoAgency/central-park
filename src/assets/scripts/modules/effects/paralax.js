@@ -34,8 +34,8 @@ export default function paralax(selector, scroller) {
         scroller: scroller ? scroller : null,
       }
     })
-      .to(curtain, { scaleY: 1 })
-      .to(curtain, { scaleY: 0, transformOrigin: '50% 0%' })
+      .to(curtain, { scaleY: 1, ease: 'expo.out' })
+      .to(curtain, { scaleY: 0, ease: 'expo.out', transformOrigin: '50% 0%' })
       .to(image, { autoAlpha: 1 }, '<')
     // .add(() => curtain.remove())
     gsap.timeline({

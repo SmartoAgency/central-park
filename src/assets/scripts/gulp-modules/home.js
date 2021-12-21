@@ -167,7 +167,7 @@ function homeInit() {
           end: '50px top'
         }
       })
-        .add(sectionEntersEffect[index](singleSection))
+        // .add(sectionEntersEffect[index](singleSection))
       // .fromTo(
       //   singleSection.previousElementSibling, 
       //   { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' },
