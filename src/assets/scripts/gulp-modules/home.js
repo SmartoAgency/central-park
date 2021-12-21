@@ -66,16 +66,16 @@ function homeInit() {
   paralax('.img-center img', $scroller);
   paralax('.screen2 img', $scroller);
   
-  const frames = document.querySelectorAll('[data-vr-frame]');
-  frames.forEach(frame => {
-    frame.addEventListener('click', function changeSrc() {
-      const iframe = frame.querySelector('iframe');
-      const frameOtherEls = frame.querySelectorAll(':not(iframe)');
-      gsap.to(frameOtherEls, { y: 50, autoAlpha: 0, clearProps: 'transform' })
-      iframe.src = iframe.dataset.src;
-      frame.removeEventListener('click', changeSrc);
-    })
-  })
+  // const frames = document.querySelectorAll('[data-vr-frame]');
+  // frames.forEach(frame => {
+  //   frame.addEventListener('click', function changeSrc() {
+  //     const iframe = frame.querySelector('iframe');
+  //     const frameOtherEls = frame.querySelectorAll(':not(iframe)');
+  //     gsap.to(frameOtherEls, { y: 50, autoAlpha: 0, clearProps: 'transform' })
+  //     iframe.src = iframe.dataset.src;
+  //     frame.removeEventListener('click', changeSrc);
+  //   })
+  // })
   // splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
   fadeInUp('.screen11__group', $scroller);
   splitToLinesAndFadeUp('.main-screen .title', $scroller);
@@ -107,6 +107,76 @@ function homeInit() {
       }
     }
   }
-  handleHeader(scroller)
+  handleHeader(scroller);
+
+
+
+
+  function sectionTransitions() {
+    const sections = document.querySelectorAll('.scroller-container>*');
+    const sectionEntersEffect = {
+      0: (section) => {
+
+      },
+      1: (section) => {
+
+      },
+      2: (section) => {
+
+      },
+      3: (section) => {
+
+      },
+      4: (section) => {
+        return gsap.timeline()
+          .fromTo(
+            section.querySelector('.screen5-hor-block__item'), 
+            { y: 50 },
+            { y: 0 }
+          );
+        },
+      5: (section) => {
+        return gsap.timeline()
+          .fromTo(
+            section.querySelector('.genplan__text'), 
+            { y: 50 },
+            { y: 0 }
+          );
+
+      },
+      6: (section) => {
+
+      },
+      7: (section) => {
+
+      },
+      8: (section) => {
+
+      },
+      9: (section) => {
+
+      },
+    }
+    sections.forEach((singleSection, index) => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: singleSection,
+          scroller: $scroller,
+          scrub: true,
+          start: '-100px top',
+          end: '50px top'
+        }
+      })
+        .add(sectionEntersEffect[index](singleSection))
+      // .fromTo(
+      //   singleSection.previousElementSibling, 
+      //   { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' },
+      //   { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' }, 
+      // );
+
+
+    })
+  }
+  sectionTransitions();
 }
 

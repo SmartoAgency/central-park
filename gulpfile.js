@@ -108,7 +108,7 @@ function watch() {
     if (webPackSetting) {
       gulp.watch(paths.scripts.src, scripts); //for webpack
     }
-    gulp.watch(paths.gulpModules.src, gulpModules);
+    // gulp.watch(paths.gulpModules.src, gulpModules);
     if (typeScriptSetting) {
       gulp.watch(paths.ts.src, typeScript);
     }
