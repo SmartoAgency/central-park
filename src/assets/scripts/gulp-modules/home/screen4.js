@@ -40,5 +40,17 @@ export default function screen4(scroller) {
             if (!video.paused) video.dispatchEvent(videoChangeStateEvent);
           }
         })
+      });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: '.screen4',
+          scrub: true,
+          scroller: scroller ? scroller : null,
+          start: `${innerHeight / -4} center`,
+          end: `${innerHeight / 4} center`
+        }
       })
+        .from('.screen4>*', { autoAlpha: 0, y: 100 })
+        .to('.screen3>*', { autoAlpha: 0, y: -100 }, '<')
 }

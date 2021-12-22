@@ -26,11 +26,12 @@ export default function screen8(scroller) {
             scroller: scroller ? scroller : null,
             trigger: screen1,
             scrub: true,
-            end: `${innerHeight / 2} bottom`,
+            start: `${innerHeight / -4} center`,
+            end: `${innerHeight / 4} center`
             // end: `${screen1.getBoundingClientRect().height} bottom`
         }   
     })
-    .from('.img-left, .img-center, .img-right', { autoAlpha: 0, y: 100 })
-    .to('.screen7__head-block, .screen7__faded-title', { autoAlpha: 0, y: -150 }, '<')
+    .from('.img-left img:first-child, .img-left .img-left__decor, .img-center, .img-right', {  yPercent: 50, stagger: 0.1  })
+    .to('.screen7__head-block, .screen7__faded-title', { autoAlpha: 0, y: 50, }, '<')
     
 }

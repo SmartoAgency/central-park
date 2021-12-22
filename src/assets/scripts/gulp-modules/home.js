@@ -49,7 +49,7 @@ function homeInit() {
   screen1($scroller);
 
   galleryEffect($scroller);
-  screen3Effects();
+  screen3Effects($scroller);
   screen4($scroller);
   screen5($scroller);
   screen6($scroller);
@@ -64,8 +64,22 @@ function homeInit() {
   screen9Handler($scroller);
   screen10($scroller);
   paralax('.img-center img', $scroller);
+
+  /**Screen2 effects */
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '.screen2',
+      scroller: $scroller,
+      scrub: true,
+
+      start: `${innerHeight / -4} center`,
+      end: `${innerHeight / 4} center`
+    }
+  })
+    .from('.screen2>*', { y: 100, autoAlpha: 0})
   paralax('.screen2 .img-with-logo:first-child img', $scroller, 80);
   paralax('.screen2 .img-with-logo:last-child img', $scroller, 40);
+  /**Screen2 effects END */
   
   // const frames = document.querySelectorAll('[data-vr-frame]');
   // frames.forEach(frame => {

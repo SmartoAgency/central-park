@@ -44,7 +44,9 @@ export default function galleryEffect(scroller) {
             trigger: gallery,
             end: `${innerHeight / 5}`,
             scroller: scroller ? scroller : null,
-            scrub: true
+            scrub: true,
+            start: `${innerHeight / -4} center`,
+            end: `${innerHeight / 4} center`
         }
     })
     .from('.screen7__content', { y: 200, autoAlpha: 0 })

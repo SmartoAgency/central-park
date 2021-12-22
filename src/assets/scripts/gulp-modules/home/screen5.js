@@ -10,8 +10,8 @@ export default function screen5(scroller) {
         trigger: '.screen5',
         scrub: true,
         scroller: scroller ? scroller : null,
-        // start: `${screen5TopBlockHeight} top`,
-        end: `${innerHeight} bottom`,
+        start: `${innerHeight / -4} center`,
+        end: `${innerHeight / 4} center`,
         // onUpdate: ({ progress }) => console.log(progress)
       //   markers: true
       }
@@ -29,7 +29,7 @@ export default function screen5(scroller) {
       //   markers: true
       }
     })
-      .to('.screen5-hor-block', { yPercent: -50, autoAlpha: 0, }, '<')
+      .to('.screen5-hor-block', { y: -75, autoAlpha: 0, }, '<')
       // .to('.screen5', { y: -50, autoAlpha: 0, }, '<')
       // .to('.genplan-curtain-for-prev-block-anim', { scaleY: 0,}, '<')
     gsap.timeline({

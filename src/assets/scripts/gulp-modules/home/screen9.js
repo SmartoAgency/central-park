@@ -16,7 +16,7 @@ const testSrc = [
 
 
 
-export default function screen9Handler() {
+export default function screen9Handler(scroller) {
     const container = document.querySelector('.screen9');
     if (container === null) return;
     let currentIndex = 0;
@@ -58,6 +58,18 @@ export default function screen9Handler() {
             currentIndex = nextIndex;
         })
     })
+
+    gsap.timeline({
+        scrollTrigger: {
+          trigger: '.screen9',
+          scrub: true,
+          scroller: scroller ? scroller : null,
+          start: `${innerHeight / -4} center`,
+          end: `${innerHeight / 4} center`
+        }
+      })
+        .from('.screen9>*:not(svg)', { y: 100 })
+        // .to('.screen8__render', { scale: 0.8 }, '<')
     
 }
 function scaleDownAndUp($el) {
