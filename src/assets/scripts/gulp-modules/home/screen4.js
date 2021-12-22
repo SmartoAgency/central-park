@@ -14,8 +14,9 @@ export default function screen4(scroller) {
         //   markers: true
         }
       })
-        .from('.screen4__title :first-child', { x: '-50vw' })
-        .from('.screen4__title :last-child', { x: '50vw' }, '<')
+        .from('.screen4__title :first-child', { x: '-100vw' })
+        .from('.screen4__title :last-child', { x: '100vw' }, '<')
+        .fromTo('.screen4__video', { scale: 0.8 }, { scale: 1 })
         .to('.screen4__title :last-child', { z: 0 })
       
       document.querySelectorAll('[data-screen4-video]').forEach(el => {

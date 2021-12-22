@@ -2,7 +2,7 @@
 import {gsap, ScrollTrigger} from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger)
-export default function paralax(selector, scroller) {
+export default function paralax(selector, scroller, amplitude = 35) {
   const paralaxImages = document.querySelectorAll(selector)
   paralaxImages.forEach((image) => {
     const wrap = document.createElement('div');
@@ -48,9 +48,9 @@ export default function paralax(selector, scroller) {
       },
     })
       .fromTo(image, {
-        y: 35,
+        y: amplitude,
       }, {
-        y: -35,
+        y: amplitude * -1,
         ease: 'linear',
       });
   });

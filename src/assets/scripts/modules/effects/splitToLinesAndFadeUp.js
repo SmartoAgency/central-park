@@ -16,8 +16,8 @@ export default function splitToLinesAndFadeUp(selector, $scroller) {
           })
           .fromTo(
             text.querySelectorAll('span>span'),
-            { yPercent: -100, rotateX: 10, rotateZ: 5, rotateY: 10 },
-            { yPercent: 0,  rotateX: 0, rotateZ: 0, rotateY: 10, stagger: 0.05, duration: 1.35, ease: 'power4.out' },
+            { yPercent: -100,  },
+            { yPercent: 0,  stagger: 0.05, duration: 1.35, ease: 'power4.out' },
           );
 
           text.addEventListener('click',function(evt){

@@ -1,5 +1,5 @@
 .main-screen {
-    --top-offset: calc(80px + var(--header-h));
+    --top-offset: calc(120px + var(--header-h));
     background: linear-gradient(180deg, #263D6A 3.59%, #DCF7FF 100%);
     width: 100vw;
     height: calc(100vw / 1920 * 1756);
@@ -70,11 +70,12 @@
         }
     }
     &__cloud-1 {
-        right: 0;
-        top: 20%;
+        right: -20%;
+        top: 15%;
         z-index: 2;
-        height: 50%;
-        width: 75%;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
         @include to(575px){
             top: 30%;
         }
@@ -94,8 +95,8 @@
     padding-right: var(--page-side-fields);
     align-items: center;
     text-align: center;
-    padding-top: 140px;
-    padding-bottom: 140px;
+    padding-top: 210px;
+    padding-bottom: 210px;
     position: relative;
     @include to(1680px){
         padding-top: 110px;
@@ -166,14 +167,22 @@
 }
 .screen3 {
     background-color: var(--color-black);
+    @include from(1681px){
+        --v-padding: 210px;
+
+    }
     @include to(1024px){
     }
-    --v-padding: 140px;
     padding-top: var(--v-padding);
     padding-bottom: var(--v-padding);
     padding-left: var(--page-side-fields);
     padding-right: var(--page-side-fields);
     position: relative;
+    @include from(1025px){
+        min-height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+    }
     @include to(575px){
         --v-padding: 110px;
     }
@@ -197,6 +206,9 @@
         height: 45vh;
         color: #B2A9A0;
         font-size: 18px;
+        @include from(1681px){
+            height: 60vh;
+        }
         @include to(1680px){
             height: 60vh;
         }
@@ -215,6 +227,9 @@
         user-select: none;
         cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQiIGhlaWdodD0iODUiIHZpZXdCb3g9IjAgMCA4NCA4NSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxjaXJjbGUgY3g9IjQxLjg2MTIiIGN5PSI0Mi4xOTMyIiByPSI0MC44MjAyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4NCjxwYXRoIGQ9Ik00OS44MjQ3IDM0Ljc2NzZMNTcuMjc5MyA0Mi4yMjIyTDQ5LjgyNDcgNDkuNjc2NyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjxwYXRoIGQ9Ik0zNC40MDU3IDQ5LjY0NzlMMjYuOTUxMiA0Mi4xOTM0TDM0LjQwNTcgMzQuNzM4OCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjwvc3ZnPg0K'),auto!important;
         transition: transform .3s ease-out;
+        @include from(1025px){
+            width: 100%;
+        }
         &.drag {
             transform: scale(.95);
         }
@@ -354,6 +369,7 @@
         top: 50%;
         width: 100px;
         height: 100px;
+        z-index: 2;
         @include to(575px){
             width: 60px;
             height: 60px;
@@ -366,19 +382,27 @@
 
 .screen5 {
     
+    background-color: var(--color-black);
     position: relative;
     height: 350vh;
     &__inner {
         padding-top: 15vh;
         padding-bottom: 20vh;
-        background-color: var(--color-black);
         padding-left: var(--page-side-fields);
         height: 100vh;
     }
     .title-h2 {
         margin-left: auto;
         text-align: left;
-        margin-bottom: 12.6vh;
+        padding-top: 210px;
+        // padding-bottom: 12.6vh;
+        padding-left: var(--page-side-fields);
+        @include to(1680px){
+            padding-top: 140px;
+        }
+        @include to(1024px){
+            padding-top: 100px;   
+        }
         @include to(992px){
          margin-bottom: 50px;   
         }
@@ -391,8 +415,10 @@
 .screen5-hor-block {
     display: flex;
     height: calc(100vh - 35vh - 12.6vh);
+    height: 100%;
     @include from-to(576px, 992px){
         height: calc(100vh - 35vh - 50px);
+        height: 100vh;
     }
     &__item:nth-child(n+2) {
         padding-left: 94px;
@@ -401,7 +427,7 @@
         }
     }
     &__item {
-        width: 100vw;
+        width: 80vw;
         padding-right: 10vw;
         flex-shrink: 0;
         display: flex;
@@ -445,12 +471,26 @@
         }
         p {
             max-width: 75%;
+            color: #B3A9A0;
+        }
+        div:last-child {
+            color: #B3A9A0;
         }
     }
 }
-
+.genplan-curtain-for-prev-block-anim {
+    position: absolute;
+    transform-origin: top;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 250px;
+    background-color: var(--color-black);
+    z-index: 2;
+}
 .genplan {
     height: 500vh;
+    position: relative;
     @include to(992px){
         height: 700vh;
     }
@@ -461,6 +501,7 @@
         align-items: center;
             position: relative;
         height: 100vh;
+        background-color: var(--color-white);
         @include to(992px){
           flex-direction: row-reverse;   
           flex-direction: column-reverse;

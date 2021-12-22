@@ -31,14 +31,14 @@ function homeInit() {
   const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
   const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
   
-  var ztxt = new ztext(".screen2 p", {
-    depth: "5px",
-    layers: 4,
-    // fade: true,
-    // direction: "forwards",
-    event: "pointer",
-    eventRotation: "10deg"
- });
+//   var ztxt = new ztext(".screen2 p", {
+//     depth: "5px",
+//     layers: 4,
+//     // fade: true,
+//     // direction: "forwards",
+//     event: "pointer",
+//     eventRotation: "10deg"
+//  });
  
 
   // smoothScrollBar();
@@ -64,7 +64,8 @@ function homeInit() {
   screen9Handler($scroller);
   screen10($scroller);
   paralax('.img-center img', $scroller);
-  paralax('.screen2 img', $scroller);
+  paralax('.screen2 .img-with-logo:first-child img', $scroller, 80);
+  paralax('.screen2 .img-with-logo:last-child img', $scroller, 40);
   
   // const frames = document.querySelectorAll('[data-vr-frame]');
   // frames.forEach(frame => {
@@ -178,5 +179,32 @@ function homeInit() {
     })
   }
   sectionTransitions();
+
+
+  function hoverParalax(params = {}) {
+    const { degree = 3, selector } = params;
+    const img = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    const parent = img.parentElement;
+    gsap.set(parent, { perspective: '500px' });
+    
+    img.addEventListener('mousemove', ({ clientX, clientY }) => {
+      const { left, right, top, bottom } = img.getBoundingClientRect();
+      var mapper = gsap.utils.mapRange(left, right, degree * -1, degree);
+      var mapperH = gsap.utils.mapRange(top, bottom, degree, degree * -1);
+      gsap.set(img, { rotateY: mapper(clientX), rotateX: mapperH(clientY) });
+    })
+    img.addEventListener('mouseleave',function(evt){
+      gsap.to(img, { rotateY: 0, rotateX: 0 });
+    });
+  }
+
+
+
+  gsap.utils.toArray('.screen5-hor-block__item img').forEach((el) => {
+    hoverParalax({
+      degree: 4,
+      selector: el,
+    });
+  })
 }
 
