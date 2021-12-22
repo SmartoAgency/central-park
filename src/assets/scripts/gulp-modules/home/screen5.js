@@ -17,7 +17,7 @@ export default function screen5(scroller) {
       }
     })
       .from('.screen5 .title-h2', { yPercent: 100, autoAlpha: 0, })
-      .from('.screen5-hor-block', { yPercent: 50, autoAlpha: 0, }, '<')
+      .from('.screen5-hor-block', { yPercent: 20, autoAlpha: 0, }, '<')
     gsap.timeline({
       scrollTrigger: {
         trigger: '.screen6',
@@ -31,7 +31,7 @@ export default function screen5(scroller) {
     })
       .to('.screen5-hor-block', { yPercent: -50, autoAlpha: 0, }, '<')
       // .to('.screen5', { y: -50, autoAlpha: 0, }, '<')
-      .to('.genplan-curtain-for-prev-block-anim', { scaleY: 0,}, '<')
+      // .to('.genplan-curtain-for-prev-block-anim', { scaleY: 0,}, '<')
     gsap.timeline({
         scrollTrigger: {
           trigger: '.screen5',

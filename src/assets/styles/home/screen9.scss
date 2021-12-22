@@ -1,10 +1,13 @@
 .screen9 { 
     position: relative;
     min-height: 100vh;
-    --v-padding: 175px;
+    --v-padding: 240px;
     // overflow: hidden;
     @include row-flex();
     padding: var(--v-padding) var(--page-side-fields) 0 var(--page-side-fields);
+    @include from(1680px){
+        --v-padding: 240px;
+    }
     @include to(575px){
         background: linear-gradient(90deg, rgba(35,36,43,1) 50%, rgba(255,255,255,1) 50%);
         --v-padding: 102px;

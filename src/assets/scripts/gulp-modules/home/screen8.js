@@ -17,6 +17,20 @@ export default function screen8(scroller) {
     })
     .to(textBlock, { yPercent: -50, autoAlpha: 0.5 })
     .to(cloud1, { xPercent: -70 }, '<')
-    .to(render, { scale: 1.15, transformOrigin: '100% 100%' }, '<')
+    .to(render, { scale: 1.15, transformOrigin: '100% 100%' }, '<');
+
+
+
+    gsap.timeline({
+        scrollTrigger: {
+            scroller: scroller ? scroller : null,
+            trigger: screen1,
+            scrub: true,
+            end: `${innerHeight / 2} bottom`,
+            // end: `${screen1.getBoundingClientRect().height} bottom`
+        }   
+    })
+    .from('.img-left, .img-center, .img-right', { autoAlpha: 0, y: 100 })
+    .to('.screen7__head-block, .screen7__faded-title', { autoAlpha: 0, y: -150 }, '<')
     
 }

@@ -1,5 +1,14 @@
 export default function screen10(scroller) {
     const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
+    const container = document.querySelector('.screen10__slider');
+    container.addEventListener('mouseleave',function(evt){
+      gsap.timeline({
+        defaults: {
+          duration: 0.75
+        }
+      })
+        .to(container.children, { width: '33%' })
+    });
     document.querySelectorAll('.screen10-slide').forEach((el, index, array) => {
         if (isMobile()) return;
         const innactiveSlides = document.querySelectorAll(`.screen10-slide:not(:nth-child(${index + 1}))`);
@@ -22,6 +31,8 @@ export default function screen10(scroller) {
             .set(innactiveImages, { filter: '' })
         })
       })
+
+      
       gsap.timeline({
         scrollTrigger: {
           trigger: '.screen9__title-l',
