@@ -6,17 +6,20 @@ let loaderStatus = {
 }
 function scaleTo1(el) {
     const path = el;
-    let value = 0;
+    let value = 1;
     function render(value) {
         path.style.transform = `scaleY(${value})`;
-        if(value >= 1) return;
-        const newValue = value + 0.01;
+        if(value <= 0.025) {
+            document.querySelector('.loader>svg').style.opacity = 0;
+            return;
+        };
+        const newValue = value - 0.01;
         requestAnimationFrame(() => {
             render(newValue);
         });
     }
 
-    render(0);
+    render(value);
 }
 function digitLoader() {
     const el = document.querySelector('.loader__counter');

@@ -40,6 +40,9 @@
         @include size(11);
         position: relative;
         z-index: 4;
+        @include from(1920px){
+            @include size(8);
+        }
         @include to(1024px){
             @include shift-left(0);
         }

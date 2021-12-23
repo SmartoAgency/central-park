@@ -7,25 +7,26 @@
     background-color: #fff;
     z-index: 100;
     padding-left: var(--page-side-fields);
-    padding-top: 50px;
+    padding-top: 15px;
     display: flex;
     align-items: flex-end;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transition: .5s ease-in-out;
 }
 
 .loader.hidden {
-    opacity: 0;
-    visibility: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    pointer-events: none;
 }
 .loader__lines {
-    height: calc(100vh - 50px);
-    width:calc((100vh - 50px) * 0.05);
+    height: calc(100vh - 15px);
+    width:calc((100vh - 15px) * 0.05);
 }
 
 .loader__lines path {
-    transform-origin: bottom;
+    transform-origin: top;
     transform-box: fill-box;
-    transform: scaleY(0);
+    /* transform: scaleY(0); */
 }
 .loader__counter {
     padding-bottom: 50px;

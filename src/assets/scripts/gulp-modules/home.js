@@ -26,11 +26,23 @@ import ztext from '../modules/ztext/ztext';
 
 window.addEventListener('load',homeInit);
 function homePreloaderEffect() {
-    return gsap.timeline({ paused: true })
-      .fromTo('.header>svg', { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1 })
+    return gsap.timeline({ paused: true, defaults: {
+      ease: 'power4.out', 
+      duration: 2.25
+
+    } })
+      // .fromTo('.header>svg', { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1 })
       .fromTo('.langs-header, .header>button, .header>a', { x: 250, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<')
-      .fromTo('.main-screen__render', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1 }, '<')
-      .fromTo('.main-screen__text>*', { yPercent: 100, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1 }, '<')
+      .fromTo('.main-screen__render', { yPercent: 30 }, { yPercent: 0, autoAlpha: 1 }, '<')
+      .fromTo('.main-screen__cloud-1', { xPercent: 30 }, { xPercent: 0, autoAlpha: 1 }, '<')
+      .fromTo('.main-screen__text>*', { 
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'
+        }, { 
+          clipPath: 'polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)',
+        yPercent: 0, 
+        autoAlpha: 1 
+      }, '<')
+      .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
   }
 window.addEventListener('preloaderOff',function(evt){
   console.log('f');
@@ -102,7 +114,7 @@ function homeInit() {
   //   })
   // })
   // splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
-  fadeInUp('.screen11__group, .screen11 .title-h2', $scroller);
+  // fadeInUp('.screen11__group, .screen11 .title-h2', $scroller);
   splitToLinesAndFadeUp('.main-screen .title', $scroller);
   splitToLinesAndFadeUp('.title-h2', $scroller);
   buttonHover('.button');
@@ -229,6 +241,18 @@ function homeInit() {
       degree: 4,
       selector: el,
     });
+  });
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '.screen11',
+      start: `${innerHeight / -4} center`,
+      end: `${innerHeight / 4} center`,
+      scroller: $scroller ? $scroller : null,
+      scrub: true,
+    }
   })
+    .to('.screen10>*', { y: -75, autoAlpha: 0 })
+    .fromTo('.screen11>*', { y: 75, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
 }
 
