@@ -25,6 +25,17 @@ import ztext from '../modules/ztext/ztext';
 
 
 window.addEventListener('load',homeInit);
+function homePreloaderEffect() {
+    return gsap.timeline({ paused: true })
+      .fromTo('.header>svg', { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1 })
+      .fromTo('.langs-header, .header>button, .header>a', { x: 250, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<')
+      .fromTo('.main-screen__render', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1 }, '<')
+      .fromTo('.main-screen__text>*', { yPercent: 100, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1 }, '<')
+  }
+window.addEventListener('preloaderOff',function(evt){
+  console.log('f');
+  homePreloaderEffect().play();
+});
 function homeInit() {
   global.gsap = gsap;
   gsap.core.globals("ScrollTrigger", ScrollTrigger);
@@ -39,8 +50,7 @@ function homeInit() {
 //     event: "pointer",
 //     eventRotation: "10deg"
 //  });
- 
-
+  
   // smoothScrollBar();
   const scroller = locoScroll('.scroller-container');
   scroller.update();
