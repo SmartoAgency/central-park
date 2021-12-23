@@ -49,7 +49,8 @@ export default function galleryEffect(scroller) {
             end: `${innerHeight / 4} center`
         }
     })
-    .from('.screen7__content', { y: 200, autoAlpha: 0 })
+    .to('.genplan__text, .genplan__img', { y: -100, autoAlpha: 0 })
+    .from('.screen7__content', { y: 200, autoAlpha: 0 }, '<')
     .from('.screen7 .title-h2', { y: 200, autoAlpha: 0 },'<')
 }
 

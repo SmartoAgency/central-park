@@ -15,7 +15,7 @@ export default function fadeInUp(selector, scroller) {
           })
           .fromTo(
             text,
-            { y: -100, autoAlpha: 0 },
+            { y: 100, autoAlpha: 0 },
             { y: 0, autoAlpha: 1, duration: 1.95, ease: 'power4.out', clearProps: 'transform' },
           );
       });

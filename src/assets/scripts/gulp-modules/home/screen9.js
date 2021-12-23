@@ -28,7 +28,7 @@ export default function screen9Handler(scroller) {
         counterNext = container.querySelector('[data-all]');
     const iframeWrap = container.querySelector('[data-vr-frame]');
     const svgBg = container.querySelectorAll('[data-screen9-bg] path');
-    const frameOtherEls = iframeWrap.querySelectorAll(':not(iframe)');
+    const frameOtherEls = iframeWrap.querySelectorAll('.screen9__center-button');
     iframeWrap.addEventListener('click', function changeSrc() {
         gsap.to(frameOtherEls, { y: 50, autoAlpha: 0, clearProps: 'transform' })
         frame.src = frame.dataset.src;
@@ -68,7 +68,7 @@ export default function screen9Handler(scroller) {
           end: `${innerHeight / 4} center`
         }
       })
-        .from('.screen9>*:not(svg)', { y: 100 })
+        .from('.screen9__left, .screen9__center, .screen9__right', { y: 100 })
         // .to('.screen8__render', { scale: 0.8 }, '<')
     
 }

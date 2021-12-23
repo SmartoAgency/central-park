@@ -30,6 +30,7 @@ export default function screen5(scroller) {
       }
     })
       .to('.screen5-hor-block', { y: -75, autoAlpha: 0, }, '<')
+      .from('.genplan__text, .genplan__img', { autoAlpha: 0, y: 85 })
       // .to('.screen5', { y: -50, autoAlpha: 0, }, '<')
       // .to('.genplan-curtain-for-prev-block-anim', { scaleY: 0,}, '<')
     gsap.timeline({
@@ -45,7 +46,6 @@ export default function screen5(scroller) {
         }
       })
       .to('.screen5 .title-h2', { yPercent: -100, autoAlpha: 0, duration: 0.1 })
-      // .fromTo('.screen5-hor-block__item', { y: 100, duration: 0.1 }, { y: 0, duration: 0.1 }, '<')
       .to('.screen5-hor-block', { x: (el, target) => {
         const horBlocksItems = document.querySelectorAll('.screen5-hor-block__item');
         
@@ -56,29 +56,4 @@ export default function screen5(scroller) {
         }, 0);
       }}, '<')
 
-      // .from(innerHorizontalItems, { y: 50, duration: 0.1, stagger: 0.33 }, '<')
-
-
-
-      // console.log(items);
-    //   document.querySelectorAll('.screen5-hor-block__item p').forEach((el, index, array) => {
-    //     new ztext(`.screen5-hor-block__item:nth-child(${index + 1}) p`, {
-    //       depth: "5px",
-    //       layers: 1,
-    //       fade: true,
-    //       // direction: "forwards",
-    //       event: "pointer",
-    //       eventRotation: "10deg"
-    //   })
-    //  })
-    //  document.querySelectorAll('.screen5-hor-block__item .title').forEach((el, index, array) => {
-    //     new ztext(`.screen5-hor-block__item:nth-child(${index + 1}) .title`, {
-    //       depth: "5px",
-    //       layers: 1,
-    //       fade: true,
-    //       // direction: "forwards",
-    //       event: "pointer",
-    //       eventRotation: "10deg"
-    //   })
-    //  })
 }

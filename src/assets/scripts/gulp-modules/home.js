@@ -92,7 +92,7 @@ function homeInit() {
   //   })
   // })
   // splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
-  fadeInUp('.screen11__group', $scroller);
+  fadeInUp('.screen11__group, .screen11 .title-h2', $scroller);
   splitToLinesAndFadeUp('.main-screen .title', $scroller);
   splitToLinesAndFadeUp('.title-h2', $scroller);
   buttonHover('.button');

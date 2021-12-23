@@ -20,9 +20,9 @@ export default function splitToLinesAndFadeUp(selector, $scroller) {
             { yPercent: 0,  stagger: 0.05, duration: 1.35, ease: 'power4.out' },
           );
 
-          text.addEventListener('click',function(evt){
-            tl.progress(0).play();
-          });
+          // text.addEventListener('click',function(evt){
+          //   tl.progress(0).play();
+          // });
       });
 
 
