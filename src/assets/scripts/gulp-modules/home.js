@@ -28,7 +28,8 @@ window.addEventListener('load',homeInit);
 function homePreloaderEffect() {
     return gsap.timeline({ paused: true, defaults: {
       ease: 'power4.out', 
-      duration: 2.25
+      duration: 2.25,
+      clearProps: 'all'
 
     } })
       // .fromTo('.header>svg', { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1 })
@@ -128,7 +129,12 @@ function homeInit() {
     scroller.on('scroll', ({ scroll }) => {
       const tempState = prevScrollPosition > scroll.y ? 'open' : 'close';
       prevScrollPosition = scroll.y;
-      if (tempState === header.state) return;
+      if (scroll.y > 150) {
+        changeState['untransparent']();
+      } else {
+        changeState['transparent']();
+      }
+      if (tempState === header.state || scroll.y < 150) return;
       header.state = tempState;
       changeState[tempState]();
 
@@ -141,6 +147,12 @@ function homeInit() {
       },
       close: () => {
         gsap.to(header, { yPercent : -100 });
+      },
+      transparent: () => {
+        header.classList.add('transparent');
+      },
+      untransparent: () => {
+        header.classList.remove('transparent');
       }
     }
   }

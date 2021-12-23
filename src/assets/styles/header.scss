@@ -16,6 +16,11 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 100%;
+	transition: background-color .5s ease-in-out, padding .5s ease-in-out;
+	&.transparent {
+		background-color: transparent;
+		padding-top: 25px;
+	}
 	@include from-to(1025px, 1360px){
 		--between-margin: 15px;
 	}
@@ -116,6 +121,13 @@
 		@include from(576px){
 			display: none;	
 		}
+	}
+
+	&.transparent  .langs-header {
+		ul {
+			background-color: transparent;
+		}
+		background-color: transparent;
 	}
 }
 .langs-header {
