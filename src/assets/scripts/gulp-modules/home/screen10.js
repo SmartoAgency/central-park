@@ -1,4 +1,5 @@
 import gsap from "gsap/all";
+import Swiper, {FreeMode } from 'swiper';
 
 export default function screen10(scroller) {
   const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
@@ -58,5 +59,25 @@ export default function screen10(scroller) {
     }
   })
     .to('.screen9__title-l', { y: -75, autoAlpha: 0 })
-    .from('.screen10>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, '<')
+    .from('.screen10>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, '<');
+
+
+  if (isMobile()) {
+    const slideWrapper = document.querySelector('.screen10__slider');
+    const swiperWrapper = document.createElement('div');
+    swiperWrapper.classList.add('swiper-wrapper');
+    slideWrapper.append(swiperWrapper);
+    document.querySelectorAll('.screen10-slide').forEach(el => {
+      el.classList.add('swiper-slide');
+      swiperWrapper.append(el);
+    })
+    const swiper = new Swiper('.screen10__slider', {
+      // Optional parameters
+      modules: [FreeMode ],
+      slidesPerView: 1.15,
+      loop: true,
+      freeMode: true,
+      spaceBetween: 0,
+  });
+  }
 }

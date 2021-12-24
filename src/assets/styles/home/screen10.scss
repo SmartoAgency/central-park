@@ -47,7 +47,7 @@
         @include shift(0);
         display: flex;
         @include to(575px){
-            flex-wrap: wrap;
+            // flex-wrap: wrap;
         }
     }
     .screen10-slide {
@@ -55,11 +55,12 @@
         flex-shrink: 0;
         @include to(575px){
             width: 100%;
+            flex-shrink: 0;
         }
     }
     .screen10-slide~.screen10-slide {
         @include to(575px){
-            margin-top: 20px;
+            // margin-top: 20px;
         }
     }
 }

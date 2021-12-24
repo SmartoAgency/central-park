@@ -89,8 +89,10 @@ formWrapperCall.forEach(el => {
       .to( formWrapper, { autoAlpha: 1 } )
       .fromTo( 
         '.form-wrapper-left>*, .form-wrapper-right form>*', 
-        { webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', stagger: 0.15 }, 
-        { webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'power2.out' },
+        { y: 50, autoAlpha: 0}, 
+        { y: 0, autoAlpha: 1 }, 
+        // { webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', stagger: 0.15 }, 
+      // { webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'power2.out' },
         '<'
       )
   })
@@ -103,8 +105,10 @@ function closeForm() {
     .to('.form-wrapper-succes-layer', { autoAlpha: 0, duration: 0.25 })
     .fromTo( 
       '.form-wrapper-left>*, .form-wrapper-right form>*', 
-      {webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', stagger: 0.15 }, 
-      {webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', ease: 'power2.out' },
+      { y: 0, autoAlpha: 1}, 
+      { y: 50, autoAlpha: 0 }, 
+      // {webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', stagger: 0.15 }, 
+      // {webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', ease: 'power2.out' },
       '<'
     )
     .to(formWrapper, { autoAlpha: 0, duration: 0.25 }, '<+0.5');
@@ -127,6 +131,10 @@ function mobPopupHandler() {
   const call = document.querySelectorAll('[data-call-mobile-callback-popup]');
   const closeEl = document.querySelector('[data-mobile-callback-close]');
   closeEl.addEventListener('click', () => close(popup));
+
+  popup.addEventListener('click', ({target}) => {
+    target === popup ? close(popup) : null;
+  })
   call.forEach(el => el.addEventListener('click', () => open(popup)));
   call.forEach(el => el.addEventListener('touchstart', () => open(popup)));
 }

@@ -456,7 +456,7 @@
             padding-right: 20px;
         }
         img {
-            width: 65%;
+            width: 35%;
             height: 100%;
             object-fit: cover;
             @include to(575px){
@@ -464,7 +464,7 @@
             }
         }
         &-text {
-            width: 60%;
+            width: 65%;
             padding-left: 70px;
             display: flex;
             flex-direction: column;
@@ -494,7 +494,7 @@
             line-height: 140%;
             color: #B3A9A0;
             @include from(576px){
-                max-width: 55%;
+                max-width: 85%;
             }
             @include from(1025px){
                 font-size: 24px;

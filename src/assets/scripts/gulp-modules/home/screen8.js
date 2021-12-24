@@ -64,6 +64,9 @@ export default function screen8(scroller) {
             scroller: scroller ? scroller : null,
             trigger: '.screen8 .img-left',
             scrub: true,
+            onEnter: () => {
+                console.log('fff');
+            }
         }
     })
         .fromTo('.screen8 .img-left', { y: 75 }, { y: -75 })
