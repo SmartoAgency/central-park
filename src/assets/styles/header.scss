@@ -19,8 +19,10 @@
 	transition: background-color .5s ease-in-out, padding .5s ease-in-out;
 	&.transparent {
 		background-color: transparent;
-		padding-top: 50px;
-		height: auto;
+		@include from(1025px){
+			padding-top: 50px;
+			height: auto;
+		}
 	}
 	@include from-to(1025px, 1360px){
 		--between-margin: 15px;
@@ -45,7 +47,12 @@
     a {
         color: var(--color-beige); 
         text-decoration: none;
+		font-weight: 600;
+		
     }
+	button {
+		font-weight: 600;
+	}
 	&__menu {
 		display: flex;
 		align-items: center;

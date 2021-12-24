@@ -58,5 +58,5 @@ export default function screen10(scroller) {
     }
   })
     .to('.screen9__title-l', { y: -75, autoAlpha: 0 })
-    .from('.screen10>*', { y: 75, autoAlpha: 0 }, '<')
+    .from('.screen10>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, '<')
 }

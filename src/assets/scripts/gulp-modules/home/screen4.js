@@ -51,6 +51,6 @@ export default function screen4(scroller) {
           end: `${innerHeight / 4} center`
         }
       })
-        .from('.screen4>*', { autoAlpha: 0, y: 100 })
-        .to('.screen3>*', { autoAlpha: 0, y: -100, clearProps: 'transform' }, '<')
+        .from('.screen4>*:not(.section-decor)', { autoAlpha: 0, y: 100, clearProps: 'transform' })
+        .to('.screen3>*:not(.section-decor)', { autoAlpha: 0, y: -100, clearProps: 'transform' }, '<')
 }

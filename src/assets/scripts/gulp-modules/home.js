@@ -2,6 +2,7 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 // import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import paralax from '../modules/effects/paralax';
+import paralaxNoCurtains from '../modules/effects/paralaxNoCurtain';
 import fadeInUp from '../modules/effects/fadeInUp'; 
 import splitToLinesAndFadeUp from '../modules/effects/splitToLinesAndFadeUp'; 
 import buttonHover from '../modules/effects/buttonHover';
@@ -33,23 +34,18 @@ function homePreloaderEffect() {
 
     } })
       // .fromTo('.header>svg', { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1 })
-      .fromTo('.langs-header, .header>button, .header>a', { x: 250, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<')
+      .fromTo('.langs-header, .header>button, .header>a, .header [data-call-mobile-callback-popup]', { x: 250, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<')
       .fromTo('.main-screen__render', { yPercent: 30 }, { yPercent: 0, autoAlpha: 1 }, '<')
       .fromTo('.main-screen__cloud-1', { xPercent: 30 }, { xPercent: 0, autoAlpha: 1 }, '<')
-      // .fromTo('.main-screen__text>*', { 
-      //     clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'
-      //   }, { 
-      //     clipPath: 'polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)',
-      //   yPercent: 0, 
-      //   autoAlpha: 1 
-      // }, '<')
-      .fromTo('.main-screen__text>*', { 
+      .fromTo('.main-screen__text>*:not(button)', { 
           autoAlpha: 0,
           y: 150
         }, { 
           autoAlpha: 1,
-          y: 0
+          y: 0,
+          clearProps: 'all'
       }, '<')
+      .fromTo('.main-screen__text>button', { autoAlpha: 0 }, { autoAlpha: 1 }, '<')
       // .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
   }
 window.addEventListener('preloaderOff',function(evt){
@@ -109,10 +105,9 @@ function homeInit() {
     }
   })
     .from('.screen2>*', { y: 100, autoAlpha: 0})
-  paralax('.screen2 .img-with-logo:first-child img', $scroller, 80);
-  paralax('.screen2 .img-with-logo:last-child img', $scroller, 40);
+    paralaxNoCurtains('.screen2 .img-with-logo:first-child img', $scroller, 80);
+    paralaxNoCurtains('.screen2 .img-with-logo:last-child img', $scroller, 40);
   /**Screen2 effects END */
-  
   // const frames = document.querySelectorAll('[data-vr-frame]');
   // frames.forEach(frame => {
   //   frame.addEventListener('click', function changeSrc() {
