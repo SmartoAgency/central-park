@@ -9,8 +9,13 @@ function scaleTo1(el) {
     let value = 1;
     function render(value) {
         path.style.transform = `scaleY(${value})`;
+        if (value <= 0.15) {
+            el.parentElement.classList.add('transformed');
+
+        }
         if(value <= 0.025) {
-            document.querySelector('.loader>svg').style.opacity = 0;
+            // document.querySelector('.loader>svg').style.opacity = 0;
+            loaderStatus.isCounterAnim = false;
             return;
         };
         const newValue = value - 0.01;
@@ -21,13 +26,17 @@ function scaleTo1(el) {
 
     render(value);
 }
+
+
 function digitLoader() {
     const el = document.querySelector('.loader__counter');
     let value = 0;
 
     function render(value) {
         if (value >= 101) {
-            loaderStatus.isCounterAnim = false;
+            
+            document.querySelector('.loader__lines').classList.remove('gradient');
+            linesTo0();
             return;
         };
         let newValue = value + 1;
@@ -39,11 +48,12 @@ function digitLoader() {
     render(value);
 }
 digitLoader();
-for (let index = 0; index < document.querySelectorAll('.loader path').length; index++) {
-    const element = document.querySelectorAll('.loader path')[index];
-    setTimeout(() => {
+
+function linesTo0() {
+    for (let index = 0; index < document.querySelectorAll('.loader path').length; index++) {
+        const element = document.querySelectorAll('.loader path')[index];
         scaleTo1(element);
-    }, index * 100);
+    }
 }
 
 let interval = setInterval(() => {

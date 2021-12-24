@@ -1,12 +1,37 @@
 .loader 
-    <svg class="loader__lines" width="42" height="920" viewBox="0 0 42 920" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 8H0V920H8V8Z" fill="#E5CDB7"/>
-        <path d="M20 0H11V920H20V0Z" fill="#E5CDB7"/>
-        <path d="M31 0H23V920H31V0Z" fill="#E5CDB7"/>
-        <path d="M42 8H34V920H42V8Z" fill="#E5CDB7"/>
+    //- <svg class="loader__lines" width="42" height="920" viewBox="0 0 42 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+    //-     <path d="M8 8H0V920H8V8Z" fill="#E5CDB7"/>
+    //-     <path d="M20 0H11V970H20V0Z" fill="#E5CDB7"/>
+    //-     <path d="M31 0H23V970H31V0Z" fill="#E5CDB7"/>
+    //-     <path d="M42 8H34V920H42V8Z" fill="#E5CDB7"/>
+    //-     </svg>
+    <svg class="loader__lines gradient" width="42" height="920" viewBox="0 0 42 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 8H0V920H8V8Z"       style="fill:url(#paint0_linear_38_3966)"/>
+        <path d="M20 0H11V920H20V0Z"    style="fill:url(#paint0_linear_38_3966)"/>
+        <path d="M31 0H23V920H31V0Z"    style="fill:url(#paint0_linear_38_3966)"/>
+        <path d="M42 8H34V920H42V8Z"    style="fill:url(#paint0_linear_38_3966)"/>
+        <defs>
+        <linearGradient id="paint0_linear_38_3966" x1="4" y1="8" x2="4" y2="920" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#E5CDB7"/>
+        <stop offset="1" stop-color="#E5CDB7" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_38_3966" x1="15.5" y1="0" x2="15.5" y2="920" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#E5CDB7"/>
+        <stop offset="1" stop-color="#E5CDB7" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_38_3966" x1="27" y1="0" x2="27" y2="920" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#E5CDB7"/>
+        <stop offset="1" stop-color="#E5CDB7" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="paint3_linear_38_3966" x1="38" y1="8" x2="38" y2="920" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#E5CDB7"/>
+        <stop offset="1" stop-color="#E5CDB7" stop-opacity="0"/>
+        </linearGradient>
+        </defs>
         </svg>
     .loader__counter 25
     script
         include ./loader/loader.js
     style
         include ./loader/loader.css
+        

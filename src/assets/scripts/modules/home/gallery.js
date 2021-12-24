@@ -33,8 +33,8 @@ export default function galleryEffect(scroller) {
      .to(center, { scale: centerRatio, transformOrigin: '50% 100%' }, '<')
     //  .to(centerText, { scale: center.getBoundingClientRect().width / innerWidth, autoAlpha: 1, duration: 0.25 }, '<')
     // .to(centerImg, { scale: 1.3 }, '<')
-    .to(left, { xPercent: -50, ease: 'linear' },'<')
-    .to(right, { xPercent: 50, ease: 'linear' }, '<')
+    .to(left, { xPercent: -51, ease: 'linear' },'<')
+    .to(right, { xPercent: 51, ease: 'linear' }, '<')
     .fromTo(fadedTitle, { autoAlpha: 0, y: 150 },{ autoAlpha: 1, y: 0, duration: 0.2 }, '<+0.5')
     // .to(right, { xPercent: 100, duration: 0.5 }, )
 

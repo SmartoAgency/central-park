@@ -52,5 +52,5 @@ export default function screen4(scroller) {
         }
       })
         .from('.screen4>*', { autoAlpha: 0, y: 100 })
-        .to('.screen3>*', { autoAlpha: 0, y: -100 }, '<')
+        .to('.screen3>*', { autoAlpha: 0, y: -100, clearProps: 'transform' }, '<')
 }

@@ -1,7 +1,11 @@
 .screen8 {
-    --right-img-v-margin: -113px;
+    --right-img-v-margin: -175px;
+    @include from(1680px){
+        --right-img-v-margin: -250px;
+        
+    }
     position: relative;
-    padding-top: 165px;
+    padding-top: 240px;
 
     @include row-flex();
     align-content: flex-end;
@@ -11,6 +15,9 @@
     background: linear-gradient(180deg, #23242B 0%, rgba(35, 36, 43, 0) 76.62%),  linear-gradient(180deg, #263D6A 3.59%, #DCF7FF 100%);
     @include to(992px){
         --right-img-v-margin: -50px;
+    }
+    @include to(1024px){
+        padding-top: 100px;
     }
     &__text {
         @include size(6);
@@ -35,12 +42,25 @@
                 margin-bottom: 60px;
             }
         }
+        p {
+            max-width: 70%;
+        }
     }
     .title {
         color: #E5CDB7;
         @include to(1680px){
             margin-bottom: 20px;
         }
+    }
+    &__clouds {
+        position: absolute;
+        top: 10%;
+        left: 0;
+        width: 72%;
+        height: auto;
+        transform: translateX(-50%);
+        
+
     }
     p {
         @include to(1680px){
@@ -93,7 +113,7 @@
     }
     .img-right {
         position: relative;
-        @include shift-left(-4);
+        @include shift-left(-2);
         margin-bottom: var(--right-img-v-margin);
         &__decor {
             position: absolute;

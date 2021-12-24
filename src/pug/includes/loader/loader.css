@@ -11,7 +11,7 @@
     display: flex;
     align-items: flex-end;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    transition: .5s ease-in-out;
+    transition: 1.25s cubic-bezier(0.62, 0.01, 0.27, 0.96);
 }
 
 .loader.hidden {
@@ -21,12 +21,23 @@
 .loader__lines {
     height: calc(100vh - 15px);
     width:calc((100vh - 15px) * 0.05);
+    transition: .9s ease-in-out;
+    /* width: 20px;
+    height: auto; */
 }
-
+.loader__lines.transformed {
+    transform: translateY(-20%);
+}
 .loader__lines path {
     transform-origin: top;
     transform-box: fill-box;
+    fill: #E5CDB7;
+    transition: fill .75s ease-in-out;
     /* transform: scaleY(0); */
+}
+.loader__lines.gradient path{
+    fill: #E5CDB7 !important;
+
 }
 .loader__counter {
     padding-bottom: 50px;

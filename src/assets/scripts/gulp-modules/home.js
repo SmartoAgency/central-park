@@ -28,7 +28,7 @@ window.addEventListener('load',homeInit);
 function homePreloaderEffect() {
     return gsap.timeline({ paused: true, defaults: {
       ease: 'power4.out', 
-      duration: 2.25,
+      duration: 3,
       clearProps: 'all'
 
     } })
@@ -43,7 +43,7 @@ function homePreloaderEffect() {
         yPercent: 0, 
         autoAlpha: 1 
       }, '<')
-      .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
+      // .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
   }
 window.addEventListener('preloaderOff',function(evt){
   console.log('f');
@@ -79,11 +79,13 @@ function homeInit() {
   ScrollTrigger.create({
     once: true,
     scroller: $scroller,
-    trigger: '.screen8',
+    trigger: '.screen9',
     onEnter: () => scroller.update(),
   })
   screen8($scroller);
-  paralax('.screen8 .img-left img:first-child, .screen8 .img-right img:first-child', $scroller);
+  paralax('.screen8 .img-right img:first-child', $scroller, 20);
+  paralax('.screen8 .img-center img:first-child', $scroller, 20);
+  paralax('.screen8 .img-left img:first-child', $scroller, 20)
   screen9Handler($scroller);
   screen10($scroller);
   paralax('.img-center img', $scroller);

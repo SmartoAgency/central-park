@@ -45,6 +45,6 @@ export default function screen3Effects(scroller) {
       end: `${innerHeight / 4} center`
     }
   })
-    .from('.screen3>*', { autoAlpha: 0, y: 75 })
+    .from('.screen3>*', { autoAlpha: 0, y: 75, clearProps: 'transform' })
     .to('.screen2>*', { autoAlpha: 0, y: -75 }, '<')
 }

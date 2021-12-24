@@ -5,6 +5,7 @@
     // overflow: hidden;
     @include row-flex();
     padding: var(--v-padding) var(--page-side-fields) 0 var(--page-side-fields);
+    z-index: 1;
     @include from(1680px){
         --v-padding: 240px;
     }
@@ -152,6 +153,9 @@
         @include shift-left(1);
         @include shift-right(0);
         margin-bottom: 60px;
+        @include from(1025px){
+            height: calc(50vw * 0.625);
+        }
         @include to(992px){
             @include size(20);
             @include shift(2);
@@ -202,6 +206,9 @@
         /* identical to box height, or 190px */
         letter-spacing: -0.03em;
         text-transform: uppercase;
+        @include from(1025px){
+            margin-top: 121px;
+        }
         @include to(1680px){
             font-size: 200px;
         }
