@@ -45,7 +45,7 @@ export default function screen5(scroller) {
         //   markers: true
         }
       })
-      .to('.screen5 .title-h2', { yPercent: -100, autoAlpha: 0, duration: 0.1 })
+      .fromTo('.screen5 .title-h2',  { yPercent: 0, autoAlpha: 1 }, { yPercent: -100, autoAlpha: 0, duration: 0.1 })
       .to('.screen5-hor-block', { x: (el, target) => {
         const horBlocksItems = document.querySelectorAll('.screen5-hor-block__item');
         

@@ -6,7 +6,7 @@
 	z-index: 40;
 	
     background-color: rgba(39, 41, 54, 0.6);
-	background-color: #27314B;
+	// background-color: #27314B;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -140,6 +140,8 @@
 	overflow: hidden;
 	cursor: pointer;
 	background-color: #27314B;
+	background-color: rgba(39, 41, 54, 0.6);
+	background-color: transparent;
 	
 	ul {
 		position: absolute;
@@ -147,6 +149,8 @@
 		top: 0;
 		width: 100%;
 		background-color: #27314B;
+		background-color: rgba(39, 41, 54, 0.6);
+		background-color: transparent;
 		border-radius: 10px;
 		&:after {
 			content: '';

@@ -36,12 +36,19 @@ function homePreloaderEffect() {
       .fromTo('.langs-header, .header>button, .header>a', { x: 250, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<')
       .fromTo('.main-screen__render', { yPercent: 30 }, { yPercent: 0, autoAlpha: 1 }, '<')
       .fromTo('.main-screen__cloud-1', { xPercent: 30 }, { xPercent: 0, autoAlpha: 1 }, '<')
+      // .fromTo('.main-screen__text>*', { 
+      //     clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'
+      //   }, { 
+      //     clipPath: 'polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)',
+      //   yPercent: 0, 
+      //   autoAlpha: 1 
+      // }, '<')
       .fromTo('.main-screen__text>*', { 
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'
+          autoAlpha: 0,
+          y: 150
         }, { 
-          clipPath: 'polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)',
-        yPercent: 0, 
-        autoAlpha: 1 
+          autoAlpha: 1,
+          y: 0
       }, '<')
       // .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
   }
