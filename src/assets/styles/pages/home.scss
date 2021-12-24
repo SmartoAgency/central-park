@@ -175,6 +175,7 @@
 }
 .screen3 {
     background-color: var(--color-black);
+    --v-padding: 80px;
     @include from(1681px){
         --v-padding: 210px;
 
@@ -318,9 +319,12 @@
 
 
 .screen4 {
-    height: 200vh;
     --v-padding: 140px;
     position: relative;
+    height: 250vh;
+    @include to(575px){
+        height: 100vh;
+    }
     &__inner {
         height: 100vh;
         display: flex;
@@ -427,9 +431,9 @@
     display: flex;
     height: calc(100vh - 35vh - 12.6vh);
     height: 100%;
-    @include from-to(576px, 992px){
+    @include from-to(576px, 1024px){
         height: calc(100vh - 35vh - 50px);
-        height: 100vh;
+        height: 100%;
     }
     &__item:nth-child(n+2) {
         padding-left: 94px;

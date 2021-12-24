@@ -1,6 +1,7 @@
 import {gsap, ScrollTrigger} from 'gsap/all';
 export default function galleryEffect(scroller) {
-    const isMobile = window.matchMedia('(max-width: 575px)').matches;
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const isTablet = window.matchMedia('(max-width: 1024px) and (min-width: 576px)').matches;
     // if (window.matchMedia('(max-width: 575px)').matches) return;
     const gallery = document.querySelector('.screen7');
     !isMobile && gsap.set(gallery, { height: '250vh' });
@@ -14,6 +15,7 @@ export default function galleryEffect(scroller) {
         ;
     
     const centerRatio = innerWidth*0.95 / center.getBoundingClientRect().width;
+    // const imgScaleRatio = 
     !isMobile && gsap.timeline({
         ease: 'linear',
         defaults: {
@@ -29,10 +31,12 @@ export default function galleryEffect(scroller) {
             pin: inner
         }
     })
-     .to(centerImg, { scale: isMobile ? centerRatio * 2 : centerRatio * 1.45, transformOrigin: '50% 100%' })
+    // isMobile ? centerRatio * 2 : centerRatio * 1.45
+     .to(centerImg, { scale: () => {
+         if (isTablet) return 1.5;
+         return isMobile ? centerRatio * 2 : centerRatio * 1.45;
+     }, transformOrigin: '50% 100%' })
      .to(center, { scale: centerRatio, transformOrigin: '50% 100%' }, '<')
-    //  .to(centerText, { scale: center.getBoundingClientRect().width / innerWidth, autoAlpha: 1, duration: 0.25 }, '<')
-    // .to(centerImg, { scale: 1.3 }, '<')
     .to(left, { xPercent: -51, ease: 'linear' },'<')
     .to(right, { xPercent: 51, ease: 'linear' }, '<')
     .fromTo(fadedTitle, { autoAlpha: 0, y: 150 },{ autoAlpha: 1, y: 0, duration: 0.2 }, '<+0.5')
@@ -46,13 +50,16 @@ export default function galleryEffect(scroller) {
             end: `${innerHeight} bottom`, 
         }
     })
-    .to(centerImg, { scale: isMobile ? centerRatio * 2 : centerRatio * 1.45, transformOrigin: '50% 100%' })
+    .to(centerImg, {  scale: () => {
+        if (isTablet) return 1.5;
+        return isMobile ? centerRatio * 2 : centerRatio * 1.45;
+    }, transformOrigin: '50% 100%' })
     .to(center, { scale: centerRatio, transformOrigin: '50% 100%' }, '<')
    //  .to(centerText, { scale: center.getBoundingClientRect().width / innerWidth, autoAlpha: 1, duration: 0.25 }, '<')
    // .to(centerImg, { scale: 1.3 }, '<')
     .to(left, { xPercent: -51, ease: 'linear' },'<')
     .to(right, { xPercent: 51, ease: 'linear' }, '<')
-    .fromTo(fadedTitle, { autoAlpha: 0, y: 150 },{ autoAlpha: 1, y: 0, duration: 0.2 }, '<+0.5')
+    .fromTo(fadedTitle, { autoAlpha: 0, y: 150 },{ autoAlpha: 1, y: 0, duration: 1 }, '<+0.5')
 
     gsap.timeline({
         scrollTrigger: {

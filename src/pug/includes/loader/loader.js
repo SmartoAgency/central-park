@@ -50,8 +50,8 @@ function digitLoader() {
 digitLoader();
 
 function linesTo0() {
-    for (let index = 0; index < document.querySelectorAll('.loader path').length; index++) {
-        const element = document.querySelectorAll('.loader path')[index];
+    for (let index = 0; index < document.querySelectorAll('.loader path:not(.static)').length; index++) {
+        const element = document.querySelectorAll('.loader path:not(.static)')[index];
         scaleTo1(element);
     }
 }

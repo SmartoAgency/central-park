@@ -269,6 +269,6 @@ function homeInit() {
     }
   })
     .to('.screen10>*', { y: -75, autoAlpha: 0 })
-    .fromTo('.screen11>*', { y: 75, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
+    .fromTo('.screen11>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
 }
 

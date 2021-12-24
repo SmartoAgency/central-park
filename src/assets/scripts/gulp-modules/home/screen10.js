@@ -2,7 +2,7 @@ import gsap from "gsap/all";
 import Swiper, {FreeMode } from 'swiper';
 
 export default function screen10(scroller) {
-  const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
+  const isMobile = () => window.matchMedia('(max-width: 1024px)').matches;
   const container = document.querySelector('.screen10__slider');
   container.addEventListener('mouseleave',function(evt){
     gsap.timeline({
@@ -78,6 +78,13 @@ export default function screen10(scroller) {
       loop: true,
       freeMode: true,
       spaceBetween: 0,
+      breakpoints: {
+        // when window width is >= 320px
+        620: {
+          slidesPerView: 2.25,
+        },
+      }
+      
   });
   }
 }

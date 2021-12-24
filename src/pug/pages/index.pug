@@ -58,11 +58,22 @@ block content
         +img('screen2/212518407.jpg')
   -
     var slides = [
-      { img: './assets/images/screen3/251624276_prev_url=detail.jpg',text: '2,4 гаплоща забудови', },
-      { img: './assets/images/screen3/Rectangle 3962.jpg',text: '5 будівель різної висоти ', },
-      { img: './assets/images/screen3/Rectangle 3962-1.jpg',text: '10 секцій у кожному будинку', },
-      { img: './assets/images/screen3/Rectangle 3962-2.jpg',text: '178 квартир у першій будівлі ', },
-      { img: './assets/images/screen3/Rectangle 3962-3.jpg',text: '650 паркомісць у паркінгу', },
+      { img: './assets/images/screen3/11.jpg', text: '8.1 га площа території комплексу',},
+      { img: './assets/images/screen3/10.jpg', text: '19 будинків',},
+      { img: './assets/images/screen3/9.jpg', text: '15, 16, 18, 20-ти поверхові будинки',},
+      { img: './assets/images/screen3/8.jpg', text: '3009 квартир',},
+      { img: './assets/images/screen3/7.jpg', text: '2163 паркомісця',},
+      { img: './assets/images/screen3/2.jpg', text: '2 навчальні заклади на території комплексу.',},
+      { img: './assets/images/screen3/2.jpg', text: '2.1 га площа забудови',},
+      { img: './assets/images/screen3/2.jpg', text: '19 індивідуальних фасадів будинків',},
+      { img: './assets/images/screen3/2.jpg', text: '3830 м² дитячих майданчиків',},
+      { img: './assets/images/screen3/2.jpg', text: '1095 м² спортивних майданчиків',},
+      { img: './assets/images/screen3/1.jpg', text: '1095 м² місць для відпочинку',},
+      //- { img: './assets/images/screen3/251624276_prev_url=detail.jpg',text: '2,4 гаплоща забудови', },
+      //- { img: './assets/images/screen3/Rectangle 3962.jpg',text: '5 будівель різної висоти ', },
+      //- { img: './assets/images/screen3/Rectangle 3962-1.jpg',text: '10 секцій у кожному будинку', },
+      //- { img: './assets/images/screen3/Rectangle 3962-2.jpg',text: '178 квартир у першій будівлі ', },
+      //- { img: './assets/images/screen3/Rectangle 3962-3.jpg',text: '650 паркомісць у паркінгу', },
       //- { img: '',text: '10 поверхів', },
     ];
   .screen3
@@ -85,9 +96,6 @@ block content
     .zoom-slider-wrapper
       .zoom-slider.swiper-wrapper
         each val in slides 
-          .slide.swiper-slide
-            img(src=val.img)
-            div #{val.text}
           .slide.swiper-slide
             img(src=val.img)
             div #{val.text}

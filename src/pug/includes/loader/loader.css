@@ -3,7 +3,7 @@
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #fff;
     z-index: 100;
     padding-left: var(--page-side-fields);
@@ -12,6 +12,8 @@
     align-items: flex-end;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transition: 1.25s cubic-bezier(0.62, 0.01, 0.27, 0.96);
+    height: 100%;
+    min-height: -webkit-fill-available;
 }
 
 .loader.hidden {
@@ -31,12 +33,17 @@
 .loader__lines path {
     transform-origin: top;
     transform-box: fill-box;
-    fill: #E5CDB7;
+    /* fill: #E5CDB7; */
     transition: fill .75s ease-in-out;
     /* transform: scaleY(0); */
 }
-.loader__lines.gradient path{
-    fill: #E5CDB7 !important;
+.loader__lines .static {
+    opacity: 0;
+    transition: .3s ease-in-out;
+}
+.loader__lines.gradient .static{
+    /* fill: #E5CDB7 !important; */
+    opacity: 1;
 
 }
 .loader__counter {

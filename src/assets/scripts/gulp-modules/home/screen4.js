@@ -1,7 +1,8 @@
 import {gsap, ScrollTrigger} from "gsap/all";
 const videoChangeStateEvent = new CustomEvent('toggle');
 export default function screen4(scroller) {
-    gsap.timeline({
+    const isMobile = window.matchMedia('(max-width: 575px)').matches;
+      !isMobile && gsap.timeline({
         scrollTrigger: {
           trigger: '.screen4',
           scrub: true,
@@ -11,6 +12,22 @@ export default function screen4(scroller) {
           end: `${document.querySelector('.screen4').getBoundingClientRect().height} bottom`,
           pin: '.screen4__inner',
           pinSpacing: false,
+        //   markers: true
+        }
+      })
+        .from('.screen4__title :first-child', { x: '-100vw' })
+        .from('.screen4__title :last-child', { x: '100vw' }, '<')
+        .fromTo('.screen4__video', { scale: 0.8 }, { scale: 1 })
+        .to('.screen4__title :last-child', { z: 0 });
+
+      isMobile && gsap.timeline({
+        scrollTrigger: {
+          trigger: '.screen4',
+          scrub: true,
+          start: `${innerHeight * 0.45} bottom`, 
+          end: `${innerHeight} bottom`, 
+          scroller: scroller ? scroller : null,
+          // start: '0 top',
         //   markers: true
         }
       })
