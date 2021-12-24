@@ -43,7 +43,9 @@
             }
         }
         p {
-            max-width: 70%;
+            @include from(576px){
+                max-width: 70%;
+            }
         }
     }
     .title {
@@ -59,7 +61,10 @@
         width: 72%;
         height: auto;
         transform: translateX(-50%);
-        
+        @include to(575px){
+            max-width: none;
+            width: 170%;
+        }
 
     }
     p {

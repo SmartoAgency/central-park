@@ -1,14 +1,29 @@
 import gsap from "gsap/all";
 
 export default function screen8(scroller) {
-    console.log(scroller);
     const  screen1 = document.querySelector('.screen8');
-    if (screen1 === null || window.matchMedia('(max-width: 1024px)').matches) return;
+    const isMobile = window.matchMedia('(max-width: 575px)').matches;
+
+
+
+
+    // if (screen1 === null || window.matchMedia('(max-width: 1024px)').matches) return;
     const cloud1 = screen1.querySelector('.screen8__clouds'),
         render = screen1.querySelector('.screen8__render'),
         textBlock = screen1.querySelector('.screen8__text');
 
-    gsap.timeline({
+
+    isMobile && gsap.timeline({
+        scrollTrigger: {
+            scroller: scroller ? scroller : null,
+            trigger: cloud1,
+            scrub: true,
+            // end: `${screen1.getBoundingClientRect().height} bottom`
+        }   
+    })
+        .to(cloud1, { xPercent: -35, yPercent: 20 })
+        .fromTo('.screen8 .img-left', { y: 75 }, { y: -75 }, '<')
+    !isMobile && gsap.timeline({
         scrollTrigger: {
             scroller: scroller ? scroller : null,
             trigger: screen1,
@@ -22,7 +37,7 @@ export default function screen8(scroller) {
     .to(render, { y: 250, transformOrigin: '100% 100%' }, '<');
 
 
-    gsap.timeline({
+    !isMobile && gsap.timeline({
         scrollTrigger: {
             scroller: scroller ? scroller : null,
             trigger: cloud1,
@@ -30,7 +45,7 @@ export default function screen8(scroller) {
         }   
     })
         .to(cloud1, { xPercent: -35, yPercent: 20 })
-    gsap.timeline({
+    !isMobile && gsap.timeline({
         scrollTrigger: {
             scroller: scroller ? scroller : null,
             trigger: screen1,
@@ -44,7 +59,7 @@ export default function screen8(scroller) {
     .to('.screen7__head-block, .screen7__faded-title', { autoAlpha: 0, y: 50, }, '<');
 
 
-    gsap.timeline({
+    !isMobile && gsap.timeline({
         scrollTrigger: {
             scroller: scroller ? scroller : null,
             trigger: '.screen8 .img-left',

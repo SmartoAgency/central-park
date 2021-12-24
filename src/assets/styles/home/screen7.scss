@@ -9,6 +9,10 @@
     --side-blocks-w: 40.2vw;
     --side-blocks-h: 39vh;
     --gutter: 70px;
+    @include to(575px){
+        // height: 350vh;
+        display: block;
+    }
     @include to(992px){
         --gutter: 18px;
         --side-blocks-w: 60.2vw;
@@ -36,7 +40,8 @@
         flex-wrap: wrap;
         width: 100%;
         @include to(575px){
-            height: 80vh;
+            height: 65vh;
+            overflow: hidden;
             // align-content: flex-start;
         }
         // margin-left: -7.5vw;
@@ -98,6 +103,9 @@
         }
         .screen7-title {
             margin-bottom: 40px;
+            @include to(575px){
+                margin-bottom: 15px;
+            }
         }
     }
     &__left-block {
