@@ -41,7 +41,7 @@
     color: var(--color-beige);
     &>svg {
         height: 100%;
-        width: auto;
+        // width: auto;
         margin-right: auto;
     }
     a {
@@ -272,3 +272,13 @@
 	  color: var(--color-milk);
 	}
   }
+
+.header-logo {
+	width: 222px;
+	@include to(1920px){
+		width: 194px;
+	}
+	@include to(575px){
+		width: 130px;
+	}
+}

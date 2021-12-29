@@ -38,7 +38,7 @@ export default function screen1(scroller) {
         )
     .to(
         textBlock.querySelectorAll('.main-screen__text>*:first-child'), 
-        { yPercent: 100, duration: isMobile ? 1 : 0.05},
+        { yPercent: isMobile ? 100 : 0, duration: isMobile ? 1 : 0.05},
         '<'
         )
     .to(cloud1, { xPercent: -30, yPercent: 5, }, '<')

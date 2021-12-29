@@ -7,17 +7,20 @@ let loaderStatus = {
 function scaleTo1(el) {
     const path = el;
     let value = 1;
+    const finishVal = +el.dataset.finishVal || 0;
     function render(value) {
-        path.style.transform = `scaleY(${value})`;
+        
         if (value <= 0.15) {
-            el.parentElement.classList.add('transformed');
+            // el.parentElement.classList.add('transformed');
 
         }
-        if(value <= 0.025) {
+        if(value <= finishVal) {
+            document.querySelector('.loader').classList.add('hidden');
             // document.querySelector('.loader>svg').style.opacity = 0;
             loaderStatus.isCounterAnim = false;
             return;
         };
+        path.style.transform = `scaleY(${value})`;
         const newValue = value - 0.01;
         requestAnimationFrame(() => {
             render(newValue);
@@ -44,7 +47,8 @@ function digitLoader() {
             render(newValue);
         })
     }
-    document.querySelector('.loader__lines').classList.remove('gradient');
+    // document.querySelector('.loader__lines').classList.remove('gradient');
+    
     linesTo0();
     render(value);
 }
@@ -59,7 +63,7 @@ function linesTo0() {
 
 let interval = setInterval(() => {
     if (loaderStatus.isCounterAnim === false && loaderStatus.isDOMLoaded === true) {
-        document.querySelector('.loader').classList.add('hidden');
+        
         window.dispatchEvent(new Event('preloaderOff'))
         clearInterval(interval);
     }
