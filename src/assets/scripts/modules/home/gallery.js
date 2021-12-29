@@ -90,7 +90,7 @@ export default function galleryEffect(scroller) {
             ...transitionBetweenSectionSceneLength(),
         }
     })
-    .to('.genplan__text, .genplan__img', { y: -100, autoAlpha: 0 })
+    .to('.genplan__text, .genplan__img', { y: -100, autoAlpha: isMobile ? 0.5 : 0 })
     .from('.screen7__content', { y: isMobile ? 50 : 200, autoAlpha: 0 }, '<')
     .from('.screen7 .title-h2', { y: isMobile ? 50 : 200, autoAlpha: 0 },'<')
 }

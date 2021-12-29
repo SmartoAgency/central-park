@@ -2,6 +2,7 @@ import gsap from 'gsap/all';
 import Swiper, { Navigation } from 'swiper';
 import { transitionBetweenSectionSceneLength } from '../../modules/helpers/helpers';
 export default function screen3Effects(scroller) {
+    const isMobile = window.matchMedia('(max-width: 575px)').matches;
     const swiper = new Swiper('.zoom-slider-wrapper', {
         // Optional parameters
     modules: [ Navigation],
@@ -46,6 +47,6 @@ export default function screen3Effects(scroller) {
       ...transitionBetweenSectionSceneLength(),
     }
   })
-    .from('.screen3>*:not(.section-decor)', { scale: 1, autoAlpha: 0, y: 75, clearProps: 'transform' })
-    .to('.screen2>*:not(.section-decor)', { autoAlpha: 0, y: -75 }, '<')
+    .from('.screen3>*:not(.section-decor)', { scale: 1, autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : 75, clearProps: 'transform' })
+    .to('.screen2>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: -75 }, '<')
 }

@@ -269,7 +269,7 @@ function homeInit() {
       scrub: true,
     }
   })
-    .to('.screen10>*', { y: -75, autoAlpha: 0 })
+    .to('.screen10>*', { y: isMobile() ? -20 : -75, autoAlpha:  isMobile() ? 0.5 : 0 })
     .fromTo('.screen11>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
 }
 
