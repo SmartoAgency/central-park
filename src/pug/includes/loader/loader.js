@@ -35,8 +35,7 @@ function digitLoader() {
     function render(value) {
         if (value >= 101) {
             
-            document.querySelector('.loader__lines').classList.remove('gradient');
-            linesTo0();
+            
             return;
         };
         let newValue = value + 1;
@@ -45,6 +44,8 @@ function digitLoader() {
             render(newValue);
         })
     }
+    document.querySelector('.loader__lines').classList.remove('gradient');
+    linesTo0();
     render(value);
 }
 digitLoader();

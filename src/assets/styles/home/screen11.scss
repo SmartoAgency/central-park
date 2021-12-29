@@ -46,15 +46,15 @@
         }
     }
     .link-l {
-        font-size: 64px;
+        font-size: 54px;
         @include to(1680px){
-            font-size: 48px;
+            font-size: 38px;
         }
         @include to(992px){
-            font-size: 36px;
+            font-size: 28px;
         }
         @include to(575px){
-            font-size: 30px;
+            font-size: 24px;
         }
         line-height: 100%;
         color: #E5CDB7;

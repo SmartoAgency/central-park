@@ -13,6 +13,7 @@
     }
     @include to(575px){
         height: auto;
+        --top-offset: calc(45px + var(--header-h));
     }
     &__render {
         position: absolute;
@@ -48,6 +49,7 @@
         }
         @include to(575px){
             width: 85%;
+            height: 15em;
             margin-left: 0;
             margin-right: 0;
 
@@ -84,7 +86,7 @@
         width: 100%;
         object-fit: contain;
         @include to(575px){
-            top: 50%;
+            top: 40%;
             height: auto;
         }
     }
