@@ -15,6 +15,7 @@ export default function galleryEffect(scroller) {
         centerText = gallery.querySelector('.screen7__head-block-text');
         ;
     
+    const sideImagesScaleValue = 1.7;
     const centerRatio = innerWidth*0.95 / center.getBoundingClientRect().width;
     // const imgScaleRatio = 
     !isMobile && gsap.timeline({
@@ -39,7 +40,21 @@ export default function galleryEffect(scroller) {
      }, transformOrigin: '50% 100%' })
      .to(center, { scale: centerRatio, transformOrigin: '50% 100%' }, '<')
     .to(left, { xPercent: -51, ease: 'linear' },'<')
-    .to(left.querySelectorAll('img'), { scale: 1.3, transformOrigin: '100% 50%', ease: 'linear' },'<')
+    .to(
+        left.querySelectorAll('img'), 
+        { scale: sideImagesScaleValue, transformOrigin: '100% 50%', ease: 'linear' },
+        '<'
+    )
+    .to(
+        right.querySelectorAll('img:first-child'), 
+        { scale: sideImagesScaleValue, transformOrigin: '0% 100%', ease: 'linear' },
+        '<'
+    )
+    .to(
+        right.querySelectorAll('img:last-child'), 
+        { scale: sideImagesScaleValue, transformOrigin: '0% 0%', ease: 'linear' },
+        '<'
+    )
     .to(right, { xPercent: 51, ease: 'linear' }, '<')
     .fromTo(fadedTitle, { autoAlpha: 0, y: 150 },{ autoAlpha: 1, y: 0, duration: 0.2 }, '<+0.5')
     // .to(right, { xPercent: 100, duration: 0.5 }, )

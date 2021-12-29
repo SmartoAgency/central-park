@@ -403,7 +403,7 @@
     position: relative;
     height: 350vh;
     &__inner {
-        padding-top: 15vh;
+        padding-top: 20vh;
         padding-bottom: 20vh;
         padding-left: var(--page-side-fields);
         height: 100vh;
@@ -431,10 +431,10 @@
 }
 .screen5-hor-block {
     display: flex;
-    height: calc(100vh - 35vh - 12.6vh);
+    height: calc(100vh - 30vh - 12.6vh);
     height: 100%;
     @include from-to(576px, 1024px){
-        height: calc(100vh - 35vh - 50px);
+        height: calc(100vh - 30vh - 50px);
         height: 100%;
     }
     &__item:nth-child(n+2) {
