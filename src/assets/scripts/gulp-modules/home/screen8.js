@@ -1,4 +1,5 @@
 import gsap from "gsap/all";
+import { transitionBetweenSectionSceneLength } from "../../modules/helpers/helpers";
 
 export default function screen8(scroller) {
     const  screen1 = document.querySelector('.screen8');
@@ -50,8 +51,9 @@ export default function screen8(scroller) {
             scroller: scroller ? scroller : null,
             trigger: screen1,
             scrub: true,
-            start: `${innerHeight / -4} center`,
-            end: `${innerHeight / 4} center`
+            // start: `${innerHeight / -4} center`,
+            // end: `${innerHeight / 4} center`
+            ...transitionBetweenSectionSceneLength(),
             // end: `${screen1.getBoundingClientRect().height} bottom`
         }   
     })
@@ -65,7 +67,7 @@ export default function screen8(scroller) {
             trigger: '.screen8 .img-left',
             scrub: true,
             onEnter: () => {
-                console.log('fff');
+                // console.log('fff');
             }
         }
     })

@@ -218,3 +218,17 @@ export const debounce = (func, timeout = 300) => {
     timer = setTimeout(() => { func.apply(this, args); }, timeout);
   };
 }
+
+export const transitionBetweenSectionSceneLength = () => {
+  const isMobile = window.matchMedia('(max-width: 575px)').matches;
+  if (isMobile) {
+    return {
+      start: `${innerHeight / -2} center`,
+      end: `${innerHeight / 2} center`
+    }
+  }
+  return {
+    start: `${innerHeight / -4} center`,
+    end: `${innerHeight / 4} center`
+  }
+}

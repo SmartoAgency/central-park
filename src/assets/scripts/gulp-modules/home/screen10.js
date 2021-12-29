@@ -1,5 +1,6 @@
 import gsap from "gsap/all";
 import Swiper, {FreeMode } from 'swiper';
+import { transitionBetweenSectionSceneLength } from "../../modules/helpers/helpers";
 
 export default function screen10(scroller) {
   const isMobile = () => window.matchMedia('(max-width: 1024px)').matches;
@@ -52,8 +53,9 @@ export default function screen10(scroller) {
   gsap.timeline({
     scrollTrigger: {
       trigger: '.screen10',
-      start: `${innerHeight / -4} center`,
-      end: `${innerHeight / 4} center`,
+      // start: `${innerHeight / -4} center`,
+      // end: `${innerHeight / 4} center`,
+      ...transitionBetweenSectionSceneLength(),
       scroller: scroller ? scroller : null,
       scrub: true,
     }

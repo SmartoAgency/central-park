@@ -18,6 +18,7 @@ import screen9Handler from './home/screen9';
 import screen1 from './home/screen1';
 import screen8 from './home/screen8';
 import ztext from '../modules/ztext/ztext';
+import { transitionBetweenSectionSceneLength } from '../modules/helpers/helpers';
 
 
 
@@ -99,9 +100,8 @@ function homeInit() {
       trigger: '.screen2',
       scroller: $scroller,
       scrub: true,
-
-      start: `${innerHeight / -4} center`,
-      end: `${innerHeight / 4} center`
+      // markers: true,
+      ...transitionBetweenSectionSceneLength(),
     }
   })
     .from('.screen2>*', { y: 100, autoAlpha: 0})
@@ -258,12 +258,13 @@ function homeInit() {
       selector: el,
     });
   });
-
+  
   gsap.timeline({
     scrollTrigger: {
       trigger: '.screen11',
-      start: `${innerHeight / -4} center`,
-      end: `${innerHeight / 4} center`,
+      // start: `${innerHeight / -4} center`,
+      // end: `${innerHeight / 4} center`,
+      ...transitionBetweenSectionSceneLength(),
       scroller: $scroller ? $scroller : null,
       scrub: true,
     }

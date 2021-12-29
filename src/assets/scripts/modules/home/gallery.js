@@ -1,4 +1,5 @@
 import {gsap, ScrollTrigger} from 'gsap/all';
+import { transitionBetweenSectionSceneLength } from '../helpers/helpers';
 export default function galleryEffect(scroller) {
     const isMobile = window.matchMedia('(max-width: 1024px)').matches;
     const isTablet = window.matchMedia('(max-width: 1024px) and (min-width: 576px)').matches;
@@ -64,11 +65,12 @@ export default function galleryEffect(scroller) {
     gsap.timeline({
         scrollTrigger: {
             trigger: gallery,
-            end: `${innerHeight / 5}`,
+            // end: `${innerHeight / 5}`,
             scroller: scroller ? scroller : null,
             scrub: true,
-            start: `${innerHeight / -4} center`,
-            end: `${innerHeight / 4} center`
+            // start: `${innerHeight / -4} center`,
+            // end: `${innerHeight / 4} center`
+            ...transitionBetweenSectionSceneLength(),
         }
     })
     .to('.genplan__text, .genplan__img', { y: -100, autoAlpha: 0 })

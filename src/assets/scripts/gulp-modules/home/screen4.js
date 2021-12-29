@@ -1,4 +1,5 @@
 import {gsap, ScrollTrigger} from "gsap/all";
+import { transitionBetweenSectionSceneLength } from "../../modules/helpers/helpers";
 const videoChangeStateEvent = new CustomEvent('toggle');
 export default function screen4(scroller) {
     const isMobile = window.matchMedia('(max-width: 575px)').matches;
@@ -64,8 +65,7 @@ export default function screen4(scroller) {
           trigger: '.screen4',
           scrub: true,
           scroller: scroller ? scroller : null,
-          start: `${innerHeight / -4} center`,
-          end: `${innerHeight / 4} center`
+          ...transitionBetweenSectionSceneLength(),
         }
       })
         .from('.screen4>*:not(.section-decor)', { autoAlpha: 0, y: 100, clearProps: 'transform' })

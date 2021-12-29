@@ -1,4 +1,5 @@
 import splitToLinesAndFadeUp from "../../modules/effects/splitToLinesAndFadeUp";
+import { transitionBetweenSectionSceneLength } from "../../modules/helpers/helpers";
 import ztext from "../../modules/ztext/ztext";
 
 export default function screen5(scroller) {
@@ -10,8 +11,9 @@ export default function screen5(scroller) {
         trigger: '.screen5',
         scrub: true,
         scroller: scroller ? scroller : null,
-        start: `${innerHeight / -4} center`,
-        end: `${innerHeight / 4} center`,
+        // start: `${innerHeight / -4} center`,
+        // end: `${innerHeight / 4} center`,
+        ...transitionBetweenSectionSceneLength(),
         // onUpdate: ({ progress }) => console.log(progress)
       //   markers: true
       }

@@ -1,5 +1,6 @@
 import gsap from 'gsap/all';
 import Swiper, { Navigation } from 'swiper';
+import { transitionBetweenSectionSceneLength } from '../../modules/helpers/helpers';
 export default function screen3Effects(scroller) {
     const swiper = new Swiper('.zoom-slider-wrapper', {
         // Optional parameters
@@ -40,9 +41,9 @@ export default function screen3Effects(scroller) {
     scrollTrigger: {
       trigger: '.screen3',
       scrub: true,
+      // markers: true,
       scroller: scroller ? scroller : null,
-      start: `${innerHeight / -4} center`,
-      end: `${innerHeight / 4} center`
+      ...transitionBetweenSectionSceneLength(),
     }
   })
     .from('.screen3>*:not(.section-decor)', { scale: 1, autoAlpha: 0, y: 75, clearProps: 'transform' })
