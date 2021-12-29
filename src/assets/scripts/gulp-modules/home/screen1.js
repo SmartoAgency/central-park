@@ -17,13 +17,14 @@ export default function screen1(scroller) {
         textBlock.append(wrapper);
     })
     // screen1.append(wrap)
+    const innerHeight = window.innerHeight;
     gsap.timeline({
         scrollTrigger: {
             scroller: scroller ? scroller : null,
             trigger: screen1,
             scrub: true,
-            start: `${innerHeight} bottom`,
-            // end: `${screen1.getBoundingClientRect().height} bottom`
+            start: isMobile ? `${innerHeight}px bottom` :`${innerHeight} bottom`,
+            end: isMobile ? `${innerHeight}px top` : null,
         }   
     })
     .to(

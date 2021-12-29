@@ -306,10 +306,10 @@
         position: absolute;
         left: 50%;
         top: 0;
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateZ(1px);
         width: var(--logo-w);
         height: var(--logo-h);
-        z-index: 2;
+        z-index: 10;
     }
     &__wrap {
         overflow: hidden;
@@ -405,6 +405,7 @@
     &__inner {
         padding-top: 20vh;
         padding-bottom: 20vh;
+
         padding-left: var(--page-side-fields);
         height: 100vh;
     }
