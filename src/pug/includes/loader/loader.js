@@ -18,6 +18,7 @@ function scaleTo1(el) {
             document.querySelector('.loader').classList.add('hidden');
             // document.querySelector('.loader>svg').style.opacity = 0;
             loaderStatus.isCounterAnim = false;
+            path.style.transform = `scaleY(${finishVal})`;
             return;
         };
         path.style.transform = `scaleY(${value})`;
