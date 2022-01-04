@@ -23,7 +23,7 @@ export default function screen1(scroller) {
             scroller: scroller ? scroller : null,
             trigger: screen1,
             scrub: true,
-            start: isMobile ? `${innerHeight}px bottom` :`${innerHeight} bottom`,
+            start: isMobile ? `0px top` :`${innerHeight} bottom`,
             end: isMobile ? `${innerHeight}px top` : null,
         }   
     })
