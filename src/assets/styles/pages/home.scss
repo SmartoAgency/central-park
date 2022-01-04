@@ -402,25 +402,33 @@
     background-color: var(--color-black);
     position: relative;
     height: 350vh;
+    --v-padding: 140px;
     &__inner {
-        padding-top: 20vh;
-        padding-bottom: 20vh;
+        // padding-top: 5vh;
+        // padding-bottom: 5vh;
 
         padding-left: var(--page-side-fields);
         height: 100vh;
+        padding-top: var(--v-padding);
+        padding-bottom: var(--v-padding);
+        @include from(1681px){
+            --v-padding: 100px;
+        }
+        @include to(1680px){
+            --v-padding: 70px;
+        }
+        @include to(1024px){
+            --v-padding: 70px;  
+        }
+        // height: calc(100vh - 260px);
     }
     .title-h2 {
         margin-left: auto;
         text-align: left;
-        padding-top: 210px;
+        padding-bottom: var(--v-padding);
         // padding-bottom: 12.6vh;
-        padding-left: var(--page-side-fields);
-        @include to(1680px){
-            padding-top: 140px;
-        }
-        @include to(1024px){
-            padding-top: 100px;   
-        }
+        // padding-left: var(--page-side-fields);
+        
         @include to(992px){
          margin-bottom: 0px;   
         }
@@ -434,6 +442,7 @@
     display: flex;
     height: calc(100vh - 30vh - 12.6vh);
     height: 100%;
+    height: calc(100% - (var(--v-padding) * 2));
     @include from-to(576px, 1024px){
         height: calc(100vh - 30vh - 50px);
         height: 100%;
@@ -504,6 +513,9 @@
                 max-width: 85%;
             }
             @include from(1025px){
+                font-size: 18px;
+            }
+            @include from(1920px){
                 font-size: 24px;
             }
         }

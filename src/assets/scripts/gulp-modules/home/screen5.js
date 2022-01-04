@@ -4,7 +4,8 @@ import ztext from "../../modules/ztext/ztext";
 
 export default function screen5(scroller) {
     const innerHorizontalItems = gsap.utils.toArray('.screen5-hor-block__item:nth-child(n+2)');
-    const screen5TopBlockHeight = document.querySelector('.screen5__inner-top').getBoundingClientRect().height;
+    // const screen5TopBlockHeight = document.querySelector('.screen5__inner-top').getBoundingClientRect().height;
+    const screen5TopBlockHeight = 0;
 
     gsap.timeline({
       scrollTrigger: {
@@ -18,7 +19,7 @@ export default function screen5(scroller) {
       //   markers: true
       }
     })
-      .from('.screen5 .title-h2', { yPercent: 100, autoAlpha: 0, })
+      // .from('.screen5 .title-h2', { yPercent: 100, autoAlpha: 0, })
       .from('.screen5-hor-block', { yPercent: 10, autoAlpha: 0.5, }, '<')
     gsap.timeline({
       scrollTrigger: {
@@ -47,7 +48,7 @@ export default function screen5(scroller) {
         //   markers: true
         }
       })
-      .fromTo('.screen5 .title-h2',  { yPercent: 0, autoAlpha: 1 }, { yPercent: -100, autoAlpha: 0, duration: 0.1 })
+      // .fromTo('.screen5 .title-h2',  { yPercent: 0, autoAlpha: 1 }, { yPercent: -100, autoAlpha: 0, duration: 0.1 })
       .to('.screen5-hor-block', { x: (el, target) => {
         const horBlocksItems = document.querySelectorAll('.screen5-hor-block__item');
         
