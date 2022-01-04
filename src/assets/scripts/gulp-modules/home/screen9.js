@@ -29,7 +29,7 @@ export default function screen9Handler(scroller) {
         counterNext = container.querySelector('[data-all]');
     const iframeWrap = container.querySelector('[data-vr-frame]');
     const svgBg = container.querySelectorAll('[data-screen9-bg] path');
-    const frameOtherEls = iframeWrap.querySelectorAll('.screen9__center-button');
+    const frameOtherEls = iframeWrap.querySelectorAll('.screen9__center-button, .subtitle.text-white');
     iframeWrap.addEventListener('click', function changeSrc() {
         gsap.to(frameOtherEls, { y: 50, autoAlpha: 0, clearProps: 'transform' })
         frame.src = frame.dataset.src;
