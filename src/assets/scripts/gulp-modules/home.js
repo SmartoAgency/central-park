@@ -286,8 +286,19 @@ function homeInit() {
       }
       function windowScrollUp(){
         window.scrollTo(0,0);
-        
       }
+      ScrollTrigger.create({
+        trigger: '.screen3',
+        start: 'bottom bottom',
+        end: 'bottom bottom',
+        scroller: $scroller ? $scroller : null,
+        onEnter: () => {
+          gsap.to(arrow, { autoAlpha: 1 })
+        },
+        onLeaveBack: () => {
+          gsap.to(arrow, { autoAlpha: 0 })
+        },
+      })
 
   }
 }

@@ -284,6 +284,7 @@
 }
 [data-up-arrow] {
 	position: fixed;
+	@include autoAlpha(0);
 	--size: 60px;
 	right: var(--page-side-fields);
 	bottom: var(--page-side-fields);
