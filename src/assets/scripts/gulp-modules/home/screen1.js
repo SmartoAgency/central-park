@@ -24,12 +24,12 @@ export default function screen1(scroller) {
             trigger: screen1,
             scrub: true,
             start: isMobile ? `0px top` :`${innerHeight} bottom`,
-            end: isMobile ? `${innerHeight}px top` : null,
+            end: isMobile ? `${innerHeight * 0.5}px top` : null,
         }   
     })
     .to(
         textBlock.querySelectorAll('[style*="overflow"]>*'), 
-        { yPercent: 100, duration: isMobile ? 1 : 0.1, autoAlpha: 0 },
+        { yPercent:  isMobile ? 0 : 100, duration: isMobile ? 1 : 0.1, autoAlpha: 0 },
         
         )
     .to(
@@ -39,7 +39,7 @@ export default function screen1(scroller) {
         )
     .to(
         textBlock.querySelectorAll('.main-screen__text>*:first-child'), 
-        { yPercent: isMobile ? 100 : 0, duration: isMobile ? 1 : 0.05},
+        { yPercent: isMobile ? 0 : 0, duration: isMobile ? 1 : 0.05},
         '<'
         )
     .to(cloud1, { xPercent: -30, yPercent: 5, }, '<')

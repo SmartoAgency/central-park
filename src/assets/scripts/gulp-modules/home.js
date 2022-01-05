@@ -46,7 +46,7 @@ function homePreloaderEffect() {
           y: 0,
           clearProps: 'all'
       }, '<')
-      .fromTo('.main-screen__text>button', { autoAlpha: 0 }, { autoAlpha: 1 }, '<')
+      .fromTo('.main-screen__text>button', { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.5, }, '<')
       // .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
   }
 window.addEventListener('preloaderOff',function(evt){
@@ -270,6 +270,25 @@ function homeInit() {
     }
   })
     .to('.screen10>*', { y: isMobile() ? -20 : -75, autoAlpha:  isMobile() ? 0.5 : 0 })
-    .fromTo('.screen11>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
+    .fromTo('.screen11>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<');
+
+  document.querySelectorAll('[data-up-arrow]').forEach(handleUpArrow);
+  function handleUpArrow(arrow) {
+    const isTablet = window.matchMedia('(max-width: 1024px)').matches;
+
+      arrow.addEventListener('click', () => {
+        isTablet ? windowScrollUp() : locoScrollUp();
+      });
+      function locoScrollUp() {
+        if (window.scroller !== undefined) {
+          window.scroller.scrollTo("top");
+        }
+      }
+      function windowScrollUp(){
+        window.scrollTo(0,0);
+        
+      }
+
+  }
 }
 

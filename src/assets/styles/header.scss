@@ -282,3 +282,15 @@
 		width: 130px;
 	}
 }
+[data-up-arrow] {
+	position: fixed;
+	--size: 60px;
+	right: var(--page-side-fields);
+	bottom: var(--page-side-fields);
+	width: var(--size);
+	height: var(--size);
+	z-index:10;
+	@include to(575px){
+		--size: 40px;
+	}
+}
