@@ -64,22 +64,22 @@ export default function galleryEffect(scroller) {
             trigger: gallery,
             scroller: scroller ? scroller : null,
             scrub: true,
-            start: `${innerHeight * 0.15} bottom`, 
-            end: `${innerHeight} bottom`, 
+            start: `0 bottom`, 
+            end: `${innerHeight * 1.5} bottom`, 
         }
     })
     .to(centerImg, {  scale: () => {
         if (isTablet) return 1.5;
         return isMobile ? centerRatio * 2 : centerRatio * 1.45;
-    }, transformOrigin: '50% 100%' })
+    }})
     .to(center, { scale: centerRatio, transformOrigin: '50% 100%' }, '<')
    //  .to(centerText, { scale: center.getBoundingClientRect().width / innerWidth, autoAlpha: 1, duration: 0.25 }, '<')
    // .to(centerImg, { scale: 1.3 }, '<')
     .to(left, { xPercent: -51, ease: 'linear' },'<')
     .to(right, { xPercent: 51, ease: 'linear' }, '<')
-    .fromTo(fadedTitle, { autoAlpha: 0, y: 150 },{ autoAlpha: 1, y: 0, duration: 1 }, '<+0.5')
+    .fromTo(fadedTitle, { autoAlpha: 0, y: 150 },{ autoAlpha: 1, y: 0 }, '<')
 
-    gsap.timeline({
+    !isMobile && gsap.timeline({
         scrollTrigger: {
             trigger: gallery,
             // end: `${innerHeight / 5}`,

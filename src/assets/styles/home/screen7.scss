@@ -80,6 +80,9 @@
         img {
             height: 100%;
             object-fit: cover;
+            @include to(575px) {
+                transform-origin: bottom center;
+            }
         }
     }
     &__faded-title {
@@ -103,6 +106,7 @@
         }
         @include to(575px){
             width: 90vw;
+            top: 65vh;
         }
         .screen7-title {
             margin-bottom: 40px;

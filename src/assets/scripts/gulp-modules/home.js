@@ -28,9 +28,10 @@ import { transitionBetweenSectionSceneLength } from '../modules/helpers/helpers'
 
 window.addEventListener('load',homeInit);
 function homePreloaderEffect() {
+    const isMobile = window.matchMedia('(max-width:575px)').matches;
     return gsap.timeline({ paused: true, defaults: {
       ease: 'power4.out', 
-      duration: 3,
+      duration: isMobile ? 1.5 : 3,
       clearProps: 'all'
 
     } })
