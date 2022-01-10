@@ -109,7 +109,7 @@
         .curtain-wrap {
             margin-bottom: 30px;
             position: relative;
-            height: calc(1.4em * 10);
+            height: calc(1.4em * 17);
             overflow: hidden;
             
         }
@@ -120,9 +120,9 @@
             display: -moz-box;
             -moz-box-orient: vertical;
             display: -webkit-box;
-            -webkit-line-clamp: 10;
+            -webkit-line-clamp: 17;
             -webkit-box-orient: vertical;
-            line-clamp: 10;
+            line-clamp: 17;
             box-orient: vertical;
             @include from-to(576px, 992px){
                 width: 35%;
