@@ -64,7 +64,7 @@ export default function galleryEffect(scroller) {
             trigger: gallery,
             scroller: scroller ? scroller : null,
             scrub: true,
-            start: `${innerHeight * 0.45} bottom`, 
+            start: `${innerHeight * 0.15} bottom`, 
             end: `${innerHeight} bottom`, 
         }
     })

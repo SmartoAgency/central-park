@@ -23,8 +23,8 @@ export default function screen1(scroller) {
             scroller: scroller ? scroller : null,
             trigger: screen1,
             scrub: true,
-            start: isMobile ? `0px top` :`${innerHeight} bottom`,
-            end: isMobile ? `${innerHeight * 0.5}px top` : null,
+            start: isMobile ? `0 top` :`${innerHeight} bottom`,
+            end: isMobile ? `${innerHeight} 10%` : null,
         }   
     })
     .to(
@@ -42,8 +42,8 @@ export default function screen1(scroller) {
         { yPercent: isMobile ? 0 : 0, duration: isMobile ? 1 : 0.05},
         '<'
         )
-    .to(cloud1, { xPercent: -30, yPercent: 5, }, '<')
-    .to(render, { scale: isMobile ? 1 : 1.1, yPercent: 15, ease: 'linear', transformOrigin: '100% 100%' }, '<')
+    .to(cloud1, { xPercent: -30, duration: 1, yPercent: 5, }, '<')
+    .to(render, { scale: isMobile ? 1 : 1.1, duration: 1, yPercent: 15, ease: 'linear', transformOrigin: '100% 100%' }, '<')
 
 }
 
