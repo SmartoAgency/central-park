@@ -149,6 +149,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        cursor: pointer;
         @include size(12);
         @include shift-left(1);
         @include shift-right(0);
@@ -188,10 +189,19 @@
         position: relative;
         z-index: 4;
         margin: auto;
+        cursor: pointer;
         
         @include to(1680px){
             width: 106px;
             height: 106px;
+        }
+        path {
+            transition: .3s ease-in-out;
+        }
+        @include from(1025px) {
+            &:hover path {
+                fill: var(--color-black);
+            }
         }
     }
     &__title-l {

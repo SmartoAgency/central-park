@@ -21,15 +21,18 @@ export default function screen9Handler(scroller) {
     const container = document.querySelector('.screen9');
     if (container === null) return;
     let currentIndex = 0;
+    
     const frame = container.querySelector('iframe'),
-        textBlock = container.querySelector('.screen9__right p'),
-        navNext = container.querySelector('[data-nav-wrap] svg:nth-child(2)'),
-        navPrev = container.querySelector('[data-nav-wrap] svg:nth-child(1)'),
-        counterCurrent = container.querySelector('[data-current]'),
-        counterNext = container.querySelector('[data-all]');
+    textBlock = container.querySelector('.screen9__right p'),
+    navNext = container.querySelector('[data-nav-wrap] svg:nth-child(2)'),
+    navPrev = container.querySelector('[data-nav-wrap] svg:nth-child(1)'),
+    counterCurrent = container.querySelector('[data-current]'),
+    counterNext = container.querySelector('[data-all]');
     const iframeWrap = container.querySelector('[data-vr-frame]');
     const svgBg = container.querySelectorAll('[data-screen9-bg] path');
     const frameOtherEls = iframeWrap.querySelectorAll('.screen9__center-button, .subtitle.text-white');
+    const frameBgs = frame.dataset.backgrounds.split('~');
+    console.log(frameBgs);
     iframeWrap.addEventListener('click', function changeSrc() {
         gsap.to(frameOtherEls, { y: 50, autoAlpha: 0, clearProps: 'transform' })
         frame.src = frame.dataset.src;
@@ -43,6 +46,7 @@ export default function screen9Handler(scroller) {
             let nextIndex = currentIndex === testData.length - 1 ? 0 : currentIndex + 1;
             textBlock.innerHTML = testData[nextIndex];
             frame.dataset.src = testSrc[nextIndex];
+            frame.style.backgroundImage = `url(${frameBgs[nextIndex]})`;
             frame.src = '';
             gsap.to(frameOtherEls, { y: 0, autoAlpha: 1, clearProps: 'transform' })
             if (counterCurrent) counterCurrent.textContent = nextIndex + 1;
@@ -53,8 +57,9 @@ export default function screen9Handler(scroller) {
         scaleDownAndUp(svgBg);
         curtainOpenCloseWithCallback(container.querySelectorAll('.curtain'), () => {
             let nextIndex = currentIndex === 0  ? testData.length - 1 : currentIndex - 1;
-            textBlock.textContent = testData[nextIndex];
+            textBlock.innerHTML = testData[nextIndex];
             frame.dataset.src = testSrc[nextIndex];
+            frame.style.backgroundImage = `url(${frameBgs[nextIndex]})`;
             frame.src = '';
             gsap.to(frameOtherEls, { y: 0, autoAlpha: 1, clearProps: 'transform' })
             if (counterCurrent) counterCurrent.textContent = nextIndex + 1;
