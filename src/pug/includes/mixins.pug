@@ -54,10 +54,11 @@ mixin InnerPageFront(title, breadcrumbs, img)
 		- 
 			var imageInLogoSrc = img;
 		include ../components/inner-front/image-in-logo.pug
-		h1.inner-front__title #{title}
+		h1.inner-front__title
+			div #{title}
 		include ./breadcrumbs.pug
 		include ../components/inner-front/bottom-decor-big.svg
-		<svg class="inner-front__small-bottom-decor" width="31" height="60" viewBox="0 0 31 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg preserveAspectRatio="xMinYMin meet" class="inner-front__small-bottom-decor" width="31" height="60" viewBox="0 0 31 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 5H0V55H6V5Z" fill="#E5CDB7"/>
 			<path d="M14 0H8V60H14V0Z" fill="#E5CDB7"/>
 			<path d="M23 0H16V60H23V0Z" fill="#E5CDB7"/>

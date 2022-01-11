@@ -6,6 +6,7 @@
 
     &__title {
         margin-bottom: 176px;
+        overflow: hidden;
         @extend .title;
         color: var(--color-white);
         font-size: 100px;
@@ -23,16 +24,18 @@
     }
     &__small-bottom-decor {
         position: absolute;
+        --gap: 150px;
         left: 50%;
-        bottom: 0;
+        bottom: calc(var(--gap) / -2);
         transform: translate(-50%, 50%);
         width: 31px;
-        height: 60px;
+        height: calc(60px + var(--gap));
     }
     &__image-in-logo {
         --self-w: 40vw;
         position: absolute;
-        left: 50%;
+        left: calc(50% - (var(--self-w) / 2));
+        width: var(--self-w);
         top: 0;
         z-index: -1;
 
@@ -41,5 +44,6 @@
         margin: auto;
         width: max-content;
         transform: translateY(200%);
+        overflow: hidden;
     }
 }
