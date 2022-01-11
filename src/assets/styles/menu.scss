@@ -9,10 +9,22 @@
     z-index: 49;
     --v-padding: 50px;
     &__top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        // display: flex;
+        // align-items: center;
+        // justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         padding: var(--v-padding) var(--page-side-fields);
+        &>:nth-child(1) {
+            justify-self: left;
+        }
+        &>:nth-child(2) {
+            justify-self: center;
+            align-self: center;
+        }
+        &>:nth-child(3) {
+            justify-self: right;
+        }
     }
     &__main {
         display: flex;
@@ -77,6 +89,15 @@
         [data-circle-with-hover]:hover path {
             stroke: var(--color-beige);
         }
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: -0.03em;
+        color: var(--color-beige);
+        text-transform: uppercase;
     }
     .tiles {
         position: absolute;
