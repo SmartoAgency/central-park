@@ -91,6 +91,7 @@
     "cleave.js": "^1.6.0",
     "gsap": "^3.9.0",
     "i18next": "^19.8.4",
+    "imagesloaded": "^4.1.4",
     "intl-tel-input": "^17.0.12",
     "jquery": "^3.2.1",
     "locomotive-scroll": "^4.1.3",
