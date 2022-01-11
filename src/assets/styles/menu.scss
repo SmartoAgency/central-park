@@ -27,6 +27,10 @@
     z-index: 49;
     @include autoAlpha(0);
     --v-padding: 50px;
+    @include to(575px){
+        --v-padding: 25px;
+
+    }
     &__top {
         // display: flex;
         // align-items: center;
@@ -54,6 +58,9 @@
         height: 100%;
         &>:nth-child(n) {
             margin-bottom: 50px;
+            @include to(1024px){
+                margin-bottom: 25px;
+            }
         }
         a {
                 position: relative;
@@ -67,7 +74,13 @@
             color: var(--color-white);
             white-space: nowrap;
             @include to(1680px) {
-                    font-size: 64px;
+                font-size: 64px;
+            }
+            @include to(1024px){
+                font-size: 48px;
+            }
+            @include to(575px){
+                font-size: 24px;
             }
         }
         [data-menu-links] {
@@ -125,8 +138,12 @@
         left: var(--page-side-fields);
         display: flex;
         flex-direction: column;
+        z-index: 3;
         :nth-last-child(n+2) {
             margin-bottom: 15px;
+            @include to(575px){
+                margin-bottom: 10px;
+            }
         }
         a {
             font-weight: 600;
@@ -139,6 +156,9 @@
             color: var(--color-beige);
             text-decoration: none;
             display: flex;
+            @include to(575px){
+                font-size: 14px;
+            }
         }
     }
     &__close {
@@ -149,6 +169,12 @@
         cursor: pointer;
         span {
             margin-right: 15px;
+        }
+        @include to(575px){
+            svg {
+                width: 40px;
+                height: 40px;
+            }
         }
     }
     [data-circle-with-hover] path {
@@ -167,6 +193,9 @@
         letter-spacing: -0.03em;
         color: var(--color-beige);
         text-transform: uppercase;
+    }
+    .menu-logo {
+        height: auto;
     }
     .tiles {
         position: absolute;

@@ -33,6 +33,9 @@ body {
 	@include to(1680px){
 		font-size: 14px;
 	}
+	&.popup-opened {
+		overflow: hidden;
+	}
 }
 .page__inner {
 	width: 100%;
