@@ -1,0 +1,82 @@
+.menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    background-color: var(--color-black);
+    z-index: 49;
+    --v-padding: 50px;
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--v-padding) var(--page-side-fields);
+    }
+    &__main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow-y: auto;
+        height: 100%;
+        :nth-child(n) {
+            margin-bottom: 50px;
+        }
+        a {
+            font-size: 100px;
+            line-height: 100%;
+            /* identical to box height, or 90px */
+            text-align: center;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--color-white);
+            white-space: nowrap;
+            @include to(1680px) {
+                    font-size: 64px;
+            }
+        }
+    }
+    &__side {
+        position: absolute;
+        bottom: var(--v-padding);
+        left: var(--page-side-fields);
+        display: flex;
+        flex-direction: column;
+        :nth-last-child(n+2) {
+            margin-bottom: 15px;
+        }
+        a {
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 100%;
+            /* identical to box height, or 24px */
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            /* Светлый */
+            color: var(--color-beige);
+            text-decoration: none;
+        }
+    }
+    &__close {
+        color: var(--color-beige);
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        cursor: pointer;
+        span {
+            margin-right: 15px;
+        }
+    }
+    [data-circle-with-hover] path {
+        stroke: var(--color-black);
+    }
+    @include from(1025px){
+        [data-circle-with-hover]:hover path {
+            stroke: var(--color-beige);
+        }
+    }
+    
+}
