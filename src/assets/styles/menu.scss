@@ -46,16 +46,17 @@
         }
     }
     &__main {
-        display: flex;
+        // display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         overflow-y: auto;
         height: 100%;
-        :nth-child(n) {
+        &>:nth-child(n) {
             margin-bottom: 50px;
         }
         a {
+                position: relative;
             font-size: 100px;
             line-height: 100%;
             /* identical to box height, or 90px */
@@ -67,6 +68,54 @@
             white-space: nowrap;
             @include to(1680px) {
                     font-size: 64px;
+            }
+        }
+        [data-menu-links] {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // height: 1em;
+        }
+    }
+    &__links-hover {
+        position: relative;
+        line-height: 100%;
+        
+        
+        @include from(1025px){
+            color: transparent;
+            &:after {
+                content: attr(data-text);
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                color: green;
+                transition: .3s ease-in-out;
+                transform: translateY(-100%);
+                color: var(--color-beige);
+                line-height: 110%;
+                opacity: 0;
+            }
+            &:before {
+                content: attr(data-text);
+                position: absolute;
+                color: var(--color-white);
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                line-height: 110%;
+                transition: .3s ease-in-out;
+            }
+            &:hover:before {
+                transform: translateY(110%);
+            }
+            &:hover:after {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     }
@@ -82,13 +131,14 @@
         a {
             font-weight: 600;
             font-size: 24px;
-            line-height: 100%;
+            line-height: 1em;
             /* identical to box height, or 24px */
             letter-spacing: -0.03em;
             text-transform: uppercase;
             /* Светлый */
             color: var(--color-beige);
             text-decoration: none;
+            display: flex;
         }
     }
     &__close {

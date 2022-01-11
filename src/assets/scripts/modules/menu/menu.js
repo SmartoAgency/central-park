@@ -18,9 +18,16 @@ const morphs = [
     'M 0 0 Q 4 4 8 0 L 8 0 Q 4 0 0 0',
     'M 0 0 Q 4 0 8 0 L 8 0 Q 4 0 0 0',
 ];
+const morphsReversed = [
+    'M 0 0 Q 4 0 8 0 L 8 0 Q 4 0 0 0',
+    'M 0 0 Q 4 4 8 0 L 8 0 Q 4 0 0 0',
+    'M 0 8 Q 4 8 8 8 L 8 0 Q 4 0 0 0',
+    'M 0 8 Q 4 8 8 8 L 8 8 Q 4 6 0 8',
+    'M 0 8 Q 4 8 8 8 L 8 8 Q 4 8 0 8',
+];
 
 function openMenu(button, menu) {
-    const menuLinks = menu.querySelectorAll('.menu__main a');
+    const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
     button.addEventListener('click',function(evt){
         gsap.timeline({
             duration: 2.5
@@ -29,12 +36,12 @@ function openMenu(button, menu) {
             .to(menu, { autoAlpha: 1, duration: 0.25 }, '<+1.5')
             .fromTo(menuLinks, 
                 { y: 50, autoAlpha: 0, }, 
-                { y: 0, autoAlpha: 1, clearProps: 'all', duration: 1.25, stagger: 0.15 }, 
+                { y: 0, autoAlpha: 1, clearProps: 'all', duration: 1.25 }, 
                 '<')
     });
 }
 function closeMenu(button, menu) {
-    const menuLinks = menu.querySelectorAll('.menu__main a');
+    const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
     button.addEventListener('click',function(evt){
         gsap.timeline({
             duration: 2.5
@@ -43,7 +50,7 @@ function closeMenu(button, menu) {
         .to(menu, { autoAlpha: 0, duration: 0.25 }, '<+1.5')
         .fromTo(menuLinks, 
             { y: 0, autoAlpha: 1, }, 
-            { y: 50, autoAlpha: 0, duration: 0.75, stagger: 0.15 }, 
+            { y: 50, autoAlpha: 0, duration: 0.75 }, 
             '<-1')
     });
 }
@@ -56,7 +63,8 @@ function enableCurtainFromBottom() {
         tl.to('.menu-curtain path', { 
             attr:  {  d  },
             ease: 'none',
-            duration: 0.5
+            duration: 0.5,
+            clearProps: 'all'
         
         })
     })
@@ -67,13 +75,14 @@ function enableCurtainFromTop() {
         // ease: 'power2.out',
         // duration: 2.5
     });
-    morphs.reverse().forEach(d => {
+    morphsReversed.forEach(d => {
         tl.to('.menu-curtain path', { 
             attr:  {  d  },
             ease: 'none',
-            duration: 0.5
+            duration: 0.5,
+            clearProps: 'all'
         
         })
     })
-    return tl;
+    return tl.timeScale(0.85);
 }
