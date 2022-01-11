@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import FormMonster from '../../pug/components/form/form';
 import SexyInput from '../../pug/components/input/input';
 import { isMobile, lazyImages, lazyPosters } from './modules/helpers/helpers';
+import menuHandler from './modules/menu/menu';
 
 /** ******************************* */
 /*
@@ -140,3 +141,5 @@ function mobPopupHandler() {
 }
 
 mobPopupHandler();
+
+menuHandler();

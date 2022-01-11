@@ -13,6 +13,10 @@
         'Новини / Акції',
         'Контакти',
     ];
+.menu-curtain
+    <svg viewBox="0 0 8 8" preserveAspectRatio="xMidYMid slice">
+        <path d="M 0 8 Q 4 8 8 8 L 8 8 Q 4 8 0 8">
+    </svg>
 .menu
     .tiles
         .tiles__line
@@ -65,7 +69,7 @@
             <path d="M118.407 46.5228H113.102L112.001 49.0186H111L115.304 39.6343H116.305L120.609 49.0186H119.508L118.407 46.5228ZM118.006 45.7241L115.704 40.6326L113.402 45.7241H118.006Z" fill="white"/>
             </svg>
         .menu__title Меню 
-        .menu__close(data-circle-with-hover)
+        .menu__close(data-circle-with-hover data-menu-close)
             span закрити
             <svg data-circle-with-hover width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle data-circle-with-hover-default cx="30" cy="30" r="30" style="fill:#E5CDB7" />
