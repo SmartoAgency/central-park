@@ -1,0 +1,45 @@
+.inner-front {
+    padding-top: 250px;
+    background-color: var(--color-black);
+    position: relative;
+    z-index: 2;
+
+    &__title {
+        margin-bottom: 176px;
+        @extend .title;
+        color: var(--color-white);
+        font-size: 100px;
+        line-height: 100%;
+        font-weight: 300;
+        /* identical to box height, or 90px */
+
+        text-align: center;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+    }
+    &__bottom-decor {
+        width: 100%;
+        height: auto;
+    }
+    &__small-bottom-decor {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+        width: 31px;
+        height: 60px;
+    }
+    &__image-in-logo {
+        --self-w: 40vw;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        z-index: -1;
+
+    }
+    .breadcrumbs {
+        margin: auto;
+        width: max-content;
+        transform: translateY(200%);
+    }
+}
