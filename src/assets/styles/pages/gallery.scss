@@ -7,3 +7,35 @@
 [data-info-item-anim-img] {
     display: none;
 }
+
+.gallery-switcher {
+    position: fixed;
+    left: 0;
+    top: 0;
+    &__arrow {
+        transform-origin: center;
+        transition: .3s ease-in-out;
+    }
+    &__nav {
+        transform-origin: center;
+        transform-box: fill-box;
+        transition: .3s ease-in-out;
+    }
+    &[data-side="leftSide"] &__arrow {
+        transform: rotate(-180deg);
+    }
+    &[data-side="leftSide"] &__nav {
+        
+        transform: translateX(100%);
+    }
+    text {
+        font-size: 18px;
+        line-height: 90%;
+        /* or 16px */
+        display: flex;
+        align-items: flex-end;
+        text-align: right;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+    }
+}

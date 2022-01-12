@@ -2,8 +2,9 @@ import innerPageFrontEffect from "../modules/inner-pages/inner-page-front-effect
 import * as THREE from 'three';
 import { TweenLite  } from "gsap/all";
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
-
+// import sideSwitchArrow from '../'
 import imagesLoaded from 'imagesLoaded';
+import sideSwitchArrow from "../modules/side-switch-arrow";
 console.log('f');
 
 
@@ -80,17 +81,18 @@ const displacementSlider = function(opts) {
     parent.appendChild( renderer.domElement );
 
     let loader = new THREE.TextureLoader();
-    loader.crossOrigin = "anonymous";
+    loader.crossOrigin = "anonymous";
 
     images.forEach( ( img ) => {
-
-        image = loader.load( img.getAttribute( 'data-hover-image' ));
+        console.log(img.dataset);
+        image = loader.load( img.getAttribute( 'data-info-item-anim-img' ));
+        console.log(img.getAttribute( 'data-hover-image' ));
         image.magFilter = image.minFilter = THREE.LinearFilter;
         image.anisotropy = renderer.capabilities.getMaxAnisotropy();
         sliderImages.push( image );
 
     });
-
+    console.log(sliderImages);
     let scene = new THREE.Scene();
     scene.background = new THREE.Color( 0x23272A );
     let camera = new THREE.OrthographicCamera(
@@ -130,7 +132,7 @@ const displacementSlider = function(opts) {
         let pagButtons = Array.from(document.querySelectorAll('[data-info-item-anim]'));
         let isAnimating = false;
 
-        pagButtons.forEach( (el) => {
+        pagButtons.forEach( (el, index) => {
 
             el.addEventListener('click', function() {
 
@@ -141,12 +143,13 @@ const displacementSlider = function(opts) {
                     document.querySelectorAll('.active')[0].className = '';
                     this.className = 'active';
 
-                    let slideId = parseInt( this.dataset.slide, 10 );
+                    // let slideId = parseInt( this.dataset.slide, 10 );
+                    let slideId = index;
 
                     mat.uniforms.nextImage.value = sliderImages[slideId];
                     mat.uniforms.nextImage.needsUpdate = true;
 
-                    TweenLite.to( mat.uniforms.dispFactor, 1, {
+                    TweenLite.to( mat.uniforms.dispFactor, 1.5, {
                         value: 1,
                         ease: 'Expo.easeInOut',
                         onComplete: function () {
@@ -162,44 +165,44 @@ const displacementSlider = function(opts) {
                     // let nextSlideTitle = document.querySelectorAll(`[data-slide-title="${slideId}"]`)[0].innerHTML;
                     // let nextSlideStatus = document.querySelectorAll(`[data-slide-status="${slideId}"]`)[0].innerHTML;
 
-                    TweenLite.fromTo( slideTitleEl, 0.5,
-                        {
-                            autoAlpha: 1,
-                            y: 0
-                        },
-                        {
-                            autoAlpha: 0,
-                            y: 20,
-                            ease: 'Expo.easeIn',
-                            onComplete: function () {
-                                // slideTitleEl.innerHTML = nextSlideTitle;
+                    // TweenLite.fromTo( slideTitleEl, 0.5,
+                    //     {
+                    //         autoAlpha: 1,
+                    //         y: 0
+                    //     },
+                    //     {
+                    //         autoAlpha: 0,
+                    //         y: 20,
+                    //         ease: 'Expo.easeIn',
+                    //         onComplete: function () {
+                    //             // slideTitleEl.innerHTML = nextSlideTitle;
 
-                                // TweenLite.to( slideTitleEl, 0.5, {
-                                //     autoAlpha: 1,
-                                //     y: 0,
-                                // })
-                            }
-                        });
+                    //             // TweenLite.to( slideTitleEl, 0.5, {
+                    //             //     autoAlpha: 1,
+                    //             //     y: 0,
+                    //             // })
+                    //         }
+                    //     });
 
-                    TweenLite.fromTo( slideStatusEl, 0.5,
-                        {
-                            autoAlpha: 1,
-                            y: 0
-                        },
-                        {
-                            autoAlpha: 0,
-                            y: 20,
-                            ease: 'Expo.easeIn',
-                            onComplete: function () {
-                                // slideStatusEl.innerHTML = nextSlideStatus;
+                    // TweenLite.fromTo( slideStatusEl, 0.5,
+                    //     {
+                    //         autoAlpha: 1,
+                    //         y: 0
+                    //     },
+                    //     {
+                    //         autoAlpha: 0,
+                    //         y: 20,
+                    //         ease: 'Expo.easeIn',
+                    //         onComplete: function () {
+                    //             // slideStatusEl.innerHTML = nextSlideStatus;
 
-                                // TweenLite.to( slideStatusEl, 0.5, {
-                                //     autoAlpha: 1,
-                                //     y: 0,
-                                //     delay: 0.1,
-                                // })
-                            }
-                        });
+                    //             // TweenLite.to( slideStatusEl, 0.5, {
+                    //             //     autoAlpha: 1,
+                    //             //     y: 0,
+                    //             //     delay: 0.1,
+                    //             // })
+                    //         }
+                    //     });
 
                 }
 
@@ -229,12 +232,31 @@ window.addEventListener('load',function(evt){
   
 });
 
-imagesLoaded( document.querySelectorAll('img') , () => {
-  document.body.classList.remove('loading');
+
 const el = document.querySelector('.scroller-container');
+const paginations = document.querySelectorAll('[data-info-item-anim]');
+paginations[0].__proto__.click = function() {
+    this.dispatchEvent(new Event('click'));
+}
 const imgs = Array.from(el.querySelectorAll('[data-info-item-anim-img]'));
 new displacementSlider({
     parent: document.querySelector('.front-block__canvas-wrap'),
     images: imgs
 });
-})
+
+let currentIndex = 0;
+sideSwitchArrow(
+{
+        onNext: () => {
+            currentIndex = currentIndex === imgs.length - 1 ? 0 : currentIndex + 1;
+            paginations[currentIndex].click();
+        },
+        onPrev: () => {
+            currentIndex = currentIndex === 0 ? imgs.length - 1 : currentIndex - 1;
+            paginations[currentIndex].click();
+            console.log('prev');
+        }
+    },
+document.querySelector('[data-gallery-switcher]'),
+document.querySelector('.front-block__canvas-wrap'),
+)
