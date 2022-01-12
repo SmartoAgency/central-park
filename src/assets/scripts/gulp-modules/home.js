@@ -96,7 +96,7 @@ function homeInit() {
   paralax('.img-center img', $scroller);
 
   /**Screen2 effects */
-  gsap.timeline({
+  !isMobile() && gsap.timeline({
     scrollTrigger: {
       trigger: '.screen2',
       scroller: $scroller,
@@ -260,7 +260,7 @@ function homeInit() {
     });
   });
   
-  gsap.timeline({
+  !isMobile() && gsap.timeline({
     scrollTrigger: {
       trigger: '.screen11',
       // start: `${innerHeight / -4} center`,

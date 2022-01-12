@@ -6,8 +6,8 @@ export default function screen5(scroller) {
     const innerHorizontalItems = gsap.utils.toArray('.screen5-hor-block__item:nth-child(n+2)');
     // const screen5TopBlockHeight = document.querySelector('.screen5__inner-top').getBoundingClientRect().height;
     const screen5TopBlockHeight = 0;
-
-    gsap.timeline({
+    const isMobile = window.matchMedia('(max-width: 575px)').matches;
+    !isMobile && gsap.timeline({
       scrollTrigger: {
         trigger: '.screen5',
         scrub: true,
@@ -21,7 +21,7 @@ export default function screen5(scroller) {
     })
       // .from('.screen5 .title-h2', { yPercent: 100, autoAlpha: 0, })
       .from('.screen5-hor-block', { yPercent: 10, autoAlpha: 0.5, }, '<')
-    gsap.timeline({
+    !isMobile && gsap.timeline({
       scrollTrigger: {
         trigger: '.screen6',
         scrub: true,

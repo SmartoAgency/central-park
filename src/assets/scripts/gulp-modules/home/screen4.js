@@ -60,7 +60,7 @@ export default function screen4(scroller) {
         })
       });
 
-      gsap.timeline({
+      !isMobile && gsap.timeline({
         scrollTrigger: {
           trigger: '.screen4',
           scrub: true,

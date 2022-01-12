@@ -50,7 +50,7 @@ export default function screen10(scroller) {
         yPercent: 0 
       })
   const innerHeight = window.innerHeight;
-  gsap.timeline({
+  !isMobile() && gsap.timeline({
     scrollTrigger: {
       trigger: '.screen10',
       // start: `${innerHeight / -4} center`,

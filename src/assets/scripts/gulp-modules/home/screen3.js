@@ -38,7 +38,7 @@ export default function screen3Effects(scroller) {
   swiper.on('touchEnd', () => {
     document.querySelector('.zoom-slider-wrapper').classList.remove('drag')
   });
-  gsap.timeline({
+  !isMobile && gsap.timeline({
     scrollTrigger: {
       trigger: '.screen3',
       scrub: true,

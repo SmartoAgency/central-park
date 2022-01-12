@@ -21,7 +21,7 @@ export default function screen9Handler(scroller) {
     const container = document.querySelector('.screen9');
     if (container === null) return;
     let currentIndex = 0;
-    
+    const isMobile = window.matchMedia('(max-width: 575px)').matches;
     const frame = container.querySelector('iframe'),
     textBlock = container.querySelector('.screen9__right p'),
     navNext = container.querySelector('[data-nav-wrap] svg:nth-child(2)'),
@@ -67,7 +67,7 @@ export default function screen9Handler(scroller) {
         })
     })
 
-    gsap.timeline({
+    !isMobile && gsap.timeline({
         scrollTrigger: {
           trigger: '.screen9',
           scrub: true,

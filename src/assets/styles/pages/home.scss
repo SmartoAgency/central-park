@@ -401,12 +401,15 @@
     
     background-color: var(--color-black);
     position: relative;
-    height: 350vh;
     --v-padding: 140px;
+    height: 350vh;
+    @include to(575px){
+        height: 700vh;
+    }
     &__inner {
         // padding-top: 5vh;
         // padding-bottom: 5vh;
-
+        
         padding-left: var(--page-side-fields);
         height: 100vh;
         padding-top: var(--v-padding);
@@ -420,7 +423,7 @@
         @include to(1024px){
             --v-padding: 70px;  
         }
-        // height: calc(100vh - 260px);
+       // height: calc(100vh - 260px);
     }
     .title-h2 {
         margin-left: auto;
@@ -728,3 +731,4 @@
     background-color: rgba(255,255,255,1);
     z-index: -1;
 }
+
