@@ -15,7 +15,6 @@ window.addEventListener('load',function(evt){
   window.scroller = scroller;
 });
 const displacementSlider = function(opts) {
-
     let vertex = `
         varying vec2 vUv;
         void main() {
@@ -156,6 +155,7 @@ const displacementSlider = function(opts) {
                             mat.uniforms.currentImage.value = sliderImages[slideId];
                             mat.uniforms.currentImage.needsUpdate = true;
                             mat.uniforms.dispFactor.value = 0.0;
+                            window.dispatchEvent(new Event('gallery-switch-complete'))
                             isAnimating = false;
                         }
                     });
@@ -227,12 +227,6 @@ const displacementSlider = function(opts) {
 };
 
 
-
-window.addEventListener('load',function(evt){
-  
-});
-
-
 const el = document.querySelector('.scroller-container');
 const paginations = document.querySelectorAll('[data-info-item-anim]');
 paginations[0].__proto__.click = function() {
@@ -243,20 +237,39 @@ new displacementSlider({
     parent: document.querySelector('.front-block__canvas-wrap'),
     images: imgs
 });
-
+const currentNavDisplay = document.querySelector('[data-gallery-switcher] text:first-child');
+const allNavDisplay = document.querySelector('[data-gallery-switcher] text:last-child');
 let currentIndex = 0;
+const galleryCanvasWrap = document.querySelector('.front-block__canvas-wrap');
+allNavDisplay.textContent = imgs.length;
+
+function addZeroPrefix(index) {
+    return index < 10 ? '0'+index.toString() : index;
+}
+let isAnimatingGallery = false;
+
 sideSwitchArrow(
 {
         onNext: () => {
+            if (isAnimatingGallery) return;
+            isAnimatingGallery = true;
             currentIndex = currentIndex === imgs.length - 1 ? 0 : currentIndex + 1;
+            currentNavDisplay.textContent = addZeroPrefix(currentIndex + 1);
             paginations[currentIndex].click();
         },
         onPrev: () => {
+            if (isAnimatingGallery) return;
+            isAnimatingGallery = true;
             currentIndex = currentIndex === 0 ? imgs.length - 1 : currentIndex - 1;
+            currentNavDisplay.textContent = addZeroPrefix(currentIndex + 1);
             paginations[currentIndex].click();
             console.log('prev');
         }
     },
-document.querySelector('[data-gallery-switcher]'),
-document.querySelector('.front-block__canvas-wrap'),
-)
+    document.querySelector('[data-gallery-switcher]'),
+    galleryCanvasWrap,
+    );
+    
+    window.addEventListener('gallery-switch-complete',function(evt){
+        isAnimatingGallery = false;
+});

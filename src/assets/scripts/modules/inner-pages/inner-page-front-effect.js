@@ -34,9 +34,9 @@ export default function innerPageFrontEffect() {
             }, 
             '<'
         )
-    window.addEventListener('click',function(evt){
-        tl.progress(0).play();
-    });
+    // window.addEventListener('click',function(evt){
+    //     tl.progress(0).play();
+    // });
     window.addEventListener('preloaderOff',function(evt){
         tl.progress(0).play();
     });

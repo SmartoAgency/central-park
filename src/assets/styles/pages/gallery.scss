@@ -3,7 +3,7 @@
     height: 100vh;
 }
 
-
+[data-info-item-anim],
 [data-info-item-anim-img] {
     display: none;
 }
@@ -12,6 +12,7 @@
     position: fixed;
     left: 0;
     top: 0;
+    opacity: 0;
     &__arrow {
         transform-origin: center;
         transition: .3s ease-in-out;
@@ -26,16 +27,20 @@
     }
     &[data-side="leftSide"] &__nav {
         
-        transform: translateX(100%);
+        transform: translateX(75%);
     }
     text {
         font-size: 18px;
-        line-height: 90%;
+        line-height: 100%;
         /* or 16px */
         display: flex;
         align-items: flex-end;
         text-align: right;
         letter-spacing: -0.03em;
         text-transform: uppercase;
+    }
+
+    text:last-child:before {
+        content: '/';
     }
 }
