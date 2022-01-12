@@ -5,14 +5,16 @@ import locoScroll from '../modules/smooth-scrolls/locoScroll';
 // import sideSwitchArrow from '../'
 import imagesLoaded from 'imagesLoaded';
 import sideSwitchArrow from "../modules/side-switch-arrow";
+import { handleHeader } from "../modules/helpers/helpers";
 console.log('f');
 
 
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){
       const scroller = locoScroll('.scroller-container');
-  scroller.update();
-  window.scroller = scroller;
+    scroller.update();
+    handleHeader(scroller);
+    window.scroller = scroller;
 });
 const displacementSlider = function(opts) {
     let vertex = `
