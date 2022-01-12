@@ -8,6 +8,7 @@
 .single-news-container {
     background-color: var(--color-black);
     padding-top: 100px;
+    padding-bottom: 100px;
     padding-left: var(--page-side-fields);
     padding-right: var(--page-side-fields);
     @include row-flex();
@@ -18,18 +19,45 @@
         margin-top: 70px;
         margin-bottom: 70px;
     }
-    p {
+    p, ul {
         font-size: 18px;
         line-height: 160%;
         /* or 29px */
         color: #A49B93;
         margin-top: 30px;
         margin-bottom: 30px;
-        @include size(12);
+        // @include size(12);
         @include shift(6);
+        @include to(1024px){
+            @include shift(2);
+        }
+        @include to(575px){
+            @include shift(0);
+        }
         
     }
-    h2,h3,h4,h5, h6, ul {
+    li {
+        padding-left: 30px;
+        margin-bottom: 20px;
+        position: relative;
+        &:before {
+            content: '/';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+    a, button {
+        @include shift-left(6);
+        @include to(1024px){
+            @include shift-left(2);
+        }
+        @include to(575px){
+            @include shift-left(0);
+        }
+
+    }
+    h2,h3,h4,h5, h6 {
         font-size: 30px;
         line-height: 140%;
         margin-top: 30px;
@@ -37,8 +65,15 @@
         /* or 42px */
         /* Светлый */
         color: var(--color-beige);
-        @include size(12);
+        // @include size(12);
         @include shift(6);
+        @include to(1024px){
+            @include shift(2);
+        }
+        @include to(575px){
+            @include shift(0);
+        }
+
     }
 
 }
