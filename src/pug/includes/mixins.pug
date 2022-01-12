@@ -49,8 +49,8 @@ mixin RangeSlider(options)
 				input(id=option.id+"_min" class="js_"+option.id+"_min js-current-min" name=option.id+"_min" maxlength=option.max type="number" min=option.min value=option.min max=option.max)
 				input(id=option.id+"_max" class="js_"+option.id+"_max js-current-max" name=option.id+"_max" maxlength=option.max type="number" min=option.min value=option.max max=option.max)
 
-mixin InnerPageFront(title, breadcrumbs, img)
-	.inner-front
+mixin InnerPageFront(title, breadcrumbs, img, customClass)
+	.inner-front(class=customClass)
 		- 
 			var imageInLogoSrc = img;
 		include ../components/inner-front/image-in-logo.pug

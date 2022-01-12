@@ -1,0 +1,33 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Група «Еталон» з гордістю представляє масштабний проект у центрі Вінниці'
+    var id_page = 'id-page-single-news'
+    var class_page = 'class-page-single-news'
+    var breadcrumbsSubitem = [
+      {
+        label: 'Новини',
+        link: 'news.html'
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/index-app.bundle.js')
+  script(defer src='./assets/scripts/single-news.bundle.js')
+block content
+    +InnerPageFront(title_page, 'some', './assets/images/gallery/front.jpg', 'single-news')
+    .single-news-container
+      .single-news-container__content
+        h2 Яким буде Київ через 10 років? За версією нашої компанії, він буде найкомфортнішим містом у світі. Саме такий BHAG ми собі поставили та до якого впевнено рухаємося з кожним новим проєктом.
+        p Про те, що вже зараз ми змінюємо обличчя Києва та створюємо проєкти майбутнього, говорить і редакція НВ. У новому номері вона разом з архітекторами, забудовниками та урбаністами склала рейтинг 10 знакових об’єктів столиці та включила до нього відразу два проєкти, які ми реалізуємо спільно з партнерами Perfect Group і Kyivproekt Development — Новий Поділ та KYЇVPROEKT City Space.
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

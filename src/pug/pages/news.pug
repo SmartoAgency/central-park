@@ -52,7 +52,7 @@ block content
   +InnerPageFront(title_page, 'some', './assets/images/gallery/front.jpg')
   .news
     each val in cardsData
-      a(href="#").news-card
+      a(href="single-news.html").news-card
         .news-card__img
           img(src="./assets/images/test-news.jpg")
         .news-card__title #{val.title}
