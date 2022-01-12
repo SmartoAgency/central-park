@@ -6,7 +6,7 @@ import FormMonster from '../../pug/components/form/form';
 import SexyInput from '../../pug/components/input/input';
 import { isMobile, lazyImages, lazyPosters } from './modules/helpers/helpers';
 import menuHandler from './modules/menu/menu';
-
+import buttonHover from './modules/effects/buttonHover';
 /** ******************************* */
 /*
  * smooth scroll start
@@ -23,6 +23,7 @@ global.axios = axios;
  */
 lazyImages();
 lazyPosters();
+buttonHover('.button');
 const formsWithTel = ['[data-home-contact]'];
 
 formsWithTel.forEach(form => {

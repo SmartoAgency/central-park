@@ -4,8 +4,7 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 import paralax from '../modules/effects/paralax';
 import paralaxNoCurtains from '../modules/effects/paralaxNoCurtain';
 import fadeInUp from '../modules/effects/fadeInUp'; 
-import splitToLinesAndFadeUp from '../modules/effects/splitToLinesAndFadeUp'; 
-import buttonHover from '../modules/effects/buttonHover';
+import splitToLinesAndFadeUp from '../modules/effects/splitToLinesAndFadeUp';
 import galleryEffect from '../modules/home/gallery';
 import screen3Effects from './home/screen3';
 import screen4 from './home/screen4';
@@ -123,7 +122,7 @@ function homeInit() {
   // fadeInUp('.screen11__group, .screen11 .title-h2', $scroller);
   splitToLinesAndFadeUp('.main-screen .title', $scroller);
   splitToLinesAndFadeUp('.title-h2', $scroller);
-  buttonHover('.button');
+
 
 
 
