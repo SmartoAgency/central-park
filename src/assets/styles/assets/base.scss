@@ -15,7 +15,11 @@
 }
 
 .container {
-	@include wrapper();
+	// @include wrapper();
+	@include row-flex();
+	background-color: var(--color-black);
+	padding-left: var(--page-side-fields);
+	padding-right: var(--page-side-fields);
 }
 
 html {
