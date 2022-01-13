@@ -1,6 +1,23 @@
 import innerPageFrontEffect from "../modules/inner-pages/inner-page-front-effect";
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader } from "../modules/helpers/helpers";
+import Swiper, { Navigation } from 'swiper';
+
+
+var swiper = new Swiper(".swiper", {
+    modules: [ Navigation],
+    slidesPerView: "auto",
+    spaceBetween: 100,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+        nextEl: document.querySelector('.status-wrap [data-next]'),
+        prevEl: document.querySelector('.status-wrap [data-prev]'),
+    },
+    roundLengths: true,
+  });
 
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){

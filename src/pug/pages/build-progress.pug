@@ -23,6 +23,7 @@ block meta
 block head
     link(rel='stylesheet', href="./assets/styles/main.min.css")
 block scripts
+  script(defer src='./assets/scripts/index-app.bundle.js')
   script(defer src='./assets/scripts/build-progress.bundle.js')
 block content
   +InnerPageFront(title_page, 'some', './assets/images/build-progress/front.jpg')
@@ -36,22 +37,29 @@ block content
       
     .status-wrap
       .text-beige.build-progress-subtitle Готовність будівництва будинків:
-      <svg data-circle-with-hover width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle data-circle-with-hover-default cx="40" cy="40" r="40" style="fill:#E5CDB7;"/>
-        <circle data-circle-with-hover-hover cx="40" cy="40" r="40" style="fill:#4A4647;"/>
-        <path d="M35.1896 32C33.7584 34.1224 28.3358 40 27 40M27 40C28.3517 40 33.5994 45.4694 35.1896 48M27 40L53 40" style="stroke:#23242B" />
-        </svg>
-      <svg data-circle-with-hover width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle data-circle-with-hover-default cx="40" cy="40" r="40" style="fill:#E5CDB7;"/>
-        <circle data-circle-with-hover-hover cx="40" cy="40" r="40" style="fill:#4A4647;"/>
-        <path d="M44.8104 32C46.2416 34.1224 51.6642 40 53 40M53 40C51.6483 40 46.4006 45.4694 44.8104 48M53 40L27 40" style="stroke:#23242B"/>
-        </svg>
-      each val in buildingStatuses
-        .single-build-status
-          svg(width='250' height='250' viewbox='0 0 250 250' fill='none' xmlns='http://www.w3.org/2000/svg')
-            path(data-build-arc=val.value d='M62.5 16.7468C36.2369 31.9099 16.3817 56.1035 6.63372 84.8201C-3.11426 113.537 -2.09021 144.818 9.51506 172.835C21.1203 200.853 42.5153 223.696 69.7139 237.109C96.9125 250.522 128.06 253.59 157.352 245.741C186.645 237.892 212.085 219.661 228.934 194.446C245.782 169.231 252.889 138.751 248.931 108.684C244.972 78.6176 230.219 51.0154 207.418 31.02C184.618 11.0247 155.326 -6.78952e-06 125 -5.46392e-06L125 125L62.5 16.7468Z' fill='#4A4647')
-          .single-build-status__value #{val.value}%
-          .single-build-status__subtitle #{val.title}
+      .slider-wrapper
+        .swiper-nav
+          <svg data-prev data-circle-with-hover width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle data-circle-with-hover-default cx="40" cy="40" r="40" style="fill:#E5CDB7;"/>
+            <circle data-circle-with-hover-hover cx="40" cy="40" r="40" style="fill:#4A4647;"/>
+            <path d="M35.1896 32C33.7584 34.1224 28.3358 40 27 40M27 40C28.3517 40 33.5994 45.4694 35.1896 48M27 40L53 40" style="stroke:#23242B" />
+            </svg>
+          <svg data-next data-circle-with-hover width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle data-circle-with-hover-default cx="40" cy="40" r="40" style="fill:#E5CDB7;"/>
+            <circle data-circle-with-hover-hover cx="40" cy="40" r="40" style="fill:#4A4647;"/>
+            <path d="M44.8104 32C46.2416 34.1224 51.6642 40 53 40M53 40C51.6483 40 46.4006 45.4694 44.8104 48M53 40L27 40" style="stroke:#23242B"/>
+            </svg>
+        .swiper
+          .swiper-wrapper
+            each val in buildingStatuses
+              .single-build-status.swiper-slide
+                svg(width='250' height='250' viewbox='0 0 250 250' fill='none' xmlns='http://www.w3.org/2000/svg')
+                  path(data-build-arc=val.value d='M62.5 16.7468C36.2369 31.9099 16.3817 56.1035 6.63372 84.8201C-3.11426 113.537 -2.09021 144.818 9.51506 172.835C21.1203 200.853 42.5153 223.696 69.7139 237.109C96.9125 250.522 128.06 253.59 157.352 245.741C186.645 237.892 212.085 219.661 228.934 194.446C245.782 169.231 252.889 138.751 248.931 108.684C244.972 78.6176 230.219 51.0154 207.418 31.02C184.618 11.0247 155.326 -6.78952e-06 125 -5.46392e-06L125 125L62.5 16.7468Z' fill='#4A4647')
+                .single-build-status__value #{val.value}%
+                .single-build-status__subtitle #{val.title}
+      button.button.with-hover 
+        .button__hover
+        span Показати більше
 block footer
   include ../includes/footer.pug
 

@@ -1,4 +1,5 @@
 .build-progress-conteiner {
+    align-items: flex-start;
     .build-card {
         width: 50%;
     }
@@ -56,12 +57,53 @@
 .status-wrap {
     margin-top: 150px;
     margin-bottom: 150px;
+    width: 100%;
+
+
+    .swiper {
+        width: 100%;
+    }
+    .swiper-slide {
+        width: 250px;
+        height: 250px;
+    }
     .build-progress-subtitle {
         margin-bottom: 85px;
+        text-align: center;
+    }
+    .swiper {
+        @include shift-padding-left(2);
+        position: relative;
+    }
+    .swiper:after {
+        content: '';
+        position: absolute;
+        right: calc(var(--page-side-fields) * -1);
+        top: 0;
+        height: 100%;
+        width: 40%;
+        background: linear-gradient(90deg, #23242B 0%, rgba(35, 36, 43, 0) 100%);
+        z-index: 5;
+        
+    }
+    .slider-wrapper {
+        position: relative;
+    }
+    .swiper-nav {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%;
+        height: auto;
+        z-index: 25;
+        display: flex;
+        align-items: center;justify-content: space-between;
     }
 }
 
 .build-card {
+    cursor: pointer;
     border: 1px solid #4A4647;
     --v-padding: 30px;
     --h-padding: 50px;
