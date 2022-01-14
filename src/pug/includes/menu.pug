@@ -1,17 +1,17 @@
 - 
     var menu = [
-        'Головна',
-        'Обрати квартиру',
-        'Коммерційна нерухомість',
-        'Про проєкт',
-        'Переваги',
-        'Інфраструктура',
-        'Характеристики',
-        'Веб камера',
-        'Галерея',
-        'Будівництво',
-        'Новини / Акції',
-        'Контакти',
+        ['Головна', '#'],
+        ['Обрати квартиру', '3d'],
+        ['Коммерційна нерухомість', '#'],
+        ['Про проєкт', '#'],
+        ['Переваги', '#'],
+        ['Інфраструктура', 'infrastructure'],
+        ['Характеристики', '#'],
+        ['Веб камера', 'web-camera'],
+        ['Галерея', 'gallery'],
+        ['Будівництво', 'build-progress'],
+        ['Новини / Акції', 'news'],
+        ['Контакти', '#'],
     ];
 .menu-curtain
     <svg viewBox="0 0 8 8" preserveAspectRatio="xMidYMid slice">
@@ -83,5 +83,5 @@
             span Замовити дзвінок 
     .menu__main
         each val in menu
-            a(href="#" data-menu-links) 
-                span(class="menu__links-hover" data-text=val) #{val}
+            a(href=val[1] data-menu-links) 
+                span(class="menu__links-hover" data-text=val[0]) #{val[0]}

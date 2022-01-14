@@ -1,0 +1,96 @@
+.infra-text-block {
+    @include row-flex();
+    width: calc(100% + 20px);
+    --v-padding: 150px;
+    padding-top: var(--v-padding);
+    padding-bottom: var(--v-padding);
+    .infra-title {
+        @include size(11);
+        @include shift(1);
+
+        font-size: 48px;
+        line-height: 120%;
+        /* or 58px */
+        font-weight: 300;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        color: var(--color-beige)
+    }
+    .infra-text {
+        @include size(7);
+        @include shift(2);
+        font-size: 18px;
+        line-height: 160%;
+        /* or 29px */
+        color: #A49B93;
+        p~p {
+            margin-top: 1.5em;
+        }
+    }
+}
+.map-wrapper {
+    height: 970px;
+    &__nav {
+        width: 26vw;
+        height: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+    }
+    &__map {
+        
+        width: 74vw;
+    }
+}
+.map-nav-item {
+    --v-padding: 40px;
+    cursor: pointer;
+    padding-left: var(--page-side-fields);
+    padding-top: var(--v-padding);
+    padding-bottom: var(--v-padding);
+    padding-right: 45px;
+
+    border-bottom: 1px solid #4A4647;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 140%;
+    color: var(--color-beige);
+    background-color: var(--color-black);
+
+    display: flex;
+    align-items: center;
+    &__plus {
+        margin-left: auto;
+    }
+    &__text {
+        margin-left: 33px;
+    }
+    &:first-child {
+        border-top: 1px solid #4A4647;
+    }
+}
+
+.map-nav-item-group {
+    .map-nav-subitems {
+        display: none;
+    }
+    &.active {
+        .map-nav-subitems {
+            display: initial;
+        }
+    }
+    &.active>.map-nav-item {
+        background-color: var(--color-beige);
+    }
+    &.active .map-nav-item__plus {
+        transform: rotate(45deg);
+    }
+    &.active {
+        color: #23242B ;
+    }
+    &.active>.map-nav-item path[fill] {
+        fill: #23242B;
+    }
+    &.active>.map-nav-item path[stroke] {
+        stroke: #23242B;
+    }
+}
