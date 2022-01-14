@@ -83,6 +83,7 @@
         height: 100%;
         width: 40%;
         background: linear-gradient(90deg, #23242B 0%, rgba(35, 36, 43, 0) 100%);
+        pointer-events: none;
         z-index: 5;
         
     }
@@ -98,7 +99,12 @@
         height: auto;
         z-index: 25;
         display: flex;
-        align-items: center;justify-content: space-between;
+        align-items: center;
+        justify-content: space-between;
+        pointer-events: none;
+        &>* {
+            pointer-events: all;
+        }
     }
 }
 
@@ -150,14 +156,35 @@
     align-items: flex-start;
     flex-direction: column;
     &__close {
-        position: absolute;
-        right: var(--page-side-fields);
-        top: var(--page-side-fields);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-beige);
+        span {
+            margin-right: 15px;
+            font-size: 14px;
+            line-height: 100%;
+            /* identical to box height, or 14px */
+            text-align: right;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
     }
-    &__logo {
+    &__top-group {
         position: absolute;
-        left: var(--page-side-fields);
-        top: var(--page-side-fields);
+        left: 0;
+        top: calc(var(--page-side-fields) / 2);
+        padding: 0 var(--page-side-fields);
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-between;
+        &>:nth-child(2) {
+            margin: auto;
+        }
+        &>:nth-child(3) {
+            margin-left: auto;
+        }
     }
     &__title {
         margin-bottom: 50px;
@@ -170,11 +197,23 @@
         text-transform: uppercase;
         color: var(--color-beige);
     }
+    &__text {
+        font-size: 18px;
+        line-height: 160%;
+        color: #A49B93;
+    }
     &__title,
     &__text {
         max-width: 900px;
+        width: 100%;
         text-align: left;
         margin-left: auto;
         margin-right: auto;
+    }
+    .inner-front__bottom-decor {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
     }
 }

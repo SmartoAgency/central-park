@@ -59,3 +59,14 @@ document.querySelectorAll('[data-build-arc]').forEach(path => {
     path.setAttribute('d', describeArc(125,125,125,0, degreesToPercentRatio))
     console.log(buildArc);
 })
+
+
+
+document.querySelectorAll('[data-build-popup-status]').forEach(el => {
+  const close = el.querySelector('[class*="close"]');
+  close.addEventListener('click', () => gsap.to(el, { autoAlpha: 0 }))
+})
+document.querySelectorAll('[data-single-build-status]').forEach(el => {
+  const popup = document.querySelector('[data-build-popup-status]');
+  el.addEventListener('click', () => gsap.to(popup, { autoAlpha: 1 }))
+})
