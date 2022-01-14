@@ -17,6 +17,9 @@
         text-align: center;
         letter-spacing: -0.03em;
         text-transform: uppercase;
+        @include to(575px){
+            font-size: 48px;
+        }
     }
     &__bottom-decor {
         width: 100%;
