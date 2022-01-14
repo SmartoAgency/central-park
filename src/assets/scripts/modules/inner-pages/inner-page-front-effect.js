@@ -1,7 +1,7 @@
 import gsap from "gsap";
 export default function innerPageFrontEffect() {
     const innerTemplate = document.querySelector('.inner-front');
-    const bottomDecor = innerTemplate.querySelectorAll('.inner-front__bottom-decor path'),
+    const bottomDecor = innerTemplate.querySelectorAll('.inner-front .inner-front__bottom-decor path'),
         breadcrumbs = innerTemplate.querySelectorAll('.breadcrumbs>*'),
         topDecor = innerTemplate.querySelectorAll('.inner-front__image-in-logo path'),
         title = innerTemplate.querySelector('.inner-front__title>div'),

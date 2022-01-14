@@ -62,11 +62,50 @@ document.querySelectorAll('[data-build-arc]').forEach(path => {
 
 
 
+/**Попап для кругляшек про статус дома */
 document.querySelectorAll('[data-build-popup-status]').forEach(el => {
   const close = el.querySelector('[class*="close"]');
   close.addEventListener('click', () => gsap.to(el, { autoAlpha: 0 }))
 })
+
+/**Кругляшки про статус дома */
 document.querySelectorAll('[data-single-build-status]').forEach(el => {
   const popup = document.querySelector('[data-build-popup-status]');
-  el.addEventListener('click', () => gsap.to(popup, { autoAlpha: 1 }))
+  const { title, text } = el.dataset;
+  const popupTextBlock = popup.querySelector('[class*="text"]')
+  const popupTitleBlock = popup.querySelector('[class*="title"]')
+  el.addEventListener('click', () => {
+    popupTextBlock.textContent = text;
+    popupTitleBlock.textContent = title;
+    gsap.to(popup, { autoAlpha: 1 });
+  })
 })
+
+
+/**Попап карточек строительства */
+document.querySelectorAll('[data-build-popup-progress]').forEach(el => {
+  const close = el.querySelector('[class*="close"]');
+  close.addEventListener('click', () => gsap.to(el, { autoAlpha: 0 }))
+})
+
+
+document.querySelector('.build-progress-conteiner').addEventListener('click', ({ target }) => {
+  if (target.closest('.build-card') === null) return;
+  gsap.to('[data-build-popup-progress]', { autoAlpha: 1 });
+})
+
+
+var swiper1 = new Swiper(".build-swiper", {
+    // modules: [ Navigation],
+    slidesPerView: 1,
+    // spaceBetween: 100,
+    // pagination: {
+    //   el: ".swiper-pagination",
+    //   clickable: true,
+    // },
+    // navigation: {
+    //     nextEl: document.querySelector('.status-wrap [data-next]'),
+    //     prevEl: document.querySelector('.status-wrap [data-prev]'),
+    // },
+    // roundLengths: true,
+  });
