@@ -1,0 +1,39 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Переваги'
+    var id_page = 'id-page-advantages'
+    var class_page = 'class-page-advantages'
+    var breadcrumbsSubitem = [
+    ];
+    var sliders = [
+      {img: './assets/images/advantages/1.jpg'  , text: 'власна школа'},
+      {img: './assets/images/advantages/2.jpg', text: 'власний дитячий садок'},
+      {img: './assets/images/advantages/3.jpg'             , text: 'гуртки та секції для розвитку'},
+      {img: './assets/images/advantages/4.jpg', text: 'поліклініка'},
+    {img: './assets/images/advantages/5.jpg', text: 'великий супермаркет'},
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/index-app.bundle.js')
+  script(defer src='./assets/scripts/advantages.bundle.js')
+block content
+  +InnerPageFront(title_page, 'some', './assets/images/advantages/front.jpg')
+  .container.adv-slider
+    .zoom-slider-wrapper
+      .swiper-wrapper
+        each val in sliders
+          .swiper-slide
+            img(src=val.img)
+            p #{val.text}
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
