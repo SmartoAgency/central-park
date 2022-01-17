@@ -128,7 +128,7 @@
     font-weight: 300;
 
     margin-top: 150px;
-    &:nth-child(odd) {
+    &:not(.row-plain):nth-child(odd) {
         flex-direction: row-reverse;
     }
 

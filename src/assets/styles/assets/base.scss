@@ -457,3 +457,12 @@ body {
 .hidden {
 	visibility: hidden;
 }
+
+
+.bordered-circle {
+	stroke: var(--color-beige);
+	circle[data-circle-with-hover-default] {
+		
+		fill: none;
+	}
+}
