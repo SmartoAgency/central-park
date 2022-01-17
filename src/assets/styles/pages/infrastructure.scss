@@ -122,12 +122,17 @@
 .block-img-text {
     @include row-flex();
     width: calc(100% + 20px);
-    font-size: 30px;
     line-height: 140%; 
     color: var(--color-beige);
     font-weight: 300;
-
     margin-top: 150px;
+    @include to(1240px){
+        
+        font-size: 24px;
+    }
+    @include to(575px){
+        font-size: 18px;
+    }
     &:not(.row-plain):nth-child(odd) {
         flex-direction: row-reverse;
     }

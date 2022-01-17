@@ -466,3 +466,11 @@ body {
 		fill: none;
 	}
 }
+
+.mt-medium {
+	margin-top: 50px;
+	@include to(575px){
+		margin-top: 25px;
+
+	}
+}
