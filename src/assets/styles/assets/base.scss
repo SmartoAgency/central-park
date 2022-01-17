@@ -474,3 +474,54 @@ body {
 
 	}
 }
+
+
+.block-img-text {
+    @include row-flex();
+    width: calc(100% + 20px);
+    line-height: 140%; 
+    color: var(--color-beige);
+    font-weight: 300;
+    margin-top: 150px;
+    @include to(1240px){
+        
+        font-size: 24px;
+    }
+    @include to(575px){
+        font-size: 18px;
+    }
+    &:not(.row-plain):nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+
+    &:last-child {
+        margin-bottom: 100px;
+    }
+    &__text {
+        @include size(8);
+        @include shift(1);
+    }
+    &__img {
+        position: relative;
+        padding-bottom: 56.5%;
+    }
+    &__img-wrap {
+        @include size(12);
+        @include shift(1);
+		position: relative;
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+	&__decor {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		transform: translate(-50%,-50%);
+	}
+}
