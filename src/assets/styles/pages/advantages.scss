@@ -64,6 +64,9 @@
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: var(--color-beige);
+    @include from(1920px){
+        font-size: 58px;
+    }
     @include to(1240px){
         font-size: 36px;   
     }
@@ -77,10 +80,12 @@
     color: #A49B93;
     font-size: 18px;
     line-height: 160%;
+    @include from(1920px){
+        font-size: 24px;
+    }
     @include to(1240px){
-        font-size: 14px;
-        
-}
+        font-size: 14px;    
+    }
 }
 
 .adv-wide-block {

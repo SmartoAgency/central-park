@@ -10,15 +10,25 @@
     align-items: flex-start;
     position: relative;
     background-color: var(--color-black);
-    &>svg {
+    .top-decor {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 65vw;
+        transform: translateX(-50%);
+    }
+    .bottom-decor {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
+        height: auto;
     }
 
 }
 .page404 {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -53,6 +63,13 @@
     .button {
         @include customOffsetWidth(50, var(--offset));
         max-width: 200px;
+        justify-content: center;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        /* Black */
+        color: #23242B;
     }
     .link-wrap {
         display: flex;
@@ -60,5 +77,6 @@
         --offset: 25px;
         margin-left: calc(var(--offset) * -0.5);
         margin-right: calc(var(--offset) * -0.5);
+        justify-content: center;
     }
 }
