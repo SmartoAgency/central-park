@@ -24,7 +24,7 @@ global.axios = axios;
 lazyImages();
 lazyPosters();
 buttonHover('.button');
-const formsWithTel = ['[data-home-contact]'];
+const formsWithTel = ['[data-home-contact]', '[data-contact-page-form]'];
 
 formsWithTel.forEach(form => {
   const $form = document.querySelector(form);

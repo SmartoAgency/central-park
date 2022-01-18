@@ -1,0 +1,64 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Контакти'
+    var id_page = 'id-page-contacts'
+    var class_page = 'class-page-contacts'
+    var breadcrumbsSubitem = [
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/index-app.bundle.js')
+  script(defer src='./assets/scripts/contacts.bundle.js')
+block content
+  +InnerPageFront(title_page, 'some', './assets/images/gallery/front.jpg')
+  .container.contacts-page.contacts
+    .contacts-page__left
+      .contacts-page__group
+        .contacts-subtitle Зв’язок:
+        .contacts-text
+          div.contacts-page__link-with-margin 
+            a(href="mailto:central-park@com.ua").contacts-text central-park@com.ua
+          div 
+            a(href="tel:+380441106104").contacts-text.tdn +38 (044) 110 61 04
+      .contacts-page__group
+        .contacts-subtitle Відділ продажу:
+        .contacts-text м. Вінниця, вул. Максимовича, 6
+        button(type="button" class="button button--bordered button--dark with-hover") 
+            .button__hover
+            span Показати на карті
+      .contacts-page__group
+        .contacts-subtitle Графік роботи:
+        .contacts-text 
+            div Пн-Сб: 09:00-19:00
+            div Нд: 10:00-17:00
+      .contacts-page__group
+        .contacts-subtitle Будівництво:
+        .contacts-text м. Вінниця, вул. Максимовича, 6
+        button(type="button" class="button button--bordered button--dark with-hover") 
+            .button__hover
+            span Показати на мапі
+    .contacts-page__right 
+      .contacts-page__title ЗВОРОТНІЙ ДЗВІНОК
+      
+      form(data-contact-page-form autocomplete="off").contacts-form
+        .contacts-form__field.form-field-input(data-field-input data-field-name data-status="field--inactive")
+          input(type='text' name="name" placeholder="Ім’я:*").form-field__input
+          .input-message(data-input-message) Ім’я:*
+        .contacts-form__field.form-field-input(data-field-input data-field-phone data-status="field--inactive")
+          input(type='text' name="phone").form-field__input
+          .input-message(data-input-message) Телефон:*
+        button( type="submit" data-btn-submit).button.with-hover
+          .button__hover 
+          span(data-btn-submit-text) Надіслати
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
