@@ -360,7 +360,10 @@
         @include shift(0);
         overflow: hidden;
     }
-
+    .swiper-slide {
+        height: 69vh;
+        object-fit: cover;
+    }
     [data-state="false"] &__text-off {
         transform: translateX(100%);
     }
@@ -376,7 +379,7 @@
         color: var(--color-black);
         background-color: var(--color-beige);
         cursor: pointer;
-        transition-duration: .5s;
+        transition-duration: .25s;
         transition-delay: .5s;
         transition-timing-function: ease-out;
         span {

@@ -7,29 +7,52 @@
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    position: relative;
+    background-color: var(--color-black);
+    &>svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
 
 }
 .page404 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 250px;
     text-align: center;
+    &__title-small,
+    &__subtitle {
+        color: var(--color-beige);
+    }
     &__title {
         width: 100%;
-        font-family: $default-font2;
+        // font-family: $default-font2;
         font-size: 12vw;
         line-height: 100%;
-        margin-bottom: 1em;
+        margin-bottom: 30px;
+        color: var(--color-white);
+        width: 100%;
     }
     &__subtitle {
-        font-size: 3vw;
-        line-height: 100%;
+        font-size: 24px;
+        line-height: 140%;
         margin-bottom: 0.6em;
+        width: 100%;
+    }
+    &__title-small {
+        font-size: 14px;
+        line-height: 140%;
+        width: 100%;
+        margin-bottom: 30px;
     }
     .button {
         @include customOffsetWidth(50, var(--offset));
+        max-width: 200px;
     }
     .link-wrap {
         display: flex;
