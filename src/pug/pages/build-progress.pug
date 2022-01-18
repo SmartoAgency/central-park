@@ -118,7 +118,12 @@ block header
           <circle data-circle-with-hover-hover cx="30" cy="30" r="30" style="fill:#717280"/>
           <path d="M38 38L22 22M22 38L38 22L22 38Z" style="stroke:#23242B"/>
           </svg>
-    .build-progress-popup__text
+    .build-progress-popup__text(data-state="1" data-opened-text="Згорнути" data-closed-text="Розгорнути")
+      .build-progress-popup__text-off(data-build-popup-progress-inner-text)
+        <svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.29969 13C6.19878 11.4082 2.02752 7 0.999998 7M0.999998 7C2.03975 7 6.07645 2.89796 7.29969 1M0.999998 7L21 7" stroke="#23242B"/>
+          </svg>
+        span Згорнути
       .build-progress-popup__date 02.12.2021
       .build-progress-popup__title ГРУДЕНЬ
       .build-progress-popup__text-content 

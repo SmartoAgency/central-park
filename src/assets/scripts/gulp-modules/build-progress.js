@@ -95,6 +95,21 @@ document.querySelector('.build-progress-conteiner').addEventListener('click', ({
 })
 
 
+document.querySelectorAll('[data-build-popup-progress-inner-text]').forEach(button => {
+  
+  const innerPopup = button.parentElement;
+  const textEl = button.querySelector('span');
+  let state = innerPopup.dataset.state;
+  button.addEventListener('click', () => {
+    console.log(state);
+    state = !state;
+    gsap.to(innerPopup, { xPercent: state ? 0 : -100, duration: 1.75, ease: 'power4.out' });
+    textEl.textContent = state ? innerPopup.dataset.openedText : innerPopup.dataset.closedText;
+    innerPopup.dataset.state = state;
+  })
+})
+
+
 var swiper1 = new Swiper(".build-swiper", {
     // modules: [ Navigation],
     slidesPerView: 1,
@@ -108,4 +123,4 @@ var swiper1 = new Swiper(".build-swiper", {
     //     prevEl: document.querySelector('.status-wrap [data-prev]'),
     // },
     // roundLengths: true,
-  });
+  });4
