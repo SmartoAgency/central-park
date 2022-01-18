@@ -323,6 +323,9 @@ html.has-scroll-dragging {
 	transform: translateZ(0);
 	transition: background-color .5s ease-out;
 	backface-visibility: hidden;
+	&[disabled] &__hover {
+		display: none;
+	}
 	&__hover {
 		position: absolute;
 		left: 50%;

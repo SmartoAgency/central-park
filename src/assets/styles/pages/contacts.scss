@@ -48,6 +48,9 @@
     &__right {
         @include size(14);
         @include shift-left(5);
+        @include from(576px){
+            @include shift-padding-right(3);
+        }
         @include to(992px){ 
             @include shift-left(2);
         }
@@ -125,6 +128,12 @@
     &__link-with-margin {
         margin-bottom: 25px;
     }
+    &__social-group {
+        display: flex;
+    }
+    &__social-group>:nth-child(n+2) {
+        margin-left: 40px;
+    }
 }
 
 .contacts-form {
@@ -142,6 +151,9 @@
         line-height: 140%;
         /* or 25px */
         color: #B3A9A0;
+        @include to(575px){
+            font-size: 14px;
+        }
     }
     input::placeholder {
         font-size: 24px;
@@ -153,6 +165,9 @@
         letter-spacing: -0.03em;
 
         color: #999999;
+        @include to(575px){
+            font-size: 18px;
+        }
     }
     &__field input {
         background-color: var(--color-black);
@@ -171,5 +186,66 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        @include to(575px){
+            font-size: 18px;
+            padding: 20px;
+        }
     }
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    &__text {
+        font-size: 24px;
+        line-height: 65%;
+        /* identical to box height, or 16px */
+        // text-decoration-line: underline;
+        color: var(--color-beige);
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-beige);
+            transition: transform .3s ease-in-out;
+            transform-origin: left
+        }
+        
+    }
+    &__icon {
+        margin-right: 20px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #5D5755;
+        border-radius: 50%;
+        display: flex;align-items: center;
+        justify-content: center;
+        svg {
+            width: 50%;
+            height: 50%;
+        }
+    }
+    [fill],
+    [stroke] {
+        transition: .5s ease-in-out;
+    }
+    @include from(1025px){
+        &:hover &__text:after {
+            // text-decoration: none;
+            transform: scaleX(0);
+        }
+        &:hover [fill*="#"] {
+            fill: #5D5755;
+            
+        }
+        &:hover [stroke] {
+            stroke: #5D5755;
+        }
+    }
+    
 }
