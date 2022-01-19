@@ -1,4 +1,4 @@
-import {Curtains, Plane, Vec2, Vec3, ShaderPass, TextureLoader, Texture} from 'curtainsjs';
+import {Curtains, Plane, Vec2, Vec3, Vec4, ShaderPass, TextureLoader, Texture} from 'curtainsjs';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 // import {gsap, smoothScroll, ScrollTrigger} from './gsap/gsapWithProxy';
@@ -42,15 +42,20 @@ export default function curtainsShaders(smoothScroll){
         // there has been an error while loading the image
         });
     curtains.onRender(() => {
-        if(useNativeScroll) {
+        
+        // if(useNativeScroll) {
+        if(true) {
             // update our planes deformation
             // increase/decrease the effect
             scrollEffect = curtains.lerp(scrollEffect, 0, 0.05);
-            planesDeformations / 60
-            plane.uniforms.displacement.value = planesDeformations / 60;
-            if(Math.abs(delta.y) > Math.abs(planesDeformations)) {
-                planesDeformations = curtains.lerp(planesDeformations, delta.y, 0.5);
-            }
+            planesDeformations / 60;
+            planes.forEach(plane => {
+                plane.uniforms.displacement.value = (planesDeformations / 60).toFixed(3);
+            })
+            // console.log(planes[0].uniforms.displacement.value);
+            // if(Math.abs(delta.y) > Math.abs(planesDeformations)) {
+            //     planesDeformations = curtains.lerp(planesDeformations, delta.y, 0.5);
+            // }
         }
     }).onScroll(() => {
         // get scroll deltas to apply the effect on scroll
@@ -113,52 +118,6 @@ export default function curtainsShaders(smoothScroll){
     // we need to fill the counter with all our planes
     let planeDrawn = planeElements.length;
 
-    // const vs = `
-    //     precision mediump float;
-    //     // default mandatory variables
-    //     attribute vec3 aVertexPosition;
-    //     attribute vec2 aTextureCoord;
-    //     uniform mat4 uMVMatrix;
-    //     uniform mat4 uPMatrix;
-    //     uniform mat4 planeTextureMatrix;
-    //     // custom variables
-    //     varying vec3 vVertexPosition;
-    //     varying vec2 vTextureCoord;
-    //     uniform float alpha;
-    //     uniform float uScrollEffect;
-    //     uniform float uPlaneDeformation;
-    //     void main() {
-    //         vec3 vertexPosition = aVertexPosition;
-    //         // cool effect on scroll
-    //         //vertexPosition.x += sin((vertexPosition.y / 1.5 + 1.0) * 3.141592) * (sin(uPlaneDeformation / 2000.0));
-    //         gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
-    //         gl_Position.y += alpha * 0.01;
-    //         // varyings
-    //         vVertexPosition = vertexPosition;
-    //         vTextureCoord = (planeTextureMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
-    //     }
-    // `;
-
-    // const fs = `
-    //     precision mediump float;
-    //     varying vec3 vVertexPosition;
-    //     varying vec2 vTextureCoord;
-    //     uniform float alpha;
-    //     uniform float uDisplacement;
-    //     uniform float uScrollEffect;
-    //     uniform sampler2D planeTexture;
-         
-    //     void main( void ) {
-    //         vec2 textCoords = vTextureCoord;
-    //         // just display our texture
-    //         // vTextureCoord.x = alpha;
-    //         vec4 red = texture2D(planeTexture, textCoords + abs(sin(uScrollEffect/5000.0)));
-    //         vec4 green = texture2D(planeTexture, vTextureCoord);
-    //         vec4 blue = texture2D(planeTexture, textCoords + abs(sin(uScrollEffect/5000.0)));
-    //         // gl_FragColor = texture2D(planeTexture, vTextureCoord);
-    //         gl_FragColor = vec4(red.r, green.g, blue.b, green.a);
-    //     }
-    // `;
     const vs = `
         precision mediump float;
 
@@ -170,10 +129,12 @@ export default function curtainsShaders(smoothScroll){
         uniform mat4 uPMatrix;
 
         uniform mat4 planeTextureMatrix;
+        uniform mat4 uTextureMatrix1;
 
         // custom variables
         varying vec3 vVertexPosition;
         varying vec2 vTextureCoord;
+        varying vec2 vDispTextureCoord;
 
         uniform float uPlaneDeformation;
 
@@ -189,21 +150,52 @@ export default function curtainsShaders(smoothScroll){
             // varyings
             vVertexPosition = vertexPosition;
             vTextureCoord = (planeTextureMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
+            vDispTextureCoord = (uTextureMatrix1 * vec4(aTextureCoord, 0.0, 1.0)).xy;
+            
         }
     `;
 
     const fs = `
-        precision mediump float;
-
+    precision mediump float;
         varying vec3 vVertexPosition;
         varying vec2 vTextureCoord;
-
+        varying vec2 vDispTextureCoord;
         uniform sampler2D planeTexture;
+        uniform sampler2D uSampler1;
+    
+        uniform float uDisplacement;
+    
+        void main( void ) {
+            vec2 textureCoords = vTextureCoord;
+            vec2 textureCoords1 = vDispTextureCoord;
+            //vec4 displacement = texture2D(planeTexture, textureCoords);
+            vec4 displacement1 = texture2D(uSampler1, textureCoords1);
+    //
+            //// displace along Y axis
 
-        void main() {
-            // just display our texture
-            gl_FragColor = texture2D(planeTexture, vTextureCoord);
+            textureCoords1.y += displacement1.r * uDisplacement;
+            // textureCoords.x += displacement1 * uDisplacement;
+            vec4 plainTextureToRender = texture2D(planeTexture, textureCoords);
+            vec4 textDsp = texture2D(uSampler1, textureCoords1);
+            textDsp.r = plainTextureToRender.r;
+            textDsp.b = plainTextureToRender.b;
+            textDsp.g = plainTextureToRender.g;
+            gl_FragColor = plainTextureToRender;
+            gl_FragColor = textDsp;
+            //gl_FragColor = texture2D(planeTexture, textureCoords) + (texture2D(uSampler1, textureCoords1) * abs(uDisplacement));
         }
+        //precision mediump float;
+//
+        //varying vec3 vVertexPosition;
+        //varying vec2 vTextureCoord;
+        //varying vec2 vDispTextureCoord;
+        //uniform sampler2D planeTexture;
+        //uniform sampler2D uSampler1;
+//
+        //void main() {
+        //    // just display our texture
+        //    gl_FragColor = texture2D(planeTexture, vTextureCoord) * texture2D(uSampler1, vTextureCoord);
+        //}
     `;
     const params = {
         vertexShader: vs,
@@ -241,6 +233,8 @@ export default function curtainsShaders(smoothScroll){
         
         planes.push(plane);
         plane.textures[0].scale = new Vec3(1.2,1.2,1.2);
+        plane.loadImage(dispImage);
+        console.log(plane);
         handlePlanes(i);
     }
     const colors = [
@@ -260,7 +254,7 @@ export default function curtainsShaders(smoothScroll){
             }
         }).onRender(() => {
             // update the uniform
-            plane.uniforms.planeDeformation.value = planesDeformations / 2;
+            plane.uniforms.planeDeformation.value = planesDeformations / 10;
         });
         ScrollTrigger.create({
             trigger: plane.htmlElement,
@@ -351,10 +345,8 @@ export default function curtainsShaders(smoothScroll){
 
     const shaderPassFs = `
         precision mediump float;
-    
         varying vec3 vVertexPosition;
         varying vec2 vTextureCoord;
-    
         uniform sampler2D uRenderTexture;
         uniform sampler2D displacementTexture;
     
@@ -365,8 +357,8 @@ export default function curtainsShaders(smoothScroll){
             vec4 displacement = texture2D(displacementTexture, textureCoords);
     
             // displace along Y axis
-            textureCoords.y += (sin(displacement.r * 1000.0) / 150.0) * uDisplacement;
-            textureCoords.x += (sin(displacement.r * 1000.0) / 200.0) * uDisplacement;
+           //textureCoords.y += (sin(displacement.r * 1000.0) / 150.0) * uDisplacement;
+           //textureCoords.x += (sin(displacement.r * 1000.0) / 200.0) * uDisplacement;
 
             gl_FragColor = texture2D(uRenderTexture, textureCoords);
         }
@@ -380,6 +372,11 @@ export default function curtainsShaders(smoothScroll){
                 type: "1f",
                 value: 0,
             },
+            // image: {
+            //     name: "uImage",
+            //     type: "vec4",
+            //     value: null,
+            // }
         },
 
         texturesOptions: {
@@ -397,7 +394,7 @@ export default function curtainsShaders(smoothScroll){
     // if our shader pass has been successfully created
     if(shaderPass) {
         // load our displacement image
-        shaderPass.loader.loadImage(image);
+        shaderPass.loadImage(image);
         shaderPass.onLoading((texture) => {
             console.log(shaderPass);
             console.log("shader pass image has been loaded and texture has been created:", texture);
