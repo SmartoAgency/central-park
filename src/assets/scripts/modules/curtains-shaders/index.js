@@ -23,7 +23,7 @@ export default function curtainsShaders(smoothScroll){
     // load an image with the loader
     const dispImage = new Image();
     dispImage.crossOrigin = "anonymous";
-    dispImage.src = "./assets/images/displacement-ready.png";
+    dispImage.src = "./assets/images/displacement-ready.jpg";
     let newTexture = new Texture(curtains, {
         // set premultiplyAlpha to true, minFilter, anisotropy and use half-floating point texture
         sampler: "uTexture",
@@ -50,7 +50,7 @@ export default function curtainsShaders(smoothScroll){
             scrollEffect = curtains.lerp(scrollEffect, 0, 0.05);
             planesDeformations / 60;
             planes.forEach(plane => {
-                plane.uniforms.displacement.value = (planesDeformations / 60).toFixed(3);
+                plane.uniforms.displacement.value = (planesDeformations / 60);
             })
             // console.log(planes[0].uniforms.displacement.value);
             // if(Math.abs(delta.y) > Math.abs(planesDeformations)) {
@@ -164,7 +164,7 @@ export default function curtainsShaders(smoothScroll){
         uniform sampler2D uSampler1;
     
         uniform float uDisplacement;
-    
+        float cutoff = 0.1;
         void main( void ) {
             vec2 textureCoords = vTextureCoord;
             vec2 textureCoords1 = vDispTextureCoord;
@@ -173,16 +173,19 @@ export default function curtainsShaders(smoothScroll){
     //
             //// displace along Y axis
 
-            textureCoords1.y += displacement1.r * uDisplacement;
+            textureCoords.y += displacement1.g * uDisplacement * 0.5;
             // textureCoords.x += displacement1 * uDisplacement;
             vec4 plainTextureToRender = texture2D(planeTexture, textureCoords);
             vec4 textDsp = texture2D(uSampler1, textureCoords1);
-            textDsp.r = plainTextureToRender.r;
-            textDsp.b = plainTextureToRender.b;
-            textDsp.g = plainTextureToRender.g;
-            gl_FragColor = plainTextureToRender;
-            gl_FragColor = textDsp;
-            //gl_FragColor = texture2D(planeTexture, textureCoords) + (texture2D(uSampler1, textureCoords1) * abs(uDisplacement));
+            if (textDsp.a < cutoff) {
+                //textDsp.r = plainTextureToRender.r;
+                //textDsp.b = plainTextureToRender.b;
+                //textDsp.g = plainTextureToRender.g;
+                textDsp.a = 0.0;
+            }
+            //gl_FragColor = plainTextureToRender + textDsp;
+            //gl_FragColor = ;
+            gl_FragColor = texture2D(planeTexture, textureCoords);
         }
         //precision mediump float;
 //
