@@ -44,8 +44,8 @@ block content
             </svg>
         .swiper
           .swiper-wrapper
-            each val in buildingStatuses
-              .single-build-status.swiper-slide(data-single-build-status data-title="House #"+val.title data-text=val.text)
+            each val, index in buildingStatuses
+              .single-build-status.swiper-slide(data-single-build-status data-id=index data-bars="" data-title="House #"+val.title data-text=val.text)
                 .single-build-status__hover
                   <svg width="112" height="112" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M47 31H41V81H47V31Z" fill="#23242B"/>
@@ -182,6 +182,28 @@ block header
           <path d="M38 38L22 22M22 38L38 22L22 38Z" style="stroke:#23242B"/>
           </svg>
     .build-status-popup__title Будинок 1
+    .build-status-popup__progress 
+      .build-single-progress-item(style="--progress: 30%")
+        .build-single-progress-item__title Будівництво
+        .build-single-progress-item__bar
+          .build-single-progress-item__bar-title 30%
+          .build-single-progress-item__bar-value 
+      .build-single-progress-item(style="--progress: 40%")
+        .build-single-progress-item__title Фасад
+        .build-single-progress-item__bar
+          .build-single-progress-item__bar-title 40%
+          .build-single-progress-item__bar-value 
+      .build-single-progress-item(style="--progress: 50%")
+        .build-single-progress-item__title Благоустрій
+        .build-single-progress-item__bar
+          .build-single-progress-item__bar-title 50%
+          .build-single-progress-item__bar-value 
+      .build-single-progress-item(style="--progress: 60%")
+        .build-single-progress-item__title Мережі
+        .build-single-progress-item__bar
+          .build-single-progress-item__bar-title 60%
+          .build-single-progress-item__bar-value 
+      .build-status-popup__progress-bottom-title Сдача будинку 4 квартал 2020 року
     .build-status-popup__text Про те, що вже зараз ми змінюємо обличчя Києва та створюємо проєкти майбутнього, говорить і редакція НВ. У новому номері вона разом з архітекторами, забудовниками та урбаністами склала рейтинг 10 знакових об’єктів столиці та включила до нього відразу два проєкти, які ми реалізуємо спільно з партнерами Perfect Group і Kyivproekt Development — Новий Поділ та KYЇVPROEKT City Space. Яким буде Київ через 10 років? За версією нашої компанії, він буде найкомфортнішим містом у світі. Саме такий BHAG ми собі поставили та до якого впевнено рухаємося з кожним новим проєктом. Яким буде Київ через 10 років? За версією нашої компанії, він буде найкомфортнішим містом у світі. Саме такий BHAG ми собі поставили та до якого впевнено рухаємося з кожним новим проєктом. Яким буде Київ через 10 років? За версією нашої компанії, він буде найкомфортнішим містом у світі. Саме такий BHAG ми собі поставили та до якого впевнено рухаємося з кожним новим проєктом.
     <svg class="build-status-popup__bottom-decor" width="1920" height="167" viewBox="0 0 1920 167" fill="none" xmlns="http://www.w3.org/2000/svg">
       <mask id="mask0_908_4049000" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="167">

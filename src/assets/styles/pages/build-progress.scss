@@ -233,7 +233,31 @@
         font-size: 18px;
         line-height: 160%;
         color: #A49B93;
+        padding-top: 30px;
     }
+    &__progress {
+        padding-top: 50px;
+        padding-bottom: 40px;
+        border-top: 1px solid rgba(229, 205, 183, 0.2);
+        border-bottom: 1px solid rgba(229, 205, 183, 0.2);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &>*:nth-last-child(n+2) {
+            margin-bottom: 20px;
+            width: 50%;
+        }
+        &-bottom-title {
+            color: var(--color-white);
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 18px;
+            line-height: 100%;
+            margin-top: 20px;
+
+        }
+    }
+    &__progress,
     &__title,
     &__text {
         max-width: 900px;
@@ -290,6 +314,7 @@
     @include row-flex();
     align-items: flex-start;
     --text-top-padding: 250px;
+    @include autoAlpha(0);
     &__top {
         position: relative;
         z-index: 3;
@@ -389,6 +414,63 @@
             transform-origin: center;
             transform-box: fill-box;
             transition: transform .5s ease-in-out;
+        }
+    }
+}
+
+.build-single-progress-item {
+    --progress: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    &:after {
+        content: attr(data-text);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--color-beige);
+        color: var(--color-black);
+        text-align: center;
+        padding: 20px 30px;
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+        z-index: 2;
+    }
+    &:hover:after {
+        opacity: 1;
+    }
+    &__title {
+        color: var(--color-beige);
+        margin-right: 20px;
+    }
+    &__bar {
+        width: 280px;
+        height: 50px;
+        background-color: var(--color-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        &-title {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 18px;
+            line-height: 100%;
+            color: var(--color-black);
+            z-index: 1;
+        }
+        &-value {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: var(--progress);
+            background-color: var(--color-beige);
+            z-index: 0;
         }
     }
 }

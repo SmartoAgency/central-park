@@ -71,16 +71,40 @@ document.querySelectorAll('[data-build-popup-status]').forEach(el => {
 /**Кругляшки про статус дома */
 document.querySelectorAll('[data-single-build-status]').forEach(el => {
   const popup = document.querySelector('[data-build-popup-status]');
-  const { title, text } = el.dataset;
+  const { id } = el.dataset;
   const popupTextBlock = popup.querySelector('[class*="text"]')
   const popupTitleBlock = popup.querySelector('[class*="title"]')
-  el.addEventListener('click', () => {
+  const popupProgressBlock = popup.querySelector('.build-status-popup__progress')
+  el.addEventListener('click', async () => {
+    let innerInfo = await fetch(`./static/build-popup-info.php?id=${id}`);
+    innerInfo = await innerInfo.json();
+    console.log(innerInfo);
+    const {title, text, items, innerTitle} = innerInfo;
     popupTextBlock.textContent = text;
     popupTitleBlock.textContent = title;
+    popupProgressBlock.innerHTML = '';
+    items.forEach(item => {
+      popupProgressBlock.innerHTML += getInnerPopupProgressItem(item);
+    })
+    popupProgressBlock.innerHTML += getAfterBarsTitle(innerTitle);
     gsap.to(popup, { autoAlpha: 1 });
   })
 })
 
+function getAfterBarsTitle(title) {
+  return `<div class="build-status-popup__progress-bottom-title">${title}</div>`;
+}
+function getInnerPopupProgressItem({ value, title, text }) {
+  return `
+    <div class="build-single-progress-item" data-text="${text}" style="--progress: ${value}%">
+      <div class="build-single-progress-item__title">${title}</div>
+      <div class="build-single-progress-item__bar">
+        <div class="build-single-progress-item__bar-title">${value}%</div>
+        <div class="build-single-progress-item__bar-value"> </div>
+      </div>
+    </div>
+  `;
+}
 
 /**Попап карточек строительства */
 document.querySelectorAll('[data-build-popup-progress]').forEach(el => {
