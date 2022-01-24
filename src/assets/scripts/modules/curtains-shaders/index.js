@@ -143,7 +143,7 @@ export default function curtainsShaders(smoothScroll){
             vec3 vertexPosition = aVertexPosition;
 
             // cool effect on scroll
-            vertexPosition.y += sin(((vertexPosition.x + 1.0) / 2.0) * 3.141592) * (sin(uPlaneDeformation / 90.0));
+            vertexPosition.x += sin(((vertexPosition.x + 1.0) / 2.0) * 3.141592) * (sin(uPlaneDeformation / 180.0));
 
             gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
 
@@ -173,32 +173,12 @@ export default function curtainsShaders(smoothScroll){
     //
             //// displace along Y axis
 
-            textureCoords.y += displacement1.g * uDisplacement * 0.5;
+            textureCoords.y += displacement1.r * uDisplacement * 0.175;
             // textureCoords.x += displacement1 * uDisplacement;
             vec4 plainTextureToRender = texture2D(planeTexture, textureCoords);
             vec4 textDsp = texture2D(uSampler1, textureCoords1);
-            if (textDsp.a < cutoff) {
-                //textDsp.r = plainTextureToRender.r;
-                //textDsp.b = plainTextureToRender.b;
-                //textDsp.g = plainTextureToRender.g;
-                textDsp.a = 0.0;
-            }
-            //gl_FragColor = plainTextureToRender + textDsp;
-            //gl_FragColor = ;
-            gl_FragColor = texture2D(planeTexture, textureCoords);
+            gl_FragColor = plainTextureToRender;
         }
-        //precision mediump float;
-//
-        //varying vec3 vVertexPosition;
-        //varying vec2 vTextureCoord;
-        //varying vec2 vDispTextureCoord;
-        //uniform sampler2D planeTexture;
-        //uniform sampler2D uSampler1;
-//
-        //void main() {
-        //    // just display our texture
-        //    gl_FragColor = texture2D(planeTexture, vTextureCoord) * texture2D(uSampler1, vTextureCoord);
-        //}
     `;
     const params = {
         vertexShader: vs,
