@@ -18,7 +18,7 @@
         letter-spacing: -0.03em;
         text-transform: uppercase;
         @include to(575px){
-            font-size: 48px;
+            font-size: 36px;
         }
     }
     &__bottom-decor {
@@ -42,14 +42,18 @@
         top: 0;
         z-index: -1;
         @include to(575px){
-            --self-w: 95vw;
+            --self-w: 75vw;
         }
 
     }
     .breadcrumbs {
         margin: auto;
         width: max-content;
-        transform: translateY(200%);
         overflow: hidden;
+        transform: translateY(200%);
+        @include to(575px){
+            transform: translateY(-400%);
+            
+        }
     }
 }

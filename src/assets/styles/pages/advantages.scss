@@ -29,14 +29,28 @@
     &__text {
         @include size(11);
         @include shift(0);
+        @include to(575px){
+            
+            @include size(24);
+            margin-bottom: 25px;
+        }
     }
     &__nav {
         margin-left: auto;
         display: flex;
         align-self: flex-end;
+        @include to(575px){
+            width: 100%;
+            margin-right: auto;
+        }
         &>*~* {
             margin-left: 10px;
+            @include to(575px){
+                
+                margin-left: auto;
+            }
         }
+
     }
     .zoom-slider-wrapper {
         margin-top: 60px;
@@ -48,6 +62,11 @@
         @include size(8);
         @include shift-left(11);
         @include shift-right(5);
+        @include to(575px){
+            width: 100%;
+            margin-right: 0;
+            margin-left: 0;
+        }
     }
     .adv-wide-block {
         margin-bottom: 50px;
@@ -92,6 +111,13 @@
     position: relative;
     @include size(22.2);
     @include shift(0.9);
+    @include to(575px){
+        // @include size(24);
+        // @include shift(0);
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
     &__decor {
         position: absolute;
         left: 0;

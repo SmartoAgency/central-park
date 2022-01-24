@@ -495,6 +495,7 @@ body {
     }
     @include to(575px){
         font-size: 18px;
+		margin-top: 50px;
     }
     &:not(.row-plain):nth-child(odd) {
         flex-direction: row-reverse;
@@ -502,19 +503,35 @@ body {
 
     &:last-child {
         margin-bottom: 100px;
+		@include to(575px){
+			
+			margin-bottom: 50px;
+		}
     }
     &__text {
         @include size(8);
         @include shift(1);
+		@include to(575px){
+			
+			@include size(24);
+			@include shift(0);
+			margin-bottom: 25px;
+		}
     }
     &__img {
-        position: relative;
+		position: relative;
         padding-bottom: 56.5%;
     }
     &__img-wrap {
-        @include size(12);
+		@include size(12);
         @include shift(1);
 		position: relative;
+		@include to(575px){
+			
+			@include size(24);
+			@include shift(0);
+			margin-bottom: 25px;
+		}
         img {
             position: absolute;
             left: 0;
@@ -529,6 +546,9 @@ body {
 		left: 50%;
 		top: 0;
 		transform: translate(-50%,-50%);
+		@include to(575px){
+			width: 25%;
+		}
 	}
 }
 

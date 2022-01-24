@@ -22,7 +22,7 @@ spaceBetween: 40,
 breakpoints: {
   // when window width is >= 320px
   320: {
-    slidesPerView: 1.5,
+    slidesPerView: 1.25,
     spaceBetween: 20
   },
   // when window width is >= 480px
