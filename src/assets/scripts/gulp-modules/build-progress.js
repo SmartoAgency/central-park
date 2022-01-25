@@ -68,28 +68,59 @@ document.querySelectorAll('[data-build-popup-status]').forEach(el => {
   close.addEventListener('click', () => gsap.to(el, { autoAlpha: 0 }))
 })
 
-/**Кругляшки про статус дома */
-document.querySelectorAll('[data-single-build-status]').forEach(el => {
+/**Изменение инфы при клике на стрелки внутри попапа про статус дома */
+const popupProgressPrevArrow = document.querySelector('[data-status-popup-prev]');
+const popupProgressNextArrow = document.querySelector('[data-status-popup-next]');
+
+
+popupProgressNextArrow.addEventListener('click', () => {
   const popup = document.querySelector('[data-build-popup-status]');
+  let currentId = +popup.dataset.currentId || 0;
+  const statuses = document.querySelectorAll('[data-single-build-status]');
+  currentId = (currentId === (statuses.length - 1)) ? 0 : currentId + 1;
+  console.log(currentId);
+  statuses[currentId].dispatchEvent(new Event('click'))
+})
+popupProgressPrevArrow.addEventListener('click', () => {
+  const popup = document.querySelector('[data-build-popup-status]');
+  let currentId = +popup.dataset.currentId || 0;
+  const statuses = document.querySelectorAll('[data-single-build-status]');
+  // currentId = ((currentId + 1) === (statuses.length - 1)) ? 0 : currentId + 1;
+  currentId = (currentId === 0) ? statuses.length - 1 : currentId - 1;
+  console.log(currentId);
+  statuses[currentId].dispatchEvent(new Event('click'))
+})
+
+/**Кругляшки про статус дома */
+document.querySelectorAll('[data-single-build-status]').forEach((el, index) => {
   const { id } = el.dataset;
+  el.addEventListener('click', async () => {
+    getProgressPopupData(id, index)
+  })
+})
+
+async function getProgressPopupData(id, index) {
+
+  const popup = document.querySelector('[data-build-popup-status]');
   const popupTextBlock = popup.querySelector('[class*="text"]')
   const popupTitleBlock = popup.querySelector('[class*="title"]')
   const popupProgressBlock = popup.querySelector('.build-status-popup__progress')
-  el.addEventListener('click', async () => {
-    let innerInfo = await fetch(`./static/build-popup-info.php?id=${id}`);
-    innerInfo = await innerInfo.json();
-    console.log(innerInfo);
-    const {title, text, items, innerTitle} = innerInfo;
-    popupTextBlock.textContent = text;
-    popupTitleBlock.textContent = title;
-    popupProgressBlock.innerHTML = '';
-    items.forEach(item => {
-      popupProgressBlock.innerHTML += getInnerPopupProgressItem(item);
-    })
-    popupProgressBlock.innerHTML += getAfterBarsTitle(innerTitle);
-    gsap.to(popup, { autoAlpha: 1 });
+
+  let innerInfo = await fetch(`./static/build-popup-info.php?id=${id}`);
+  innerInfo = await innerInfo.json();
+  console.log(innerInfo);
+  const {title, text, items, innerTitle} = innerInfo;
+  popupTextBlock.textContent = text;
+  popupTitleBlock.textContent = title;
+  popupProgressBlock.innerHTML = '';
+  items.forEach(item => {
+    popupProgressBlock.innerHTML += getInnerPopupProgressItem(item);
   })
-})
+  popupProgressBlock.innerHTML += getAfterBarsTitle(innerTitle);
+  popup.dataset.currentId = index;
+  gsap.to(popup, { autoAlpha: 1 });
+}
+
 
 function getAfterBarsTitle(title) {
   return `<div class="build-status-popup__progress-bottom-title">${title}</div>`;
