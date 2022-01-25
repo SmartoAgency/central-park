@@ -1,11 +1,13 @@
 .inner-front {
     padding-top: 250px;
+    padding-top: 28vh;
     background-color: var(--color-black);
     position: relative;
     z-index: 2;
 
     &__title {
         margin-bottom: 176px;
+        margin-bottom: 15vh;
         overflow: hidden;
         @extend .title;
         color: var(--color-white);
