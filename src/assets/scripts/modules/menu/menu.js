@@ -56,7 +56,7 @@ function closeMenu(button, menu) {
         .fromTo(menuLinks, 
             { y: 0, autoAlpha: 1, }, 
             { y: 50, autoAlpha: 0, duration: 0.75 }, 
-            '<-1')
+            '<-0.55')
         .add(() => {
             document.body.classList.remove('popup-opened');
         })
@@ -72,6 +72,7 @@ function enableCurtainFromBottom() {
             attr:  {  d  },
             ease: 'none',
             duration: 0.5,
+            delay: 0,
             clearProps: 'all'
         
         })

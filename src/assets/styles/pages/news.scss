@@ -10,6 +10,10 @@
     .news-card {
         @include size(9);
         @include shift(0);
+        @include to(1680px){
+            
+            @include size(11);
+        }
         @include to(1025px){
             @include size(18);
         }

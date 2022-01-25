@@ -38,6 +38,8 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         padding: var(--v-padding) var(--page-side-fields);
+        position: relative;
+        z-index: 2;
         &>:nth-child(1) {
             justify-self: left;
         }
