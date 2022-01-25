@@ -403,6 +403,12 @@
     position: relative;
     height: 350vh;
     --v-padding: 140px;
+    @include to(575px){
+        height: 100vh;
+        // display: flex;
+        // align-items: center;
+
+    }
     &__inner {
         // padding-top: 5vh;
         // padding-bottom: 5vh;
@@ -419,6 +425,9 @@
         }
         @include to(1024px){
             --v-padding: 70px;  
+        }
+        @include to(575px){
+            height: 100%;
         }
         // height: calc(100vh - 260px);
     }
@@ -443,6 +452,8 @@
     height: calc(100vh - 30vh - 12.6vh);
     height: 100%;
     height: calc(100% - (var(--v-padding) * 2));
+    @include to(575px){
+    }
     @include from-to(576px, 1024px){
         height: calc(100vh - 30vh - 50px);
         height: 100%;
@@ -468,7 +479,7 @@
         }
         @include to(575px){
             
-            width: 190vw;
+            width: 150vw;
             padding-right: 20px;
         }
         img {
@@ -476,7 +487,7 @@
             height: 100%;
             object-fit: cover;
             @include to(575px){
-                width: 60%;
+                width: 50%;
             }
         }
         &-text {
@@ -493,9 +504,10 @@
             @include to(575px){
                 padding-left: 30px;   
                 padding-top: 0;
+                width: 100%;
             }
             @include to(575px){
-                width: 40%;
+                width: 50%;
             }
             :last-child {
                 margin-top: auto;

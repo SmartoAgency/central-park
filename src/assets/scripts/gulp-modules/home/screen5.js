@@ -1,13 +1,14 @@
 import splitToLinesAndFadeUp from "../../modules/effects/splitToLinesAndFadeUp";
 import { transitionBetweenSectionSceneLength } from "../../modules/helpers/helpers";
+import Swiper, {FreeMode } from 'swiper';
 import ztext from "../../modules/ztext/ztext";
 
 export default function screen5(scroller) {
     const innerHorizontalItems = gsap.utils.toArray('.screen5-hor-block__item:nth-child(n+2)');
     // const screen5TopBlockHeight = document.querySelector('.screen5__inner-top').getBoundingClientRect().height;
     const screen5TopBlockHeight = 0;
-
-    gsap.timeline({
+    const isMobile = window.matchMedia('(max-width: 575px)').matches;
+    !isMobile && gsap.timeline({
       scrollTrigger: {
         trigger: '.screen5',
         scrub: true,
@@ -21,7 +22,7 @@ export default function screen5(scroller) {
     })
       // .from('.screen5 .title-h2', { yPercent: 100, autoAlpha: 0, })
       .from('.screen5-hor-block', { yPercent: 10, autoAlpha: 0.5, }, '<')
-    gsap.timeline({
+    !isMobile && gsap.timeline({
       scrollTrigger: {
         trigger: '.screen6',
         scrub: true,
@@ -36,7 +37,7 @@ export default function screen5(scroller) {
       .from('.genplan__text, .genplan__img', { autoAlpha: 0, y: 85 })
       // .to('.screen5', { y: -50, autoAlpha: 0, }, '<')
       // .to('.genplan-curtain-for-prev-block-anim', { scaleY: 0,}, '<')
-    gsap.timeline({
+    !isMobile && gsap.timeline({
         scrollTrigger: {
           trigger: '.screen5',
           scrub: true,
@@ -58,5 +59,26 @@ export default function screen5(scroller) {
           return acc;
         }, 0);
       }}, '<')
+    isMobile && mobileSlider();
+}
 
+
+function mobileSlider() {
+      const slideWrapper = document.querySelector('.screen5-hor-block');
+      const swiperWrapper = document.createElement('div');
+      swiperWrapper.classList.add('swiper-wrapper');
+      slideWrapper.append(swiperWrapper);
+      document.querySelectorAll('.screen5-hor-block__item').forEach(el => {
+        el.classList.add('swiper-slide');
+        swiperWrapper.append(el);
+      })
+      const swiper = new Swiper('.screen5-hor-block', {
+        // Optional parameters
+        modules: [FreeMode ],
+        slidesPerView: 'auto',
+        // loop: true,
+        freeMode: true,
+        spaceBetween: 0,
+        
+    });
 }
