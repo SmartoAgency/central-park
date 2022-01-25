@@ -8,6 +8,7 @@
     &__title {
         font-size: 48px;
         line-height: 120%;
+        font-weight: 300;
         /* identical to box height, or 58px */
         letter-spacing: -0.03em;
         color: var(--color-beige);
@@ -46,6 +47,7 @@
         }
     }
     &__right {
+        position: relative;
         @include size(14);
         @include shift-left(5);
         @include from(576px){
@@ -58,6 +60,16 @@
             @include size(24);
             @include shift(0);
         }
+    }
+    .succes-popup {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: var(--color-black);
+        padding-right: 25%;
     }
     .link-l {
         font-size: 54px;
@@ -133,6 +145,36 @@
     }
     &__social-group>:nth-child(n+2) {
         margin-left: 40px;
+    }
+}
+.succes-popup {
+    --between-margin: 50px;
+    @include autoAlpha(0);
+    [class*="title"] {
+        margin-bottom: var(--between-margin);
+        text-transform: uppercase;
+    }
+    svg {
+        margin-bottom: calc(var(--between-margin) / 2);
+    }
+    &[style*="opacity"] path {
+        animation: succesBirdyAnimOpen .75s ease-out 1;
+    }
+    button {
+        width: 260px;
+        justify-content: center;
+    }
+    p {
+        padding-bottom: var(--between-margin);
+    }
+}
+
+@keyframes succesBirdyAnimOpen {
+    from {
+        stroke-dasharray: 0 108.18964385986328;
+    }
+    to {
+        stroke-dasharray: 108.18964385986328 108.18964385986328;
     }
 }
 

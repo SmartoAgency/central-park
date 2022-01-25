@@ -64,9 +64,9 @@ export default class MyToster {
       { xPercent: 0, skewX: 0, ease: this.ease_0 },
     );
 
-    setTimeout(() => {
-      this.removeItem(item);
-    }, 3000);
+    // setTimeout(() => {
+    //   this.removeItem(item);
+    // }, 3000);
   }
 
   listeners() {
