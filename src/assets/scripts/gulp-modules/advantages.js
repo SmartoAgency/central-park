@@ -4,6 +4,8 @@ import { handleHeader } from "../modules/helpers/helpers";
 import gsap from 'gsap/all';
 import Swiper, { Navigation } from 'swiper';
 import clipPathEntry from "../modules/effects/clipPathEntry";
+import webglWaves from "../modules/effects/webglWaves";
+import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){
@@ -11,7 +13,14 @@ window.addEventListener('load',function(evt){
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
-    clipPathEntry('.block-img-text__img img','.scroller-container')
+    clipPathEntry('.block-img-text__img img','.scroller-container');
+
+    webglWaves(document.querySelector('.adv-wide-block__img'));
+    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div.block-img-text.row-plain > div.block-img-text__img-wrap > div > img"));
+    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(1) > div.block-img-text__img-wrap > div > img"));
+    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(2) > div.block-img-text__img-wrap > div > img"));
+
+    splitToLinesAndFadeUp('.block-img-text__text p, .adv-dark-text', '.scroller-container')
 });
 
 

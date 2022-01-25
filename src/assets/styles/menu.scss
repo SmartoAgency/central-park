@@ -56,6 +56,10 @@
         justify-content: flex-start;
         overflow-y: auto;
         height: 100%;
+        @include from(1025px){
+            margin-top: -150px;
+            padding-top: 150px;
+        }
         &>:nth-child(n) {
             margin-bottom: 50px;
             @include to(1024px){
@@ -216,7 +220,7 @@
             width: 100%;
             height: 100%;
             z-index: 2;
-            background: linear-gradient(0deg, rgba(35, 36, 43, 0.7), rgba(35, 36, 43, 0.7));
+            background: linear-gradient(0deg, rgba(35, 36, 43, 0.55), rgba(35, 36, 43, 0.55));
         }
     }
     
