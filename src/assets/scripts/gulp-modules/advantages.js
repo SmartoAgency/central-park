@@ -3,6 +3,7 @@ import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader } from "../modules/helpers/helpers";
 import gsap from 'gsap/all';
 import Swiper, { Navigation } from 'swiper';
+import clipPathEntry from "../modules/effects/clipPathEntry";
 
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){
@@ -10,6 +11,7 @@ window.addEventListener('load',function(evt){
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
+    clipPathEntry('.block-img-text__img img','.scroller-container')
 });
 
 
