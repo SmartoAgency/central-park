@@ -84,6 +84,10 @@
 .status-wrap {
     margin-top: 150px;
     margin-bottom: 150px;
+    @include to(575px){
+        margin-top: 75px;
+        margin-bottom: 75px;
+    }
     width: 100%;
 
 
@@ -103,8 +107,13 @@
         text-align: center;
     }
     .swiper {
-        @include shift-padding-left(2);
+        @include from(576px){
+            @include shift-padding-left(2);
+        }
         position: relative;
+    }
+    .swiper-button-disabled {
+        opacity: 0;
     }
     .swiper:after {
         content: '';
@@ -135,6 +144,11 @@
         pointer-events: none;
         &>* {
             pointer-events: all;
+            @include to(575px){
+                width: 40px;
+                height: 40px;
+
+            }
         }
     }
 }
@@ -144,6 +158,10 @@
     border: 1px solid #4A4647;
     --v-padding: 30px;
     --h-padding: 50px;
+    @include to(575px){
+        --v-padding: 15px;
+        --h-padding: 25px;
+    }
     &__text {
         padding: var(--v-padding) var(--h-padding);
         color: var(--color-white);
@@ -344,7 +362,7 @@
     left: 0;
     top: 0;
     z-index: 51;
-    width: 100%;
+    width: calc(100% + 20px);
     height: 100%;
     background-color: var(--color-black);
     padding-left: var(--page-side-fields);
@@ -355,6 +373,10 @@
     align-items: flex-start;
     --text-top-padding: 250px;
     @include autoAlpha(0);
+    @include to(575px){
+        --text-top-padding: 150px;
+        width: 100%;
+    }
     &__nav {
         position: absolute;
         top: 50%;
@@ -367,7 +389,10 @@
         z-index: 2;
         svg {
             pointer-events: all;
-
+            @include to(575px){
+                width: 40px;
+                height: 40px;
+            }
         }
     }
     &__top {
@@ -380,6 +405,17 @@
         margin-bottom: var(--page-side-fields);
         @include size(24);
         @include shift(0);
+        @include to(575px){
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        &>svg {
+            @include to(575px){
+                width: 120px;
+                height: auto;
+            }
+        }
     }
     &__close {
         display: flex;
@@ -394,6 +430,12 @@
             text-align: right;
             letter-spacing: -0.03em;
             text-transform: uppercase;
+        }
+        svg {
+            @include to(575px){
+                width: 40px;
+                height: 40px;
+            }
         }
     }
     &__date {
@@ -427,13 +469,18 @@
         padding-top: var(--text-top-padding);
         position: absolute;
         left: 0;
-        padding-left: var(--page-side-fields);
+        padding-left: var(--page-side-fields); 
         top: 0;
         z-index: 2;
         @include size(8);
         @include shift-left(0);
         text-align: left;
-        background-color: var(--color-black)
+        background-color: var(--color-black);
+        @include to(575px){
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
     &__slider {
         // @include size(24);
@@ -447,6 +494,10 @@
     }
     [data-state="false"] &__text-off {
         transform: translateX(100%);
+        @include to(575px){
+            transform: translateX(calc(100% + 20px));
+
+        }
     }
     [data-state="false"] &__text-off svg {
         transform: rotate(180deg);
@@ -455,7 +506,6 @@
         position: absolute;
         right: 0;
         bottom: calc(100% - var(--text-top-padding));
-        padding: 23px 20px;
         width: 185px;
         color: var(--color-black);
         background-color: var(--color-beige);
@@ -463,6 +513,10 @@
         transition-duration: .25s;
         transition-delay: .5s;
         transition-timing-function: ease-out;
+        @include to(575px){
+            padding: 10px;
+
+        }
         span {
             padding-left: 20px;
         }

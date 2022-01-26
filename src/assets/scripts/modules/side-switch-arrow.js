@@ -61,9 +61,9 @@ export default function sideSwitchArrow(opts, arrowArgs, conArgs) {
   container.addEventListener('click', () => {
     switchGallerySlide(arrow.dataset.side);
   });
-  if (document.documentElement.clientWidth < 576) {
-    container.removeEventListener('click', clickToChange);
-  }
+  // if (document.documentElement.clientWidth < 576) {
+  //   container.removeEventListener('click', clickToChange);
+  // }
   const navigate = {
     leftSide: () => {
       opts.onPrev();

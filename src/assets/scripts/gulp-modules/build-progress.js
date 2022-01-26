@@ -3,11 +3,11 @@ import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader } from "../modules/helpers/helpers";
 import Swiper, { Navigation } from 'swiper';
 
-
+const isMobile = window.matchMedia('(max-width: 575px)').matches;
 var swiper = new Swiper(".swiper", {
     modules: [ Navigation],
-    slidesPerView: "auto",
-    spaceBetween: 100,
+    slidesPerView: isMobile ? 1 : "auto",
+    spaceBetween: isMobile ? 0 : 100,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

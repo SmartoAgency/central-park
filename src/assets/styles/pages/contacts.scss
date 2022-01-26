@@ -142,9 +142,18 @@
     }
     &__social-group {
         display: flex;
+        @include to(575px){
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
     &__social-group>:nth-child(n+2) {
-        margin-left: 40px;
+        @include to(575px){
+            margin-top: 15px;
+        }
+        @include from(576px){
+            margin-left: 40px;
+        }
     }
 }
 .succes-popup {
