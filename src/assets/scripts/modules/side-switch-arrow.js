@@ -1,4 +1,6 @@
+import Hammer from "hammerjs";
 export default function sideSwitchArrow(opts, arrowArgs, conArgs) {
+  const isMobile = window.matchMedia('(max-width:575px)').matches;
   const arrow = arrowArgs;
   const container = conArgs;
   const mediumCordValue = document.documentElement.clientWidth / 2;
@@ -64,6 +66,17 @@ export default function sideSwitchArrow(opts, arrowArgs, conArgs) {
   // if (document.documentElement.clientWidth < 576) {
   //   container.removeEventListener('click', clickToChange);
   // }
+  if (isMobile) {
+    const hammer = new Hammer(container);
+    hammer.on('swipeleft', () => {
+      switchGallerySlide('leftSide')
+
+    })
+    hammer.on('swiperight', () => {
+      switchGallerySlide('rightSide')
+    })
+  }
+
   const navigate = {
     leftSide: () => {
       opts.onPrev();

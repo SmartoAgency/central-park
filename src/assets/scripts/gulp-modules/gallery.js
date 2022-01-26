@@ -85,15 +85,15 @@ const displacementSlider = function(opts) {
     loader.crossOrigin = "anonymous";
 
     images.forEach( ( img ) => {
-        console.log(img.dataset);
+        // console.log(img.dataset);
         image = loader.load( img.getAttribute( 'data-info-item-anim-img' ));
-        console.log(img.getAttribute( 'data-hover-image' ));
+        // console.log(img.getAttribute( 'data-hover-image' ));
         image.magFilter = image.minFilter = THREE.LinearFilter;
         image.anisotropy = renderer.capabilities.getMaxAnisotropy();
         sliderImages.push( image );
 
     });
-    console.log(sliderImages);
+    // console.log(sliderImages);
     let scene = new THREE.Scene();
     scene.background = new THREE.Color( 0x23272A );
     let camera = new THREE.OrthographicCamera(
@@ -265,7 +265,7 @@ sideSwitchArrow(
             currentIndex = currentIndex === 0 ? imgs.length - 1 : currentIndex - 1;
             currentNavDisplay.textContent = addZeroPrefix(currentIndex + 1);
             paginations[currentIndex].click();
-            console.log('prev');
+            // console.log('prev');
         }
     },
     document.querySelector('[data-gallery-switcher]'),
