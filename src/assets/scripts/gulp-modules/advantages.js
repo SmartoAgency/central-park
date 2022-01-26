@@ -16,9 +16,9 @@ window.addEventListener('load',function(evt){
     clipPathEntry('.block-img-text__img img','.scroller-container');
 
     webglWaves(document.querySelector('.adv-wide-block__img'));
-    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div.block-img-text.row-plain > div.block-img-text__img-wrap > div > img"));
-    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(1) > div.block-img-text__img-wrap > div > img"));
-    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(2) > div.block-img-text__img-wrap > div > img"));
+    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div.block-img-text.row-plain > div.block-img-text__img-wrap > div > img"), '.scroller-container');
+    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(1) > div.block-img-text__img-wrap > div > img"), '.scroller-container');
+    webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(2) > div.block-img-text__img-wrap > div > img"), '.scroller-container');
 
     splitToLinesAndFadeUp('.block-img-text__text p, .adv-dark-text', '.scroller-container')
 });

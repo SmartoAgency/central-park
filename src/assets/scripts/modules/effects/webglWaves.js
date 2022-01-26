@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import gsap from 'gsap';
-export default function webglWaves(img) {
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+export default function webglWaves(img, scroller) {
     const canvas = document.createElement('canvas');
     const wrap = document.createElement('div');
     const { width, height } = img.getBoundingClientRect();
@@ -22,7 +23,8 @@ export default function webglWaves(img) {
     const scene = new THREE.Scene();
     const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
-        antialias: true
+        antialias: true,
+        alpha: true 
     });
     renderer.setPixelRatio(gsap.utils.clamp(1.5, 1, window.devicePixelRatio));
     renderer.setSize(width, height);
@@ -158,10 +160,11 @@ export default function webglWaves(img) {
 
         varying vec2 vUv;
         varying float vWave;
+        uniform float uSaturation;
         uniform sampler2D uTexture;
         
         void main() {
-          float wave = vWave * 0.025;
+          float wave = vWave * 0.025 * uSaturation;
           float r = texture2D(uTexture, vUv).r;
           float g = texture2D(uTexture, vUv + (wave)).g;
           float b = texture2D(uTexture, vUv + wave).b;
@@ -170,12 +173,13 @@ export default function webglWaves(img) {
         }
         `,
         uniforms: {
+            uSaturation: { value: 0.0 },
             uTime: { value: 0.0 },
             uTexture: { value: new THREE.TextureLoader().load(
                 img.src,
                 function ( texture ) {
                     // in this example we create the material when the texture is loaded
-                    console.log(texture);
+                    // console.log(texture);
                     // const material = new THREE.MeshBasicMaterial( {
                     //     map: texture
                     //  } );
@@ -184,16 +188,33 @@ export default function webglWaves(img) {
         },
         side: THREE.DoubleSide
     });
+    
+    canvas.addEventListener('mouseenter',function(evt){
+        gsap.to(material.uniforms.uSaturation, { value: 1.0 })
+    });
+    canvas.addEventListener('mouseleave',function(evt){
+        gsap.to(material.uniforms.uSaturation, { value: 0.0 })
+    });
     const mesh = new THREE.Mesh(geometry, material);
     const clock = new THREE.Clock();
     scene.add(mesh);
     function render() {
         // renderer.setClearColor(0xF2F2F2, 0);
+        renderer.setClearColor( 0x000000, 0 );
         material.uniforms.uTime.value = clock.getElapsedTime();
         renderer.render(scene, camera);
         // console.log(clock);
         requestAnimationFrame(render);
     }
     render();
-    console.log(THREE);
+
+    ScrollTrigger.create({
+        trigger: canvas,
+        scroller: scroller ? scroller : null,
+        scrub: true,
+        onUpdate: ({ progress }) => {
+            mesh.position.y = gsap.utils.mapRange(0,1, 0.05, -0.05, progress);
+        }
+    })
+    // console.log(THREE);
 }
