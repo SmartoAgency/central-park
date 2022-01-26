@@ -355,6 +355,21 @@
     align-items: flex-start;
     --text-top-padding: 250px;
     @include autoAlpha(0);
+    &__nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        padding: 0 calc(var(--page-side-fields) * 1.5);
+        pointer-events: none;
+        display: flex;
+        justify-content: space-between;
+        z-index: 2;
+        svg {
+            pointer-events: all;
+
+        }
+    }
     &__top {
         position: relative;
         z-index: 3;
@@ -421,8 +436,9 @@
         background-color: var(--color-black)
     }
     &__slider {
-        @include size(24);
-        @include shift(0);
+        // @include size(24);
+        // @include shift(0);
+        width: 100%;
         overflow: hidden;
     }
     .swiper-slide {
@@ -456,6 +472,16 @@
             transition: transform .5s ease-in-out;
         }
     }
+    [data-circle-with-hover] {
+        transition: opacity .5s ease-in-out;
+    }
+    [data-circle-with-hover] path {
+        stroke: var(--color-black);
+        transition: var(--transition);
+    }
+    .swiper-button-disabled {
+        opacity: 0 !important;
+   }
 }
 
 .build-single-progress-item {

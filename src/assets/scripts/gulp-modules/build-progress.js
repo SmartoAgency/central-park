@@ -166,16 +166,16 @@ document.querySelectorAll('[data-build-popup-progress-inner-text]').forEach(butt
 
 
 var swiper1 = new Swiper(".build-swiper", {
-    // modules: [ Navigation],
+    modules: [ Navigation],
     slidesPerView: 1,
     // spaceBetween: 100,
     // pagination: {
     //   el: ".swiper-pagination",
     //   clickable: true,
     // },
-    // navigation: {
-    //     nextEl: document.querySelector('.status-wrap [data-next]'),
-    //     prevEl: document.querySelector('.status-wrap [data-prev]'),
-    // },
+    navigation: {
+      prevEl: document.querySelector('[data-progress-popup-prev]'),
+      nextEl: document.querySelector('[data-progress-popup-next]'),
+    },
     // roundLengths: true,
   });4
