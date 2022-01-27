@@ -555,6 +555,9 @@
     @include to(992px){
         height: 700vh;
     }
+    @include to(575px){
+        height: 800vw;
+    }
     &__inner {
         display: flex;
         // @include row-flex();
