@@ -34,6 +34,10 @@
     --inner-padding: 50px;
     border: 1px solid #4A4647;
     text-decoration: none;
+    @include to(575px){
+        
+        --inner-padding: 20px;
+    }
     &__img {
         position: relative;
         padding-bottom: 56.25%;

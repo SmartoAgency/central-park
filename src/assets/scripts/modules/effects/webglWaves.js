@@ -204,10 +204,10 @@ export default function webglWaves(img, scroller) {
         material.uniforms.uTime.value = clock.getElapsedTime();
         renderer.render(scene, camera);
         // console.log(clock);
-        requestAnimationFrame(render);
+        requestAnimationFrame(render); 
     }
     render();
-
+    mesh.position.y = gsap.utils.mapRange(0,1, 0.05, -0.05, 0);
     ScrollTrigger.create({
         trigger: canvas,
         scroller: scroller ? scroller : null,

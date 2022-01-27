@@ -333,6 +333,9 @@
         align-items: center;
         justify-content: center;
         padding: var(--v-padding) var(--page-side-fields);
+        @include to(575px){
+            height: 100%;
+        }
     }
     &__title {
         position: relative;
@@ -563,6 +566,9 @@
         @include to(992px){
           flex-direction: row-reverse;   
           flex-direction: column-reverse;
+        }
+        @include to(575px){
+            height: 100%;
         }
     }
     &__inner-progress-bar {

@@ -7,11 +7,12 @@ import clipPathEntry from "../modules/effects/clipPathEntry";
 
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){
-      const scroller = locoScroll('.scroller-container');
+    const scroller = locoScroll('.scroller-container');
+    const isMobile = window.matchMedia('(max-width: 575px)').matches;
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
-    curtainsShaders(scroller);
+    !isMobile && curtainsShaders(scroller);
     splitToLinesAndFadeUp('.about-text, .about-text-l, .about-text-xl, .about-pretty-block__text p','.scroller-container');
     clipPathEntry('.about-pretty-block__decor path','.scroller-container', {
       stagger: 0.15

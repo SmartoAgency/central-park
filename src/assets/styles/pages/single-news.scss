@@ -1,6 +1,10 @@
 .single-news {
     .inner-front__title {
         font-size: 72px;
+        @include to(575px){
+            font-size: 36px;
+            line-height: 120%;
+        }
     }
 }
 .similar-news {
