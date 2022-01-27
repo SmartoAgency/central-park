@@ -65,7 +65,10 @@ document.querySelectorAll('[data-build-arc]').forEach(path => {
 /**Попап для кругляшек про статус дома */
 document.querySelectorAll('[data-build-popup-status]').forEach(el => {
   const close = el.querySelector('[class*="close"]');
-  close.addEventListener('click', () => gsap.to(el, { autoAlpha: 0 }))
+  close.addEventListener('click', () => {
+    gsap.to(el, { autoAlpha: 0 });
+    window.dispatchEvent(new Event('popup-close'));
+  });
 })
 
 /**Изменение инфы при клике на стрелки внутри попапа про статус дома */
@@ -119,9 +122,10 @@ async function getProgressPopupData(id, index) {
   popupProgressBlock.innerHTML += getAfterBarsTitle(innerTitle);
   popup.dataset.currentId = index;
   gsap.to(popup, { autoAlpha: 1 });
+  window.dispatchEvent(new Event('popup-open'));
 }
 
-
+ 
 function getAfterBarsTitle(title) {
   return `<div class="build-status-popup__progress-bottom-title">${title}</div>`;
 }
@@ -140,13 +144,17 @@ function getInnerPopupProgressItem({ value, title, text }) {
 /**Попап карточек строительства */
 document.querySelectorAll('[data-build-popup-progress]').forEach(el => {
   const close = el.querySelector('[class*="close"]');
-  close.addEventListener('click', () => gsap.to(el, { autoAlpha: 0 }))
+  close.addEventListener('click', () => {
+    gsap.to(el, { autoAlpha: 0 });
+    window.dispatchEvent(new Event('popup-close'));
+  })
 })
 
 
 document.querySelector('.build-progress-conteiner').addEventListener('click', ({ target }) => {
   if (target.closest('.build-card') === null) return;
   gsap.to('[data-build-popup-progress]', { autoAlpha: 1 });
+  window.dispatchEvent(new Event('popup-open'));
 })
 
 

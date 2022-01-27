@@ -208,3 +208,10 @@ mobPopupHandler();
 
 menuHandler();
 
+window.addEventListener('popup-open',function(evt){
+  document.body.classList.add('popup-opened');
+  
+});
+window.addEventListener('popup-close',function(evt){
+  document.body.classList.remove('popup-opened');
+});

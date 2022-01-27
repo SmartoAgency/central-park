@@ -207,6 +207,8 @@
     @include to(575px){
         padding-top: 100px;
         justify-content: flex-start;
+        overflow-y: auto;
+        padding-bottom: 100px;
     }
     @include autoAlpha(0);
 
@@ -247,6 +249,9 @@
         justify-content: space-between;
         &>:nth-child(2) {
             margin: auto;
+            @include to(575px){
+                opacity: 0;
+            }
         }
         &>:nth-child(3) {
             margin-left: auto;
@@ -306,6 +311,10 @@
         text-align: left;
         margin-left: auto;
         margin-right: auto;
+        @include to(575px){
+            padding-left: var(--page-side-fields);
+            padding-right: var(--page-side-fields);
+        }
     }
     &__bottom-decor {
         position: absolute;
@@ -328,6 +337,7 @@
         @include to(575px){
             top: auto;
             bottom: 20px;
+            display: none;
         }
     }
 }
@@ -453,11 +463,17 @@
         letter-spacing: -0.03em;
         text-transform: uppercase;
         color: var(--color-white);
+        @include to(575px){
+            font-size: 48px;
+        }
     }
     &__text-content {
         height: 100%;
         overflow-y: auto;
         @include shift-padding-right(3);
+        @include to(575px){
+            height: 40vh;
+        }
         &>* {
             margin: 15px 0;
         }
