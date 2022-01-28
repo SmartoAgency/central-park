@@ -1,6 +1,9 @@
 .single-news {
     .inner-front__title {
         font-size: 72px;
+        @include to(1680px){
+            font-size: 48px;
+        }
         @include to(575px){
             font-size: 36px;
             line-height: 120%;
@@ -25,8 +28,8 @@
     img, iframe, video {
         margin-top: 70px;
         margin-bottom: 70px;
-        @include shift(0);
-        @include size(24);
+        @include shift(2);
+        @include size(20);
         @include from(1680px){
             max-width: 1680px;
             margin-left: auto;
@@ -43,6 +46,9 @@
         margin-bottom: 30px;
         // @include size(12);
         @include shift(6);
+        @include to(1680px){
+            font-size: 14px;
+        }
         @include to(1024px){
             @include shift(2);
         }
@@ -82,6 +88,9 @@
         color: var(--color-beige);
         // @include size(12);
         @include shift(6);
+        @include to(1680px){
+            font-size: 24px;
+        }
         @include to(1024px){
             @include shift(2);
         }
@@ -90,5 +99,17 @@
         }
 
     }
-
+    &__slider {
+        position: relative;
+    }
+    &__slider-nav {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        z-index: 2;
+    }
 }
