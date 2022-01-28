@@ -6,24 +6,23 @@
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: var(--color-beige);
-    @include from(1920px){
-        font-size: 64px;
-    }
-    @include to(575px){
-        font-size: 36px;
-    }
+    @include multiFontSize(120%, 64, 48, 36, 36);
+    // @include from(1920px){
+    //     font-size: 64px;
+    // }
+    // @include to(1680px){
+    //     font-size: 36px;
+    // }
+    // @include to(575px){
+    //     font-size: 36px;
+    // }
 }
 .about-text-l {
     font-size: 30px;
     line-height: 140%;
     font-weight: 300;
     color: var(--color-beige);
-    @include from(1920px){
-        font-size: 36px;
-    }
-    @include to(575px){
-        font-size: 18px;
-    }
+    @include multiFontSize(140%, 30, 24, 24, 18);
 }
 .about-text {
     font-size: 18px;
@@ -31,6 +30,9 @@
     color: #A49B93;
     @include from(1920px){
         font-size: 24px;
+    }
+    @include to(1680px){
+        font-size: 14px;
     }
     @include to(575px){
         font-size: 14px;
@@ -99,6 +101,9 @@
         transform: translateY(-50%);
         text-align: center;
         color: var(--color-black);
+        @include to(1680px){
+            font-size: 24px;
+        }
         @include to(575px){
             font-size: 24px;
             width: 100%;
@@ -120,6 +125,9 @@
         top: 50%;
         height: 300%;
         transform: translate(-50%,-50%);
+        @include to(1680px){
+            height: 160%;
+        }
     }
 }
 

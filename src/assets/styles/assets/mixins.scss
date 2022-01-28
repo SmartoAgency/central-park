@@ -72,3 +72,18 @@ $screen-height: 720;
 		opacity: $value;
 	}
 }
+
+@mixin multiFontSize($lineHeight, $fullHd, $desktop, $tablet, $mobile) {
+	font-size: #{$fullHd}px;
+	line-height: $lineHeight;
+	@media screen and (max-width:1680px){
+		font-size: #{$desktop}px;
+	}
+	@media screen and (max-width:1024px){
+		font-size: #{$tablet}px;
+		
+	}
+	@media screen and (max-width:575px){
+		font-size: #{$mobile}px;
+	}
+}

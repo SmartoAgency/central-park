@@ -1,7 +1,13 @@
+.three-d-title {
+    color: var(--color-beige);
+    margin-bottom: 20px;
+    @include multiFontSize(100%, 48,36,36,24);
+}
 .three-d-text {
-    font-size: 18px;
-    line-height: 160%;
+    // font-size: 18px;
+    // line-height: 160%;
     color: #A49B93;
+    @include multiFontSize(160%, 18,14,14,14);
 }
 
 .three-d-container {
