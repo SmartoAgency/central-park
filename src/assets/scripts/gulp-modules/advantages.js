@@ -1,6 +1,6 @@
 import innerPageFrontEffect from "../modules/inner-pages/inner-page-front-effect";
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
-import { handleHeader } from "../modules/helpers/helpers";
+import { handleHeader, isMobile } from "../modules/helpers/helpers";
 import gsap from 'gsap/all';
 import Swiper, { Navigation } from 'swiper';
 import clipPathEntry from "../modules/effects/clipPathEntry";
@@ -19,8 +19,23 @@ window.addEventListener('load',function(evt){
     webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div.block-img-text.row-plain > div.block-img-text__img-wrap > div > img"), '.scroller-container');
     webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(1) > div.block-img-text__img-wrap > div > img"), '.scroller-container');
     webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(2) > div.block-img-text__img-wrap > div > img"), '.scroller-container');
+    splitToLinesAndFadeUp('.block-img-text__text p, .adv-dark-text', '.scroller-container');
 
-    splitToLinesAndFadeUp('.block-img-text__text p, .adv-dark-text', '.scroller-container')
+    !isMobile() && document.querySelectorAll('.block-img-text').forEach(block => {
+      gsap.timeline({
+          scrollTrigger: {
+              scroller: '.scroller-container',
+              trigger: block,
+              start: '10% bottom',
+              end: '90% top',
+              onLeave: () => gsap.to(block.children, { y: -35, autoAlpha: 0 }),
+              onLeaveBack: () => gsap.to(block.children, { y: 35, autoAlpha: 0 }),
+              onEnter: () => gsap.to(block.children, { y: 0, autoAlpha: 1 }),
+              onEnterBack: () => gsap.to(block.children, { y: 0, autoAlpha: 1 })
+          },
+      })
+      
+  })
 });
 
 
@@ -54,7 +69,6 @@ navigation: {
 });
 
 
-console.log(swiper);
 swiper.on('touchStart', () => {
 document.querySelector('.zoom-slider-wrapper').classList.add('drag')
 
