@@ -3,10 +3,16 @@
     line-height: 140%;
     color: var(--color-beige);
     margin-bottom: 30px;
+    @include to(1680px){
+        font-size: 24px;   
+    }
 }
 .commercial-text {
     font-size: 18px;
     line-height: 160%;
     /* or 29px */
     color: #A49B93;
+    @include to(1680px){
+     font-size: 14px;   
+    }
 }

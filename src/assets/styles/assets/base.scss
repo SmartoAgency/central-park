@@ -486,8 +486,12 @@ body {
     color: var(--color-beige);
     font-weight: 300;
     margin-top: 150px;
+	font-size: 24px;
 	@include from(1920px){
 		font-size: 36px;
+	}
+	@include to(1680px){
+		margin-top: 120px;
 	}
     @include to(1240px){
         
@@ -546,6 +550,9 @@ body {
 		left: 50%;
 		top: 0;
 		transform: translate(-50%,-50%);
+		@include to(1680px){
+			width: 113px;
+		}
 		@include to(575px){
 			width: 25%;
 		}

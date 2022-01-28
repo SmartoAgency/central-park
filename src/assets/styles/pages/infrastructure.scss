@@ -35,6 +35,9 @@
         line-height: 160%;
         /* or 29px */
         color: #A49B93;
+        @include to(1680px){
+            font-size: 14px;
+        }
         @include to(575px){
             width: 100%;
             margin-left: 0;
@@ -49,6 +52,9 @@
     height: 970px;
     display: flex;
     flex-wrap: wrap;
+    @include to(1680px){
+        height: 100vh;
+    }
     @include to(575px){
         height: auto;
     }
@@ -98,7 +104,8 @@
     display: flex;
     align-items: center;
     @include to(1680px){
-            font-size: 18px;
+        font-size: 14px;
+        --v-padding: 30px;
     }
     @include to(575px){
         --v-padding: 20px;

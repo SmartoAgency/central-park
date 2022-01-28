@@ -63,6 +63,12 @@
         @include size(8);
         @include shift-left(11);
         @include shift-right(5);
+        @include from-to(576px, 1680px){
+            margin-bottom: -50px;
+        }
+        @include to(1680px){
+            font-size: 14px;
+        }
         @include to(575px){
             width: 100%;
             margin-right: 0;
