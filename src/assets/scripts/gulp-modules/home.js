@@ -17,7 +17,7 @@ import screen9Handler from './home/screen9';
 import screen1 from './home/screen1';
 import screen8 from './home/screen8';
 import ztext from '../modules/ztext/ztext';
-import { handleHeader, transitionBetweenSectionSceneLength } from '../modules/helpers/helpers';
+import { addIntersectionOnceWithCallback, handleHeader, transitionBetweenSectionSceneLength } from '../modules/helpers/helpers';
 import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
 
 
@@ -126,11 +126,13 @@ function homeInit() {
 
 
 
-
-  genplanSequence({
-    scene: '.genplan',
-    selectorToDisplay: '.genplan__img img',
-    scroller: $scroller,
+  addIntersectionOnceWithCallback(document.querySelector('.genplan'),() => {
+    genplanSequence({
+      scene: '.genplan',
+      selectorToDisplay: '.genplan__img img',
+      scroller: $scroller,
+      $switchFrames: '.genplan__text2 li'
+    })
   })
   
   
