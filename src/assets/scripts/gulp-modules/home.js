@@ -18,6 +18,7 @@ import screen1 from './home/screen1';
 import screen8 from './home/screen8';
 import ztext from '../modules/ztext/ztext';
 import { handleHeader, transitionBetweenSectionSceneLength } from '../modules/helpers/helpers';
+import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
 
 
 
@@ -126,6 +127,12 @@ function homeInit() {
 
 
 
+  genplanSequence({
+    scene: '.genplan',
+    selectorToDisplay: '.genplan__img img',
+    scroller: $scroller,
+  })
+  
   
   handleHeader(scroller);
 
