@@ -17,3 +17,15 @@
      font-size: 14px;   
     }
 }
+
+.commercial-container {
+    @include to(575px){
+        .block-img-text__text {
+            order: 2;
+            
+        }
+        .block-img-text__img-wrap {
+            order: 1;
+        }
+    }
+}
