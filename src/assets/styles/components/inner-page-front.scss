@@ -4,7 +4,9 @@
     background-color: var(--color-black);
     position: relative;
     z-index: 2;
-
+    @include to(575px){
+        padding-top: 60vw;
+    }
     &__title {
         margin-bottom: 176px;
         margin-bottom: 15vh;
@@ -24,6 +26,7 @@
         }
         @include to(575px){
             font-size: 36px;
+            margin-bottom: 75px;
         }
     }
     &__bottom-decor {
@@ -38,6 +41,10 @@
         transform: translate(-50%, 50%);
         width: 31px;
         height: calc(60px + var(--gap));
+        @include to(575px){
+            width: 14px;
+            height: calc(28px + var(--gap));
+        }
     }
     &__image-in-logo {
         --self-w: 40vw;

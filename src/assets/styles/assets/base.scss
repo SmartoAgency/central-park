@@ -361,6 +361,10 @@ html.has-scroll-dragging {
 	&--bordered {
 		border-radius: 100px;
 		border: 2px solid #5D5755;
+		@include to(575px){
+			
+			border: 1px solid #5D5755;
+		}
 	}
 	&--dark {
 		color: var(--color-beige);

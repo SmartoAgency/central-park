@@ -2,6 +2,7 @@
     background-color: var(--color-black); 
     position: relative;
     padding: 210px var(--page-side-fields);
+   
     .title-h2 {
         text-transform: none;
     }
@@ -13,13 +14,18 @@
         letter-spacing: -0.03em;
         color: var(--color-beige);
         margin-bottom: 50px;
+        @include to(575px){
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
     }
     @include to(992px){
         padding: 150px var(--page-side-fields);
     }
     @include to(575px){
         
-        padding: 100px var(--page-side-fields);
+        padding: 40px var(--page-side-fields);
+        
     }
     @include row-flex();
     .title-h2 {
@@ -59,6 +65,7 @@
         @include to(575px){
             @include size(24);
             @include shift(0);
+            margin-top: 100px;
         }
     }
     .succes-popup {
@@ -105,7 +112,7 @@
     &__group:nth-last-child(n+2) {
         margin-bottom: 50px;
         @include to(992px){
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
     }
     &__group {
@@ -114,6 +121,10 @@
         }
         &>:nth-child(2) {
             margin-bottom: 20px;
+            @include to(575px){
+                
+                margin-bottom: 10px;
+            }
         }
     }
     &__group-l {
@@ -139,6 +150,10 @@
     }
     &__link-with-margin {
         margin-bottom: 25px;
+        @include to(575px){
+            margin-bottom: 10px;
+
+        }
     }
     &__social-group {
         display: flex;
@@ -149,7 +164,7 @@
     }
     &__social-group>:nth-child(n+2) {
         @include to(575px){
-            margin-top: 15px;
+            margin-top: 12px;
         }
         @include from(576px){
             margin-left: 40px;
@@ -193,6 +208,9 @@
         position: relative;
         padding-top: 35px;
         margin-bottom: 50px;
+        @include to(575px){
+            margin-bottom: 30px;
+        }
     }
     .input-message {
         position: absolute;
@@ -255,6 +273,9 @@
         // text-decoration-line: underline;
         color: var(--color-beige);
         position: relative;
+        @include to(575px){
+            font-size: 18px;
+        }
         &:after {
             content: '';
             position: absolute;
@@ -276,6 +297,9 @@
         border-radius: 50%;
         display: flex;align-items: center;
         justify-content: center;
+        @include to(575px){
+            margin-right: 10px;
+        }
         svg {
             width: 50%;
             height: 50%;

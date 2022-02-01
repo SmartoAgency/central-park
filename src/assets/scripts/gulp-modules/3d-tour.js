@@ -23,8 +23,20 @@ window.addEventListener('load',function(evt){
                 onEnterBack: () => gsap.to(block.children, { y: 0, autoAlpha: 1 })
             },
         })
-        
     })
+
+    // gsap.timeline({
+    //     scrollTrigger: {
+    //         trigger: '.scroller-container',
+    //         scroller: '.scroller-container',
+    //         scrub: true,
+    //         start: `${innerHeight} bottom`,
+    //         end: `100% bottom`,
+    //     }
+    // })
+    // .to('.header-logo', { rotateY: 30, rotateZ: 5, rotateX: 5 })
+    // .to('.header-logo', { rotateY: 0, rotateZ: 0, rotateX: 0 })
+    // .to('.header-logo', { rotateY: -30, rotateZ: -5, rotateX: -5 })
     
 });
 
