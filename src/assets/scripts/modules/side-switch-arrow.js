@@ -61,6 +61,7 @@ export default function sideSwitchArrow(opts, arrowArgs, conArgs) {
     }
   }
   container.addEventListener('click', () => {
+    if (isMobile && !opts.notOnMobile) return;
     switchGallerySlide(arrow.dataset.side);
   });
   // if (document.documentElement.clientWidth < 576) {

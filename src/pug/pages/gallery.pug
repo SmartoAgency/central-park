@@ -35,6 +35,17 @@ block scripts
 block content
   +InnerPageFront(title_page, 'some', './assets/images/gallery/front.jpg')
   .front-block__canvas-wrap
+    .front-block__canvas-wrap-mob-nav 
+      <svg data-gallery-prev width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle r="20" transform="matrix(-1 0 0 1 20 20)" fill="#23242B"/>
+        <path d="M18.2997 14C17.1988 15.6149 13.0275 20.087 12 20.087M12 20.087C13.0398 20.087 17.0765 24.2484 18.2997 26.1739M12 20.087L28 20.087" stroke="#E5CDB7"/>
+        </svg>
+      <svg data-gallery-next width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#23242B"/>
+        <path d="M21.7003 14C22.8012 15.6149 26.9725 20.087 28 20.087M28 20.087C26.9602 20.087 22.9235 24.2484 21.7003 26.1739M28 20.087L12 20.087" stroke="#E5CDB7"/>
+        </svg>
+
+    
   <svg class="gallery-switcher" data-gallery-switcher width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="60" cy="60" r="60" fill="#23242B"/>
     <g class="gallery-switcher__nav">

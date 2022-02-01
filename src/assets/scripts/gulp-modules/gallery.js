@@ -266,12 +266,32 @@ sideSwitchArrow(
             currentNavDisplay.textContent = addZeroPrefix(currentIndex + 1);
             paginations[currentIndex].click();
             // console.log('prev');
-        }
+        },
+        notOnMobile: true,
     },
     document.querySelector('[data-gallery-switcher]'),
     galleryCanvasWrap,
     );
-    
+    if (window.matchMedia('(max-width: 575px)').matches) {
+        document.querySelector('[data-gallery-next]').addEventListener('click', () => {
+            if (isAnimatingGallery) return;
+            isAnimatingGallery = true;
+            currentIndex = currentIndex === imgs.length - 1 ? 0 : currentIndex + 1;
+            currentNavDisplay.textContent = addZeroPrefix(currentIndex + 1);
+            paginations[currentIndex].click();
+            
+        })
+        document.querySelector('[data-gallery-prev]').addEventListener('click', () => {
+            if (isAnimatingGallery) return;
+            isAnimatingGallery = true;
+            currentIndex = currentIndex === 0 ? imgs.length - 1 : currentIndex - 1;
+            currentNavDisplay.textContent = addZeroPrefix(currentIndex + 1);
+            paginations[currentIndex].click();
+            
+        })
+    }
     window.addEventListener('gallery-switch-complete',function(evt){
         isAnimatingGallery = false;
 });
+
+

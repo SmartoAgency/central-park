@@ -2,6 +2,26 @@
     width: 100%;
     height: 100vh;
     background-color: var(--color-black);
+    position: relative;
+    &-mob-nav {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 var(--page-side-fields);
+        @include from(576px){
+            display: none;
+        }
+    }
+    canvas {
+        @include to(575px){
+            height: 100% !important;
+            object-fit: cover;
+        }
+    }
     @include to(575px){
         display: flex;
         align-items: center;
