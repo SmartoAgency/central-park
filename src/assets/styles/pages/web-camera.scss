@@ -4,6 +4,10 @@
     justify-content: space-between;
     padding-top: 150px;
     padding-bottom: 150px;
+    @include to(575px){
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
     @include from(1025px){
         @include shift-padding(2);
     }
@@ -28,6 +32,10 @@
     &__title {
         margin: 30px auto;
         text-align: center;
+        color: var(--color-beige);
+        @include to(575px){
+            margin: 10px auto 30px auto;
+        }
     }
     &__frame {
         position: relative;
@@ -66,13 +74,16 @@
         transition-property: opacity, left, bottom, height;
         transition-timing-function: ease-out;
         transition-duration: .5s;
+        @include to(575px){
+            --self-size: 50px;
+        }
     }
     &.is-playing &__play-button {
         left: 0;
         transform: none;
         bottom: 30px;
-        width: 45px;
-        height: 45px;
+        width: 25px;
+        height: 25px;
     }
 
     &.is-playing {

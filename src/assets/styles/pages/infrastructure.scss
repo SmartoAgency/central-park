@@ -4,6 +4,10 @@
     --v-padding: 150px;
     padding-top: var(--v-padding);
     padding-bottom: var(--v-padding);
+    @include to(575px){
+        
+        --v-padding: 70px;
+    }
     .infra-title {
         @include size(11);
         @include shift(1);
@@ -168,3 +172,13 @@
     }
 }
 
+.infra-container {
+    @include to(575px){
+        .block-img-text__text {
+            order: 2;
+        }
+        .block-img-text__img-wrap {
+            order: 1;
+        }
+    }
+}
