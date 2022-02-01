@@ -7,6 +7,10 @@
     --v-padding: 100px;
     padding-top: var(--v-padding);
     padding-bottom: var(--v-padding);
+    @include to(575px){
+        
+        --v-padding: 70px;
+    }
     .news-card {
         @include size(9);
         @include shift(0);
@@ -24,6 +28,9 @@
 
     .news-card {
         margin-bottom: 100px;
+        @include to(575px){
+            margin-bottom: 20px;
+        }
     }
     .button {
         margin: 0 10vw;
@@ -74,6 +81,10 @@
         @include to(1680px){
             font-size: 18px;
         }
+        @include to(575px){
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
     }
     &__subtitle {
         font-size: 14px;
@@ -83,5 +94,8 @@
         /* identical to box height, or 20px */
         color: #5D5755;
         margin-bottom: var(--inner-padding);
+        @include to(575px){
+            font-size: 12px;
+        }
     }
 }

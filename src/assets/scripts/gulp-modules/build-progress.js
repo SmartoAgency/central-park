@@ -6,8 +6,9 @@ import Swiper, { Navigation } from 'swiper';
 const isMobile = window.matchMedia('(max-width: 575px)').matches;
 var swiper = new Swiper(".swiper", {
     modules: [ Navigation],
-    slidesPerView: isMobile ? 1 : "auto",
+    slidesPerView: isMobile ? 1.75 : "auto",
     spaceBetween: isMobile ? 0 : 100,
+    centeredSlides: isMobile,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
