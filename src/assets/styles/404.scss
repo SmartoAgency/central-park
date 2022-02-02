@@ -36,6 +36,9 @@
     align-items: flex-start;
     padding-top: 250px;
     text-align: center;
+    @include from-to(576px, 1024px){
+        padding-top: 350px;
+    }
     @include to(575px){
         padding-top: 125px;
     }
@@ -51,6 +54,9 @@
         margin-bottom: 30px;
         color: var(--color-white);
         width: 100%;
+        @include to(1024px){
+            font-size: 160px;
+        }
         @include to(575px){
             font-size: 96px;
         }
@@ -84,7 +90,7 @@
     }
     .link-wrap {
         display: flex;
-        width: 50%;
+        // width: 50%;
         --offset: 25px;
         margin-left: calc(var(--offset) * -0.5);
         margin-right: calc(var(--offset) * -0.5);

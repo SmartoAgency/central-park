@@ -19,7 +19,13 @@
 }
 
 .commercial-container {
-    @include to(575px){
+    @include from-to(576px, 1024px){
+        .block-img-text {
+            @include size(22);
+            @include shift(1);
+          }
+    }
+    @include to(1024px){
         .block-img-text__text {
             order: 2;
             

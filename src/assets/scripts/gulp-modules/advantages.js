@@ -52,9 +52,9 @@ breakpoints: {
     spaceBetween: 20
   },
   // when window width is >= 480px
-  993: {
-    slidesPerView: 3.5,
-    spaceBetween: 30
+  576: {
+    slidesPerView: 2.5,
+    spaceBetween: 20
   },
   1440: {
     slidesPerView: 4.5,

@@ -327,6 +327,10 @@
         stroke: var(--color-beige);
         transition: var(--transition);
     }
+    @include to(1024px){
+        width: 44px;
+        height: 44px;
+    }
     @include from(1025px){
         &:hover path {
             stroke: var(--color-black);

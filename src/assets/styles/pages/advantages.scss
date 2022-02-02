@@ -35,10 +35,17 @@
     &__text {
         @include size(11);
         @include shift(0);
+        @include from-to(576px, 1024px){
+            @include size(16);
+        }
         @include to(575px){
-            
             @include size(24);
             margin-bottom: 25px;
+        }
+        .adv-subtitle {
+            @include to(1024px){
+                margin-bottom: 20px;
+            }
         }
     }
     &__nav {
@@ -100,10 +107,21 @@
         @include to(1680px){
             font-size: 14px;
         }
+        @include to(1024px){
+            @include size(24);
+            @include shift(0);
+            font-size: 18px;
+            line-height: 140%;
+            color: var(--color-beige);
+
+        }
         @include to(575px){
             width: 100%;
             margin-right: 0;
             margin-left: 0;
+        }
+        @include from-to(576px, 1024px){
+            margin-bottom: 100px;
         }
     }
     .adv-wide-block {
@@ -116,6 +134,17 @@
     }
     .adv-subtitle {
         margin-bottom: 20px;
+    }
+
+    .block-img-text {
+        @include to(1024px){
+            .block-img-text__text {
+                order: 2;
+            }
+            .block-img-text__img-wrapper {
+                order: 1;
+            }
+        }
     }
 }
 .adv-subtitle {
@@ -130,6 +159,9 @@
     }
     @include to(1240px){
         font-size: 36px;   
+    }
+    @include to(1024px){
+        font-size: 30px;
     }
     @include to(575px){
         font-size: 24px;   
@@ -153,6 +185,11 @@
     position: relative;
     @include size(22.2);
     @include shift(0.9);
+    @include to(1024px){
+        
+        @include size(24);
+        @include shift(0);
+    }
     @include to(575px){
         // @include size(24);
         // @include shift(0);
