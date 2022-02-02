@@ -16,6 +16,15 @@
         margin-left: 0;
     }
     .block-img-text {
+        @include to(575px){
+            .block-img-text__text {
+                order: 2;
+                
+            }
+            .block-img-text__img-wrap {
+                order: 1;
+            }
+        }
         [data-circle-with-hover] {
             position: absolute;
             left: 50%;
@@ -23,6 +32,10 @@
             z-index: 2;
             transform: translate(-50%,-50%);
             transition: .3s ease-in-out;
+            @include to(575px){
+                width: 60px;
+                height: 60px;
+            }
         }
         iframe[src]~[data-circle-with-hover] {
             left: 100%;

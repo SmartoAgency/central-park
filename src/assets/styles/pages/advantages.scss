@@ -59,6 +59,16 @@
                 height: 40px;
             }
         }
+        [data-screen3-next] svg {
+            @include to(575px){
+                stroke: none;
+            }
+        }
+        [data-screen3-next] [data-circle-with-hover-default] {
+            @include to(575px){
+                fill: #464851;
+            }
+        }
 
     }
     .zoom-slider-wrapper {

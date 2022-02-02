@@ -501,17 +501,21 @@ body {
         
         font-size: 24px;
     }
-    @include to(575px){
+	
+    @include to(1024px){
         font-size: 14px;
 		margin-top: 50px;
     }
+	@include from-to(576px, 1024px){
+		font-size: 18px;
+	}
     &:not(.row-plain):nth-child(odd) {
         flex-direction: row-reverse;
     }
 
     &:last-child {
         margin-bottom: 100px;
-		@include to(575px){
+		@include to(1024px){
 			
 			margin-bottom: 50px;
 		}
@@ -519,7 +523,7 @@ body {
     &__text {
         @include size(8);
         @include shift(1);
-		@include to(575px){
+		@include to(1024px){
 			
 			@include size(24);
 			@include shift(0);
@@ -534,7 +538,7 @@ body {
 		@include size(12);
         @include shift(1);
 		position: relative;
-		@include to(575px){
+		@include to(1024px){
 			
 			@include size(24);
 			@include shift(0);

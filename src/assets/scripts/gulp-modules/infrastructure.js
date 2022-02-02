@@ -32,3 +32,10 @@ document.querySelectorAll('[data-nav-item-group]').forEach(el => {
         el.classList.toggle('active');
     })
 })
+
+
+document.querySelector('[data-mob-wrapper-mobile-opener]').addEventListener('click',function(evt){
+  const navContainer = document.querySelector('.map-wrapper__nav');
+  navContainer.classList.toggle('closed');
+  this.querySelector('span').textContent = navContainer.classList.contains('closed') ? this.dataset.closedText : this.dataset.openedText;
+});

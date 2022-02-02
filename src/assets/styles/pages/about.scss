@@ -82,6 +82,9 @@
         .block-img-text:nth-child(2) {
             margin-top: 163px;
         }
+        .block-img-text:nth-child(n+3) .block-img-text__decor {
+            display: none;
+        }
     }
 }
 
@@ -96,6 +99,7 @@
         width: 100%;
         padding-bottom: 100%;
         padding-bottom: calc(100vw / 320 * 576 );
+        margin-bottom: 20px;
     }
     &__img {
         position: absolute;
@@ -138,6 +142,11 @@
         @include from(1920px){
             font-size: 36px;
         }
+        @include to(575px){
+            height: 50%;
+            top: 0;
+            transform: none;
+        }
         
     }
     &__decor {
@@ -149,6 +158,10 @@
         @include to(1680px){
             height: 160%;
         }
+        @include to(575px){
+            height: 80%;
+        }
+        
     }
 }
 

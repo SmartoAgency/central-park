@@ -102,6 +102,8 @@ block content
       p Неподалік комплексу знаходяться площі Незалежності, Героїв Майдану, Небесної Сотні, Європейська, а також Вінницький академічний музично-драматичний театр ім. М. К. Садовського, музеї, галереї та безліч різноманітних спортивних, розважальних та торгових об'єктів Вінниці.
   .map-wrapper
     .map-wrapper__nav(data-disable-page-scroll)
+      .map-wrapper__nav-mob-opener(data-mob-wrapper-mobile-opener data-opened-text="Згорнути інфраструктуру" data-closed-text="Розгорнути інфраструктуру")
+        span Згорнути інфраструктуру
       each val, index in navItems
         .map-nav-item-group(data-nav-item-group)
           .map-nav-item  
