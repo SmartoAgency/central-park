@@ -12,14 +12,16 @@
         width: 100%;
         justify-content: space-between;
         padding: 0 var(--page-side-fields);
-        @include from(576px){
+        @include from(1025px){
             display: none;
         }
     }
     canvas {
-        @include to(575px){
+        @include to(1024px){
             height: 100% !important;
             object-fit: cover;
+        }
+        @include from-to(576px, 1024px){
         }
     }
     @include to(575px){

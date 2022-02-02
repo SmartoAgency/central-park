@@ -24,8 +24,11 @@
         @include to(1680px){
             font-size: 64px;
         }
+        @include to(1024px){
+            font-size: 48px;
+
+        }
         @include to(575px){
-            font-size: 36px;
             margin-bottom: 75px;
         }
     }

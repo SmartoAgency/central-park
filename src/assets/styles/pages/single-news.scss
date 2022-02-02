@@ -2,7 +2,10 @@
     .inner-front__title {
         font-size: 72px;
         @include to(1680px){
-            font-size: 48px;
+        }
+        @include to(1024px){
+            
+            font-size: 36px;
         }
         @include to(575px){
             font-size: 24px;
@@ -13,6 +16,10 @@
 .similar-news {
     .inner-front__title {
         margin-bottom: 100px;
+        @include to(1024px){
+            margin-bottom: 50px;
+
+        }
         @include to(575px){
             margin-bottom: 40px;
         }
@@ -26,6 +33,9 @@
     padding-bottom: 100px;
     padding-left: var(--page-side-fields);
     padding-right: var(--page-side-fields);
+    &__content {
+        position: relative;
+    }
     @include row-flex();
     @include to(575px){
         padding-top: 40px;
@@ -59,7 +69,7 @@
             font-size: 14px;
         }
         @include to(1024px){
-            @include shift(2);
+            @include shift(4);
         }
         @include to(575px){
             @include shift(0);
@@ -77,10 +87,10 @@
             top: 0;
         }
     }
-    a, button {
+    a:not(.single-news-container__back-button), button {
         @include shift-left(6);
         @include to(1024px){
-            @include shift-left(2);
+            @include shift-left(4);
         }
         @include to(575px){
             @include shift-left(0);
@@ -101,7 +111,8 @@
             font-size: 24px;
         }
         @include to(1024px){
-            @include shift(2);
+            @include shift(4);
+            font-size: 18px;
         }
         @include to(575px){
             font-size: 18px;
@@ -145,11 +156,37 @@
         }
     }
 
+    [data-circle-with-hover] {
+        @include from-to(576px, 1024px){
+            width: 44px;
+            height: 44px;
+        }
+    }
     [data-circle-with-hover-default] {
         fill: transparent;
         @include to(575px){
             stroke: none;
             fill: var(--color-black);
+        }
+    }
+    &__back-button  {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include to(1024px){
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 20px;
+            svg {
+                margin-right: 0;
+            }
+            span {
+                display: none;
+            }
         }
     }
 

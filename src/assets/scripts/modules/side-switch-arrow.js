@@ -1,6 +1,6 @@
 import Hammer from "hammerjs";
 export default function sideSwitchArrow(opts, arrowArgs, conArgs) {
-  const isMobile = window.matchMedia('(max-width:575px)').matches;
+  const isMobile = window.matchMedia('(max-width:1024px)').matches;
   const arrow = arrowArgs;
   const container = conArgs;
   const mediumCordValue = document.documentElement.clientWidth / 2;
@@ -26,7 +26,7 @@ export default function sideSwitchArrow(opts, arrowArgs, conArgs) {
   container.addEventListener('mouseleave', () => {
     arrow.hide();
   });
-  if (document.documentElement.clientWidth < 769) {
+  if (document.documentElement.clientWidth < 1025) {
     window.removeEventListener('mousemove', desktopNavButtonHandler);
     arrow.remove();
   }

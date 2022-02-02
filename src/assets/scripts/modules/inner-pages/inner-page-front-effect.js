@@ -7,7 +7,7 @@ export default function innerPageFrontEffect() {
         title = innerTemplate.querySelector('.inner-front__title>div'),
         smallDecor = innerTemplate.querySelectorAll('.inner-front__small-bottom-decor path');
 
-    const headerInner = document.querySelectorAll('.header>*');
+    const headerInner = document.querySelectorAll('.header>*:not(.header-logo)');
     const tl = gsap.timeline({
         paused: true,
         defaults: {

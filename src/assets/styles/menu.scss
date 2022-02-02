@@ -64,16 +64,20 @@
         justify-content: flex-start;
         overflow-y: auto;
         height: 100%;
-        @include from(1025px){
+        @include from(576px){
             margin-top: -150px;
             padding-top: 150px;
         }
+        // @include to(1024px){
+        //     height: calc(100% - 160px);
+        // }
         @include to(575px){
             height: calc(100% - 90px);
         }
         &>:nth-child(n) {
             margin-bottom: 50px;
-            @include to(1024px){
+
+            @include to(575px){
                 margin-bottom: 25px;
             }
         }
@@ -95,7 +99,7 @@
                 font-size: 64px;
             }
             @include to(1024px){
-                font-size: 48px;
+                font-size: 36px;
             }
             @include to(575px){
                 font-size: 24px;

@@ -19,7 +19,7 @@
             @include size(10);
         }
         @include to(1025px){
-            @include size(18);
+            @include size(20);
         }
         @include to(575px){
             @include size(24);
@@ -28,8 +28,11 @@
 
     .news-card {
         margin-bottom: 100px;
+        @include to(1024px){
+            margin-bottom: 50px;
+
+        }
         @include to(575px){
-            margin-bottom: 20px;
         }
     }
     .button {

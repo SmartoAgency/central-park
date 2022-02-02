@@ -212,7 +212,7 @@
         position: relative;
         padding-top: 35px;
         margin-bottom: 50px;
-        @include to(575px){
+        @include to(1024px){
             margin-bottom: 30px;
         }
     }
