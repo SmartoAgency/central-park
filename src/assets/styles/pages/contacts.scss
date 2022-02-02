@@ -14,6 +14,10 @@
         letter-spacing: -0.03em;
         color: var(--color-beige);
         margin-bottom: 50px;
+        @include from-to(576px, 1024px){
+            font-size: 36px;
+
+        }
         @include to(575px){
             font-size: 30px;
             margin-bottom: 30px;
@@ -56,7 +60,7 @@
         position: relative;
         @include size(14);
         @include shift-left(5);
-        @include from(576px){
+        @include from(1025px){
             @include shift-padding-right(3);
         }
         @include to(992px){ 
@@ -157,16 +161,16 @@
     }
     &__social-group {
         display: flex;
-        @include to(575px){
+        @include to(1024px){
             flex-direction: column;
             align-items: flex-start;
         }
     }
     &__social-group>:nth-child(n+2) {
-        @include to(575px){
+        @include to(1024px){
             margin-top: 12px;
         }
-        @include from(576px){
+        @include from(1025px){
             margin-left: 40px;
         }
     }
@@ -234,7 +238,7 @@
         letter-spacing: -0.03em;
 
         color: #999999;
-        @include to(575px){
+        @include to(1024px){
             font-size: 18px;
         }
     }
@@ -255,9 +259,18 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        @include to(575px){
+        @include to(1024px){
             font-size: 18px;
             padding: 20px;
+        }
+        @include from-to(576px, 1024px){
+            
+            padding: 20px 35px;
+        }
+    }
+    .button {
+        @include to(1024px){
+            min-width: 200px;
         }
     }
 }
@@ -273,8 +286,9 @@
         // text-decoration-line: underline;
         color: var(--color-beige);
         position: relative;
-        @include to(575px){
+        @include to(1024px){
             font-size: 18px;
+            font-weight: 300;
         }
         &:after {
             content: '';

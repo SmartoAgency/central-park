@@ -63,6 +63,9 @@
         width: max-content;
         overflow: hidden;
         transform: translateY(200%);
+        @include from-to(576px, 1024px){
+            transform: translateY(-200%);
+        }
         @include to(575px){
             transform: translateY(-400%);
             padding: 0 var(--page-side-fields);

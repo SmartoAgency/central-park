@@ -173,8 +173,8 @@
         --v-padding: 30px;
     }
     @include to(1024px){
-        --v-padding: 20px;
-        font-size: 18px;
+        --v-padding: 10px;
+        font-size: 14px;
     }
     &__plus {
         margin-left: auto;
@@ -189,6 +189,9 @@
         }
     }
     &__marker svg {
+        @include to(1024px){
+            max-height: 40px;
+        }
         @include to(575px){
             max-height: 28px;
         }
