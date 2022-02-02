@@ -8,7 +8,7 @@ import clipPathEntry from "../modules/effects/clipPathEntry";
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){
     const scroller = locoScroll('.scroller-container');
-    const isMobile = window.matchMedia('(max-width: 575px)').matches;
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;

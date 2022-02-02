@@ -476,6 +476,9 @@ body {
 
 .mt-medium {
 	margin-top: 50px;
+	@include to(1024px){
+		margin-top: 40px;
+	}
 	@include to(575px){
 		margin-top: 25px;
 

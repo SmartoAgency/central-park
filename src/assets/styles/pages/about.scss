@@ -22,7 +22,7 @@
     line-height: 140%;
     font-weight: 300;
     color: var(--color-beige);
-    @include multiFontSize(140%, 30, 24, 24, 18);
+    @include multiFontSize(140%, 30, 24, 18, 18);
 }
 .about-text {
     font-size: 18px;
@@ -42,6 +42,9 @@
 .about-container {
     --gap: 100px;
     padding-bottom: var(--gap);
+    @include from-to(576px, 1024px){
+        @include shift-padding(2);
+    }
     @include to(575px){
         --gap: 50px;
     }
@@ -54,6 +57,9 @@
     .about-text-l {
         margin-top: 30px;
         margin-bottom: 30px;
+        @include to(1024px){
+            margin-bottom: 0;
+        }
         @include to(575px){
             margin-top: 15px;
             margin-bottom: 15px;
@@ -68,11 +74,15 @@
         margin-top:  var(--gap);
     }
 
-    @include to(575px){
+    @include to(1024px){
+        .block-img-text__text  {
+            margin-bottom: 0;
+        }
         .block-img-text:nth-child(4),
         .block-img-text:first-child {
             .block-img-text__text {
                 order: 2;
+                
                 
             }
             .block-img-text__img-wrap {
@@ -86,6 +96,12 @@
             display: none;
         }
     }
+    @include from-to(576px, 1024px){
+        .block-img-text:nth-last-child(4) .block-img-text__img-wrap,
+        .block-img-text:nth-last-child(3) .block-img-text__img-wrap {
+            margin-bottom: 0;
+        }
+    }
 }
 
 
@@ -95,6 +111,10 @@
     width: calc(92.76667% - 20px);
     // @include shift(1);
     margin: auto;
+    @include to(1024px){
+        width: 100%;
+        padding-bottom: 52.5%;
+    }
     @include to(575px){
         width: 100%;
         padding-bottom: 100%;
@@ -128,6 +148,9 @@
         color: var(--color-black);
         @include to(1680px){
             font-size: 24px;
+        }
+        @include to(1024px){
+            font-size: 18px;
         }
         @include to(575px){
             font-size: 24px;
