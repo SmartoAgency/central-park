@@ -2,6 +2,7 @@
     .inner-front__title {
         font-size: 72px;
         @include to(1680px){
+            font-size: 52px;
         }
         @include to(1024px){
             

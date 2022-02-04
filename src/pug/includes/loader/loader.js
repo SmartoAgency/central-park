@@ -1,8 +1,17 @@
 console.log('laoder');
 
+
+
 let loaderStatus = {
     isCounterAnim: true,
     isDOMLoaded: false,
+}
+if (sessionStorage.getItem('visit') !== null) {
+    document.querySelector('.loader').classList.add('hidden');
+    loaderStatus.isCounterAnim = false;
+    loaderStatus.isCounterAnim = true;
+} else {
+    sessionStorage.setItem('visit', true);
 }
 function scaleTo1(el) {
     const path = el;
@@ -65,7 +74,7 @@ function linesTo0() {
 let interval = setInterval(() => {
     if (loaderStatus.isCounterAnim === false && loaderStatus.isDOMLoaded === true) {
         
-        window.dispatchEvent(new Event('preloaderOff'))
+        window.dispatchEvent(new Event('preloaderOff'));
         clearInterval(interval);
     }
 }, 100);

@@ -16,11 +16,11 @@ export default function innerPageFrontEffect() {
             duration: 1.75,
         }
     })
-        .fromTo(title, { yPercent: 100 }, { yPercent: 0 })
-        .fromTo(bottomDecor, { yPercent: 100 }, { yPercent: 0, stagger: 0.05 }, '<')
-        .fromTo(breadcrumbs, { yPercent: 100 }, { yPercent: 0, stagger: 0.05 }, '<')
-        .fromTo(headerInner, { y: 200 }, { y: 0, stagger: -0.05 }, '<')
-        .fromTo(smallDecor, { y: 100 }, { y: 0, stagger: -0.1 }, '<')
+        .fromTo(title, { yPercent: 101 }, { yPercent: 0 })
+        .fromTo(bottomDecor, { yPercent: 101 }, { yPercent: 0, stagger: 0.05 }, '<')
+        .fromTo(breadcrumbs, { yPercent: 101 }, { yPercent: 0, stagger: 0.05 }, '<')
+        .fromTo(headerInner, { y: 201 }, { y: 0, stagger: -0.05 }, '<')
+        .fromTo(smallDecor, { autoAlpha: 0, y: 101 }, { autoAlpha:1, y: 0, stagger: -0.1 }, '<')
         .fromTo(topDecor, 
             { 
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
@@ -33,6 +33,7 @@ export default function innerPageFrontEffect() {
             }, 
             '<'
         )
+        .fromTo(innerTemplate.nextElementSibling.children, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0 }, '<')
     // window.addEventListener('click',function(evt){
     //     tl.progress(0).play();
     // });

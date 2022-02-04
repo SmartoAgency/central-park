@@ -584,6 +584,7 @@
         transition-duration: .25s;
         transition-delay: .5s;
         transition-timing-function: ease-out;
+        padding: 20px;
         @include to(1024px){
             padding: 10px;
 
