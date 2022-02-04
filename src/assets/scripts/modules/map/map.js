@@ -164,7 +164,7 @@ function func() {
     /* beautify preserve:start */
   const markersData =[
     {
-        content: `<img style="background:white" src="${markersAdresses.main}">`,
+        content: `<div ${markerPopupStyle}>ЖК Централ парк</div>`,
         position: { lat: 48.4605169, lng: 35.0525155 },
         type: 'main',
         id: '17',
@@ -264,11 +264,11 @@ function markersHightlight(google, map, infowindow) {
       if (marker === undefined) return;
       infowindow.setContent(marker.content);
       infowindow.open(map, marker);
-      console.log(marker);
+      // console.log(marker);
     })
   })
-  console.log(document.querySelectorAll('[data-marker-id]'));
-  console.log(map);
+  // console.log(document.querySelectorAll('[data-marker-id]'));
+  // console.log(map);
 }
 
 

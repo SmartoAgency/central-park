@@ -29,7 +29,6 @@ export default function innerPageFrontEffect() {
             { 
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
                 webkitClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                yPercent: 0, 
                 stagger: 0.05 
             }, 
             '<'

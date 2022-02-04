@@ -23,6 +23,9 @@
     letter-spacing: -0.03em;
     /* Светлый */
     color: #E5CDB7;
+    @include to(1680px){
+        font-size: 64px;
+    }
     @include to(1240px){
         font-size: 48px;
     }
