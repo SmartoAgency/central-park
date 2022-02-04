@@ -152,11 +152,12 @@ function func() {
     };
     const markerPopupStyle = `
           style="
-          background: #2D2D2D;
-          color:#fff;
+          background: #ffffff;
+          color:#000000;
+          font-weight: bold;
           padding:5px 10px;
-          font-size: 18px;
-          line-height: 22px;"
+          font-size: 16px;
+          line-height: 120%;"
           `;
   
   
@@ -166,42 +167,49 @@ function func() {
         content: `<img style="background:white" src="${markersAdresses.main}">`,
         position: { lat: 48.4605169, lng: 35.0525155 },
         type: 'main',
+        id: '17',
         zIndex: 1000,
         icon: { url: markersAdresses.main, scaledSize: buildLogoSize },
       },
       {
         content: `<div ${markerPopupStyle}>Apricot private kindergarten</div>`,
         type: 'school',
+        id: '16',
         icon: { url: markersAdresses.school, scaledSize: defaultMarkerSize },
-        position: { lat: 48.465315387607184, lng: 35.057751142925454 },
+        position: { lat: 49.2384203, lng: 28.4610074 },
       },
       {
         content: `<div ${markerPopupStyle}>Середня школа №21</div>`,
         type: 'school',
+        id: '15',
         icon: { url: markersAdresses.school, scaledSize: defaultMarkerSize },
         position: { lat: 48.46599832746873, lng: 35.035520993734906 },
       },
       {
         content: `<div ${markerPopupStyle}>Specialized School № 71</div>`,
         type: 'school',
+        id: '14',
         icon: { url: markersAdresses.school, scaledSize: defaultMarkerSize },
         position: { lat: 48.453248601385674, lng: 35.05303045487341 },
       },
       {
         content: `<div ${markerPopupStyle}>Public School № 19</div>`,
         type: 'school',
+        id: '13',
         icon: { url: markersAdresses.school, scaledSize: defaultMarkerSize },
         position: { lat: 48.47094936663253, lng: 35.04204412631592 },
       },
       {
         content: `<div ${markerPopupStyle}>Public School # 23</div>`,
         type: 'school',
+        id: '12',
         icon: { url: markersAdresses.school, scaledSize: defaultMarkerSize },
         position: { lat: 48.456664020583055, lng: 35.064875090349446 },
       },
       {
         content: `<div ${markerPopupStyle}>СЕРЕДНЯ ЗАГАЛЬНООСВІТНЯ ШКОЛА №18-ЗАГАЛЬНООСВІТНІЙ НАВЧАЛЬНИЙ ЗАКЛАД І-ІІІ СТУПЕНІВ</div>`,
         type: 'school',
+        id: '11',
         icon: { url: markersAdresses.school, scaledSize: defaultMarkerSize },
         position: { lat: 48.46161597031695, lng: 35.04504820053086 },
       },
@@ -211,16 +219,22 @@ function func() {
       content: '',
       maxWidth: 200,
     });
+    const initedMarkers = [];
     markersData.forEach((marker) => {
       const category = marker.type;
+      
       const mapMarker = new google.maps.Marker({
         map,
         category,
         zIndex: marker.zIndex || 1,
         icon: marker.icon,
+        dataId: +marker.id,
+        content: marker.content,
         position: new google.maps.LatLng(marker.position.lat, marker.position.lng),
       });
-  
+
+      initedMarkers.push(mapMarker);
+      
       google.maps.event.addListener(mapMarker, 'click', function () {
         infowindow.setContent(marker.content);
         infowindow.open(map, mapMarker);
@@ -229,5 +243,36 @@ function func() {
       mapMarker.name = marker.type;
       gmarkers1.push(mapMarker);
     });
+    map.initedMarkers = initedMarkers;
+    markersHightlight(google, map, infowindow);
   }
   
+
+
+function markersHightlight(google, map, infowindow) {
+  const $markerLinks = document.querySelectorAll('[data-marker-id]');
+  // const infowindow = new google.maps.InfoWindow({
+  //   content: '',
+  //   maxWidth: 280,
+  // });
+  querySelectorWithNodeList('[data-marker-id]', (item) => {
+    item.addEventListener('click', () => {
+
+      const marker = map.initedMarkers.find(el => {
+        return el.dataId === +item.dataset.markerId
+      });
+      if (marker === undefined) return;
+      infowindow.setContent(marker.content);
+      infowindow.open(map, marker);
+      console.log(marker);
+    })
+  })
+  console.log(document.querySelectorAll('[data-marker-id]'));
+  console.log(map);
+}
+
+
+function querySelectorWithNodeList(selector, cb = () => {}) {
+  const $list = document.querySelectorAll(selector);
+  $list.forEach(el => cb(el));
+}

@@ -212,6 +212,13 @@
 .map-nav-subitems {
     .map-nav-item {
         padding-left: calc(var(--page-side-fields) / 2);
+        transition: none;
+        // transition: 1s ease-in-out;
+    }
+
+    .map-nav-item:active {
+        background-color: var(--color-beige);
+        color: var(--color-black);
     }
 }
 .map-nav-item-group {
