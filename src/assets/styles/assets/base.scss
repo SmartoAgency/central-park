@@ -574,3 +574,19 @@ body {
 .tdn {
 	text-decoration: none;
 }
+
+.menu__close,
+.header__menu {
+	svg {
+		content: "";
+		display: block;
+		border-radius: 50%;
+		transition: all 0.5s;
+		box-shadow: 0 0 10px 40px transparent;
+	}
+	&:active svg {
+		box-shadow: 0 0 0 0 var(--color-beige);
+		opacity: 1;
+		transition: 0s;
+	  }
+}

@@ -39,15 +39,15 @@
         </svg>
     .loader__counter 25
     style(data-inner-style).
-        .inner-front__image-in-logo path,
-       .inner-front~*>* {
+        body:not(.home) .inner-front__image-in-logo path,
+        body:not(.home) .inner-front~*>* {
             opacity: 0;
         }
-        .header>*:not(.header-logo),
-        .inner-front__small-bottom-decor path,
-        .inner-front__title>div,
-        .inner-front__image-in-logo path,
-        .breadcrumbs>* {
+        body:not(.home) .header>*:not(.header-logo),
+        body:not(.home) .inner-front__small-bottom-decor path,
+        body:not(.home) .inner-front__title>div,
+        body:not(.home) .inner-front__image-in-logo path,
+        body:not(.home) .breadcrumbs>* {
             transform: translateY(101%);
         }
     script.
