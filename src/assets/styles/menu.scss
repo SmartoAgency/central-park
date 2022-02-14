@@ -24,7 +24,7 @@
     height: 100%;
     z-index: 20;
     background-color: var(--color-black);
-    z-index: 49;
+    z-index: 60;
     @include autoAlpha(0);
     --v-padding: 50px;
     @include to(575px){
