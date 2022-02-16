@@ -2,6 +2,10 @@ import innerPageFrontEffect from "../modules/inner-pages/inner-page-front-effect
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader } from "../modules/helpers/helpers";
 import Swiper, { Navigation } from 'swiper';
+import buildProgressCardRenderer from './build-progress/build-progress-card-renderer';
+import buildProgressPopupUpdate from './build-progress/build-progress-popup-update';
+
+
 
 const isMobile = window.matchMedia('(max-width: 575px)').matches;
 var swiper = new Swiper(".swiper", {
@@ -26,7 +30,16 @@ window.addEventListener('load',function(evt){
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
+    window.addEventListener('dom-update', () => {
+      window.scroller.update();
+    });
+
+    buildProgressCardRenderer();
+    // scroller.destroy();
+    // gsap.set('.scroller-container', { position: 'static' })
 });
+
+
 
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
     var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
@@ -77,7 +90,7 @@ const popupProgressPrevArrow = document.querySelector('[data-status-popup-prev]'
 const popupProgressNextArrow = document.querySelector('[data-status-popup-next]');
 
 
-popupProgressNextArrow.addEventListener('click', () => {
+popupProgressNextArrow && popupProgressNextArrow.addEventListener('click', () => {
   const popup = document.querySelector('[data-build-popup-status]');
   let currentId = +popup.dataset.currentId || 0;
   const statuses = document.querySelectorAll('[data-single-build-status]');
@@ -85,7 +98,7 @@ popupProgressNextArrow.addEventListener('click', () => {
   console.log(currentId);
   statuses[currentId].dispatchEvent(new Event('click'))
 })
-popupProgressPrevArrow.addEventListener('click', () => {
+popupProgressPrevArrow && popupProgressPrevArrow.addEventListener('click', () => {
   const popup = document.querySelector('[data-build-popup-status]');
   let currentId = +popup.dataset.currentId || 0;
   const statuses = document.querySelectorAll('[data-single-build-status]');
@@ -142,6 +155,24 @@ function getInnerPopupProgressItem({ value, title, text }) {
   `;
 }
 
+
+
+
+const swiper1 = new Swiper(".build-swiper", {
+    modules: [ Navigation],
+    slidesPerView: 1,
+    // spaceBetween: 100,
+    // pagination: {
+    //   el: ".swiper-pagination",
+    //   clickable: true,
+    // },
+    navigation: {
+      prevEl: document.querySelector('[data-progress-popup-prev]'),
+      nextEl: document.querySelector('[data-progress-popup-next]'),
+    },
+    // roundLengths: true,
+  });
+
 /**Попап карточек строительства */
 document.querySelectorAll('[data-build-popup-progress]').forEach(el => {
   const close = el.querySelector('[class*="close"]');
@@ -154,7 +185,17 @@ document.querySelectorAll('[data-build-popup-progress]').forEach(el => {
 
 document.querySelector('.build-progress-conteiner').addEventListener('click', ({ target }) => {
   if (target.closest('.build-card') === null) return;
-  gsap.to('[data-build-popup-progress]', { autoAlpha: 1 });
+  
+
+  console.log(target.closest('.build-card').dataset);
+  buildProgressPopupUpdate(
+    target.closest('.build-card').dataset.id, 
+    document.querySelector('[data-build-popup-progress]'),
+    () => {
+      swiper1.update();
+      gsap.to('[data-build-popup-progress]', { autoAlpha: 1 });
+    }
+  );
   window.dispatchEvent(new Event('popup-open'));
 })
 
@@ -172,19 +213,3 @@ document.querySelectorAll('[data-build-popup-progress-inner-text]').forEach(butt
     innerPopup.dataset.state = state;
   })
 })
-
-
-var swiper1 = new Swiper(".build-swiper", {
-    modules: [ Navigation],
-    slidesPerView: 1,
-    // spaceBetween: 100,
-    // pagination: {
-    //   el: ".swiper-pagination",
-    //   clickable: true,
-    // },
-    navigation: {
-      prevEl: document.querySelector('[data-progress-popup-prev]'),
-      nextEl: document.querySelector('[data-progress-popup-next]'),
-    },
-    // roundLengths: true,
-  });4
