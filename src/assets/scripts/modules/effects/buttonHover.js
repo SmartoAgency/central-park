@@ -26,16 +26,19 @@ function openingEffect({clientX , clientY, target}) {
         clientX,
         clientY
     })
-    gsap.timeline().fromTo(
-        hoverEl, 
-        { webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`, clipPath: `circle(0% at ${cords.x}% ${cords.y}%)` }, 
-        { 
-            webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
-            clipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
-            duration: 0.5, 
-            ease: 'power4.easeOut' 
-        }
-    );
+    gsap.timeline()
+        .set(hoverEl, { transformOrigin: `${cords.x}% ${cords.y}%` })
+        // .to(hoverEl, { scale: 1.2, duration: 0.4, ease: 'power2.easeOut' })
+    // gsap.timeline().fromTo(
+    //     hoverEl, 
+    //     { webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`, clipPath: `circle(0% at ${cords.x}% ${cords.y}%)` }, 
+    //     { 
+    //         webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
+    //         clipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, 
+    //         duration: 0.5, 
+    //         ease: 'power4.easeOut' 
+    //     }
+    // );
 }
 function closingEffect({clientX , clientY, target}) {
     const hoverEl = target.querySelector('.button__hover');
@@ -45,14 +48,17 @@ function closingEffect({clientX , clientY, target}) {
         clientY
     })
     gsap.timeline()
-        .fromTo(
-        hoverEl, 
-        { clipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)` }, 
-        { 
-            webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
-            clipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
-            duration: 0.5, 
-            ease: 'power4.easeOut' 
-        }
-    );
+        .set(hoverEl, { transformOrigin: `${cords.x}% ${cords.y}%` })
+        // .to(hoverEl, { scale: 0, duration: 0.4, ease: 'power2.easeOut' })
+    // gsap.timeline()
+    //     .fromTo(
+    //     hoverEl, 
+    //     { clipPath: `circle(140% at ${cords.x}% ${cords.y}%)`, webkitClipPath: `circle(140% at ${cords.x}% ${cords.y}%)` }, 
+    //     { 
+    //         webkitClipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
+    //         clipPath: `circle(0% at ${cords.x}% ${cords.y}%)`,
+    //         duration: 0.5, 
+    //         ease: 'power4.easeOut' 
+    //     }
+    // );
 }
