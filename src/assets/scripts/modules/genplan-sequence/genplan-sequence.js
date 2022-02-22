@@ -6,8 +6,8 @@ export default async function genplanSequence(config) {
     const scene = document.querySelector(config.scene);
     const imgForDisplay = getElementBySelector(config.selectorToDisplay);
     const $switchFrames = document.querySelectorAll(config.$switchFrames);
-
-    let SEQUENCES = await axios('./static/genplan.json', {
+    let URL = window.location.href.match(/localhost/) ? './static/genplan.json' : '/wp-content/themes/central-park/static/genplan.json';
+    let SEQUENCES = await axios(URL, {
         onDownloadProgress: (e) => {
             console.log(e);
         }
