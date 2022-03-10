@@ -31,7 +31,7 @@ html(lang="uk")
     block meta
     block head
 
-  body(class= class_page id= id_page)
+  body(class= class_page id= id_page data-barba="wrapper")
     // START SVG SPRITE
     include ../../assets/svg-sprite/sprite/symbol_sprite.php
     // END SVG SPRITE
@@ -47,7 +47,7 @@ html(lang="uk")
     // END HEADER
     //- .page__inner
     //-   .page__content
-    .scroller-container
+    .scroller-container(data-barba="container" data-barba-namespace="home" data-script=id_page)
       block content
 
       //.page__footer-wrapper
