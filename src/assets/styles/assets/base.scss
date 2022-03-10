@@ -15,7 +15,11 @@
 }
 
 .container {
-	@include wrapper();
+	// @include wrapper();
+	@include row-flex();
+	background-color: var(--color-black);
+	padding-left: var(--page-side-fields);
+	padding-right: var(--page-side-fields);
 }
 
 html {
@@ -32,6 +36,9 @@ body {
 	// background-color: var(--color-black);
 	@include to(1680px){
 		font-size: 14px;
+	}
+	&.popup-opened {
+		overflow: hidden;
 	}
 }
 .page__inner {
@@ -316,20 +323,29 @@ html.has-scroll-dragging {
 	transform: translateZ(0);
 	transition: background-color .5s ease-out;
 	backface-visibility: hidden;
+	&[disabled] &__hover {
+		display: none;
+	}
 	&__hover {
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%) scale(0) !important;
 		width: calc(100% + 5px);
 		height: calc(100% + 5px);
 		background-color: var(--color-black);
-		clip-path: circle(0% at 0% 100%);
+		// clip-path: circle(0% at 0% 100%);
 		border-radius: 30px;
-		-webkit-clip-path: circle(0% at 0% 100%);
+		// transform: scale(0);
+		// -webkit-clip-path: circle(0% at 0% 100%);
+		// transform: scale(0) !important;
+		transition: transform .4s cubic-bezier(0.25, 0.74, 0.22, 0.99);
 		backface-visibility: hidden;
 		z-index: 0;
 		
+	}
+	&:hover &__hover {
+		transform: translate(-50%,-50%) scale(1.2) !important;
 	}
 	&--dark &__hover {
 		background-color: var(--color-beige);
@@ -351,6 +367,10 @@ html.has-scroll-dragging {
 	&--bordered {
 		border-radius: 100px;
 		border: 2px solid #5D5755;
+		@include to(575px){
+			
+			border: 1px solid #5D5755;
+		}
 	}
 	&--dark {
 		color: var(--color-beige);
@@ -370,14 +390,14 @@ html.has-scroll-dragging {
 
 	@include from(1025px){
 		&.with-hover:hover {
-			background-color: transparent;
+			// background-color: transparent;
 			color: var(--color-beige);
 		}
 		&.with-hover:hover svg {
 			stroke: var(--color-beige);
 		}
 		&--dark.with-hover:hover {
-			background-color: transparent;
+			// background-color: transparent;
 			color: var(--color-black);
 		}
 		&--dark.with-hover:hover svg {
@@ -435,6 +455,7 @@ html.has-scroll-dragging {
 		position: fixed;
 		left: 0;
 		top: 0;
+		width: 100%;
 	}
 	// width: 100vw;
 	// height: 100vh;
@@ -448,4 +469,130 @@ body {
 }
 .hidden {
 	visibility: hidden;
+}
+
+
+.bordered-circle {
+	stroke: var(--color-beige);
+	circle[data-circle-with-hover-default] {
+		
+		fill: none;
+	}
+}
+
+.mt-medium {
+	margin-top: 50px;
+	@include to(1024px){
+		margin-top: 40px;
+	}
+	@include to(575px){
+		margin-top: 25px;
+
+	}
+}
+
+
+.block-img-text {
+    @include row-flex();
+    width: calc(100% + 20px);
+    line-height: 140%; 
+    color: var(--color-beige);
+    font-weight: 300;
+    margin-top: 150px;
+	font-size: 24px;
+	@include from(1920px){
+		font-size: 36px;
+	}
+	@include to(1680px){
+		margin-top: 120px;
+	}
+    @include to(1240px){
+        
+        font-size: 24px;
+    }
+	
+    @include to(1024px){
+        font-size: 14px;
+		margin-top: 50px;
+    }
+	@include from-to(576px, 1024px){
+		font-size: 18px;
+	}
+    &:not(.row-plain):nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+
+    &:last-child {
+        margin-bottom: 100px;
+		@include to(1024px){
+			
+			margin-bottom: 50px;
+		}
+    }
+    &__text {
+        @include size(8);
+        @include shift(1);
+		@include to(1024px){
+			
+			@include size(24);
+			@include shift(0);
+			margin-bottom: 25px;
+		}
+    }
+    &__img {
+		position: relative;
+        padding-bottom: 56.5%;
+    }
+    &__img-wrap {
+		@include size(12);
+        @include shift(1);
+		position: relative;
+		@include to(1024px){
+			
+			@include size(24);
+			@include shift(0);
+			margin-bottom: 25px;
+		}
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+	&__decor {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		transform: translate(-50%,-50%);
+		@include to(1680px){
+			width: 113px;
+		}
+		@include to(575px){
+			width: 25%;
+			// display: none;
+		}
+	}
+}
+
+.tdn {
+	text-decoration: none;
+}
+
+.menu__close,
+.header__menu {
+	svg {
+		content: "";
+		display: block;
+		border-radius: 50%;
+		transition: all 0.5s;
+		box-shadow: 0 0 10px 40px transparent;
+	}
+	&:active svg {
+		box-shadow: 0 0 0 0 var(--color-beige);
+		opacity: 1;
+		transition: 0s;
+	  }
 }

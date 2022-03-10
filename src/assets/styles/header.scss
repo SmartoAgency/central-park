@@ -16,7 +16,9 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 100%;
-	transition: background-color .5s ease-in-out, padding .5s ease-in-out;
+	// transition: background-color .5s ease-in-out, padding .5s ease-in-out;
+	transition: background-color .5s ease-in-out;
+	overflow: hidden;
 	&.transparent {
 		background-color: transparent;
 		@include from(1025px){
@@ -39,10 +41,14 @@
     }
     padding: var(--v-padding) var(--page-side-fields);
     color: var(--color-beige);
-    &>svg {
+    &>.header-logo {
         height: 100%;
         // width: auto;
         margin-right: auto;
+		svg {
+			height: 100%;
+			width: 100%;
+		}
     }
     a {
         color: var(--color-beige); 
@@ -166,7 +172,7 @@
 			background-image: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 8 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.29289 4.29289L0.707107 1.70711C0.077142 1.07714 0.523309 0 1.41421 0H6.58579C7.47669 0 7.92286 1.07714 7.2929 1.70711L4.70711 4.29289C4.31658 4.68342 3.68342 4.68342 3.29289 4.29289Z' fill='%23E5CDB7'/%3E%3C/svg%3E%0A");
 			background-repeat: no-repeat;
 			background-size: contain;
-			top: 11%;
+			top: 15%;
 			right: 3px;
 			width: 10px;
 			height: 5px;

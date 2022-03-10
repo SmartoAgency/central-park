@@ -8,10 +8,10 @@
     padding-right: var(--page-side-fields);
     padding-top: var(--top-offset);
     overflow: hidden;
-    @include from-to(576px, 1024px){
+    @include from-to(576px, 1024px) {
         height: calc(100vw / 770 * 868);
     }
-    @include to(575px){
+    @include to(575px) {
         height: auto;
         --top-offset: calc(45px + var(--header-h));
     }
@@ -24,7 +24,7 @@
         pointer-events: none;
         z-index: 3;
         object-fit: cover;
-        @include to(575px){
+        @include to(575px) {
             position: relative;
             right: auto;
             top: auto;
@@ -36,36 +36,32 @@
         }
     }
     &__text {
-        
         @include shift-left(0.5);
         @include size(11);
         position: relative;
         z-index: 4;
-        @include from(1920px){
+        @include from(1920px) {
             @include size(8);
         }
-        @include to(1024px){
+        @include to(1024px) {
             @include shift-left(0);
         }
-        @include to(575px){
+        @include to(575px) {
             width: 85%;
             height: 15em;
             margin-left: 0;
             margin-right: 0;
-
         }
         &>:nth-last-child(n+2) {
             margin-bottom: 50px;
             overflow: hidden;
-            @include to(1680px){
+            @include to(1680px) {
                 margin-bottom: 30px;
             }
-            @include to(1024px){
+            @include to(1024px) {
                 margin-bottom: 20px;
             }
-            @include to(575px){
-               
-            }
+            @include to(575px) {}
         }
         p {
             width: calc(100% / 8 * 6);
@@ -74,8 +70,8 @@
     &__cloud-1,
     &__cloud-2 {
         position: absolute;
-        @include to(575px){
-                object-fit: contain;
+        @include to(575px) {
+            object-fit: contain;
         }
     }
     &__cloud-1 {
@@ -85,7 +81,7 @@
         height: 100%;
         width: 100%;
         object-fit: contain;
-        @include to(575px){
+        @include to(575px) {
             top: 40%;
             height: auto;
         }
@@ -108,23 +104,23 @@
     padding-top: 210px;
     padding-bottom: 210px;
     position: relative;
-    @include to(1680px){
+    @include to(1680px) {
         padding-top: 110px;
         padding-bottom: 110px;
     }
-    @include to(992px){
+    @include to(992px) {
         &>:nth-last-child(n+2) {
             margin-bottom: 80px;
         }
     }
-    @include to(575px){
+    @include to(575px) {
         padding-top: 80px;
         padding-bottom: 80px;
     }
     img {
-            @include from(993px){
-                min-height: calc(100vh - 280px);
-            }
+        @include from(993px) {
+            min-height: calc(100vh - 280px);
+        }
     }
     p {
         color: #717280;
@@ -133,27 +129,25 @@
     .title-h2 {
         margin-bottom: 40px;
     }
-    &__text  {
+    &__text {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         @include size(10);
-        
         @include shift(0);
         @include shift-padding(2);
         @include size-md(24);
-        @include to(575px){
+        @include to(575px) {
             padding-left: 0;
             padding-right: 0;
         }
-
     }
     .img-with-logo {
         @include size(7);
         @include shift(0);
         @include size-md(24);
-        @include to(992px){
+        @include to(992px) {
             height: 250px;
         }
     }
@@ -165,36 +159,36 @@
     top: 0;
     width: 31px;
     height: 60px;
-    transform: translate(-50%,-50%);
-    @include to(575px){
-     width: 16px;
-     height: 36px;   
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    @include to(575px) {
+        width: 16px;
+        height: 36px;
     }
     svg {
         width: 100%;
         height: 100%;
     }
 }
+
 .screen3 {
     background-color: var(--color-black);
     --v-padding: 80px;
-    @include from(1681px){
+    @include from(1681px) {
         --v-padding: 210px;
-
     }
-    @include to(1024px){
-    }
+    @include to(1024px) {}
     padding-top: var(--v-padding);
     padding-bottom: var(--v-padding);
     padding-left: var(--page-side-fields);
     padding-right: var(--page-side-fields);
     position: relative;
-    @include from(1025px){
+    @include from(1025px) {
         min-height: 100vh;
         display: flex;
         flex-wrap: wrap;
     }
-    @include to(575px){
+    @include to(575px) {
         --v-padding: 110px;
     }
     &__top {
@@ -202,43 +196,42 @@
         align-items: center;
         width: 100%;
         margin-bottom: 60px;
-        @include to(1680px){
-         margin-bottom: 34px;   
+        @include to(1680px) {
+            margin-bottom: 34px;
         }
         .title-h2 {
             margin-right: auto;
-            @include to(575px){
+            @include to(575px) {
                 width: 52%;
                 line-height: 100%;
-            }   
+            }
         }
     }
     .swiper-slide {
         height: 45vh;
         color: #B2A9A0;
         font-size: 18px;
-        @include from(1681px){
+        @include from(1681px) {
             height: 60vh;
         }
-        @include to(1680px){
+        @include to(1680px) {
             height: 60vh;
         }
-        @include to(575px){
-             font-size: 14px;
+        @include to(575px) {
+            font-size: 14px;
         }
         img {
             height: calc(100% - 55px);
             margin-bottom: 20px;
             object-fit: cover;
-
         }
     }
     .zoom-slider-wrapper {
         // overflow: hidden;
         user-select: none;
-        cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQiIGhlaWdodD0iODUiIHZpZXdCb3g9IjAgMCA4NCA4NSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxjaXJjbGUgY3g9IjQxLjg2MTIiIGN5PSI0Mi4xOTMyIiByPSI0MC44MjAyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4NCjxwYXRoIGQ9Ik00OS44MjQ3IDM0Ljc2NzZMNTcuMjc5MyA0Mi4yMjIyTDQ5LjgyNDcgNDkuNjc2NyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjxwYXRoIGQ9Ik0zNC40MDU3IDQ5LjY0NzlMMjYuOTUxMiA0Mi4xOTM0TDM0LjQwNTcgMzQuNzM4OCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjwvc3ZnPg0K'),auto!important;
+        cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQiIGhlaWdodD0iODUiIHZpZXdCb3g9IjAgMCA4NCA4NSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxjaXJjbGUgY3g9IjQxLjg2MTIiIGN5PSI0Mi4xOTMyIiByPSI0MC44MjAyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4NCjxwYXRoIGQ9Ik00OS44MjQ3IDM0Ljc2NzZMNTcuMjc5MyA0Mi4yMjIyTDQ5LjgyNDcgNDkuNjc2NyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjxwYXRoIGQ9Ik0zNC40MDU3IDQ5LjY0NzlMMjYuOTUxMiA0Mi4xOTM0TDM0LjQwNTcgMzQuNzM4OCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCjwvc3ZnPg0K'), auto!important;
         transition: transform .3s ease-out;
-        @include from(1025px){
+        @include from(1025px) {
             width: 100%;
         }
         &.drag {
@@ -248,20 +241,20 @@
     [data-screen3-prev],
     [data-screen3-next] {
         cursor: pointer;
-        @include from(1680px){
+        @include from(1680px) {
             height: 80px;
         }
         svg {
             width: 100%;
             height: 100%;
         }
-        @include to(1680px){
+        @include to(1680px) {
             width: 60px;
-            height: 60px;   
+            height: 60px;
         }
-        @include to(575px){
+        @include to(575px) {
             width: 46px;
-            height: 46px;   
+            height: 46px;
         }
     }
     [data-screen3-next] {
@@ -271,11 +264,11 @@
 
 [data-screen3-prev],
 [data-screen3-next] {
-    circle, path {
+    circle,
+    path {
         transition: .3s ease-out;
     }
-    @include from(1025px){
-        
+    @include from(1025px) {
         &:hover circle {
             fill: var(--color-beige);
         }
@@ -283,23 +276,23 @@
             stroke: var(--color-black);
         }
     }
-    
 }
+
 .img-with-logo {
     position: relative;
     --logo-w: 31px;
     --logo-h: calc(var(--logo-w) / 31 * 60);
-    padding-top: calc(var(--logo-h) / 2 );
+    padding-top: calc(var(--logo-h) / 2);
     img {
         object-fit: cover;
     }
-    @include to(992px){
+    @include to(992px) {
         overflow: hidden;
         img {
             height: 100%;
         }
     }
-    @include to(575px){
+    @include to(575px) {
         --logo-w: 19px;
     }
     &__decor {
@@ -313,18 +306,17 @@
     }
     &__wrap {
         overflow: hidden;
-        @include to(992px){
+        @include to(992px) {
             height: 100%;
         }
     }
 }
 
-
 .screen4 {
     --v-padding: 140px;
     position: relative;
     height: 250vh;
-    @include to(575px){
+    @include to(575px) {
         height: 100vh;
     }
     &__inner {
@@ -333,6 +325,9 @@
         align-items: center;
         justify-content: center;
         padding: var(--v-padding) var(--page-side-fields);
+        @include to(575px) {
+            height: 100%;
+        }
     }
     &__title {
         position: relative;
@@ -346,13 +341,13 @@
         text-transform: uppercase;
         mix-blend-mode: screen;
         pointer-events: none;
-        @include to(1680px){
+        @include to(1680px) {
             font-size: 200px;
         }
-        @include to(992px){
+        @include to(992px) {
             font-size: 120px;
         }
-        @include to(575px){
+        @include to(575px) {
             font-size: 48px;
             height: 3.3em;
             display: flex;
@@ -367,12 +362,13 @@
         width: 100%;
         height: calc(100% - var(--v-padding) * 2);
         z-index: 0;
-        @include from-to(576px, 992px){
+        @include from-to(576px,
+        992px) {
             width: 84%;
             left: 50%;
             transform: translateX(-50%);
         }
-        @include to(575px){
+        @include to(575px) {
             padding: var(--page-side-fields);
         }
         video {
@@ -382,48 +378,49 @@
     }
     &__video-play {
         position: absolute;
-        left:50%;
+        left: 50%;
         top: 50%;
         width: 100px;
         height: 100px;
         z-index: 2;
-        @include to(575px){
+        @include to(575px) {
             width: 60px;
             height: 60px;
-
         }
-        transform: translate(-50%,-50%);
-
+        transform: translate(-50%,
+        -50%);
     }
 }
 
 .screen5 {
-    
     background-color: var(--color-black);
     position: relative;
     --v-padding: 140px;
-    height: 350vh;
-    @include to(575px){
-        height: 700vh;
+    @include to(575px) {
+        height: 100vh;
+        // display: flex;
+        // align-items: center;
     }
     &__inner {
         // padding-top: 5vh;
         // padding-bottom: 5vh;
-        
         padding-left: var(--page-side-fields);
         height: 100vh;
         padding-top: var(--v-padding);
         padding-bottom: var(--v-padding);
-        @include from(1681px){
+        @include from(1681px) {
             --v-padding: 100px;
         }
-        @include to(1680px){
+        @include to(1680px) {
             --v-padding: 70px;
         }
-        @include to(1024px){
-            --v-padding: 70px;  
+        @include to(1024px) {
+            --v-padding: 70px;
         }
-       // height: calc(100vh - 260px);
+        @include to(575px) {
+            height: 100%;
+        }
+        // height: calc(100vh - 260px);
     }
     .title-h2 {
         margin-left: auto;
@@ -431,28 +428,29 @@
         padding-bottom: var(--v-padding);
         // padding-bottom: 12.6vh;
         // padding-left: var(--page-side-fields);
-        
-        @include to(992px){
-         margin-bottom: 0px;   
+        @include to(992px) {
+            margin-bottom: 0px;
         }
     }
     .title {
         font-weight: 300;
     }
-    
 }
+
 .screen5-hor-block {
     display: flex;
     height: calc(100vh - 30vh - 12.6vh);
     height: 100%;
     height: calc(100% - (var(--v-padding) * 2));
-    @include from-to(576px, 1024px){
+    @include to(575px) {}
+    @include from-to(576px,
+    1024px) {
         height: calc(100vh - 30vh - 50px);
         height: 100%;
     }
     &__item:nth-child(n+2) {
         padding-left: 94px;
-        @include to(992px){
+        @include to(992px) {
             padding-left: 0px;
         }
     }
@@ -462,24 +460,23 @@
         flex-shrink: 0;
         display: flex;
         flex-wrap: wrap;
-        @include from(1025px){
+        @include from(1025px) {
             padding-right: 50px;
         }
-        @include to(992px){
+        @include to(992px) {
             width: 110vw;
             padding-right: 50px;
         }
-        @include to(575px){
-            
-            width: 190vw;
+        @include to(575px) {
+            width: 150vw;
             padding-right: 20px;
         }
         img {
             width: 35%;
             height: 100%;
             object-fit: cover;
-            @include to(575px){
-                width: 60%;
+            @include to(575px) {
+                width: 50%;
             }
         }
         &-text {
@@ -489,18 +486,19 @@
             flex-direction: column;
             align-items: flex-start;
             align-content: flex-start;
-            @include to(992px){
+            @include to(992px) {
                 padding-top: 40px;
                 padding-left: 50px;
             }
-            @include to(575px){
-                padding-left: 30px;   
+            @include to(575px) {
+                padding-left: 30px;
                 padding-top: 0;
+                width: 100%;
             }
-            @include to(575px){
-                width: 40%;
+            @include to(575px) {
+                width: 50%;
             }
-            :last-child {
+             :last-child {
                 margin-top: auto;
             }
         }
@@ -512,13 +510,13 @@
             max-width: 85%;
             line-height: 140%;
             color: #B3A9A0;
-            @include from(576px){
+            @include from(576px) {
                 max-width: 85%;
             }
-            @include from(1025px){
+            @include from(1025px) {
                 font-size: 18px;
             }
-            @include from(1920px){
+            @include from(1920px) {
                 font-size: 24px;
             }
         }
@@ -527,6 +525,7 @@
         }
     }
 }
+
 .genplan-curtain-for-prev-block-anim {
     position: absolute;
     transform-origin: top;
@@ -537,23 +536,30 @@
     background-color: var(--color-black);
     z-index: 2;
 }
+
 .genplan {
     height: 500vh;
     position: relative;
-    @include to(992px){
+    @include to(992px) {
         height: 700vh;
+    }
+    @include to(575px) {
+        height: 800vw;
     }
     &__inner {
         display: flex;
         // @include row-flex();
         flex-wrap: wrap;
         align-items: center;
-            position: relative;
+        position: relative;
         height: 100vh;
         background-color: var(--color-white);
-        @include to(992px){
-          flex-direction: row-reverse;   
-          flex-direction: column-reverse;
+        @include to(992px) {
+            flex-direction: row-reverse;
+            flex-direction: column-reverse;
+        }
+        @include to(575px) {
+            height: 100%;
         }
     }
     &__inner-progress-bar {
@@ -578,12 +584,12 @@
         @include shift-right(-1);
         @include shift-left(1);
         padding-left: var(--page-side-fields);
-        @include from-to(993px, 1240px){
+        @include from-to(993px,
+        1240px) {
             @include shift-left(0);
             @include size(7);
         }
-        @include to(992px){
-            
+        @include to(992px) {
             @include size(24);
             @include shift(0);
             margin-bottom: auto;
@@ -591,7 +597,7 @@
             align-items: center;
             text-align: center;
         }
-        @include to(575px){
+        @include to(575px) {
             margin-top: 30px;
             padding-left: 0;
             // text-align: left;
@@ -604,14 +610,14 @@
         }
     }
     .button {
-        @include to(992px){
+        @include to(992px) {
             margin: auto;
         }
     }
     &__text2 {
         opacity: 0;
         visibility: hidden;
-        @include to(575px){
+        @include to(575px) {
             text-align: left;
         }
     }
@@ -619,15 +625,31 @@
         @include size(18);
         @include shift-left(0);
         transform: translateX(30px);
-        @include to(992px){
-            
+        position: relative;
+        height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &:after {
+            content: '';
+            pointer-events: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 28%), linear-gradient(0deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%);
+        }
+        @include to(992px) {
             width: 100%;
             margin-left: 0;
             margin-right: 0;
             margin-bottom: auto;
             transform: none;
         }
-        @include to(575px){
+        @include to(575px) {
             margin-bottom: 0px;
         }
     }
@@ -637,6 +659,7 @@
         li {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
         li:nth-last-child(n+2) {
             margin-bottom: 10px;
@@ -649,12 +672,12 @@
             padding: 15px;
             margin-right: 30px;
             flex-shrink: 0;
-            @include to(1680px){
+            @include to(1680px) {
                 width: 50px;
                 height: 50px;
                 padding: 10px;
             }
-            @include to(575px){
+            @include to(575px) {
                 margin-right: 20px;
             }
         }
@@ -673,23 +696,11 @@
     }
 }
 
-
- 
-
-
 @import '../home/screen7';
 @import '../home/screen8';
 @import '../home/screen9';
 @import '../home/screen10';
 @import '../home/screen11';
-
-
-
-
-
-
-
-
 .icon--auto,
 .icon--man,
 .icon--bycicle,
@@ -701,34 +712,34 @@
     position: relative;
     z-index: 1;
     .curtain
-    /*&:before*/ {
-            content: '';
-            transform-origin: bottom center;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            background-color: #26262C;
-            transform: scaleY(0);
-            z-index: 0;
-            will-change: transform;
-            
+    /*&:before*/
+    {
+        content: '';
+        transform-origin: bottom center;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: #26262C;
+        transform: scaleY(0);
+        z-index: 0;
+        will-change: transform;
     }
     img {
-            margin-top: 50px;
+        margin-top: 50px;
     }
     img {
-            margin-top: 0;
+        margin-top: 0;
     }
 }
+
 .screen3-5-bg {
     position: absolute;
     left: 0;
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(255, 255, 255, 1);
     z-index: -1;
 }
-

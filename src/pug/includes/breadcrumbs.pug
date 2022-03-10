@@ -1,10 +1,8 @@
 ul.breadcrumbs
   li.breadcrumbs-item
     a(href="#").breadcrumbs-item__link Головна
-    +svg('arrow')
   if breadcrumbsSubitem
     each v in breadcrumbsSubitem
       li.breadcrumbs-item
-        a(href="#").breadcrumbs-item__link= v.label
-        +svg('arrow')
+        a(href=v.link).breadcrumbs-item__link= v.label
   li.breadcrumbs-item__current--color.breadcrumbs-item= title_page

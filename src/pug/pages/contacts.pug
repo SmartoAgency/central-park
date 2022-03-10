@@ -1,0 +1,93 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Контакти'
+    var id_page = 'id-page-contacts'
+    var class_page = 'class-page-contacts'
+    var breadcrumbsSubitem = [
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/index-app.bundle.js')
+  script(defer src='./assets/scripts/contacts.bundle.js')
+block content
+  +InnerPageFront(title_page, 'some', './assets/images/gallery/front.jpg')
+  .container.contacts-page.contacts
+    .contacts-page__left
+      .contacts-page__group
+        .contacts-subtitle Зв’язок:
+        .contacts-text
+          div.contacts-page__link-with-margin 
+            a(href="mailto:central-park@com.ua").contacts-text central-park@com.ua
+          div 
+            a(href="tel:+380441106104").contacts-text.tdn +38 (044) 110 61 04
+      .contacts-page__group
+        .contacts-subtitle Відділ продажу:
+        .contacts-text м. Вінниця, вул. Максимовича, 6
+        button(type="button" class="button button--bordered button--dark with-hover") 
+            .button__hover
+            span Показати на карті
+      .contacts-page__group
+        .contacts-subtitle Графік роботи:
+        .contacts-text 
+            div Пн-Сб: 09:00-19:00
+            div Нд: 10:00-17:00
+      .contacts-page__group
+        .contacts-subtitle Будівництво:
+        .contacts-text м. Вінниця, вул. Максимовича, 6
+        button(type="button" class="button button--bordered button--dark with-hover") 
+            .button__hover
+            span Показати на мапі
+      .contacts-page__group
+        .contacts-subtitle Соцмережі:
+        .contacts-text.contacts-page__social-group
+          a.social-link(href="https://facebook.com" target='_blank')
+            .social-link__icon 
+              <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.37516 3.58971H8.79901V1.10983C8.55336 1.07603 7.70854 1 6.72465 1C4.67173 1 3.26542 2.29128 3.26542 4.66458V6.84877H1V9.62109H3.26542V16.5967H6.04294V9.62174H8.21673L8.56181 6.84942H6.04229V4.93947C6.04294 4.13819 6.25869 3.58971 7.37516 3.58971V3.58971Z" stroke="#E5CDB7"/>
+                </svg>
+            span.social-link__text facebook
+          a.social-link(href="https://instagram.com" target='_blank')
+            .social-link__icon 
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5306 0.5H11.0661C13.2882 0.5 15.0967 2.30856 15.0967 4.5306V11.0661C15.0967 13.2882 13.2882 15.0967 11.0661 15.0967H4.5306C2.30856 15.0967 0.5 13.2882 0.5 11.0661V4.5306C0.5 2.30856 2.30856 0.5 4.5306 0.5Z" stroke="#E5CDB7"/>
+                <path d="M4.09375 7.79829C4.09375 5.75643 5.75569 4.09448 7.79755 4.09448C9.83941 4.09448 11.5014 5.75643 11.5014 7.79829C11.5014 9.84015 9.83941 11.5021 7.79755 11.5021C5.75569 11.5021 4.09375 9.84015 4.09375 7.79829Z" stroke="#E5CDB7"/>
+                <path d="M11.625 2.9707H11.6283" stroke="#E5CDB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            span.social-link__text instagram
+    .contacts-page__right 
+      .succes-popup 
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="100" fill="#23242B"/>
+          <circle cx="100" cy="100" r="99.5" stroke="#E5CDB7" stroke-opacity="0.15"/>
+          <path d="M62 96L89.6364 124L138 75" stroke="#E5CDB7" stroke-width="2"/>
+          </svg>
+        .contacts-page__title Повідомлення надіслано
+        p Дякуємо за звернення. Очікуйте на дзвінок наших менеджерів. Бажаемо приємного дня та гарного настрою =)
+        button(type="button" class="button with-hover") 
+          .button__hover
+          span Закрити
+
+      .contacts-page__title ЗВОРОТНІЙ ДЗВІНОК
+      
+      form(data-contact-page-form autocomplete="off").contacts-form
+        .contacts-form__field.form-field-input(data-field-input data-field-name data-status="field--inactive")
+          input(type='text' name="name" placeholder="Ім’я:*").form-field__input
+          .input-message(data-input-message) Ім’я:*
+        .contacts-form__field.form-field-input(data-field-input data-field-phone data-status="field--inactive")
+          input(type='text' name="phone").form-field__input
+          .input-message(data-input-message) Телефон:*
+        button( type="submit" data-btn-submit).button.with-hover
+          .button__hover 
+          span(data-btn-submit-text) Надіслати
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

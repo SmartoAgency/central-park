@@ -4,8 +4,7 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 import paralax from '../modules/effects/paralax';
 import paralaxNoCurtains from '../modules/effects/paralaxNoCurtain';
 import fadeInUp from '../modules/effects/fadeInUp'; 
-import splitToLinesAndFadeUp from '../modules/effects/splitToLinesAndFadeUp'; 
-import buttonHover from '../modules/effects/buttonHover';
+import splitToLinesAndFadeUp from '../modules/effects/splitToLinesAndFadeUp';
 import galleryEffect from '../modules/home/gallery';
 import screen3Effects from './home/screen3';
 import screen4 from './home/screen4';
@@ -18,7 +17,8 @@ import screen9Handler from './home/screen9';
 import screen1 from './home/screen1';
 import screen8 from './home/screen8';
 import ztext from '../modules/ztext/ztext';
-import { transitionBetweenSectionSceneLength } from '../modules/helpers/helpers';
+import { addIntersectionOnceWithCallback, handleHeader, transitionBetweenSectionSceneLength } from '../modules/helpers/helpers';
+import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
 
 
 
@@ -123,44 +123,19 @@ function homeInit() {
   // fadeInUp('.screen11__group, .screen11 .title-h2', $scroller);
   splitToLinesAndFadeUp('.main-screen .title', $scroller);
   splitToLinesAndFadeUp('.title-h2', $scroller);
-  buttonHover('.button');
 
 
 
-  function handleHeader(scroller) {
-    const header = document.querySelector('.header');
-    header.state = 'open';
-    let prevScrollPosition = 0;
-    scroller.on('scroll', ({ scroll }) => {
-      const tempState = prevScrollPosition > scroll.y ? 'open' : 'close';
-      prevScrollPosition = scroll.y;
-      if (scroll.y > 150) {
-        changeState['untransparent']();
-      } else {
-        changeState['transparent']();
-      }
-      if (tempState === header.state || scroll.y < 150) return;
-      header.state = tempState;
-      changeState[tempState]();
-
-    });
-
-
-    const changeState = {
-      open: () => {
-        gsap.to(header, { yPercent : 0 });
-      },
-      close: () => {
-        gsap.to(header, { yPercent : -100 });
-      },
-      transparent: () => {
-        header.classList.add('transparent');
-      },
-      untransparent: () => {
-        header.classList.remove('transparent');
-      }
-    }
-  }
+  addIntersectionOnceWithCallback(document.querySelector('.genplan'),() => {
+    genplanSequence({
+      scene: '.genplan',
+      selectorToDisplay: '.genplan__img img',
+      scroller: $scroller,
+      $switchFrames: '.genplan__text2 li'
+    })
+  })
+  
+  
   handleHeader(scroller);
 
 

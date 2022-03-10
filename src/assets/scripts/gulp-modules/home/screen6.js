@@ -15,9 +15,9 @@ export default function screen6(scroller) {
         //   markers: true
         }
       })
-      .to('.genplan__text1', { autoAlpha: 0 })
+      .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
       .to('.genplan__text2', { autoAlpha: 1 }, '<')
-      .add(genplatListStaggerHightlight())
+      // .add(genplatListStaggerHightlight())
       
       
       function genplatListStaggerHightlight() {

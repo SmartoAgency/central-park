@@ -327,9 +327,14 @@
         stroke: var(--color-beige);
         transition: var(--transition);
     }
+    @include to(1024px){
+        width: 44px;
+        height: 44px;
+    }
     @include from(1025px){
         &:hover path {
-            stroke: var(--color-black)
+            stroke: var(--color-black);
+            fill: var(--color-black);
         }
         &:hover [data-circle-with-hover-default]{
             transform: scale(0);

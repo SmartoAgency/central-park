@@ -1,0 +1,116 @@
+.three-d-title {
+    color: var(--color-beige);
+    margin-bottom: 20px;
+    @include multiFontSize(100%, 48,36,30,24);
+}
+.three-d-text {
+    // font-size: 18px;
+    // line-height: 160%;
+    color: #A49B93;
+    @include multiFontSize(160%, 18,14,14,14);
+}
+
+.three-d-container {
+    @include from-to(576px, 1024px){
+        @include shift-padding(2);
+        padding-top: 100px;
+    }
+    .button {
+        margin-right: auto;
+        margin-left: 0;
+    }
+    .subtitle {
+        @include from-to(576px, 1024px){
+            font-size: 18px;
+        }
+    }
+    .block-img-text~.block-img-text {
+        @include from-to(576px, 1024px){
+            margin-top: 100px;
+        }
+    }
+    .block-img-text {
+       
+        @include to(1024px){
+            .block-img-text__text {
+                order: 2;
+                
+            }
+            .block-img-text__img-wrap {
+                order: 1;
+            }
+        }
+        @include to(575px){
+            .block-img-text__text {
+                order: 2;
+                
+            }
+            .block-img-text__img-wrap {
+                order: 1;
+            }
+        }
+        [data-circle-with-hover] {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 2;
+            transform: translate(-50%,-50%);
+            transition: .3s ease-in-out;
+            @include to(1024px){
+                width: 100px;
+                height: 100px;
+            }
+            @include to(575px){
+                width: 60px;
+                height: 60px;
+            }
+        }
+        iframe[src]~[data-circle-with-hover] {
+            left: 100%;
+            top: 100%;
+            width: 40px;
+            height: 40px;
+            transform: translate(-100%, 20px);
+            z-index: 10;
+        }
+        iframe[src]~[data-circle-with-hover] {
+            stroke: var(--color-beige);
+        } 
+
+        &.is-playing {
+            [data-circle-with-hover-default] {
+                fill: var(--color-beige) !important;
+            }
+            // [data-circle-with-hover-hover] {
+            //     fill: var(--color-black) !important;
+            // }
+            [data-circle-with-hover] path {
+                stroke: var(--color-black) !important;
+                stroke-width: 10;
+            }
+        }
+        .subtitle {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        iframe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        iframe[src]~*:not([data-circle-with-hover]) {
+            @include autoAlpha(0);
+        }
+        width: 100%;
+        height: 100%;
+    }
+}
