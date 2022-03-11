@@ -1,6 +1,7 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import { gsap, ScrollTrigger } from 'gsap/all';
 export default function locoScroll(selector) {
+    if (window.scroller) return window.scroller;
     gsap.registerPlugin(ScrollTrigger);
     const locoScroll1 = new LocomotiveScroll({
         el: document.querySelector(selector),
@@ -11,7 +12,6 @@ export default function locoScroll(selector) {
         lerp: 0.05,
     });
     locoScroll1.on("scroll", ScrollTrigger.update);
-    window.locoScroll = locoScroll1;
     ScrollTrigger.scrollerProxy(document.querySelector(selector), {
         scrollTop(value) {
             return (arguments.length ?

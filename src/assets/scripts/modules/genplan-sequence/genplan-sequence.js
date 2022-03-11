@@ -9,7 +9,7 @@ export default async function genplanSequence(config) {
     let URL = window.location.href.match(/localhost/) ? './static/genplan.json' : '/wp-content/themes/central-park/static/genplan.json';
     let SEQUENCES = await axios(URL, {
         onDownloadProgress: (e) => {
-            console.log(e);
+            // console.log(e);
         }
     });
     // SEQUENCES = await SEQUENCES.json();

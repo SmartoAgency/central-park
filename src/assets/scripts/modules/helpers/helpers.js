@@ -234,6 +234,7 @@ export const transitionBetweenSectionSceneLength = () => {
 }
 
 export function handleHeader(scroller) {
+  if (window.scroller) return;
   const header = document.querySelector('.header');
   header.state = 'open';
   let prevScrollPosition = 0;

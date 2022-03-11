@@ -15,21 +15,16 @@ import { handleHeader } from "./modules/helpers/helpers";
 barba.hooks.after((ww) => {
     // console.log(document.querySelector('.scroller-container'));
     // console.log(window.locoScroll);
-    window.scroller && window.scroller.destroy();
-    window.scroller = new LocomotiveScroll({
-        el: document.querySelector('.scroller-container'),
-        smooth: true,
-        smoothMobile: false,
-        // inertia: 1.1,
-        multiplier: 0.5,
-        lerp: 0.05,
-    });
+    // window.scroller && window.scroller.update();
     console.log();
-    window.scrollTo(0,0)
+    window.scroller.scrollTo(0,0)
     let scriptName = document.querySelector('[data-script]').dataset.script.split('-');
     scriptName = scriptName.slice(2, scriptName.length).join('-');
     console.log(scriptName);
-    handleHeader(window.locoScroll);
+    console.log('AAAAAAAAAAAAA');
+    // handleHeader(window.scroller);
+
+    document.querySelectorAll('[id="curtains-canvas"]').forEach(el => el.remove())
     const prevScript = document.querySelector('[data-inner_page]');
     prevScript && prevScript.remove();
     const script = document.createElement('script');
@@ -38,7 +33,8 @@ barba.hooks.after((ww) => {
     document.body.append(script);
     script.addEventListener('load', () => {
         window.dispatchEvent(new Event('preloaderOff'));
-        window.dispatchEvent(new Event('load'))
+        window.dispatchEvent(new Event('load'));
+        
     })
 
 });

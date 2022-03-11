@@ -396,6 +396,9 @@
     background-color: var(--color-black);
     position: relative;
     --v-padding: 140px;
+    @include from(576px) {
+        height: 350vh;
+    }
     @include to(575px) {
         height: 100vh;
         // display: flex;
