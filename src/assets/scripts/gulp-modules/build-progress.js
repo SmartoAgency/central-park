@@ -25,7 +25,7 @@ var swiper = new Swiper(".swiper", {
   });
 
 innerPageFrontEffect();
-window.addEventListener('load',function(evt){
+window.addEventListener('load',function buildProgressInit(evt){
       const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
@@ -39,7 +39,9 @@ window.addEventListener('load',function(evt){
     // gsap.set('.scroller-container', { position: 'static' })
 });
 
-
+window.addEventListener('page-reloaded', () => {
+  window.removeEventListener('load', buildProgressInit);
+})
 
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
     var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;

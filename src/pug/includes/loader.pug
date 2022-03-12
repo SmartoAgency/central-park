@@ -51,7 +51,7 @@
             transform: translateY(101%);
         }
     script.
-        window.addEventListener('preloaderOff', () => document.querySelector('[data-inner-style]').remove())
+        window.addEventListener('preloaderOff', () => document.querySelector('[data-inner-style]') && document.querySelector('[data-inner-style]').remove())
     script
         include ./loader/loader.js
     style

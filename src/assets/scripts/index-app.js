@@ -11,11 +11,23 @@ import barba from '@barba/core';
 import LocomotiveScroll from 'locomotive-scroll';
 import { handleHeader } from "./modules/helpers/helpers";
 
+window.timelines = [];
 
+function clearTimelines() {
+    window.timelines.forEach(el => {
+        el.kill && el.kill();
+    });
+    window.timelines = []
+}
 barba.hooks.after((ww) => {
     // console.log(document.querySelector('.scroller-container'));
     // console.log(window.locoScroll);
     // window.scroller && window.scroller.update();
+    const initialScript = document.querySelector('[data-initial-script]');
+
+
+    // clearTimelines();
+    initialScript && initialScript.remove();
     console.log();
     window.scroller.scrollTo(0,0)
     let scriptName = document.querySelector('[data-script]').dataset.script.split('-');
@@ -36,7 +48,8 @@ barba.hooks.after((ww) => {
         window.dispatchEvent(new Event('load'));
         
     })
-
+    
+    window.dispatchEvent(new Event('page-reloaded'));
 });
 
 barba.init({});

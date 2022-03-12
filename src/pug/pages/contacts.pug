@@ -15,7 +15,7 @@ block head
     link(rel='stylesheet', href="./assets/styles/main.min.css")
 block scripts
   script(defer src='./assets/scripts/index-app.bundle.js')
-  script(defer src='./assets/scripts/contacts.bundle.js')
+  script(defer data-initial-script src='./assets/scripts/contacts.bundle.js')
 block content
   +InnerPageFront(title_page, 'some', './assets/images/gallery/front.jpg')
   .container.contacts-page.contacts
