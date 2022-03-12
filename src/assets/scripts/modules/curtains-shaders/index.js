@@ -391,4 +391,7 @@ export default function curtainsShaders(smoothScroll){
             console.log('shader pass error');
         });
     }
+    // window.addEventListener('page-reloaded', () => {
+    //     curtains.dispose();
+    // })
 }

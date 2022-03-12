@@ -198,15 +198,19 @@ export default function webglWaves(img, scroller) {
     const mesh = new THREE.Mesh(geometry, material);
     const clock = new THREE.Clock();
     scene.add(mesh);
+    let isStopped = false;
     function render() {
         // renderer.setClearColor(0xF2F2F2, 0);
         renderer.setClearColor( 0x000000, 0 );
         material.uniforms.uTime.value = clock.getElapsedTime();
         renderer.render(scene, camera);
         // console.log(clock);
+        if (isStopped) return;
         requestAnimationFrame(render); 
+
     }
     render();
+
     mesh.position.y = gsap.utils.mapRange(0,1, 0.05, -0.05, 0);
     ScrollTrigger.create({
         trigger: canvas,
@@ -215,6 +219,11 @@ export default function webglWaves(img, scroller) {
         onUpdate: ({ progress }) => {
             mesh.position.y = gsap.utils.mapRange(0,1, 0.05, -0.05, progress);
         }
+    })
+
+    window.addEventListener('page-reloaded', () => {
+        canvas.remove();
+        isStopped = true;
     })
     // console.log(THREE);
 }

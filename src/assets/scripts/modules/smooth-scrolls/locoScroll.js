@@ -1,9 +1,8 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import { gsap, ScrollTrigger } from 'gsap/all';
 export default function locoScroll(selector) {
-    if (window.scroller) return window.scroller;
     gsap.registerPlugin(ScrollTrigger);
-    const locoScroll1 = new LocomotiveScroll({
+    const locoScroll1 = window.scroller || new LocomotiveScroll({
         el: document.querySelector(selector),
         smooth: true,
         smoothMobile: false,
