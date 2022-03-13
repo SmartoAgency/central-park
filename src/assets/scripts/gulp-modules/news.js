@@ -69,6 +69,7 @@ function renderNewsByPortions(data, $container) {
         day,
       );
     }
+    document.querySelectorAll('.news-card').forEach(el => el.href = 'single-news');
     startIndex = portionForRender;
     portionForRender += initialPortionForRender;
 

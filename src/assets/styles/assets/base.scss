@@ -595,3 +595,14 @@ body {
 		transition: 0s;
 	  }
 }
+
+.between-pages {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--color-black);
+	z-index: 3000;
+	pointer-events: none;
+}

@@ -13,12 +13,15 @@ import { handleHeader } from "./modules/helpers/helpers";
 
 window.timelines = [];
 
+global.gsap = gsap;
+global.axios = axios;
 function clearTimelines() {
     window.timelines.forEach(el => {
         el.kill && el.kill();
     });
     window.timelines = []
 }
+gsap.set('.between-pages', { xPercent: 100 })
 barba.hooks.after((ww) => {
     // console.log(document.querySelector('.scroller-container'));
     // console.log(window.locoScroll);
@@ -46,6 +49,7 @@ barba.hooks.after((ww) => {
     script.addEventListener('load', () => {
         window.dispatchEvent(new Event('preloaderOff'));
         window.dispatchEvent(new Event('load'));
+        gsap.fromTo('.between-pages', { xPercent:0 }, { xPercent: -100, duration: 2, ease: 'Power4.in' })
         
     })
     
@@ -54,7 +58,19 @@ barba.hooks.after((ww) => {
 
 barba.init({
     preventRunning: true,
-    prevent: ({ el }) => el.classList && el.classList.contains('prevent')
+    prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
+    transitions: [{
+        sync: true,
+        leave() {
+          // create your stunning leave animation here
+          return gsap.timeline()
+            .fromTo('.between-pages', { xPercent:100 }, { xPercent: 0, duration: 2, ease: 'Power4.out' })
+            
+        },
+        enter() {
+          // create your amazing enter animation here
+        }
+      }]
 });
 var links = document.querySelectorAll('a[href]');
 var cbk = function(e) {
@@ -71,8 +87,7 @@ for(var i = 0; i < links.length; i++) {
 /*
  * smooth scroll start
  */
-global.gsap = gsap;
-global.axios = axios;
+
 /*
  * smooth scroll end
  */

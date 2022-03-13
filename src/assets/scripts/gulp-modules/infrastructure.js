@@ -5,12 +5,13 @@ import googleMap from "../modules/map/map";
 
 innerPageFrontEffect();
 googleMap();
-window.addEventListener('load',function(evt){
+window.addEventListener('load',function some(evt){
       const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
     disableScroll(scroller);
+    window.removeEventListener('load', some);
 });
 function disableScroll(locoScroll) {
     const containersScroll = document.querySelectorAll('[data-disable-page-scroll]');

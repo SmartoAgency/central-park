@@ -57,6 +57,7 @@ window.addEventListener('preloaderOff',function(evt){
 function homeInit() {
   global.gsap = gsap;
   gsap.core.globals("ScrollTrigger", ScrollTrigger);
+  window.removeEventListener('load', homeInit);
   const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
   const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
   

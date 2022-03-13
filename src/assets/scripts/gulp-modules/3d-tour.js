@@ -4,12 +4,13 @@ import { handleHeader, isMobile } from "../modules/helpers/helpers";
 import gsap from "gsap/all";
 
 innerPageFrontEffect();
-window.addEventListener('load',function(evt){
+window.addEventListener('load',function some(evt){
     const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
-
+    console.log('i in about');
+    window.removeEventListener('load', some);
     !isMobile() && document.querySelectorAll('.block-img-text').forEach(block => {
         gsap.timeline({
             scrollTrigger: {
@@ -24,7 +25,7 @@ window.addEventListener('load',function(evt){
             },
         })
     })
-
+    
     // gsap.timeline({
     //     scrollTrigger: {
     //         trigger: '.scroller-container',

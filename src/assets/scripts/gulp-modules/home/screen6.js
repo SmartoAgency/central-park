@@ -1,7 +1,7 @@
 import gsap from "gsap/all";
 
 export default function screen6(scroller) {
-    gsap.timeline({
+   const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.genplan',
           scrub: true,
@@ -18,7 +18,9 @@ export default function screen6(scroller) {
       .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
       .to('.genplan__text2', { autoAlpha: 1 }, '<')
       // .add(genplatListStaggerHightlight())
-      
+      window.addEventListener('page-reloaded', () => {
+        tl.kill();
+      })
       
       function genplatListStaggerHightlight() {
         const tl = gsap.timeline();
