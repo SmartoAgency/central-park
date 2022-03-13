@@ -6,7 +6,7 @@ import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 import fadeInUp from "../modules/effects/fadeInUp";
 
 innerPageFrontEffect();
-window.addEventListener('load',function(evt){
+window.addEventListener('load',function some(evt){
       const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
@@ -15,4 +15,5 @@ window.addEventListener('load',function(evt){
     paralax('.block-img-text__img', scrollerEl);
     splitToLinesAndFadeUp('.commercial-subtitle, .commercial-text', scrollerEl);
     fadeInUp('.block-img-text__decor path', scrollerEl);
+    window.removeEventListener('load', some);
 });

@@ -3,21 +3,12 @@ import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader } from "../modules/helpers/helpers";
 
 innerPageFrontEffect();
-window.addEventListener('load',function(evt){
+window.addEventListener('load',function some(evt){
       const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
-});
-
-
-window.addEventListener('update-dom', () => {
-  if (window.scroller = scroller) {
-    window.scroller.update();
-  }
-})
-
-const newsAction = new FormData();
+    const newsAction = new FormData();
   newsAction.append('action', 'news');
 fetch('https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php', {
   method: 'POST',
@@ -27,6 +18,17 @@ fetch('https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php', {
   .then(({data}) => {
     renderNewsByPortions(data, document.querySelector('.scroller-container .news'));
   })
+    window.removeEventListener('load', some);
+});
+
+
+window.addEventListener('update-dom', () => {
+  if (window.scroller = scroller) {
+    window.scroller.update();
+  }
+})
+
+
 
 
 function renderNewsByPortions(data, $container) {

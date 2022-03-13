@@ -3,11 +3,12 @@ import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader } from "../modules/helpers/helpers";
 
 innerPageFrontEffect();
-window.addEventListener('load',function(evt){
+window.addEventListener('load',function some(evt){
       const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
+    window.removeEventListener('load', some);
 });
 
 

@@ -52,7 +52,21 @@ barba.hooks.after((ww) => {
     window.dispatchEvent(new Event('page-reloaded'));
 });
 
-barba.init({});
+barba.init({
+    preventRunning: true,
+    prevent: ({ el }) => el.classList && el.classList.contains('prevent')
+});
+var links = document.querySelectorAll('a[href]');
+var cbk = function(e) {
+ if(e.currentTarget.href === window.location.href) {
+   e.preventDefault();
+   e.stopPropagation();
+ }
+};
+
+for(var i = 0; i < links.length; i++) {
+  links[i].addEventListener('click', cbk);
+}
 /** ******************************* */
 /*
  * smooth scroll start

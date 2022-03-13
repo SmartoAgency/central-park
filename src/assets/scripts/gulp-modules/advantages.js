@@ -8,7 +8,7 @@ import webglWaves from "../modules/effects/webglWaves";
 import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 
 innerPageFrontEffect();
-window.addEventListener('load',function(evt){
+window.addEventListener('load',function some(evt){
       const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
@@ -35,7 +35,8 @@ window.addEventListener('load',function(evt){
           },
       })
       
-  })
+  });
+  window.removeEventListener('load', some);
 });
 
 

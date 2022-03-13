@@ -14,7 +14,7 @@ export default function curtainsShaders(smoothScroll){
     const useNativeScroll = smoothScroll.isMobile;
     let planesDeformations = 0;
     // set up our WebGL context and append the canvas to our wrapper
-    const curtains = new Curtains({
+    let curtains = new Curtains({
         container: "canvas",
         watchScroll: useNativeScroll, // watch scroll on mobile not on desktop since we're using locomotive scroll
         pixelRatio: Math.min(1.5, window.devicePixelRatio) // limit pixel ratio for performance
@@ -93,7 +93,8 @@ export default function curtainsShaders(smoothScroll){
         document.body.classList.add("no-curtains", "planes-loaded");
     }).onContextLost(() => {
         // on context lost, try to restore the context
-        curtains.restoreContext();
+        console.log('i lose context');
+        curtains && curtains.restoreContext();
     });
     
     function updateScroll(xOffset, yOffset) {
@@ -239,7 +240,7 @@ export default function curtainsShaders(smoothScroll){
             // update the uniform
             plane.uniforms.planeDeformation.value = planesDeformations / 10;
         });
-        ScrollTrigger.create({
+        const trigger = ScrollTrigger.create({
             trigger: plane.htmlElement,
             markers: true,
             onEnter: () => {
@@ -256,6 +257,9 @@ export default function curtainsShaders(smoothScroll){
                 // gsap.utils.interpolate(plane.textures[0].offset.y ,self.progress,0.1)
                 // plane.textures[0].setOffset(new Vec2(0, self.progress))
             }
+        });
+        window.addEventListener('page-reloaded', () => {
+        trigger.kill();
         })
     })
 
@@ -391,7 +395,8 @@ export default function curtainsShaders(smoothScroll){
             console.log('shader pass error');
         });
     }
-    // window.addEventListener('page-reloaded', () => {
-    //     curtains.dispose();
-    // })
+    window.addEventListener('page-reloaded', () => {
+        console.log('reloaded on curtains');
+        curtains.dispose();
+    })
 }

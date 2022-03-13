@@ -6,7 +6,7 @@ import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 import clipPathEntry from "../modules/effects/clipPathEntry";
 
 innerPageFrontEffect();
-window.addEventListener('load',function(evt){
+window.addEventListener('load',function some(evt){
     const scroller = locoScroll('.scroller-container');
     const isMobile = window.matchMedia('(max-width: 1024px)').matches;
     scroller.update();
@@ -16,5 +16,7 @@ window.addEventListener('load',function(evt){
     splitToLinesAndFadeUp('.about-text, .about-text-l, .about-text-xl, .about-pretty-block__text p','.scroller-container');
     clipPathEntry('.about-pretty-block__decor path','.scroller-container', {
       stagger: 0.15
-    })
+    });
+
+    window.removeEventListener('load', some);
 });
