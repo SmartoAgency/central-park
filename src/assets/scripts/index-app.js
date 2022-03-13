@@ -61,8 +61,11 @@ barba.init({
     prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
     transitions: [{
         sync: true,
-        leave() {
+        leave(el) {
           // create your stunning leave animation here
+          console.log('-----');
+          console.log(el);
+          console.log('-----');
           return gsap.timeline()
             .fromTo('.between-pages', { xPercent:100 }, { xPercent: 0, duration: 2, ease: 'Power4.out' })
             
@@ -156,68 +159,68 @@ formsWithTel.forEach(form => {
     }
 });
 
-const contactForms = ['[data-contact-page-form]'];
-contactForms.forEach(form => {
-    const $form = document.querySelector(form);
-    console.log(form);
-    if ($form) {
-        /* eslint-disable */
-        new FormMonster({
-            /* eslint-enable */
-            elements: {
-                $form,
-                showSuccessMessage: false,
-                successAction: () => {
-                    const succesPoup = document.querySelector('.succes-popup');
-                    const closePopup = succesPoup.querySelector('button');
-                    closePopup.addEventListener('click', function removeThanks() {
-                        gsap.to(succesPoup, { autoAlpha: 0, clearProps: 'all' });
-                        closePopup.removeEventListener('click', removeThanks);
-                    })
-                    gsap.to(succesPoup, { autoAlpha: 1 });
+// const contactForms = ['[data-contact-page-form]'];
+// contactForms.forEach(form => {
+//     const $form = document.querySelector(form);
+//     console.log(form);
+//     if ($form) {
+//         /* eslint-disable */
+//         new FormMonster({
+//             /* eslint-enable */
+//             elements: {
+//                 $form,
+//                 showSuccessMessage: false,
+//                 successAction: () => {
+//                     const succesPoup = document.querySelector('.succes-popup');
+//                     const closePopup = succesPoup.querySelector('button');
+//                     closePopup.addEventListener('click', function removeThanks() {
+//                         gsap.to(succesPoup, { autoAlpha: 0, clearProps: 'all' });
+//                         closePopup.removeEventListener('click', removeThanks);
+//                     })
+//                     gsap.to(succesPoup, { autoAlpha: 1 });
 
-                    console.log('re');
-                },
-                $btnSubmit: $form.querySelector('[data-btn-submit]'),
-                fields: {
-                    name: {
-                        inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-name]') }),
-                        rule: yup.string().required(i18next.t('required')).trim(),
-                        defaultMessage: i18next.t('name'),
-                        valid: false,
-                        error: [],
-                    },
-                    phone: {
-                        inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-phone]') }),
-                        rule: yup.string().required(i18next.t('required')).trim(),
-                        defaultMessage: i18next.t('name'),
-                        valid: false,
-                        error: [],
-                    },
+//                     console.log('re');
+//                 },
+//                 $btnSubmit: $form.querySelector('[data-btn-submit]'),
+//                 fields: {
+//                     name: {
+//                         inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-name]') }),
+//                         rule: yup.string().required(i18next.t('required')).trim(),
+//                         defaultMessage: i18next.t('name'),
+//                         valid: false,
+//                         error: [],
+//                     },
+//                     phone: {
+//                         inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-phone]') }),
+//                         rule: yup.string().required(i18next.t('required')).trim(),
+//                         defaultMessage: i18next.t('name'),
+//                         valid: false,
+//                         error: [],
+//                     },
 
-                    phone: {
-                        inputWrapper: new SexyInput({
-                            animation: 'none',
-                            $field: $form.querySelector('[data-field-phone]'),
-                            typeInput: 'phone',
-                        }),
-                        rule: yup
-                            .string()
-                            .required(i18next.t('required'))
-                            .min(16, i18next.t('field_too_short', { cnt: 19 - 7 })),
+//                     phone: {
+//                         inputWrapper: new SexyInput({
+//                             animation: 'none',
+//                             $field: $form.querySelector('[data-field-phone]'),
+//                             typeInput: 'phone',
+//                         }),
+//                         rule: yup
+//                             .string()
+//                             .required(i18next.t('required'))
+//                             .min(16, i18next.t('field_too_short', { cnt: 19 - 7 })),
 
-                        defaultMessage: i18next.t('phone'),
-                        valid: false,
-                        error: [],
-                    },
-                },
-            },
-        });
-        // $form.querySelector('.js-mask-absolute').addEventListener('click', () => {
-        //   $form.querySelector('[name="phone"]').focus();
-        // }, false);
-    }
-});
+//                         defaultMessage: i18next.t('phone'),
+//                         valid: false,
+//                         error: [],
+//                     },
+//                 },
+//             },
+//         });
+//         // $form.querySelector('.js-mask-absolute').addEventListener('click', () => {
+//         //   $form.querySelector('[name="phone"]').focus();
+//         // }, false);
+//     }
+// });
 
 /** ******************************* */
 
