@@ -31,3 +31,26 @@
     		swiper.destroy();
     		timeline.kill();
     	})
+
+# Требования к разметке
+- на body повесить аттрибут- **data-barba="wrapper"**
+- Предусмотреть контейнер, где будет разметка отдельной страницы. 
+- Добавить ей аттрибуты **data-barba="container" data-barba-namespace="home"**
+# Пример разметки
+
+    ```html
+<body data-barba="wrapper">
+      <header></header>
+    	<menu></menu>
+    <div class="page__inner" data-scroll-container>
+    	<!-- Контент, который динамически будет менятся при переходе по ссылке -->
+    	  <div class="page__content" data-barba="container" data-barba-namespace="home">
+    	  </div >
+    	<!-- Конец динамического контента -->
+    </div>
+    <!-- контент, который загружается один раз-->
+     <footer></footer>
+    </body>
+```
+
+[Ссылка на библиотеку SPA](https://barba.js.org/ "Ссылка на библиотеку SPA")
