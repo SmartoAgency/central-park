@@ -54,3 +54,19 @@
 ```
 
 [Ссылка на библиотеку SPA](https://barba.js.org/ "Ссылка на библиотеку SPA")
+
+# Оформление обработчиков
+Обработчики необходимо навешивать через всплытие событий, так как контент на странице будет менятся и елементы, на которые повешены события будут удалятся
+**Не правильно:**
+```javascript
+	document.querySelectorAll('.js-open-popup').forEach(button => {
+		button.addEventListener('click', openPopup);
+	})
+```
+**Правильно**
+```javascript
+	document.body.addEventListener('click', (evt) => {
+		if (evt.target.closest('.js-open-popup') === null) return;
+		openPopup();
+	})
+```
