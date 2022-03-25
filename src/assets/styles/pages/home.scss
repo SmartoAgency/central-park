@@ -661,6 +661,10 @@
             align-items: center;
             cursor: pointer;
         }
+        li.active {
+            color: var(--color-black);
+            font-weight: bold;
+        }
         li:nth-last-child(n+2) {
             margin-bottom: 10px;
         }

@@ -58,6 +58,9 @@ export default async function genplanSequence(config) {
             const dataToSequence = clickSequences[frame.dataset.attr];
             if (isAnimating) return;
             isAnimating = true;
+            $switchFrames[0].parentElement.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+            frame.classList.add('active');
+
             document.querySelector('[data-genplan-title]').textContent = frame.dataset.title;
             if (activeSequence) {
                 changeImageSrcByArrayIndex(
