@@ -451,6 +451,7 @@ html.has-scroll-dragging {
 	// height: 100vh;
 	overflow-x: hidden;
 	overflow-y: visible;
+	background-color: var(--color-black);
 	@include from(1025px){
 		position: fixed;
 		left: 0;

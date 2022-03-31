@@ -97,6 +97,11 @@
 }
 .advantages-points-mobile {
     background-color: var(--color-black);
+    
+    &>.adv-mob-part {
+        margin-bottom: 50px;
+    }
+    
     @include from(576px){
         display: none;
     }
@@ -168,6 +173,9 @@
         padding-right: 0;
         margin-left: 0;
         margin-right: 0;
+        &>.adv-mob-part {
+            margin-bottom: 50px;
+        }
         @include from(576px){
             display: none;   
         }
@@ -313,7 +321,7 @@
 }
 
 .adv-mob-part~.advantage-mob-point {
-    margin-top: 50px;
+    // margin-top: 50px;
 }
 
 .adv-container__mobile>.button {

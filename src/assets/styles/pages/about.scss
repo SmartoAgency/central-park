@@ -254,6 +254,7 @@
     margin-right: calc( var(--page-side-fields) * -1);
     max-width: none;
     width: calc(100% + (var(--page-side-fields) * 2));
+    overflow: hidden;
     &__text-wrap {
         position: absolute;
         left: 0;
