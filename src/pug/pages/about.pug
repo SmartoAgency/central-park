@@ -146,21 +146,29 @@ block content
       span Обрати квартиру
   .container.about-container.about-container__mobile
     .about-mob-block
+      .about-mob-subtitle Заголовок для блоку
+      .about-mob-block__text Безпека мешканців забезпечується службою охорони та цілодобовим відеоспостереженням території. 
+    .about-mob-block
       .about-mob-block__title Заголовок для блоку
       .about-mob-block__text CENTRAL PARK Vinnytsia — сучасний та стильний житловий комплекс, реалізований у концепції LIVE. WORK. REST. - ЖИВИ.  ПРАЦЮЙ.  ВІДПОЧИВАЙ.
       img(src="./assets/images/about/mob/277900885.jpg").about-mob-block__img
+    .about-mob-block
+      .about-mob-subtitle Заголовок для блоку
+      .about-mob-block__text Безпека мешканців забезпечується службою охорони та цілодобовим відеоспостереженням території.
     each val in gradientBlocks
       .about-mob-block-gradient
         .about-mob-block-gradient__text-wrap
           .about-mob-block-gradient__title #{val.title}
           .about-mob-block-gradient__text #{val.text}
         img(src=val.img).about-mob-block-gradient__img
+    .about-mob-title Чому обирають ЖК Central Park Vinnytsia
     each val in characteristics
       .about-character-part
         img(src=val.icon).about-character-part__icon
         .about-character-part__text-wrap
           .about-character-part__title #{val.text}
-          .about-character-part__text
+          .about-character-part__text Вентильований фасад утеплення мінеральною ватою.
+          .about-character-part__span-line Детальніше
     .about-text-xl Власне місто у житловому комплексі!
     a.button.with-hover.mt-medium(href="3d")
       .button__hover
