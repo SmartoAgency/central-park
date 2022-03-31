@@ -23,7 +23,7 @@ export default function curtainsShaders(smoothScroll){
     // load an image with the loader
     const dispImage = new Image();
     dispImage.crossOrigin = "anonymous";
-    dispImage.src = "./assets/images/displacement-ready.jpg";
+    dispImage.src = window.location.href.match(/localhost/) ?  "./assets/images/displacement-ready.jpg" : "/wp-content/themes/central-park/assets/images/displacement-ready.jpg";
     let newTexture = new Texture(curtains, {
         // set premultiplyAlpha to true, minFilter, anisotropy and use half-floating point texture
         sampler: "uTexture",

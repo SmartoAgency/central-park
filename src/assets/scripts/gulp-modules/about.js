@@ -16,7 +16,7 @@ window.addEventListener('load',function(evt){
     !isMobile && curtainsShaders(scroller);
     splitToLinesAndFadeUp('.about-text, .about-text-l, .about-text-xl, .about-pretty-block__text p','.scroller-container');
     isMobile && fadeInUp('.about-character-part', document.body);
-    isMobile && splitToLinesAndFadeUp('.about-mob-block-gradient__title,.about-mob-block-gradient__text,.about-mob-title', document.body);
+    isMobile && splitToLinesAndFadeUp('.about-mob-block__text, .about-mob-subtitle, .about-mob-block-gradient__title,.about-mob-block-gradient__text,.about-mob-title', document.body);
     clipPathEntry('.about-pretty-block__decor path','.scroller-container', {
       stagger: 0.15
     })
