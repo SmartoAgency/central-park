@@ -25,11 +25,13 @@
     }
     
 }
+
 .adv-slider-container {
     padding-top: 150px;
     
     @include to(575px){
         padding-top: 40px;
+        display: none;
     }
     
     &__text {
@@ -86,7 +88,65 @@
         }
     }
 }
+.advantages-mob-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: var(--color-white);
+    text-transform: uppercase;
+}
+.advantages-points-mobile {
+    background-color: var(--color-black);
+    @include from(576px){
+        display: none;
+    }
 
+}
+.advantage-mob-point {
+    position: relative;
+    padding-bottom: 125%;
+    width: 100%;
+    &__text-wrap {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        min-height: 50%;
+        z-index: 2;
+        padding: var(--page-side-fields);
+        background: linear-gradient(180deg, rgba(35, 36, 43, 0) 0%, #23242B 100%);
+        display: flex;
+        flex-direction: column;
+        align-content: flex-end;
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+    &__title {
+        
+        margin-bottom: 10px;
+    }
+    &__text {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 160%;
+        /* or 22px */
+        color: #C8C2BD;
+        &--uppercased {
+            text-transform: uppercase;
+        }
+        &--white {
+            color: var(--color-white);
+        }
+    }
+    &__img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
 .adv-container {
     @include to(575px){
         .block-img-text__text {
@@ -95,6 +155,17 @@
         }
         .block-img-text__img-wrap {
             order: 1;
+        }
+    }
+
+    &__desktop {
+        @include to(575px){
+            display: none;   
+        }
+    }
+    &__mobile {
+        @include from(576px){
+            display: none;   
         }
     }
     .adv-dark-text {
@@ -210,5 +281,18 @@
     &__img {
         position: relative;
         z-index: 1;
+    }
+}
+
+.adv-mob-part  {
+    &__title {
+        margin-bottom: 10px;
+    }
+    &__text {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 160%;
+        /* or 22px */
+        color: #C8C2BD;
     }
 }

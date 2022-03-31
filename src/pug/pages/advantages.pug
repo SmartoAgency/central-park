@@ -8,11 +8,11 @@ block variable
     var breadcrumbsSubitem = [
     ];
     var sliders = [
-      {img: './assets/images/advantages/1.jpg'  , text: 'власна школа'},
-      {img: './assets/images/advantages/2.jpg', text: 'власний дитячий садок'},
-      {img: './assets/images/advantages/3.jpg'             , text: 'гуртки та секції для розвитку'},
-      {img: './assets/images/advantages/4.jpg', text: 'поліклініка'},
-    {img: './assets/images/advantages/5.jpg', text: 'великий супермаркет'},
+      {img: './assets/images/advantages/2.jpg', text: 'власний дитячий садок', subtext: 'Формат життя в стилі LIVE. WORK. REST. - ЖИВИ. ПРАЦЮЙ. ВІДПОЧИВАЙ.'},
+      {img: './assets/images/advantages/1.jpg'  , text: 'власна школа', subtext: 'Формат життя в стилі LIVE. WORK. REST. - ЖИВИ. ПРАЦЮЙ. ВІДПОЧИВАЙ.'},
+      {img: './assets/images/advantages/3.jpg'             , text: 'гуртки та секції для розвитку', subtext: 'Формат життя в стилі LIVE. WORK. REST. - ЖИВИ. ПРАЦЮЙ. ВІДПОЧИВАЙ.'},
+      {img: './assets/images/advantages/4.jpg', text: 'поліклініка', subtext: 'Формат життя в стилі LIVE. WORK. REST. - ЖИВИ. ПРАЦЮЙ. ВІДПОЧИВАЙ.'},
+    {img: './assets/images/advantages/5.jpg', text: 'великий супермаркет', subtext: 'Формат життя в стилі LIVE. WORK. REST. - ЖИВИ. ПРАЦЮЙ. ВІДПОЧИВАЙ.'},
     ]
   
 block meta
@@ -48,7 +48,14 @@ block content
           .swiper-slide
             img(src=val.img)
             p #{val.text}
-  .container.adv-container 
+  .advantages-points-mobile
+    each val in sliders
+      .advantage-mob-point
+        .advantage-mob-point__text-wrap
+          .advantage-mob-point__title.advantages-mob-title #{val.text}
+          .advantage-mob-point__text #{val.subtext}
+        img.advantage-mob-point__img(src=val.img)
+  .container.adv-container.adv-container__desktop 
     .block-img-text
       .block-img-text__text
         p Дитячі та спортивні майданчики, лаунж-зони, фонтанна площа дозволять відпочити всією сім'єю із задоволенням та з користю для здоров'я. Внутрішня територія вільна від машин, є місця для зберігання велосипедів та колясочні кімнати.
@@ -99,6 +106,14 @@ block content
       .block-img-text__img-wrap 
         .block-img-text__img 
           img(src='./assets/images/advantages/277900885-2.jpg')
+  .container.adv-container.adv-container__mobile
+    .adv-mob-part 
+      .adv-mob-part__title.advantages-mob-title Заголовок блоку
+      .adv-mob-part__text Дитячі та спортивні майданчики, лаунж-зони, фонтанна площа дозволять відпочити всією сім'єю із задоволенням та з користю для здоров'я. Внутрішня територія вільна від машин, є місця для зберігання велосипедів та колясочні кімнати. 
+    .advantage-mob-point
+      .advantage-mob-point__text-wrap
+        .advantage-mob-point__text.advantage-mob-point__text--white.advantage-mob-point__text--uppercased Cпорткомплекс з 25-метровим басейном – ідеальний варіант для тих, хто хоче тримати себе у формі та при цьому не витрачати час на дорогу у фітнес зал. 
+      img(src='./assets/images/advantages/277900885-1.jpg').advantage-mob-point__img
 
 
 block footer
