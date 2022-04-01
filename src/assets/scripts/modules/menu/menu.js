@@ -29,6 +29,7 @@ const morphsReversed = [
 function openMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
     button.addEventListener('click',function(evt){
+        window.dispatchEvent(new Event('menu-open'))
         gsap.timeline({
             duration: 2.5
         }) 
@@ -40,6 +41,7 @@ function openMenu(button, menu) {
                 '<')
             .add(() => {
                 document.body.classList.add('popup-opened');
+                
             })
     });
 }

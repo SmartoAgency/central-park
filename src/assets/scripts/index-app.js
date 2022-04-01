@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import FormMonster from '../../pug/components/form/form';
 import SexyInput from '../../pug/components/input/input';
-import { isMobile, lazyImages, lazyPosters } from './modules/helpers/helpers';
+import { addIntersectionOnceWithCallback, isMobile, lazyImages, lazyPosters } from './modules/helpers/helpers';
 import menuHandler from './modules/menu/menu';
 import buttonHover from './modules/effects/buttonHover';
 /** ******************************* */
@@ -214,4 +214,14 @@ window.addEventListener('popup-open',function(evt){
 });
 window.addEventListener('popup-close',function(evt){
   document.body.classList.remove('popup-opened');
+});
+
+
+
+
+window.addEventListener('menu-open',function lazeMenuStyle(evt){
+  window.removeEventListener('menu-open', lazeMenuStyle);
+  document.querySelectorAll('[data-style]').forEach(el => {
+    el.style = el.dataset.style;
+  });
 });
