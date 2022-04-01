@@ -150,6 +150,7 @@ const formWrapper = document.querySelector('[data-form-wrapper]');
 const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call], [data-call-form-popup]');
 formWrapperCall.forEach(el => {
   el.addEventListener('click',function(evt){
+    window.dispatchEvent(new Event('form-open'))
     gsap.timeline()
       .to( formWrapper, { autoAlpha: 1 } )
       .fromTo( 
@@ -225,3 +226,10 @@ window.addEventListener('menu-open',function lazeMenuStyle(evt){
     el.style = el.dataset.style;
   });
 });
+
+window.addEventListener('form-open', function lazyForm() {
+  window.removeEventListener('form-open', lazyForm);
+  document.querySelectorAll('[data-form-src]').forEach(el => {
+    el.src = el.dataset.formSrc;
+  })
+})

@@ -249,7 +249,7 @@
 	// height: -moz-available;          /* WebKit-based browsers will ignore this. */
 	min-height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
 	background-color: rgba(115,115,115, 0.5);
-	z-index: 10;
+	z-index: 49 !important;
 	display: flex;
 	flex-direction: column;
 	align-content: flex-end;
