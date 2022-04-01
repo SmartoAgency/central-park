@@ -58,7 +58,7 @@ export default function screen5(scroller) {
           acc -= el.getBoundingClientRect().width;
           return acc;
         }, 0);
-      }}, '<')
+      },ease: 'none' }, '<')
     isMobile && mobileSlider();
 }
 

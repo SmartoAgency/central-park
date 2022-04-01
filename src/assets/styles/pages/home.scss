@@ -211,6 +211,7 @@
         height: 45vh;
         color: #B2A9A0;
         font-size: 18px;
+        text-transform: uppercase;
         @include from(1681px) {
             height: 60vh;
         }
@@ -235,7 +236,7 @@
             width: 100%;
         }
         &.drag {
-            transform: scale(.95);
+            transform: scale(.95) !important;
         }
     }
     [data-screen3-prev],
@@ -396,6 +397,9 @@
     background-color: var(--color-black);
     position: relative;
     --v-padding: 140px;
+    @include from(1025px){
+        height: 500vh;
+    }
     @include to(575px) {
         height: 100vh;
         // display: flex;

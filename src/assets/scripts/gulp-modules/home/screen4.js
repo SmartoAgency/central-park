@@ -69,5 +69,5 @@ export default function screen4(scroller) {
         }
       })
         .from('.screen4>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : 100, clearProps: 'transform' })
-        .to('.screen3>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : -100, clearProps: 'transform' }, '<')
+        .to('.screen3>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : -100, clearProps: 'all' }, '<')
 }
