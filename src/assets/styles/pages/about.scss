@@ -48,6 +48,12 @@
     @include to(575px){
         --gap: 50px;
     }
+    &__mobile {
+        
+        @include to(575px){
+            --gap: 70px;
+        }
+    }
 
     &__desktop {
         @include to(575px){
@@ -262,8 +268,8 @@
         width: 100%;
         background: linear-gradient(180deg, rgba(35, 36, 43, 0.8) 0%, #23242B 100%);
         z-index: 2;
-        padding-left: var(--page-side-fields);
-        padding-right: var(--page-side-fields);
+        padding-left: 20px;
+        padding-right:20px;
         padding-top: 20px;
         padding-bottom: 30px;
     }
