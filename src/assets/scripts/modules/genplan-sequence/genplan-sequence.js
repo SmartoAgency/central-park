@@ -16,43 +16,68 @@ export default async function genplanSequence(config) {
 
     };
     let activeSequence;
+    // const clickSequences = {
+    //     areas_1: 'genplan_1.json',
+    //     areas_2: 'genplan_2.json',
+    //     areas_finals:'genplan_3.json',
+    // };
     const clickSequences = {
-        areas_1: 'genplan_1.json',
-        areas_2: 'genplan_2.json',
-        areas_finals:'genplan_3.json',
+        areas_finals: '121-183',
+        areas_2: '252-265',
+        areas_1: '207-234',
     };
 
-    Object.entries(clickSequences).forEach(async ([key, val]) => {
-        let URL = window.location.href.match(/localhost/) ? './static/'+val : '/wp-content/themes/central-park/static/'+val;
-        let data = await axios(URL, {
-            onDownloadProgress: (e) => {
-                console.log(e);
-            }
-        });
-        clickSequences[key] = data.data;
-    })
+    // Object.entries(clickSequences).forEach(async ([key, val]) => {
+    //     let URL = window.location.href.match(/localhost/) ? './static/'+val : '/wp-content/themes/central-park/static/'+val;
+    //     let data = await axios(URL, {
+    //         onDownloadProgress: (e) => {
+    //             console.log(e);
+    //         }
+    //     });
+    //     clickSequences[key] = data.data;
+    // })
     // SEQUENCES = await SEQUENCES.json();
     SEQUENCES = await SEQUENCES.data;
-    const sequenceLength = SEQUENCES.length;
-
+    let sequenceLength = SEQUENCES.length;
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: scene,
+            scroller: scroller,
+            start: '0% top',
+            end: '80% top',
+            onEnterBack:()=>{ 
+                gsap.timeline()
+                    .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
+                    .to('.genplan__text2', { autoAlpha: 0 }, '<')
+                activeSequence = undefined;
+            },
+            onLeave: () => {
+                cutOnClickInited();
+                gsap.timeline()
+                    .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
+                    .to('.genplan__text2', { autoAlpha: 1 }, '<')
+            },
+        }
+    })
     ScrollTrigger.create({
         trigger: scene,
         scroller: scroller,
+        start: '0% top',
         end: '80% bottom',
-        onEnterBack:()=>{ 
-            gsap.timeline()
-                .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
-                .to('.genplan__text2', { autoAlpha: 0 }, '<')
-            activeSequence = undefined;
-        },
-        onLeave: () => {
-            gsap.timeline()
-                .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
-                .to('.genplan__text2', { autoAlpha: 1 }, '<')
-        },
+        // onEnterBack:()=>{ 
+        //     gsap.timeline()
+        //         .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
+        //         .to('.genplan__text2', { autoAlpha: 0 }, '<')
+        //     activeSequence = undefined;
+        // },
+        // onLeave: () => {
+        //     gsap.timeline()
+        //         .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
+        //         .to('.genplan__text2', { autoAlpha: 1 }, '<')
+        // },
 
         onUpdate: ({progress}) => {
-            console.log('upodate');
+            // console.log('upodate '+progress);
             const scaleFactor = sequenceLength / 100; 
             const percentage = ((progress * 100) * scaleFactor).toFixed(0);
             // gsap.set(imgForDisplay, { src: SEQUENCES[percentage] })
@@ -63,11 +88,30 @@ export default async function genplanSequence(config) {
     });
 
     let isAnimating = false;
+    function cutOnClick() {
+        let wasClicked = false;
+        return function curArray() {
+            if (wasClicked) return;
+            console.log(SEQUENCES);
+            Object.entries(clickSequences).forEach(([key, frame]) => {
+                let [from, to] = frame.split('-');
+                from = +from;
+                to = +to;
+                clickSequences[key] = SEQUENCES.slice(from, to);
+            })
+            SEQUENCES = SEQUENCES.slice(0, 120);
+            sequenceLength = SEQUENCES.length;
+            wasClicked = true;
+            console.log(loadedSequences);
+        }
+    }
+    const cutOnClickInited = cutOnClick();
     $switchFrames.forEach(frame => {
         frame.addEventListener('click',function(evt){
             if (!clickSequences[frame.dataset.attr]) return;
             const dataToSequence = clickSequences[frame.dataset.attr];
             if (isAnimating) return;
+            
             isAnimating = true;
             $switchFrames[0].parentElement.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
             frame.classList.add('active');
