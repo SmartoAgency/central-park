@@ -1,5 +1,5 @@
 .screen10 {
-    padding: 150px var(--page-side-fields);
+    padding: 200px var(--page-side-fields);
     position: relative;
     @include row-flex();
     @include from(1025px){
