@@ -4,19 +4,26 @@ export default function screen6(scroller) {
     gsap.timeline({
         scrollTrigger: {
           trigger: '.genplan',
-          scrub: true,
+          // scrub: true,
           scroller: scroller ? scroller : null,
           // start: '0 top',
-          end: `${document.querySelector('.genplan').getBoundingClientRect().height} bottom`,
           pin: '.genplan__inner',
           onUpdate: ({ progress }) => {
             gsap.set('.genplan__inner-progress-bar', { scaleX: progress })
           },
+          // onLeave: () => {
+          //   gsap.timeline()
+          //     .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
+          //     .to('.genplan__text2', { autoAlpha: 1 }, '<')
+          // },
+          // onEnterBack: () => {
+          //   gsap.timeline()
+          //     .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
+          //     .to('.genplan__text2', { autoAlpha: 0 }, '<')
+          // }
         //   markers: true
         }
       })
-      .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
-      .to('.genplan__text2', { autoAlpha: 1 }, '<')
       // .add(genplatListStaggerHightlight())
       
       

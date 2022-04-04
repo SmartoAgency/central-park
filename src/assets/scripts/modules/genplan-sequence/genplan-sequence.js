@@ -39,7 +39,18 @@ export default async function genplanSequence(config) {
         trigger: scene,
         scroller: scroller,
         end: '80% bottom',
-        onEnterBack:()=>{ activeSequence = undefined },
+        onEnterBack:()=>{ 
+            gsap.timeline()
+                .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
+                .to('.genplan__text2', { autoAlpha: 0 }, '<')
+            activeSequence = undefined;
+        },
+        onLeave: () => {
+            gsap.timeline()
+                .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
+                .to('.genplan__text2', { autoAlpha: 1 }, '<')
+        },
+
         onUpdate: ({progress}) => {
             console.log('upodate');
             const scaleFactor = sequenceLength / 100; 
@@ -101,12 +112,14 @@ export default async function genplanSequence(config) {
 
 
 function changeImageSrcByArrayIndex(toDisplay, images, start, end, cb = () => {}) {
-    const delay =  1000 / 25;
+    const delay =  1000 / 35;
     function change(i) {
         toDisplay.src = images[i];
         if (i === end) return cb();
         setTimeout(() => {
-            start > end ? change(i - 1) : change(i + 1);
+            requestAnimationFrame(() => {
+                start > end ? change(i - 1) : change(i + 1);
+            })
         }, delay);
     }
     change(start);
