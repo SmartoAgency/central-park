@@ -34,7 +34,7 @@ export default function screen1(scroller) {
         
         )
     .to(
-        textBlock.querySelectorAll('button'), 
+        textBlock.querySelectorAll('.button'), 
         {duration: isMobile ? 1 : 0.1, autoAlpha: 0, overwrite: true },
         '<'
         )
@@ -46,7 +46,6 @@ export default function screen1(scroller) {
     .to(cloud1, { xPercent: -30, duration: 1, yPercent: 5, }, '<')
     .to(render, { scale: isMobile ? 1 : 1.1, duration: 1, yPercent: 15, ease: 'linear', transformOrigin: '100% 100%' }, '<')
     tlScreen1.scrollTrigger.disable();
-    console.log(tlScreen1);
     window.addEventListener('preloaderEffectFinish', () => {
         tlScreen1.scrollTrigger.enable();
     })

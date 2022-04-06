@@ -47,7 +47,7 @@ function homePreloaderEffect() {
           clearProps: 'all'
       }, '<')
       .fromTo(
-        '.main-screen__text>button', 
+        '.main-screen__text>.button', 
         { 
           // autoAlpha: 0 
         }, 
