@@ -8,9 +8,9 @@ export default function screen6(scroller) {
           scroller: scroller ? scroller : null,
           // start: '0 top',
           pin: '.genplan__inner',
-          onUpdate: ({ progress }) => {
-            gsap.set('.genplan__inner-progress-bar', { scaleX: progress })
-          },
+          // onUpdate: ({ progress }) => {
+          //   gsap.set('.genplan__inner-progress-bar', { scaleX: progress })
+          // },
           // onLeave: () => {
           //   gsap.timeline()
           //     .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })

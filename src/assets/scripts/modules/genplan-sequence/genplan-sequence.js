@@ -9,9 +9,11 @@ export default async function genplanSequence(config) {
     let URL = window.location.href.match(/localhost/) ? './static/genplan.json' : '/wp-content/themes/central-park/static/genplan.json';
     let SEQUENCES = await axios(URL, {
         onDownloadProgress: (e) => {
-            console.log(e);
+            const progress = gsap.utils.mapRange(0, e.total, 0, 1,  e.loaded);
+            gsap.set('.genplan__inner-progress-bar', { scaleX: progress })
         }
     });
+    gsap.set('.genplan__inner-progress-bar', { scaleX: 0 })
     let loadedSequences = {
 
     };
@@ -44,7 +46,7 @@ export default async function genplanSequence(config) {
             trigger: scene,
             scroller: scroller,
             start: '0% top',
-            end: '80% top',
+            end: '70% top',
             onEnterBack:()=>{ 
                 gsap.timeline()
                     .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
