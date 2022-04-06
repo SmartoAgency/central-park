@@ -11,12 +11,10 @@ import screen4 from './home/screen4';
 import screen5 from './home/screen5';
 import screen6 from './home/screen6';
 import screen10 from './home/screen10';
-import smoothScrollBar from '../modules/smooth-scrolls/smooth-scrollbar';
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import screen9Handler from './home/screen9';
 import screen1 from './home/screen1';
 import screen8 from './home/screen8';
-import ztext from '../modules/ztext/ztext';
 import { addIntersectionOnceWithCallback, handleHeader, transitionBetweenSectionSceneLength } from '../modules/helpers/helpers';
 import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
 
@@ -29,6 +27,7 @@ import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
 window.addEventListener('load',homeInit);
 function homePreloaderEffect() {
     const isMobile = window.matchMedia('(max-width:575px)').matches;
+    gsap.set('.page__inner', { pointerEvents: 'none' })
     return gsap.timeline({ paused: true, defaults: {
       ease: 'power4.out', 
       duration: isMobile ? 1.5 : 3,
@@ -47,11 +46,22 @@ function homePreloaderEffect() {
           y: 0,
           clearProps: 'all'
       }, '<')
-      .fromTo('.main-screen__text>button', { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.5, }, '<')
+      .fromTo(
+        '.main-screen__text>button', 
+        { 
+          // autoAlpha: 0 
+        }, 
+        { 
+          // autoAlpha: 1, 
+          duration: 1.5,
+        }, 
+        '<')
+      .add(() => {
+        window.dispatchEvent(new Event('preloaderEffectFinish'))
+      })
       // .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
   }
 window.addEventListener('preloaderOff',function(evt){
-  console.log('f');
   homePreloaderEffect().play();
 });
 function homeInit() {
@@ -60,16 +70,6 @@ function homeInit() {
   const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
   const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
   
-//   var ztxt = new ztext(".screen2 p", {
-//     depth: "5px",
-//     layers: 4,
-//     // fade: true,
-//     // direction: "forwards",
-//     event: "pointer",
-//     eventRotation: "10deg"
-//  });
-  
-  // smoothScrollBar();
   const scroller = locoScroll('.scroller-container');
   scroller.update();
   window.scroller = scroller;

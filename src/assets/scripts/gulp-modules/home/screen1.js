@@ -18,7 +18,8 @@ export default function screen1(scroller) {
     })
     // screen1.append(wrap)
     const innerHeight = window.innerHeight;
-    gsap.timeline({
+    const tlScreen1 = gsap.timeline({
+        // paused: true,
         scrollTrigger: {
             scroller: scroller ? scroller : null,
             trigger: screen1,
@@ -34,7 +35,7 @@ export default function screen1(scroller) {
         )
     .to(
         textBlock.querySelectorAll('button'), 
-        {duration: isMobile ? 1 : 0.1, autoAlpha: 0 },
+        {duration: isMobile ? 1 : 0.1, autoAlpha: 0, overwrite: true },
         '<'
         )
     .to(
@@ -44,7 +45,11 @@ export default function screen1(scroller) {
         )
     .to(cloud1, { xPercent: -30, duration: 1, yPercent: 5, }, '<')
     .to(render, { scale: isMobile ? 1 : 1.1, duration: 1, yPercent: 15, ease: 'linear', transformOrigin: '100% 100%' }, '<')
-
+    tlScreen1.scrollTrigger.disable();
+    console.log(tlScreen1);
+    window.addEventListener('preloaderEffectFinish', () => {
+        tlScreen1.scrollTrigger.enable();
+    })
 }
 
 
