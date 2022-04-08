@@ -1,8 +1,11 @@
 .front-block__canvas-wrap {
     width: 100%;
-    height: 100vh;
+    height: 56.25vw;
     background-color: var(--color-black);
     position: relative;
+    @include to(575px){
+        height: 100vh;
+    }
     &-mob-nav {
         position: absolute;
         left: 0;
