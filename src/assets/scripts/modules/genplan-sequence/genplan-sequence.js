@@ -76,9 +76,11 @@ export default async function genplanSequence(config) {
             }
         }
     })
-        .to('.genplan__text1', { autoAlpha: 0, duration: 0.2 })
-        .to('.genplan__text2', { autoAlpha: 1, duration: 0.2 }, '<')
-        .fromTo('.genplan-point', { autoAlpha: 0 }, { autoAlpha: 1, stagger: 0.05, duration: 0.05 })
+        .to('.genplan__text1', { autoAlpha: 0, duration: 0.3 })
+        .to('.genplan__text2', { autoAlpha: 1, duration: 0.3 }, '<')
+        .fromTo('.genplan-point:nth-child(1)', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 })
+        .fromTo('.genplan-point:nth-child(2)', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 })
+        .fromTo('.genplan-point:nth-child(3)', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 })
     ScrollTrigger.create({
         trigger: scene,
         scroller: scroller,
