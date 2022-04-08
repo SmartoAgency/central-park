@@ -60,7 +60,25 @@ export default async function genplanSequence(config) {
                     .to('.genplan__text2', { autoAlpha: 1 }, '<')
             },
         }
+    });
+    const previewTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: scene,
+            start: '0% top',
+            end: '70% top',
+            scroller: scroller,
+            scrub: true,
+            onUpdate: () => {
+                console.log('e');
+            },
+            onLeave: () => {
+                previewTl.kill();
+            }
+        }
     })
+        .to('.genplan__text1', { autoAlpha: 0, duration: 0.2 })
+        .to('.genplan__text2', { autoAlpha: 1, duration: 0.2 }, '<')
+        .fromTo('.genplan-point', { autoAlpha: 0 }, { autoAlpha: 1, stagger: 0.05, duration: 0.05 })
     ScrollTrigger.create({
         trigger: scene,
         scroller: scroller,
