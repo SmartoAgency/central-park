@@ -188,6 +188,7 @@
 		align-items: center;
 		justify-content: flex-start;
 		padding: 5px 5px 5px 10px;
+		transition: .5s ease-in-out;
 	}
 	// li:first-child
 	li:after {
@@ -222,6 +223,9 @@
 	}
 	&:hover li~li {
 		opacity: 1;
+	}
+	&:hover li {
+		transform: translateY(-100%);
 	}
 	&:hover {
 		overflow: visible;

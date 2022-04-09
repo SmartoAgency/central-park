@@ -10,10 +10,12 @@ export default async function genplanSequence(config) {
     let SEQUENCES = await axios(URL, {
         onDownloadProgress: (e) => {
             const progress = gsap.utils.mapRange(0, e.total, 0, 1,  e.loaded);
-            gsap.set('.genplan__inner-progress-bar', { scaleX: progress })
+            // gsap.set('.lds-ring span', { scaleX: progress })
+            // console.log('progress');
+            // document.querySelector('.lds-ring span').textContent = Math.floor(progress * 100);
         }
     });
-    gsap.set('.genplan__inner-progress-bar', { scaleX: 0 })
+    gsap.set('.lds-ring', { autoAlpha: 0 })
     let loadedSequences = {
 
     };
@@ -50,7 +52,11 @@ export default async function genplanSequence(config) {
             onEnterBack:()=>{ 
                 gsap.timeline()
                     .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
-                    .to('.genplan__text2', { autoAlpha: 0 }, '<')
+                    .to('.genplan__text2', { autoAlpha: 0 }, '<');
+                    scene.querySelectorAll('.active').forEach(el => {
+                        el.classList.remove('active');
+                    });
+                    document.querySelector('[data-genplan-title]').textContent = '';
                 activeSequence = undefined;
             },
             onLeave: () => {
@@ -69,7 +75,7 @@ export default async function genplanSequence(config) {
             scroller: scroller,
             scrub: true,
             onUpdate: () => {
-                console.log('e');
+                // console.log('e');
             },
             onLeave: () => {
                 previewTl.kill();
