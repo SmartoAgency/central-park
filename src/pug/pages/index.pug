@@ -98,7 +98,7 @@ block content
       .zoom-slider.swiper-wrapper
         each val in slides 
           .slide.swiper-slide
-            img(src=val.img)
+            img(data-src=val.img)
             div #{val.text}
   .screen4
     .section-decor
@@ -182,15 +182,15 @@ block content
     //- 469189703.jpg
     .section-decor
       +svg('logo-mini')
-    img(src="./assets/images/screen8/clouds.png").screen8__clouds
+    img(data-src="./assets/images/screen8/clouds.png").screen8__clouds
     .img-left
       img(src="./assets/images/screen8/216397374.jpg")
       img(src="./assets/images/screen8/logo-gradient-style.png").img-left__decor
     .img-center
       img(src="./assets/images/screen8/277900885.jpg")
     .img-right
-      img(src="./assets/images/screen8/469189703.jpg")
-      img(src="./assets/images/screen8/logo-gradient-style.png").img-right__decor
+      img(data-src="./assets/images/screen8/469189703.jpg")
+      img(data-src="./assets/images/screen8/logo-gradient-style.png").img-right__decor
     .screen8__text 
       .title.text-beige.fw-300 Обрати квартиру
       p.text-white Група «Еталон» з гордістю представляє масштабний проект у центрі Вінниці. Це місто в місті, яке не підлаштовується під старі рамки, а задає нову планку та стандарт житлового району.
@@ -199,7 +199,7 @@ block content
         .button__hover
         span обрати квартиру
     .screen8__render
-      img(src="./assets/images/screen8/render.png")
+      img(data-src="./assets/images/screen8/render.png")
   include home/screen9.pug
   include home/screen10.pug
   include home/screen11.pug

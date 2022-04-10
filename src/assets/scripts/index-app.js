@@ -232,4 +232,11 @@ window.addEventListener('form-open', function lazyForm() {
   document.querySelectorAll('[data-form-src]').forEach(el => {
     el.src = el.dataset.formSrc;
   })
+});
+
+document.querySelectorAll('[data-src]').forEach(lazyItem => {
+
+  addIntersectionOnceWithCallback(lazyItem, () => {
+    lazyItem.src = lazyItem.dataset.src;
+  })
 })
