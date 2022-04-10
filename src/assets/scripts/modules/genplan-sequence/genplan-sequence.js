@@ -11,7 +11,7 @@ export default async function genplanSequence(config) {
         onDownloadProgress: (e) => {
             const progress = gsap.utils.mapRange(0, e.total, 0, 1,  e.loaded);
             // gsap.set('.lds-ring span', { scaleX: progress })
-            // console.log('progress');
+            // console.log(e);
             // document.querySelector('.lds-ring span').textContent = Math.floor(progress * 100);
         }
     });
@@ -120,7 +120,7 @@ export default async function genplanSequence(config) {
         let wasClicked = false;
         return function curArray() {
             if (wasClicked) return;
-            console.log(SEQUENCES);
+            // console.log(SEQUENCES);
             Object.entries(clickSequences).forEach(([key, frame]) => {
                 let [from, to] = frame.split('-');
                 from = +from;
@@ -130,7 +130,7 @@ export default async function genplanSequence(config) {
             SEQUENCES = SEQUENCES.slice(0, 120);
             sequenceLength = SEQUENCES.length;
             wasClicked = true;
-            console.log(loadedSequences);
+            // console.log(loadedSequences);
         }
     }
     const cutOnClickInited = cutOnClick();
