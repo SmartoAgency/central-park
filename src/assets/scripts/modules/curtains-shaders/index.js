@@ -241,7 +241,7 @@ export default function curtainsShaders(smoothScroll){
         });
         ScrollTrigger.create({
             trigger: plane.htmlElement,
-            markers: true,
+            // markers: true,
             onEnter: () => {
                 
             },
