@@ -17,6 +17,7 @@
 .similar-news {
     .inner-front__title {
         margin-bottom: 100px;
+        width: 100%;
         @include to(1024px){
             margin-bottom: 50px;
 
