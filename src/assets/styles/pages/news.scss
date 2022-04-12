@@ -35,7 +35,7 @@
         @include to(575px){
         }
     }
-    .button {
+    :not(.header) .button {
         margin: 0 10vw;
     }
 }

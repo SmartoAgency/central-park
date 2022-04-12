@@ -344,8 +344,10 @@ html.has-scroll-dragging {
 		z-index: 0;
 		
 	}
-	&:hover &__hover {
-		transform: translate(-50%,-50%) scale(1.2) !important;
+	@include from(576px){
+		&:hover &__hover {
+			transform: translate(-50%,-50%) scale(1.2) !important;
+		}
 	}
 	&--dark &__hover {
 		background-color: var(--color-beige);

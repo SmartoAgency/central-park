@@ -196,6 +196,7 @@
             max-height: 28px;
         }
     }
+    rect,
     path {
         transition: .5s ease-in-out;
     }
@@ -240,9 +241,11 @@
     &.active {
         color: #23242B ;
     }
+    &.active>.map-nav-item rect[fill],
     &.active>.map-nav-item path[fill] {
         fill: #23242B;
     }
+    &.active>.map-nav-item rect[stroke],
     &.active>.map-nav-item path[stroke] {
         stroke: #23242B;
     }

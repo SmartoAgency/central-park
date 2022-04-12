@@ -16,11 +16,11 @@ export default function innerPageFrontEffect() {
             duration: 1.75,
         }
     })
-        .fromTo(title, { yPercent: 101 }, { yPercent: 0 })
-        .fromTo(bottomDecor, { yPercent: 101 }, { yPercent: 0, stagger: 0.05 }, '<')
-        .fromTo(breadcrumbs, { yPercent: 101 }, { yPercent: 0, stagger: 0.05 }, '<')
+        .fromTo(title, { yPercent: 104 }, { yPercent: 0 })
+        .fromTo(bottomDecor, { yPercent: 104 }, { yPercent: 0, stagger: 0.05 }, '<')
+        .fromTo(breadcrumbs, { yPercent: 104 }, { yPercent: 0, stagger: 0.05 }, '<')
         .fromTo(headerInner, { y: 201 }, { y: 0, stagger: -0.05 }, '<')
-        .fromTo(smallDecor, { autoAlpha: 0, y: 101 }, { autoAlpha:1, y: 0, stagger: -0.1 }, '<')
+        .fromTo(smallDecor, { autoAlpha: 0, y: 104 }, { autoAlpha:1, y: 0, stagger: -0.1 }, '<')
         .fromTo(topDecor, 
             { 
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',

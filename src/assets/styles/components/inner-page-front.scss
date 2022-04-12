@@ -4,6 +4,7 @@
     background-color: var(--color-black);
     position: relative;
     z-index: 2;
+    margin-bottom: -2px;
     @include to(575px){
         padding-top: 60vw;
     }
