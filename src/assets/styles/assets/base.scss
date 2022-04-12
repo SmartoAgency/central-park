@@ -344,6 +344,10 @@ html.has-scroll-dragging {
 		z-index: 0;
 		
 	}
+	&--light-hover &__hover {
+		background-color: var(--color-white);
+	}
+	
 	@include from(576px){
 		&:hover &__hover {
 			transform: translate(-50%,-50%) scale(1.2) !important;
@@ -391,6 +395,7 @@ html.has-scroll-dragging {
 	}
 
 	@include from(1025px){
+		
 		&.with-hover:hover {
 			// background-color: transparent;
 			color: var(--color-beige);
@@ -404,6 +409,9 @@ html.has-scroll-dragging {
 		}
 		&--dark.with-hover:hover svg {
 			stroke: var(--color-black);
+		}
+		&--light-hover.with-hover:hover {
+			color: var(--color-black);
 		}
 	}
 }

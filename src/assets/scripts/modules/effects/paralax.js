@@ -1,8 +1,8 @@
 
-import {gsap, ScrollTrigger} from 'gsap/all';
+// import {gsap, ScrollTrigger} from 'gsap/all';
 
-gsap.registerPlugin(ScrollTrigger)
 export default function paralax(selector, scroller, amplitude = 35) {
+  // gsap.registerPlugin(ScrollTrigger)
   const paralaxImages = document.querySelectorAll(selector);
   paralaxImages.forEach((image) => {
     const wrap = document.createElement('div');
