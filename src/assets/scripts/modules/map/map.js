@@ -62,6 +62,7 @@ function func() {
       language: 'en',
       styles : mapStyle()
     });
+    window.googleMap = map;
     var polygonCoords = [
       new google.maps.LatLng(49.2384203, 28.4600074, ),
       new google.maps.LatLng(49.2385850, 28.4598870, ),
@@ -167,7 +168,7 @@ function func() {
         content: `<div ${markerPopupStyle}>ЖК Централ парк</div>`,
         position: { lat: 48.4605169, lng: 35.0525155 },
         type: 'main',
-        id: '17',
+        id: '1',
         zIndex: 1000,
         icon: { url: markersAdresses.main, scaledSize: buildLogoSize },
       },
@@ -202,7 +203,7 @@ function func() {
       {
         content: `<div ${markerPopupStyle}>Public School # 23</div>`,
         type: 'school',
-        id: '12',
+        id: '22',
         icon: { url: markersAdresses.school, scaledSize: defaultMarkerSize },
         position: { lat: 48.456664020583055, lng: 35.064875090349446 },
       },
@@ -232,7 +233,7 @@ function func() {
         content: marker.content,
         position: new google.maps.LatLng(marker.position.lat, marker.position.lng),
       });
-
+      mapMarker.dataId = +marker.id;
       initedMarkers.push(mapMarker);
       
       google.maps.event.addListener(mapMarker, 'click', function () {
@@ -245,6 +246,7 @@ function func() {
     });
     map.initedMarkers = initedMarkers;
     markersHightlight(google, map, infowindow);
+    markersHandler();
   }
   
 
@@ -275,4 +277,19 @@ function markersHightlight(google, map, infowindow) {
 function querySelectorWithNodeList(selector, cb = () => {}) {
   const $list = document.querySelectorAll(selector);
   $list.forEach(el => cb(el));
+}
+
+
+function markersHandler() {
+  document.querySelector('.map-wrapper')
+  .addEventListener('click', ({ target }) => {
+      const map = window.googleMap;
+      if (target.closest('[data-marker-id]') === null || !map) return;
+      const markerId = target.closest('[data-marker-id]').dataset.markerId;
+      const marker = map.initedMarkers.find(marker => marker.dataId == markerId);
+      marker && map.setCenter(marker.getPosition()); 
+      console.log(map.initedMarkers.find(marker => marker.dataId == markerId));
+      console.log(map);
+      // console.log(marker);
+    })
 }
