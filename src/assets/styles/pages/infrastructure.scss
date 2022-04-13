@@ -65,6 +65,9 @@
     height: 970px;
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    color: var(--color-black);
     @include to(1680px){
         height: 100vh;
     }

@@ -166,7 +166,7 @@ function func() {
   const markersData =[
     {
         content: `<div ${markerPopupStyle}>ЖК Централ парк</div>`,
-        position: { lat: 48.4605169, lng: 35.0525155 },
+        position: { lat: 49.2384203, lng: 28.4600074 },
         type: 'main',
         id: '1',
         zIndex: 1000,

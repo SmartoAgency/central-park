@@ -1,7 +1,9 @@
 import innerPageFrontEffect from "../modules/inner-pages/inner-page-front-effect";
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
-import { handleHeader } from "../modules/helpers/helpers";
+import { handleHeader, addIntersectionOnceWithCallback } from "../modules/helpers/helpers";
 import googleMap from "../modules/map/map";
+import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
+import screen6 from './home/screen6';
 
 innerPageFrontEffect();
 googleMap();
@@ -11,6 +13,16 @@ window.addEventListener('load',function(evt){
     handleHeader(scroller);
     window.scroller = scroller;
     disableScroll(scroller);
+    const $scroller = document.querySelector('.scroller-container');
+    screen6($scroller);
+    addIntersectionOnceWithCallback(document.querySelector('.genplan'),() => {
+      genplanSequence({
+        scene: '.genplan',
+        selectorToDisplay: '.genplan__img img',
+        scroller: $scroller,
+        $switchFrames: '.genplan__text2 li'
+      })
+    })
 });
 function disableScroll(locoScroll) {
     const containersScroll = document.querySelectorAll('[data-disable-page-scroll]');
