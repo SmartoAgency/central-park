@@ -320,7 +320,7 @@ html.has-scroll-dragging {
 	text-decoration: none;
 	outline: none;
 	overflow: hidden;
-	transition: background-color .5s ease-out;
+	transition: background-color .3s ease-out;
 	&[disabled] &__hover {
 		display: none;
 	}
@@ -395,14 +395,14 @@ html.has-scroll-dragging {
 	@include from(1025px){
 		
 		&.with-hover:hover {
-			// background-color: transparent;
+			background-color: transparent;
 			color: var(--color-beige);
 		}
 		&.with-hover:hover svg {
 			stroke: var(--color-beige);
 		}
 		&--dark.with-hover:hover {
-			// background-color: transparent;
+			background-color: transparent;
 			color: var(--color-black);
 		}
 		&--dark.with-hover:hover svg {
