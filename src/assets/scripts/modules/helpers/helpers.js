@@ -246,7 +246,7 @@ export function handleHeader(scroller) {
     } else {
       changeState['transparent']();
     }
-    if (tempState === header.state || scroll.y < 150) return;
+    if (scroll.y < 150) return;
     header.state = tempState;
     if (scroll.y > 200) changeState[tempState]();
 
