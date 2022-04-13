@@ -1,6 +1,7 @@
-import gsap from "gsap/all";
+import {gsap, ScrollTrigger} from "gsap/all";
 
 export default function screen6(scroller) {
+    gsap.core.globals("ScrollTrigger", ScrollTrigger);
     gsap.timeline({
         scrollTrigger: {
           trigger: '.genplan',

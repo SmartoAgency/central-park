@@ -8,6 +8,7 @@ import screen6 from './home/screen6';
 innerPageFrontEffect();
 googleMap();
 window.addEventListener('load',function(evt){
+  
       const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);

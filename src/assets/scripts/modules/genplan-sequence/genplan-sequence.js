@@ -1,7 +1,8 @@
 import axios from "axios";
-import gsap from "gsap/all";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from 'gsap/all';
 export default async function genplanSequence(config) {
+    global.gsap = gsap;
+    gsap.core.globals("ScrollTrigger", ScrollTrigger);
     const scroller = config.scroller;
     const scene = document.querySelector(config.scene);
     const imgForDisplay = getElementBySelector(config.selectorToDisplay);
