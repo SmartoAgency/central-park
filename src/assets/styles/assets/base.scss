@@ -320,9 +320,7 @@ html.has-scroll-dragging {
 	text-decoration: none;
 	outline: none;
 	overflow: hidden;
-	transform: translateZ(0);
 	transition: background-color .5s ease-out;
-	backface-visibility: hidden;
 	&[disabled] &__hover {
 		display: none;
 	}

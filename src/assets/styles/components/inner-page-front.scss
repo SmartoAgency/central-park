@@ -27,6 +27,9 @@
         }
         @include to(1024px){
             font-size: 48px;
+        }
+        @include to(400px){
+            font-size: 40px;
 
         }
         @include to(575px){

@@ -17,12 +17,13 @@
     font-size: 14px;
     line-height: 100%;
 	// transition: background-color .5s ease-in-out, padding .5s ease-in-out;
-	transition: background-color .5s ease-in-out;
+	transition: background-color .5s ease-in-out, top .5s ease-in-out;
 	overflow: hidden;
 	&.transparent {
 		background-color: transparent;
 		@include from(1025px){
-			padding-top: 50px;
+			// padding-top: 50px;
+			top: 30px;
 			height: auto;
 		}
 	}

@@ -31,7 +31,7 @@ export default async function genplanSequence(config) {
         areas_2: '252-265',
         areas_1: '207-234',
     };
-
+    const cutOnClickInited = cutOnClick();
     // Object.entries(clickSequences).forEach(async ([key, val]) => {
     //     let URL = window.location.href.match(/localhost/) ? './static/'+val : '/wp-content/themes/central-park/static/'+val;
     //     let data = await axios(URL, {
@@ -134,7 +134,7 @@ export default async function genplanSequence(config) {
             // console.log(loadedSequences);
         }
     }
-    const cutOnClickInited = cutOnClick();
+    
     $switchFrames.forEach(frame => {
         frame.addEventListener('click',function(evt){
             if (!clickSequences[frame.dataset.attr]) return;

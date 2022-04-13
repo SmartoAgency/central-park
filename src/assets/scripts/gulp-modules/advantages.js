@@ -6,6 +6,7 @@ import Swiper, { Navigation } from 'swiper';
 import clipPathEntry from "../modules/effects/clipPathEntry";
 import webglWaves from "../modules/effects/webglWaves";
 import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
+import paralax from "../modules/effects/paralax";
 
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){
@@ -13,12 +14,14 @@ window.addEventListener('load',function(evt){
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
-    clipPathEntry('.block-img-text__img img','.scroller-container');
+    // clipPathEntry('.block-img-text__img img','.scroller-container');
 
-    !isMobile() && webglWaves(document.querySelector('.adv-wide-block__img'));
-    !isMobile() && webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div.block-img-text.row-plain > div.block-img-text__img-wrap > div > img"), '.scroller-container');
-    !isMobile() && webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(1) > div.block-img-text__img-wrap > div > img"), '.scroller-container');
-    !isMobile() && webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(2) > div.block-img-text__img-wrap > div > img"), '.scroller-container');
+    // !isMobile() && webglWaves(document.querySelector('.adv-wide-block__img'));
+    // !isMobile() && webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div.block-img-text.row-plain > div.block-img-text__img-wrap > div > img"), '.scroller-container');
+    // !isMobile() && webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(1) > div.block-img-text__img-wrap > div > img"), '.scroller-container');
+    // !isMobile() && webglWaves(document.querySelector("div.scroller-container > div.container.adv-container > div:nth-child(2) > div.block-img-text__img-wrap > div > img"), '.scroller-container');
+    isMobile() && paralax('.advantage-mob-point__img', document.body);
+    paralax('.block-img-text__img, .adv-wide-block__img', '.scroller-container');
     splitToLinesAndFadeUp('.block-img-text__text p, .adv-dark-text', '.scroller-container');
     isMobile() && splitToLinesAndFadeUp('.adv-mob-part__title,.adv-mob-part__text,.advantage-mob-point__title,.advantage-mob-point__text', document.body);
     !isMobile() && document.querySelectorAll('.block-img-text').forEach(block => {

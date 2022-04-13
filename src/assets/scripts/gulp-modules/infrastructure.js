@@ -4,6 +4,8 @@ import { handleHeader, addIntersectionOnceWithCallback } from "../modules/helper
 import googleMap from "../modules/map/map";
 import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
 import screen6 from './home/screen6';
+import paralax from "../modules/effects/paralax";
+import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 
 innerPageFrontEffect();
 googleMap();
@@ -13,6 +15,8 @@ window.addEventListener('load',function(evt){
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
+    paralax('.block-img-text__img img', '.scroller-container');
+    splitToLinesAndFadeUp('.block-img-text__text p, .infra-title, .infra-text p', '.scroller-container');
     disableScroll(scroller);
     const $scroller = document.querySelector('.scroller-container');
     screen6($scroller);

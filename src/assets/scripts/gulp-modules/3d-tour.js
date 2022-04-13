@@ -2,6 +2,7 @@ import innerPageFrontEffect from "../modules/inner-pages/inner-page-front-effect
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader, isMobile } from "../modules/helpers/helpers";
 import gsap from "gsap/all";
+import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){
@@ -9,7 +10,7 @@ window.addEventListener('load',function(evt){
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
-
+    splitToLinesAndFadeUp('p, .three-d-title', '.scroller-container')
     !isMobile() && document.querySelectorAll('.block-img-text').forEach(block => {
         gsap.timeline({
             scrollTrigger: {

@@ -255,6 +255,16 @@
 }
 
 .infra-container {
+    .image-with-curtain-in {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        .curtain {
+            background-color: var(--color-beige);
+        }
+    }
     @include from-to(576px, 1024px){
         .block-img-text {
             @include shift-padding(1);

@@ -5,6 +5,8 @@ import curtainsShaders from "../modules/curtains-shaders";
 import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 import clipPathEntry from "../modules/effects/clipPathEntry";
 import fadeInUp from "../modules/effects/fadeInUp";
+import paralax from '../modules/effects/paralax';
+
 
 innerPageFrontEffect();
 window.addEventListener('load',function(evt){
@@ -13,11 +15,13 @@ window.addEventListener('load',function(evt){
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
-    !isMobile && curtainsShaders(scroller);
+    // !isMobile && curtainsShaders(scroller);
     splitToLinesAndFadeUp('.about-text, .about-text-l, .about-text-xl, .about-pretty-block__text p','.scroller-container');
     isMobile && fadeInUp('.about-character-part', document.body);
     isMobile && splitToLinesAndFadeUp('.about-mob-block__text, .about-mob-subtitle, .about-mob-block-gradient__title,.about-mob-block-gradient__text,.about-mob-title', document.body);
     clipPathEntry('.about-pretty-block__decor path','.scroller-container', {
       stagger: 0.15
-    })
+    });
+
+    paralax('.plane-img, .about-pretty-block__img', '.scroller-container')
 });

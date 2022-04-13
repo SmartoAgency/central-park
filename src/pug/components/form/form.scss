@@ -5,7 +5,7 @@
     width: 100vw;
     height: 100vh;
     padding: 10vh var(--page-side-fields);
-    z-index: 50;
+    z-index: 61;
     background-color: #4A4B50;
     @include autoAlpha(0);
     @include to(575px){

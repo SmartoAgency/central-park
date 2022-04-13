@@ -31,7 +31,7 @@ function openMenu(button, menu) {
     button.addEventListener('click',function(evt){
         window.dispatchEvent(new Event('menu-open'))
         gsap.timeline({
-            duration: 2.5
+            duration: 2
         }) 
             .add(enableCurtainFromBottom(), '<')
             .to(menu, { autoAlpha: 1, duration: 0.25 }, '<+1.5')
@@ -50,7 +50,7 @@ function closeMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
     button.addEventListener('click',function(evt){
         gsap.timeline({
-            duration: 2.5
+            duration: 2
         })
         
         .add(enableCurtainFromTop(), '<')
