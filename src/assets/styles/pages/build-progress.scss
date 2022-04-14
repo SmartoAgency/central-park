@@ -515,6 +515,9 @@
         letter-spacing: -0.03em;
         text-transform: uppercase;
         color: var(--color-white);
+        @include to(1680px){
+            font-size: 56px;
+        }
         @include to(1024px){
             font-size: 48px;
         }
