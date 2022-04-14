@@ -28,40 +28,44 @@ const morphsReversed = [
 
 function openMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
+    const tl = gsap.timeline({
+        duration: 1,
+        paused: true,
+    }) 
+        .add(enableCurtainFromBottom(), '<')
+        .to(menu, { autoAlpha: 1, duration: 0.25 },'<65%')
+        .fromTo(menuLinks, 
+            { y: 50, autoAlpha: 0, }, 
+            { y: 0, autoAlpha: 1, clearProps: 'all', duration: 1 }, 
+            '<')
+        .add(() => {
+            document.body.classList.add('popup-opened');
+            
+        })
     button.addEventListener('click',function(evt){
         window.dispatchEvent(new Event('menu-open'))
-        gsap.timeline({
-            duration: 2
-        }) 
-            .add(enableCurtainFromBottom(), '<')
-            .to(menu, { autoAlpha: 1, duration: 0.25 }, '<+1.5')
-            .fromTo(menuLinks, 
-                { y: 50, autoAlpha: 0, }, 
-                { y: 0, autoAlpha: 1, clearProps: 'all', duration: 1.25 }, 
-                '<')
-            .add(() => {
-                document.body.classList.add('popup-opened');
-                
-            })
+        tl.progress(0).play();
     });
 }
 
 function closeMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
+    const tl = gsap.timeline({
+        duration: 1,
+        paused: true
+    })
+    
+    .add(enableCurtainFromTop(), '<')
+    .to(menu, { autoAlpha: 0, duration: 0.25 },'<65%')
+    .fromTo(menuLinks, 
+        { y: 0, autoAlpha: 1, }, 
+        { y: 50, autoAlpha: 0, duration: 0.75 }, 
+        '<-0.55')
+    .add(() => {
+        document.body.classList.remove('popup-opened');
+    })
     button.addEventListener('click',function(evt){
-        gsap.timeline({
-            duration: 2
-        })
-        
-        .add(enableCurtainFromTop(), '<')
-        .to(menu, { autoAlpha: 0, duration: 0.25 }, '<+1.5')
-        .fromTo(menuLinks, 
-            { y: 0, autoAlpha: 1, }, 
-            { y: 50, autoAlpha: 0, duration: 0.75 }, 
-            '<-0.55')
-        .add(() => {
-            document.body.classList.remove('popup-opened');
-        })
+        tl.progress(0).play();
     });
 }
 function enableCurtainFromBottom() {

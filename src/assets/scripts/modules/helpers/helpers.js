@@ -234,10 +234,38 @@ export const transitionBetweenSectionSceneLength = () => {
 }
 
 export function handleHeader(scroller) {
-  const header = document.querySelector('.header');
-  header.state = 'open';
-  let prevScrollPosition = 0;
-  scroller.on('scroll', ({ scroll }) => {
+  function throttle(func, ms) {
+
+    let isThrottled = false,
+      savedArgs,
+      savedThis;
+  
+    function wrapper() {
+  
+      if (isThrottled) { // (2)
+        savedArgs = arguments;
+        savedThis = this;
+        return;
+      }
+  
+      func.apply(this, arguments); // (1)
+  
+      isThrottled = true;
+  
+      setTimeout(function() {
+        isThrottled = false; // (3)
+        if (savedArgs) {
+          wrapper.apply(savedThis, savedArgs);
+          savedArgs = savedThis = null;
+        }
+      }, ms);
+    }
+  
+    return wrapper;
+  }
+
+  function onScroll(scroll) {
+    console.log('onScroller');
     const tempState = prevScrollPosition > scroll.y ? 'open' : 'close';
     prevScrollPosition = scroll.y;
     
@@ -249,7 +277,13 @@ export function handleHeader(scroller) {
     if (scroll.y < 150) return;
     header.state = tempState;
     if (scroll.y > 200) changeState[tempState]();
-
+  }
+  const onScrollThrottle = throttle(onScroll, 100);
+  const header = document.querySelector('.header');
+  header.state = 'open';
+  let prevScrollPosition = 0;
+  scroller.on('scroll', ({ scroll }) => {
+    onScrollThrottle(scroll);
   });
 
 

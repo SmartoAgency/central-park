@@ -58,6 +58,14 @@
             flex-shrink: 0;
         }
     }
+    @include from(1025px){
+        .screen10-slide:hover .curtain {
+            opacity: 0;
+        }
+        .screen10-slide:hover img {
+            filter: saturate(1);
+        }
+    }
     .screen10-slide~.screen10-slide {
         @include to(1024px){
             // margin-top: 20px;
@@ -84,6 +92,7 @@
         object-fit: cover;
         z-index: -1;
         filter: saturate(0);
+        transition: .3s ease-in-out;
     }
     .curtain {
         background: linear-gradient(180deg, rgba(35, 36, 43, 0) 0%, #23242B 100%);

@@ -35,7 +35,7 @@ function homePreloaderEffect() {
 
     } })
       // .fromTo('.header>svg', { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1 })
-      .fromTo('.langs-header, .header>button, .header>a, .header [data-call-mobile-callback-popup]', { x: 250, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<')
+      .fromTo('.langs-header, .header>button, .header>a:not(.header-logo), .header [data-call-mobile-callback-popup]', { x: 250, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<')
       .fromTo('.main-screen__render', { yPercent: 30 }, { yPercent: 0, autoAlpha: 1 }, '<')
       .fromTo('.main-screen__cloud-1', { xPercent: 30 }, { xPercent: 0, autoAlpha: 1 }, '<')
       .fromTo('.main-screen__text>*:not(button)', { 

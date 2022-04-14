@@ -16,8 +16,6 @@ export default function screen10(scroller) {
   document.querySelectorAll('.screen10-slide').forEach((el, index, array) => {
       if (isMobile()) return;
       const innactiveSlides = document.querySelectorAll(`.screen10-slide:not(:nth-child(${index + 1}))`);
-      const innactiveCurtains = document.querySelectorAll(`.screen10-slide:not(:nth-child(${index + 1})) .curtain`);
-      const innactiveImages = document.querySelectorAll(`.screen10-slide:not(:nth-child(${index + 1})) img`);
       gsap.set(array, { width: '33%' })
       el.addEventListener('mouseenter', () => {
         gsap.timeline({
@@ -28,11 +26,7 @@ export default function screen10(scroller) {
           .set(el, { zIndex: 2 })
           .set(innactiveSlides, { zIndex: 1 })
           .to(el, { width: '40%' },'<')
-          .set(el.querySelector('img'), { filter: 'none' },'<')
-          .to(el.querySelector('.curtain'), { autoAlpha: 0 },'<')
-          .to(innactiveCurtains, { autoAlpha: 1 }, '<')
           .to(innactiveSlides, { width: '30%' }, '<')
-          .set(innactiveImages, { filter: '' })
       })
     })
 

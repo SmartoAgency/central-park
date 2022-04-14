@@ -24,7 +24,7 @@
 		@include from(1025px){
 			// padding-top: 50px;
 			top: 30px;
-			height: auto;
+			// height: auto;
 		}
 	}
 	@include from-to(1025px, 1360px){
