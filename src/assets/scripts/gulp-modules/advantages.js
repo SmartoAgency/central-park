@@ -3,8 +3,6 @@ import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader, isMobile } from "../modules/helpers/helpers";
 import gsap from 'gsap/all';
 import Swiper, { Navigation } from 'swiper';
-import clipPathEntry from "../modules/effects/clipPathEntry";
-import webglWaves from "../modules/effects/webglWaves";
 import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 import paralax from "../modules/effects/paralax";
 

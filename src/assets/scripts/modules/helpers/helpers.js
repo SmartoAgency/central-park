@@ -265,7 +265,6 @@ export function handleHeader(scroller) {
   }
 
   function onScroll(scroll) {
-    console.log('onScroller');
     const tempState = prevScrollPosition > scroll.y ? 'open' : 'close';
     prevScrollPosition = scroll.y;
     

@@ -2,11 +2,8 @@ import innerPageFrontEffect from "../modules/inner-pages/inner-page-front-effect
 import * as THREE from 'three';
 import { TweenLite  } from "gsap/all";
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
-// import sideSwitchArrow from '../'
-import imagesLoaded from 'imagesLoaded';
 import sideSwitchArrow from "../modules/side-switch-arrow";
 import { handleHeader } from "../modules/helpers/helpers";
-console.log('f');
 
 
 innerPageFrontEffect();
