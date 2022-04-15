@@ -774,7 +774,9 @@
 }
   
 
-
+.pending .genplan-point {
+    cursor: wait;
+}
 .genplan-point {
     color: var(--color-black);
     background-color: var(--color-beige);

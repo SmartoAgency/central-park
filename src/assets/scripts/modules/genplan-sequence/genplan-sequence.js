@@ -144,6 +144,7 @@ export default async function genplanSequence(config) {
             if (isAnimating) return;
             
             isAnimating = true;
+            scene.classList.add('pending');
             $switchFrames[0].parentElement.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
             frame.classList.add('active');
 
@@ -162,7 +163,8 @@ export default async function genplanSequence(config) {
                             dataToSequence.length-1,
                             () => {
                                 activeSequence = frame.dataset.attr;
-                                isAnimating = false
+                                isAnimating = false;
+                                scene.classList.remove('pending');
                             }
                         );
                     }
@@ -176,7 +178,8 @@ export default async function genplanSequence(config) {
                 dataToSequence.length-1,
                 () => {
                     activeSequence = frame.dataset.attr;
-                    isAnimating = false
+                    isAnimating = false;
+                    scene.classList.remove('pending');
                 }
             );
         });
