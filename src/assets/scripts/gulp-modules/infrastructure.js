@@ -6,9 +6,11 @@ import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
 import screen6 from './home/screen6';
 import paralax from "../modules/effects/paralax";
 import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
+import markerslayout from "../modules/infrastructure/markersLayout";
 
 innerPageFrontEffect();
 googleMap();
+markerslayout('.map-wrapper__nav');
 window.addEventListener('load',function(evt){
   
       const scroller = locoScroll('.scroller-container');
@@ -42,13 +44,7 @@ function disableScroll(locoScroll) {
   }
   /** ******************************* */
 
-document.querySelectorAll('[data-nav-item-group]').forEach(el => {
-    if (el.querySelector('.map-nav-subitems') === null) return;
-    const openElement  = el.querySelector('.map-nav-item');
-    openElement.addEventListener('click', () => {
-        el.classList.toggle('active');
-    })
-})
+
 
 
 document.querySelector('[data-mob-wrapper-mobile-opener]').addEventListener('click',function(evt){
