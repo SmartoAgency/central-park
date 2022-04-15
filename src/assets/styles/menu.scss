@@ -72,7 +72,7 @@
         //     height: calc(100% - 160px);
         // }
         @include to(575px){
-            height: calc(100% - 90px);
+            height: calc(100% - 50px);
         }
         &>:nth-child(n) {
             margin-bottom: 50px;

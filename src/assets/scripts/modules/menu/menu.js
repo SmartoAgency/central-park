@@ -26,8 +26,10 @@ const morphsReversed = [
     'M 0 8 Q 4 8 8 8 L 8 8 Q 4 8 0 8',
 ];
 
+
 function openMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
+    
     const tl = gsap.timeline({
         duration: 1,
         paused: true,
@@ -39,8 +41,9 @@ function openMenu(button, menu) {
             { y: 0, autoAlpha: 1, clearProps: 'all', duration: 1 }, 
             '<')
         .add(() => {
+            window.lastScrollPosition = document.documentElement.scrollTop;
             document.body.classList.add('popup-opened');
-            
+            document.documentElement.classList.add('popup-opened');
         })
     button.addEventListener('click',function(evt){
         window.dispatchEvent(new Event('menu-open'))
@@ -50,20 +53,23 @@ function openMenu(button, menu) {
 
 function closeMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
+    const isMobile = window.matchMedia('(max-width: 575px)').matches;
     const tl = gsap.timeline({
         duration: 1,
         paused: true
     })
-    
+    .add(() => {
+        document.body.classList.remove('popup-opened');
+        document.documentElement.classList.remove('popup-opened');
+        isMobile && window.lastScrollPosition && window.scrollTo(0, window.lastScrollPosition)
+    })
     .add(enableCurtainFromTop(), '<')
     .to(menu, { autoAlpha: 0, duration: 0.25 },'<65%')
     .fromTo(menuLinks, 
         { y: 0, autoAlpha: 1, }, 
         { y: 50, autoAlpha: 0, duration: 0.75 }, 
         '<-0.55')
-    .add(() => {
-        document.body.classList.remove('popup-opened');
-    })
+    
     button.addEventListener('click',function(evt){
         tl.progress(0).play();
     });

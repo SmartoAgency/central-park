@@ -24,6 +24,9 @@
 
 html {
 	font-size: 18px;
+	&.popup-opened {
+		overflow: hidden;
+	}
 }
 body {
 	margin: 0;
@@ -37,8 +40,12 @@ body {
 	@include to(1680px){
 		font-size: 14px;
 	}
-	&.popup-opened {
-		overflow: hidden;
+	@include to(575px){
+		&.popup-opened {
+			overflow: hidden;
+			height: 100vh;
+			position: fixed;
+		}
 	}
 }
 
@@ -594,18 +601,19 @@ body {
 	text-decoration: none;
 }
 
-.menu__close,
-.header__menu {
-	svg {
-		content: "";
-		display: block;
-		border-radius: 50%;
-		transition: all 0.5s;
-		box-shadow: 0 0 10px 40px transparent;
-	}
-	&:active svg {
-		box-shadow: 0 0 0 0 var(--color-beige);
-		opacity: 1;
-		transition: 0s;
-	  }
-}
+// .menu__close,
+// .header__menu {
+// 	svg {
+// 		content: "";
+// 		display: block;
+// 		border-radius: 50%;
+// 		transition: all 0.5s;
+// 		box-shadow: 0 0 10px 40px transparent;
+// 	}
+// 	&:active svg {
+// 		box-shadow: 0 0 0 0 var(--color-beige);
+// 		opacity: 1;
+// 		transition: 0s;
+// 		border-radius: 50% ;
+// 	  }
+// }
