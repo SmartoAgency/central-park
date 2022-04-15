@@ -62,7 +62,12 @@ function homePreloaderEffect() {
       // .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
   }
 window.addEventListener('preloaderOff',function(evt){
-  homePreloaderEffect().play();
+  if (sessionStorage.getItem('home-play') === null) {
+    homePreloaderEffect().play();
+    sessionStorage.setItem('home-play', true);
+    return;
+  };
+  window.dispatchEvent(new Event('preloaderEffectFinish'))
 });
 function homeInit() {
   global.gsap = gsap;
@@ -122,7 +127,7 @@ function homeInit() {
   // splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
   // fadeInUp('.screen11__group, .screen11 .title-h2', $scroller);
   splitToLinesAndFadeUp('.main-screen .title', $scroller);
-  splitToLinesAndFadeUp('.title-h2', $scroller);
+  splitToLinesAndFadeUp('.screen7-title, .screen5-hor-block__item-text .title, .screen5-hor-block__item-text .text-beige, .title-h2, .screen8__text .text-white, .screen8__text .title', $scroller);
 
 
 

@@ -41,6 +41,11 @@ body {
 		overflow: hidden;
 	}
 }
+
+img[data-src] {
+	transition: opacity .5s ease-in-out;
+	opacity: 0;
+}
 .page__inner {
 	width: 100%;
 	overflow-x: hidden;

@@ -165,10 +165,14 @@ export const lazyImages = () => {
   
   lazyImages.forEach((imageArgs) => {
     const image = imageArgs;
-    image.style.opacity = 0;
-    image.style.transition = ' .1s ease-out';
+    // image.style.opacity = 0;
+    // image.style.transition = ' .1s ease-out';
     image.addEventListener('load', () => {
+      // image.style.opacity = 1;
       image.style.opacity = 1;
+      setTimeout(() => {
+        image.removeAttribute('data-src');
+      }, 1000);
     });
     const target = image;
     const observer = new IntersectionObserver((entries) => {
@@ -176,8 +180,8 @@ export const lazyImages = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const lazyImage = entry.target;
-          lazyImage.src = lazyImage.dataset.src;
-          image.style.transition = '';
+            lazyImage.src = lazyImage.dataset.src;
+          // image.style.transition = '';
           observer.unobserve(target);
         }
       });

@@ -234,9 +234,9 @@ window.addEventListener('form-open', function lazyForm() {
   })
 });
 
-document.querySelectorAll('img[data-src]').forEach(lazyItem => {
+// document.querySelectorAll('img[data-src]').forEach(lazyItem => {
 
-  addIntersectionOnceWithCallback(lazyItem, () => {
-    lazyItem.src = lazyItem.dataset.src;
-  })
-})
+//   addIntersectionOnceWithCallback(lazyItem, () => {
+//     lazyItem.src = lazyItem.dataset.src;
+//   })
+// })
