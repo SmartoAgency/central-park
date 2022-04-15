@@ -122,9 +122,22 @@ async function getProgressPopupData(id, index) {
   const popupTextBlock = popup.querySelector('[class*="text"]')
   const popupTitleBlock = popup.querySelector('[class*="title"]')
   const popupProgressBlock = popup.querySelector('.build-status-popup__progress')
-
-  let innerInfo = await fetch(`./static/build-popup-info.php?id=${id}`);
+  const fetchBody = new FormData();
+  fetchBody.append('action', 'buildInfo');
+  
+  // let innerInfo = await fetch(`./static/build-popup-info.php?id=${id}`);
+  const url  = window.location.href.match(/localhost/) 
+    ? `./static/build-popup-info.php?id=${id}` 
+    : 'https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php';
+  let innerInfo = await fetch(url, {
+    method: window.location.href.match(/localhost/) ? 'GET' : 'POST',
+    body: window.location.href.match(/localhost/) ? undefined : fetchBody,
+  });
   innerInfo = await innerInfo.json();
+
+  if (!window.location.href.match(/localhost/)) {
+    innerInfo = innerInfo[+id];
+  }
   console.log(innerInfo);
   const {title, text, items, innerTitle} = innerInfo;
   popupTextBlock.textContent = text;
