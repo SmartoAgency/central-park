@@ -803,7 +803,7 @@
         position: absolute;
         left: var(--padding);
         top: var(--padding);
-        transition: left var(--ease);
+        transition: all var(--ease);
         overflow: hidden;
         border-radius: 50%;
         background-color: var(--color-black);
@@ -812,7 +812,8 @@
         align-items: center;
     }
     &.active &__icon {
-        left: calc(100% - var(--padding) - var(--icon-size));
+        // left: calc(100% - var(--padding) - var(--icon-size));
+        transform: translateX(calc(var(--element-width) + var(--text-margin) + var(--padding)));
         background-color: var(--color-beige);
     }
     &__text {
@@ -824,21 +825,28 @@
         display: flex;
         align-items: center;
         letter-spacing: -0.03em;
-        margin-left: calc(var(--padding) + var(--icon-size) + var(--text-margin));
-        transition: margin var(--ease);
+        transform: translateX(calc(var(--padding) + var(--icon-size) + var(--text-margin)));
+        // margin-left: calc(var(--padding) + var(--icon-size) + var(--text-margin));
+        transition: transform var(--ease);
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: var(--lines-count); /* number of lines to show */
                 line-clamp: var(--lines-count); 
         -webkit-box-orient: vertical;
+        width: calc(100% - var(--icon-size) - var(--padding) * 2);
         @include to(1680px){
             font-size: 12px;
         }
     }
     &.active &__text {
-        margin-left: calc(var(--padding));
+        transform: translateX(var(--padding));
         margin-right: calc(var(--padding) + var(--icon-size) + var(--text-margin));
+    }
+    @include to(575px){
+        &.active &__icon {
+            animation: fadeIn 1s ease-in-out 1;
+        }
     }
     &.active {
         color: var(--color-beige);
@@ -866,7 +874,21 @@
         stroke: var(--color-black);
     }
 }
-
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
 @import '../home/screen7';
 @import '../home/screen8';
 @import '../home/screen9';

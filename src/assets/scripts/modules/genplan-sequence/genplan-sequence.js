@@ -136,6 +136,8 @@ export default async function genplanSequence(config) {
     }
     
     $switchFrames.forEach(frame => {
+
+        frame.style.setProperty('--element-width', frame.querySelector('.genplan-point__text').getBoundingClientRect().width+'px');
         frame.addEventListener('click',function(evt){
             if (!clickSequences[frame.dataset.attr]) return;
             const dataToSequence = clickSequences[frame.dataset.attr];
