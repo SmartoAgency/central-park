@@ -334,6 +334,7 @@ html.has-scroll-dragging {
 	outline: none;
 	overflow: hidden;
 	transition: background-color .3s ease-out;
+	-webkit-tap-highlight-color: transparent;
 	&[disabled] &__hover {
 		display: none;
 	}
@@ -477,6 +478,9 @@ html.has-scroll-dragging {
 		left: 0;
 		top: 0;
 		width: 100%;
+	}
+	@include to(575px){
+		overflow-y: initial !important;
 	}
 	// width: 100vw;
 	// height: 100vh;
