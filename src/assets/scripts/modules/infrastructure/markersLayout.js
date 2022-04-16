@@ -14,7 +14,7 @@ export default async function markerslayout($container) {
         console.warn('Wrong data recieved');
         return;
     };
-    container.innerHTML = '';
+    container.querySelectorAll('.map-nav-item-group').forEach(el => el.remove());
     markersData.forEach(category => {
         container.insertAdjacentHTML('beforeend', getCategoryLayout(category));
     });
