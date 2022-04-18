@@ -31,7 +31,7 @@ function openMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
     
     const tl = gsap.timeline({
-        duration: 1,
+        duration: 0.85,
         paused: true,
     }) 
         .add(enableCurtainFromBottom(), '<')
@@ -55,7 +55,7 @@ function closeMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
     const isMobile = window.matchMedia('(max-width: 575px)').matches;
     const tl = gsap.timeline({
-        duration: 1,
+        duration: 0.45,
         paused: true
     })
     .add(() => {
@@ -83,8 +83,8 @@ function enableCurtainFromBottom() {
         tl.to('.menu-curtain path', { 
             attr:  {  d  },
             ease: 'none',
-            duration: 0.5,
-            delay: 0,
+            duration: 0.35,
+            // delay: 0,
             clearProps: 'all'
         
         })
@@ -100,10 +100,10 @@ function enableCurtainFromTop() {
         tl.to('.menu-curtain path', { 
             attr:  {  d  },
             ease: 'none',
-            duration: 0.5,
+            duration: 0.35,
             clearProps: 'all'
         
         })
     })
-    return tl.timeScale(0.85);
+    return tl;
 }

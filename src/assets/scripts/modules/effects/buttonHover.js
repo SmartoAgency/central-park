@@ -1,6 +1,7 @@
 import { gsap } from "gsap/all";
 export default function buttonHover(selector) {
-    if (window.matchMedia('(max-width:575px)').matches) return;
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (window.matchMedia('(max-width:575px)').matches || isSafari) return;
     const buttons = document.querySelectorAll(selector);
     buttons.forEach(button => {
         const hoverEl = button.querySelector('.button__hover');
