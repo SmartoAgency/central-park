@@ -79,19 +79,19 @@ export default function galleryEffect(scroller) {
     .to(right, { xPercent: 51, ease: 'linear' }, '<')
     .fromTo(fadedTitle, { autoAlpha: 0, y: 150 },{ autoAlpha: 1, y: 0 }, '<')
 
-    !isMobile && gsap.timeline({
-        scrollTrigger: {
-            trigger: gallery,
-            // end: `${innerHeight / 5}`,
-            scroller: scroller ? scroller : null,
-            scrub: true,
-            // start: `${innerHeight / -4} center`,
-            // end: `${innerHeight / 4} center`
-            ...transitionBetweenSectionSceneLength(),
-        }
-    })
-    .to('.genplan__text, .genplan__img', { y: -100, autoAlpha: isMobile ? 0.5 : 0 })
-    .from('.screen7__content', { y: isMobile ? 50 : 200, autoAlpha: 0 }, '<')
-    .from('.screen7 .title-h2', { y: isMobile ? 50 : 200, autoAlpha: 0 },'<')
+    // !isMobile && gsap.timeline({
+    //     scrollTrigger: {
+    //         trigger: gallery,
+    //         // end: `${innerHeight / 5}`,
+    //         scroller: scroller ? scroller : null,
+    //         scrub: true,
+    //         // start: `${innerHeight / -4} center`,
+    //         // end: `${innerHeight / 4} center`
+    //         ...transitionBetweenSectionSceneLength(),
+    //     }
+    // })
+    // .to('.genplan__text, .genplan__img', { y: -100, autoAlpha: isMobile ? 0.5 : 0 })
+    // .from('.screen7__content', { y: isMobile ? 50 : 200, autoAlpha: 0 }, '<')
+    // .from('.screen7 .title-h2', { y: isMobile ? 50 : 200, autoAlpha: 0 },'<')
 }
 

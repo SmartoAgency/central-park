@@ -67,16 +67,16 @@ export default function screen9Handler(scroller) {
         })
     })
 
-    !isMobile && gsap.timeline({
-        scrollTrigger: {
-          trigger: '.screen9',
-          scrub: true,
-          scroller: scroller ? scroller : null,
-          ...transitionBetweenSectionSceneLength(),
-        }
-      })
-        .from('.screen9__left, .screen9__center, .screen9__right', { y: 100 })
-        // .to('.screen8__render', { scale: 0.8 }, '<')
+    // !isMobile && gsap.timeline({
+    //     scrollTrigger: {
+    //       trigger: '.screen9',
+    //       scrub: true,
+    //       scroller: scroller ? scroller : null,
+    //       ...transitionBetweenSectionSceneLength(),
+    //     }
+    //   })
+    //     .from('.screen9__left, .screen9__center, .screen9__right', { y: 100 })
+    //     // .to('.screen8__render', { scale: 0.8 }, '<')
     
 }
 function scaleDownAndUp($el) {

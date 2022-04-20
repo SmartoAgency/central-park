@@ -38,15 +38,15 @@ export default function screen3Effects(scroller) {
   swiper.on('touchEnd', () => {
     document.querySelector('.zoom-slider-wrapper').classList.remove('drag')
   });
-  !isMobile && gsap.timeline({
-    scrollTrigger: {
-      trigger: '.screen3',
-      scrub: true,
-      // markers: true,
-      scroller: scroller ? scroller : null,
-      ...transitionBetweenSectionSceneLength(),
-    }
-  })
-    .from('.screen3>*:not(.section-decor)', { scale: 1, autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : 75, clearProps: 'transform' })
-    .to('.screen2>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: -75 }, '<')
+  // !isMobile && gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: '.screen3',
+  //     scrub: true,
+  //     // markers: true,
+  //     scroller: scroller ? scroller : null,
+  //     ...transitionBetweenSectionSceneLength(),
+  //   }
+  // })
+  //   .from('.screen3>*:not(.section-decor)', { scale: 1, autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : 50, clearProps: 'transform' })
+  //   .to('.screen2>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: -50 }, '<')
 }

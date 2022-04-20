@@ -8,20 +8,20 @@ export default function screen5(scroller) {
     // const screen5TopBlockHeight = document.querySelector('.screen5__inner-top').getBoundingClientRect().height;
     const screen5TopBlockHeight = 0;
     const isMobile = window.matchMedia('(max-width: 575px)').matches;
-    !isMobile && gsap.timeline({
-      scrollTrigger: {
-        trigger: '.screen5',
-        scrub: true,
-        scroller: scroller ? scroller : null,
-        // start: `${innerHeight / -4} center`,
-        // end: `${innerHeight / 4} center`,
-        ...transitionBetweenSectionSceneLength(),
-        // onUpdate: ({ progress }) => console.log(progress)
-      //   markers: true
-      }
-    })
+    // !isMobile && gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: '.screen5',
+    //     scrub: true,
+    //     scroller: scroller ? scroller : null,
+    //     // start: `${innerHeight / -4} center`,
+    //     // end: `${innerHeight / 4} center`,
+    //     ...transitionBetweenSectionSceneLength(),
+    //     // onUpdate: ({ progress }) => console.log(progress)
+    //   //   markers: true
+    //   }
+    // })
       // .from('.screen5 .title-h2', { yPercent: 100, autoAlpha: 0, })
-      .from('.screen5-hor-block', { yPercent: 10, autoAlpha: 0.5, }, '<')
+      // .from('.screen5-hor-block', { yPercent: 10, autoAlpha: 0.5, }, '<')
     !isMobile && gsap.timeline({
       scrollTrigger: {
         trigger: '.screen6',

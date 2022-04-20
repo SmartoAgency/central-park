@@ -46,19 +46,19 @@ export default function screen8(scroller) {
         }   
     })
         .to(cloud1, { xPercent: -35, yPercent: 20 })
-    !isMobile && gsap.timeline({
-        scrollTrigger: {
-            scroller: scroller ? scroller : null,
-            trigger: screen1,
-            scrub: true,
-            // start: `${innerHeight / -4} center`,
-            // end: `${innerHeight / 4} center`
-            ...transitionBetweenSectionSceneLength(),
-            // end: `${screen1.getBoundingClientRect().height} bottom`
-        }   
-    })
-    .from('.img-left img:first-child, .img-left .img-left__decor, .img-center, .img-right', {  yPercent: 7.5, stagger: 0.1  })
-    .to('.screen7__head-block, .screen7__faded-title', { autoAlpha: 0, y: 50, }, '<');
+    // !isMobile && gsap.timeline({
+    //     scrollTrigger: {
+    //         scroller: scroller ? scroller : null,
+    //         trigger: screen1,
+    //         scrub: true,
+    //         // start: `${innerHeight / -4} center`,
+    //         // end: `${innerHeight / 4} center`
+    //         ...transitionBetweenSectionSceneLength(),
+    //         // end: `${screen1.getBoundingClientRect().height} bottom`
+    //     }   
+    // })
+    // .from('.img-left img:first-child, .img-left .img-left__decor, .img-center, .img-right', {  yPercent: 7.5, stagger: 0.1  })
+    // .to('.screen7__head-block, .screen7__faded-title', { autoAlpha: 0, y: 50, }, '<');
 
 
     !isMobile && gsap.timeline({

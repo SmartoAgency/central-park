@@ -110,7 +110,7 @@ function homeInit() {
       ...transitionBetweenSectionSceneLength(),
     }
   })
-    .from('.screen2>*', { y: 100, autoAlpha: 0})
+    .from('.screen2>*', { y: 30, autoAlpha: 0})
     paralaxNoCurtains('.screen2 .img-with-logo:first-child img', $scroller, 80);
     paralaxNoCurtains('.screen2 .img-with-logo:last-child img', $scroller, 40);
   /**Screen2 effects END */
@@ -240,18 +240,18 @@ function homeInit() {
     });
   });
   
-  !isMobile() && gsap.timeline({
-    scrollTrigger: {
-      trigger: '.screen11',
-      // start: `${innerHeight / -4} center`,
-      // end: `${innerHeight / 4} center`,
-      ...transitionBetweenSectionSceneLength(),
-      scroller: $scroller ? $scroller : null,
-      scrub: true,
-    }
-  })
-    .to('.screen10>*', { y: isMobile() ? -20 : -75, autoAlpha:  isMobile() ? 0.5 : 0 })
-    .fromTo('.screen11>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<');
+  // !isMobile() && gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: '.screen11',
+  //     // start: `${innerHeight / -4} center`,
+  //     // end: `${innerHeight / 4} center`,
+  //     ...transitionBetweenSectionSceneLength(),
+  //     scroller: $scroller ? $scroller : null,
+  //     scrub: true,
+  //   }
+  // })
+    // .to('.screen10>*', { y: isMobile() ? -20 : -75, autoAlpha:  isMobile() ? 0.5 : 0 })
+    // .fromTo('.screen11>*:not(.section-decor)', { y: 75, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<');
 
   document.querySelectorAll('[data-up-arrow]').forEach(handleUpArrow);
   function handleUpArrow(arrow) {

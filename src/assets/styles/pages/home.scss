@@ -119,7 +119,7 @@
     }
     img {
         @include from(993px) {
-            min-height: calc(100vh - 280px);
+            height: calc(100vh - 280px);
         }
     }
     p {

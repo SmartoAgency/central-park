@@ -44,18 +44,18 @@ export default function screen10(scroller) {
         yPercent: 0 
       })
   const innerHeight = window.innerHeight;
-  !isMobile() && gsap.timeline({
-    scrollTrigger: {
-      trigger: '.screen10',
-      // start: `${innerHeight / -4} center`,
-      // end: `${innerHeight / 4} center`,
-      ...transitionBetweenSectionSceneLength(),
-      scroller: scroller ? scroller : null,
-      scrub: true,
-    }
-  })
-    .to('.screen9__title-l', { y: -75, autoAlpha: 0 })
-    .from('.screen10>*:not(.section-decor)', { y: isMobile() ? 10 : 75, autoAlpha: isMobile() ? 0.5 : 0 }, '<');
+  // !isMobile() && gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: '.screen10',
+  //     // start: `${innerHeight / -4} center`,
+  //     // end: `${innerHeight / 4} center`,
+  //     ...transitionBetweenSectionSceneLength(),
+  //     scroller: scroller ? scroller : null,
+  //     scrub: true,
+  //   }
+  // })
+  //   .to('.screen9__title-l', { y: -75, autoAlpha: 0 })
+  //   .from('.screen10>*:not(.section-decor)', { y: isMobile() ? 10 : 75, autoAlpha: isMobile() ? 0.5 : 0 }, '<');
 
 
   if (isMobile()) {

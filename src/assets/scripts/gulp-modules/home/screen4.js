@@ -60,14 +60,14 @@ export default function screen4(scroller) {
         })
       });
 
-      !isMobile && gsap.timeline({
-        scrollTrigger: {
-          trigger: '.screen4',
-          scrub: true,
-          scroller: scroller ? scroller : null,
-          ...transitionBetweenSectionSceneLength(),
-        }
-      })
-        .from('.screen4>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : 100, clearProps: 'transform' })
-        .to('.screen3>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : -100, clearProps: 'all' }, '<')
+      // !isMobile && gsap.timeline({
+      //   scrollTrigger: {
+      //     trigger: '.screen4',
+      //     scrub: true,
+      //     scroller: scroller ? scroller : null,
+      //     ...transitionBetweenSectionSceneLength(),
+      //   }
+      // })
+      //   .from('.screen4>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : 50, clearProps: 'transform' })
+      //   .to('.screen3>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : -50}, '<')
 }

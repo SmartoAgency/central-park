@@ -232,8 +232,8 @@ export const transitionBetweenSectionSceneLength = () => {
     }
   }
   return {
-    start: `${innerHeight / -4} center`,
-    end: `${innerHeight / 4} center`
+    start: `${innerHeight / -15} center`,
+    end: `${innerHeight / 15} center`,
   }
 }
 
