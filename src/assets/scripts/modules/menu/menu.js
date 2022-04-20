@@ -12,11 +12,11 @@ export default function menuHandler() {
 }
 
 const morphs = [
-    'M 0 8 Q 4 8 8 8 L 8 8 Q 4 8 0 8',
-    'M 0 8 Q 4 8 8 8 L 8 8 Q 4 6 0 8',
-    'M 0 8 Q 4 8 8 8 L 8 0 Q 4 0 0 0',
-    'M 0 0 Q 4 4 8 0 L 8 0 Q 4 0 0 0',
-    'M 0 0 Q 4 0 8 0 L 8 0 Q 4 0 0 0',
+    'M 0 100 V 50 Q 50 0 100 50 V 100 z',
+    'M 0 100 V 0 Q 50 0 100 0 V 100 z',
+    'M 0 0 V 100 Q 50 100 100 100 V 0 z',
+    'M 0 0 V 50 Q 50 0 100 50 V 0 z',
+    'M 0 0 V 0 Q 50 0 100 0 V 0 z',
 ];
 const morphsReversed = [
     'M 0 0 Q 4 0 8 0 L 8 0 Q 4 0 0 0',
@@ -25,7 +25,15 @@ const morphsReversed = [
     'M 0 8 Q 4 8 8 8 L 8 8 Q 4 6 0 8',
     'M 0 8 Q 4 8 8 8 L 8 8 Q 4 8 0 8',
 ];
+/**
+ 
+M 0 100 V 50 Q 50 0 100 50 V 100 z"
+M 0 100 V 0 Q 50 0 100 0 V 100 z"
+M 0 0 V 100 Q 50 100 100 100 V 0 z"
+M 0 0 V 50 Q 50 0 100 50 V 0 z"
+M 0 0 V 0 Q 50 0 100 0 V 0 z"
 
+ */
 
 function openMenu(button, menu) {
     const menuLinks = menu.querySelectorAll('.menu__main [data-menu-links]>*');
@@ -75,35 +83,105 @@ function closeMenu(button, menu) {
     });
 }
 function enableCurtainFromBottom() {
-    const tl = gsap.timeline({
-        // ease: 'power2.out',
-        // duration: 2.5
-    });
-    morphs.forEach(d => {
-        tl.to('.menu-curtain path', { 
-            attr:  {  d  },
-            ease: 'none',
-            duration: 0.35,
-            // delay: 0,
-            clearProps: 'all'
-        
-        })
+    const tl = gsap.timeline()
+    .set('.menu-curtain path', {
+        attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' }
     })
+    .to('.menu-curtain path', { 
+        duration: 0.8,
+        ease: 'power4.in',
+        attr: { d: 'M 0 100 V 50 Q 50 0 100 50 V 100 z' }
+    }, 0)
+    .to('.menu-curtain path', { 
+        duration: 0.3,
+        ease: 'power2',
+        attr: { d: 'M 0 100 V 0 Q 50 0 100 0 V 100 z' },
+    })
+    .set('.menu-curtain path', { 
+        attr: { d: 'M 0 0 V 100 Q 50 100 100 100 V 0 z' }
+    })
+    .to('.menu-curtain path', { 
+        duration: 0.3,
+        ease: 'power2.in',
+        attr: { d: 'M 0 0 V 50 Q 50 0 100 50 V 0 z' }
+    })
+    .to('.menu-curtain path', { 
+        duration: 0.8,
+        ease: 'power4',
+        attr: { d: 'M 0 0 V 0 Q 50 0 100 0 V 0 z' }
+    })
+    // menu items translate animation
+
+    // const durations = {
+    //     1: 0.8,
+
+    // }
+    // morphs.forEach((d, index) => {
+    //     if (index === 3 || index === 0) {
+            
+    //         tl.set('.menu-curtain path', { 
+    //             attr:  {  d  },
+    //             ease: 'none',
+    //             duration: 0.35,
+    //             clearProps: 'all'
+            
+    //         })
+    //         return;
+    //     }
+    //     tl.to('.menu-curtain path', { 
+    //         attr:  {  d  },
+    //         ease: 'none',
+    //         duration: 0.35,
+    //         // delay: 0,
+        
+    //     })
+    // })
     return tl;
 }
 function enableCurtainFromTop() {
-    const tl = gsap.timeline({
-        // ease: 'power2.out',
-        // duration: 2.5
-    });
-    morphsReversed.forEach(d => {
-        tl.to('.menu-curtain path', { 
-            attr:  {  d  },
-            ease: 'none',
-            duration: 0.35,
-            clearProps: 'all'
+    // const tl = gsap.timeline({
+    //     // ease: 'power2.out',
+    //     // duration: 2.5
+    // });
+    // morphsReversed.forEach((d, index) => {
         
+    //     tl.to('.menu-curtain path', { 
+    //         attr:  {  d  },
+    //         ease: 'none',
+    //         duration: 0.35,
+    //         clearProps: 'all'
+        
+    //     })
+    // })
+
+    const tl = gsap.timeline()
+        .set('.menu-curtain path', {
+            attr: { d: 'M 0 0 V 0 Q 50 0 100 0 V 0 z' }
         })
-    })
+        .to('.menu-curtain path', { 
+            duration: 0.8,
+            ease: 'power4.in',
+            attr: { d: 'M 0 0 V 50 Q 50 100 100 50 V 0 z' }
+        }, 0)
+        .to('.menu-curtain path', { 
+            duration: 0.3,
+            ease: 'power2',
+            attr: { d: 'M 0 0 V 100 Q 50 100 100 100 V 0 z' },
+        })
+        // now reveal
+        .set('.menu-curtain path', { 
+            attr: { d: 'M 0 100 V 0 Q 50 0 100 0 V 100 z' }
+        })
+        .to('.menu-curtain path', { 
+            duration: 0.3,
+            ease: 'power2.in',
+            attr: { d: 'M 0 100 V 50 Q 50 100 100 50 V 100 z' }
+        })
+        .to('.menu-curtain path', { 
+            duration: 0.8,
+            ease: 'power4',
+            attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' }
+        })
+        // title elements
     return tl;
 }
