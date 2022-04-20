@@ -614,6 +614,9 @@
             flex-wrap: wrap;
             justify-content: flex-start;
             align-content: flex-end;
+            @include from-to(1025px, 1680px){
+                font-size: 28px;
+            }
             @include from(576px){
                 min-height: 3.6em;
             }
@@ -807,7 +810,7 @@
     --lines-count: 3;
     transition: var(--ease);
     @include to(1680px){
-        min-width: 225px;
+        // min-width: 225px;
         --text-margin: 10px;
         --icon-size: 50px;
     }
@@ -842,7 +845,7 @@
         display: flex;
         align-items: center;
         letter-spacing: -0.03em;
-        transform: translateX(calc(var(--padding) + var(--icon-size) + var(--text-margin)));
+        transform: translateX(calc(var(--padding) + var(--icon-size) + (var(--text-margin) / 2)));
         // margin-left: calc(var(--padding) + var(--icon-size) + var(--text-margin));
         transition: transform var(--ease);
         overflow: hidden;
