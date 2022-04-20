@@ -51,7 +51,7 @@
     .loader__lines {
         left: 50px;
         width: 28px;
-        top: 55px;
+        top: 40px;
     }
 }
 @media (max-width: 1920px) {
