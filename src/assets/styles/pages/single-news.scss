@@ -125,7 +125,7 @@
     }
     &__slider-wrapper {
         @include from(576px){
-            @include shift-padding(2);
+            @include shift-padding(5);
         }
         position: relative;
         user-select: none;

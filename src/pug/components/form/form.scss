@@ -119,6 +119,7 @@
             
         }
         p {
+            margin-bottom: 3.2em;
             @include to(992px){
                 margin-bottom: 40px;
             }
