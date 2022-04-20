@@ -131,7 +131,7 @@ function homeInit() {
 
 
 
-  addIntersectionOnceWithCallback(document.querySelector('.genplan'),() => {
+  addIntersectionOnceWithCallback(document.querySelector('.screen3'),() => {
     genplanSequence({
       scene: '.genplan',
       selectorToDisplay: '.genplan__img img',

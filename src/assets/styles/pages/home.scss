@@ -736,6 +736,13 @@
         width: 80px;
         height: 80px;
         z-index: 3;
+        @include to(575px){
+            bottom: 20px;
+            left: 20px;
+            transform: none;
+            width: 40px;
+            height: 40px;
+        }
         span {
             position: absolute;
             left: 50%;
@@ -795,7 +802,7 @@
     padding: var(--padding);
     position: relative;
     height: calc(var(--icon-size) + var(--padding) * 2);
-    min-width: 330px;
+    // min-width: 330px;
     --ease: .95s ease-in-out;
     --lines-count: 3;
     transition: var(--ease);
@@ -823,7 +830,7 @@
     }
     &.active &__icon {
         // left: calc(100% - var(--padding) - var(--icon-size));
-        transform: translateX(calc(var(--element-width) + var(--text-margin) + var(--padding)));
+        transform: translateX(calc(var(--element-width) + (var(--text-margin) / 2) + var(--padding)));
         background-color: var(--color-beige);
     }
     &__text {

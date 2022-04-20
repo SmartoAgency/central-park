@@ -134,7 +134,11 @@ export default async function genplanSequence(config) {
             // console.log(loadedSequences);
         }
     }
-    
+    window.addEventListener('resize', () => {
+        $switchFrames.forEach(frame => { 
+            frame.style.setProperty('--element-width', frame.querySelector('.genplan-point__text').getBoundingClientRect().width+'px');
+        })
+    });
     $switchFrames.forEach(frame => {
 
         frame.style.setProperty('--element-width', frame.querySelector('.genplan-point__text').getBoundingClientRect().width+'px');
