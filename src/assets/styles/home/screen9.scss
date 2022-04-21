@@ -249,6 +249,11 @@
         border: none;
         z-index: 0;
         user-select: none;
+        pointer-events: none;
+    }
+    iframe[src] {
+        
+        pointer-events: all;
     }
     &>svg {
         position: absolute;

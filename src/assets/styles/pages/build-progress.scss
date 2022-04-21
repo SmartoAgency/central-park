@@ -437,7 +437,7 @@
     @include autoAlpha(0);
     @include to(575px){
         --text-top-padding: 150px;
-        width: 100%;
+        // width: 100%;
     }
     &__nav {
         position: absolute;

@@ -101,16 +101,28 @@ function homeInit() {
   paralax('.img-center img', $scroller);
 
   /**Screen2 effects */
-  !isMobile() && gsap.timeline({
-    scrollTrigger: {
-      trigger: '.screen2',
-      scroller: $scroller,
-      scrub: true,
-      // markers: true,
-      ...transitionBetweenSectionSceneLength(),
+  // !isMobile() && gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: '.screen2',
+  //     scroller: $scroller,
+  //     scrub: true,
+  //     // markers: true,
+  //     ...transitionBetweenSectionSceneLength(),
+  //   }
+  // })
+  //   .from('.screen2>*', { y: 30, autoAlpha: 0})
+
+  ScrollTrigger.create({
+    trigger: '.screen2',
+    scroller: $scroller,
+    end: '100% 12.5%',
+    onLeave: () => {
+      gsap.to('.screen2>*', { y: -50, autoAlpha: 0 })
+    },
+    onEnterBack: () => {
+      gsap.to('.screen2>*', { y: 0, autoAlpha: 1 })
     }
   })
-    .from('.screen2>*', { y: 30, autoAlpha: 0})
     paralaxNoCurtains('.screen2 .img-with-logo:first-child img', $scroller, 80);
     paralaxNoCurtains('.screen2 .img-with-logo:last-child img', $scroller, 40);
   /**Screen2 effects END */

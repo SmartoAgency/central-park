@@ -735,20 +735,20 @@
 
 .genplan {
     .lds-ring {
+        --width: 80px;
         display: inline-block;
         position: absolute;
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 80px;
+        width: var(--width);
+        height: var(--width);
         z-index: 3;
         @include to(575px){
             bottom: 20px;
             left: 20px;
             transform: none;
-            width: 40px;
-            height: 40px;
+            --width: 40px;
         }
         span {
             position: absolute;
@@ -768,7 +768,9 @@
             position: absolute;
             width: 64px;
             height: 64px;
-            margin: 8px;
+            width: calc(var(--width) / 80 * 64);
+            height: calc(var(--width) / 80 * 64);
+            margin: calc(var(--width) / 80 * 8);
             border: 8px solid var(--color-black);
             border-radius: 50%;
             animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;

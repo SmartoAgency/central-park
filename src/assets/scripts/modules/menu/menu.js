@@ -43,7 +43,7 @@ function openMenu(button, menu) {
         paused: true,
     }) 
         .add(enableCurtainFromBottom(), '<')
-        .to(menu, { autoAlpha: 1, duration: 0.25 },'<65%')
+        .to(menu, { autoAlpha: 1, duration: 0.55 },'<35%')
         .fromTo(menuLinks, 
             { y: 50, autoAlpha: 0, }, 
             { y: 0, autoAlpha: 1, clearProps: 'all', duration: 1 }, 
@@ -72,7 +72,7 @@ function closeMenu(button, menu) {
         isMobile && window.lastScrollPosition && window.scrollTo(0, window.lastScrollPosition)
     })
     .add(enableCurtainFromTop(), '<')
-    .to(menu, { autoAlpha: 0, duration: 0.25 },'<65%')
+    .to(menu, { autoAlpha: 0, duration: 0.55 },'<35%')
     .fromTo(menuLinks, 
         { y: 0, autoAlpha: 1, }, 
         { y: 50, autoAlpha: 0, duration: 0.75 }, 
@@ -85,7 +85,8 @@ function closeMenu(button, menu) {
 function enableCurtainFromBottom() {
     const tl = gsap.timeline()
     .set('.menu-curtain path', {
-        attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' }
+        attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' },
+        autoAlpha: 1
     })
     .to('.menu-curtain path', { 
         duration: 0.8,
@@ -110,6 +111,7 @@ function enableCurtainFromBottom() {
         ease: 'power4',
         attr: { d: 'M 0 0 V 0 Q 50 0 100 0 V 0 z' }
     })
+    .set('.menu-curtain path', { autoAlpha: 0 })
     // menu items translate animation
 
     // const durations = {
@@ -156,7 +158,8 @@ function enableCurtainFromTop() {
 
     const tl = gsap.timeline()
         .set('.menu-curtain path', {
-            attr: { d: 'M 0 0 V 0 Q 50 0 100 0 V 0 z' }
+            attr: { d: 'M 0 0 V 0 Q 50 0 100 0 V 0 z' },
+            autoAlpha: 1
         })
         .to('.menu-curtain path', { 
             duration: 0.8,
@@ -182,6 +185,7 @@ function enableCurtainFromTop() {
             ease: 'power4',
             attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' }
         })
+        .set('.menu-curtain path', { autoAlpha: 0 })
         // title elements
     return tl;
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { gsap, ScrollTrigger } from 'gsap/all';
+import { isMobile } from "../helpers/helpers";
 export default async function genplanSequence(config) {
     global.gsap = gsap;
     gsap.core.globals("ScrollTrigger", ScrollTrigger);
@@ -31,6 +32,28 @@ export default async function genplanSequence(config) {
         areas_2: '252-265',
         areas_1: '207-234',
     };
+
+    gsap.set('.genplan__inner', { autoAlpha: 0, y: -50 });
+    ScrollTrigger.create({
+        trigger: scene,
+        scroller: scroller,
+        start: '0% 87.5%',
+        end: '100% 20%',
+        onLeaveBack: () => {
+            gsap.to('.genplan__inner', { autoAlpha: 0, y: 50 })
+        },
+        onEnter: () => {
+            gsap.to('.genplan__inner', { autoAlpha: 1, y: 0 })
+        },
+        onLeave: () =>{
+            gsap.to('.genplan__inner', { autoAlpha: 0, y: -50 })
+        },
+        onEnterBack: () =>{
+            gsap.to('.genplan__inner', { autoAlpha: 1, y: 0 })
+        }
+    })
+
+
     const cutOnClickInited = cutOnClick();
     // Object.entries(clickSequences).forEach(async ([key, val]) => {
     //     let URL = window.location.href.match(/localhost/) ? './static/'+val : '/wp-content/themes/central-park/static/'+val;
@@ -71,12 +94,7 @@ export default async function genplanSequence(config) {
     //     }
     // });
 
-    const entryFramesTl = gsap.timeline({
-        paused: true,
-    })
-        .fromTo('.genplan-point', 
-        { autoAlpha: 0, y: 100 }, 
-        { autoAlpha: 1, y: 0, stagger: 0.65, duration: 1, ease: 'power4.out' })
+
     const noScrollTrigger = ScrollTrigger.create({
         trigger: scene,
         scroller: scroller,
@@ -84,15 +102,14 @@ export default async function genplanSequence(config) {
         end: '80% bottom',
         once: true,
         onEnter: () => {
-            entryFramesTl.play();
-            changeImageSrcByArrayIndex(imgForDisplay, SEQUENCES, 0, SEQUENCES.length - 1, () => {
+            changeImageSrcByArrayIndex(imgForDisplay, SEQUENCES, 0, 120, () => {
                 cutOnClickInited();
-                entryFramesTl.kill();
             })
            
         }
     })
 
+    
     let isAnimating = false;
     function cutOnClick() {
         let wasClicked = false;

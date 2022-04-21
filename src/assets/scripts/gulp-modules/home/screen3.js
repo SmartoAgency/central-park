@@ -38,15 +38,29 @@ export default function screen3Effects(scroller) {
   swiper.on('touchEnd', () => {
     document.querySelector('.zoom-slider-wrapper').classList.remove('drag')
   });
-  // !isMobile && gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: '.screen3',
-  //     scrub: true,
-  //     // markers: true,
-  //     scroller: scroller ? scroller : null,
-  //     ...transitionBetweenSectionSceneLength(),
-  //   }
-  // })
-  //   .from('.screen3>*:not(.section-decor)', { scale: 1, autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : 50, clearProps: 'transform' })
-  //   .to('.screen2>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: -50 }, '<')
+  if (!isMobile) {
+    gsap.set('.screen3>*:not(.section-decor)', { y: 50, autoAlpha: 0 })
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '.screen3',
+        // markers: true,
+        scroller: scroller ? scroller : null,
+        end: '100% 20%',
+        onEnter: () => {
+          gsap.to('.screen3>*:not(.section-decor)', { y: 0, autoAlpha: 1 })
+        },
+        onLeaveBack: () => {
+          gsap.to('.screen3>*:not(.section-decor)', { y: 50, autoAlpha: 0 })
+        },
+        onLeave: () => {
+          gsap.to('.screen3>*:not(.section-decor)', { y: -50, autoAlpha: 0 })
+        },
+        onEnterBack: () => {
+          gsap.to('.screen3>*:not(.section-decor)', { y: 0, autoAlpha: 1 })
+        }
+      }
+    })
+  }
+    // .from('.screen3>*:not(.section-decor)', { scale: 1, autoAlpha: isMobile ? 0.5 : 0, y: isMobile ? 0 : 50, clearProps: 'transform' })
+    // .to('.screen2>*:not(.section-decor)', { autoAlpha: isMobile ? 0.5 : 0, y: -50 }, '<')
 }

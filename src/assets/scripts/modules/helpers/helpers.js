@@ -292,13 +292,16 @@ export function handleHeader(scroller) {
 
   const changeState = {
     open: () => {
-      gsap.to(header, { yPercent : 0 });
+      header.classList.remove('hide')
+      // gsap.to(header, { yPercent : 0 });
     },
     close: () => {
-      gsap.to(header, { yPercent : -100 });
+      header.classList.add('hide')
+      // gsap.to(header, { yPercent : -100 });
     },
     transparent: () => {
       header.classList.add('transparent');
+      header.classList.remove('hide');
     },
     untransparent: () => {
       header.classList.remove('transparent');

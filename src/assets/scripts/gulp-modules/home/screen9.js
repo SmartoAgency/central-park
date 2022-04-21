@@ -47,7 +47,7 @@ export default function screen9Handler(scroller) {
             textBlock.innerHTML = testData[nextIndex];
             frame.dataset.src = testSrc[nextIndex];
             frame.style.backgroundImage = `url(${frameBgs[nextIndex]})`;
-            frame.src = '';
+            frame.removeAttribute('src');
             gsap.to(frameOtherEls, { y: 0, autoAlpha: 1, clearProps: 'transform' })
             if (counterCurrent) counterCurrent.textContent = nextIndex + 1;
             currentIndex = nextIndex;
@@ -60,7 +60,7 @@ export default function screen9Handler(scroller) {
             textBlock.innerHTML = testData[nextIndex];
             frame.dataset.src = testSrc[nextIndex];
             frame.style.backgroundImage = `url(${frameBgs[nextIndex]})`;
-            frame.src = '';
+            frame.removeAttribute('src');
             gsap.to(frameOtherEls, { y: 0, autoAlpha: 1, clearProps: 'transform' })
             if (counterCurrent) counterCurrent.textContent = nextIndex + 1;
             currentIndex = nextIndex;

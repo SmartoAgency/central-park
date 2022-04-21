@@ -53,12 +53,19 @@
     .screen10-slide {
         width: 33.3%;
         flex-shrink: 0;
+        transition: width .5s ease-in-out;
         @include to(1024px){
             width: 100%;
             flex-shrink: 0;
         }
     }
     @include from(1025px){
+        .screen10__slider:hover .screen10-slide {
+            width: 30%;
+        }
+        .screen10__slider .screen10-slide:hover {
+            width: 40%;
+        }
         .screen10-slide:hover .curtain {
             opacity: 0;
         }
