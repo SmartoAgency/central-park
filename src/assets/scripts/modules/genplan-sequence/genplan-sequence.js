@@ -44,6 +44,8 @@ export default async function genplanSequence(config) {
     // SEQUENCES = await SEQUENCES.json();
     SEQUENCES = await SEQUENCES.data;
     let sequenceLength = SEQUENCES.length;
+
+
     gsap.timeline({
         scrollTrigger: {
             trigger: scene,
@@ -68,53 +70,29 @@ export default async function genplanSequence(config) {
             },
         }
     });
-    const previewTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: scene,
-            start: '0% top',
-            end: '70% top',
-            scroller: scroller,
-            scrub: true,
-            onUpdate: () => {
-                // console.log('e');
-            },
-            onLeave: () => {
-                previewTl.kill();
-            }
-        }
+
+    const entryFramesTl = gsap.timeline({
+        paused: true,
     })
-        .to('.genplan__text1', { autoAlpha: 0, duration: 0.3 })
-        .to('.genplan__text2', { autoAlpha: 1, duration: 0.3 }, '<')
-        .fromTo('.genplan-point:nth-child(1)', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 })
-        .fromTo('.genplan-point:nth-child(2)', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 })
-        .fromTo('.genplan-point:nth-child(3)', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 })
-    ScrollTrigger.create({
+        .fromTo('.genplan-point', 
+        { autoAlpha: 0, y: 100 }, 
+        { autoAlpha: 1, y: 0, ease:'power4.out', stagger: 0.95, duration: 1.5 })
+    const noScrollTrigger = ScrollTrigger.create({
         trigger: scene,
         scroller: scroller,
         start: '0% top',
         end: '80% bottom',
-        // onEnterBack:()=>{ 
-        //     gsap.timeline()
-        //         .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
-        //         .to('.genplan__text2', { autoAlpha: 0 }, '<')
-        //     activeSequence = undefined;
-        // },
-        // onLeave: () => {
-        //     gsap.timeline()
-        //         .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
-        //         .to('.genplan__text2', { autoAlpha: 1 }, '<')
-        // },
-
-        onUpdate: ({progress}) => {
-            // console.log('upodate '+progress);
-            const scaleFactor = sequenceLength / 100; 
-            const percentage = ((progress * 100) * scaleFactor).toFixed(0);
-            // gsap.set(imgForDisplay, { src: SEQUENCES[percentage] })
-            requestAnimationFrame(() => {
-                if (SEQUENCES[percentage] !== undefined ) imgForDisplay.src = SEQUENCES[percentage];
+        once: true,
+        markers: true,
+        onEnter: () => {
+            entryFramesTl.play();
+            changeImageSrcByArrayIndex(imgForDisplay, SEQUENCES, 0, SEQUENCES.length - 1, () => {
+                cutOnClickInited();
+                entryFramesTl.kill();
             })
+           
         }
-    });
+    })
 
     let isAnimating = false;
     function cutOnClick() {
@@ -194,7 +172,7 @@ export default async function genplanSequence(config) {
 
 
 function changeImageSrcByArrayIndex(toDisplay, images, start, end, cb = () => {}) {
-    const delay =  1000 / 35;
+    const delay =  1000 / 60;
     function change(i) {
         toDisplay.src = images[i];
         if (i === end) return cb();

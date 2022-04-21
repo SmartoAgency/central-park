@@ -542,13 +542,13 @@
 }
 
 .genplan {
-    height: 450vh;
+    height: 100vh;
     position: relative;
     @include to(992px) {
-        height: 700vh;
+        height: 100vh;
     }
     @include to(575px) {
-        height: 800vw;
+        height: 100vh;
     }
     &__inner {
         display: flex;
@@ -630,9 +630,13 @@
             margin: auto;
         }
     }
+    &__text1 {
+        @include autoAlpha(0);
+    }
     &__text2 {
         opacity: 0;
         visibility: hidden;
+        @include autoAlpha(1);
         @include to(575px) {
             text-align: left;
         }
