@@ -55,6 +55,8 @@ export default async function genplanSequence(config) {
 
 
     const cutOnClickInited = cutOnClick();
+    gsap.set('.genplan-point', { pointerEvents: 'none' });
+    gsap.set('.genplan__list', { cursor: 'wait' });
     // Object.entries(clickSequences).forEach(async ([key, val]) => {
     //     let URL = window.location.href.match(/localhost/) ? './static/'+val : '/wp-content/themes/central-park/static/'+val;
     //     let data = await axios(URL, {
@@ -103,6 +105,8 @@ export default async function genplanSequence(config) {
         once: true,
         onEnter: () => {
             changeImageSrcByArrayIndex(imgForDisplay, SEQUENCES, 0, 120, () => {
+                gsap.set('.genplan-point', { pointerEvents: '' });
+                gsap.set('.genplan__list', { cursor: '' });
                 cutOnClickInited();
             })
            
