@@ -344,8 +344,11 @@
         color: var(--color-white);
         margin-bottom: 2px;
     }
-    &__text {
-
+    &__text:not(.opened) {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     &__text:not(:last-child) {
         margin-bottom: 5px;

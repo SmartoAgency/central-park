@@ -23,5 +23,16 @@ window.addEventListener('load',function(evt){
       stagger: 0.15
     });
 
-    paralax('.plane-img, .about-pretty-block__img', '.scroller-container')
+    paralax('.plane-img, .about-pretty-block__img', '.scroller-container');
+
+
+
+    if (isMobile) {
+      document.querySelectorAll('.about-character-part').forEach(part => {
+        part.querySelector('.about-character-part__span-line').addEventListener('click', () => {
+          part.querySelector('.about-character-part__text').classList.add('opened');
+          part.querySelector('.about-character-part__span-line').remove();
+        })
+      })
+    }
 });
