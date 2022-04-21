@@ -480,7 +480,7 @@ html.has-scroll-dragging {
 		width: 100%;
 	}
 	@include to(575px){
-		overflow-y: initial !important;
+		// overflow-y: initial !important;
 	}
 	// width: 100vw;
 	// height: 100vh;

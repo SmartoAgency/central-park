@@ -54,7 +54,8 @@ const displacementSlider = function(opts) {
 
     let images = opts.images, image, sliderImages = [];;
     let canvasWidth = images[0].clientWidth;
-    let canvasHeight = window.matchMedia('(max-width: 1024px)').matches ? innerWidth * 0.52 : innerHeight;
+    // let canvasHeight = window.matchMedia('(max-width: 1024px)').matches ? innerWidth * 0.52 : innerHeight;
+    let canvasHeight = innerWidth * 0.52;
     let parent = opts.parent;
     let renderWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     let renderHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);

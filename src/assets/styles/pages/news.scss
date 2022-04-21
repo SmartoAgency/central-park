@@ -1,4 +1,4 @@
-.news {
+div.news {
     @include row-flex();
     background-color: var(--color-black);
     justify-content: space-around;

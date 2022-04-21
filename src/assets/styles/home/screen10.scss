@@ -63,7 +63,7 @@
             opacity: 0;
         }
         .screen10-slide:hover img {
-            filter: saturate(1);
+            // filter: saturate(1);
         }
     }
     .screen10-slide~.screen10-slide {
@@ -91,7 +91,7 @@
         height: 100%;
         object-fit: cover;
         z-index: -1;
-        filter: saturate(0);
+        // filter: saturate(0);
         transition: .3s ease-in-out;
     }
     .curtain {

@@ -21,8 +21,8 @@
     }
     canvas {
         @include to(1024px){
-            height: 100% !important;
-            object-fit: cover;
+            // height: 100% !important;
+            // object-fit: cover;
         }
         @include from-to(576px, 1024px){
         }
