@@ -1,6 +1,6 @@
 import gsap from "gsap/all";
 import Swiper, {FreeMode } from 'swiper';
-import { transitionBetweenSectionSceneLength } from "../../modules/helpers/helpers";
+import { addIntersectionOnceWithCallback, transitionBetweenSectionSceneLength } from "../../modules/helpers/helpers";
 
 export default function screen10(scroller) {
   const isMobile = () => window.matchMedia('(max-width: 1024px)').matches;
@@ -56,7 +56,11 @@ export default function screen10(scroller) {
   // })
   //   .to('.screen9__title-l', { y: -75, autoAlpha: 0 })
   //   .from('.screen10>*:not(.section-decor)', { y: isMobile() ? 10 : 75, autoAlpha: isMobile() ? 0.5 : 0 }, '<');
-
+  addIntersectionOnceWithCallback(document.querySelector('.screen8'), () => {
+    document.querySelectorAll('[data-img-src]').forEach(el => {
+      el.src = el.dataset.imgSrc;
+    }) 
+  })
   if (!isMobile())  {
     gsap.set('.screen10>*:not(.section-decor)', { autoAlpha: 0, y: -50 });
     gsap.timeline({

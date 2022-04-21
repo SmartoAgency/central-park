@@ -49,13 +49,13 @@ formsWithTel.forEach(form => {
             valid: false,
             error: [],
           },
-          phone: {
-            inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-phone]') }),
-            rule: yup.string().required(i18next.t('required')).trim(),
-            defaultMessage: i18next.t('name'),
-            valid: false,
-            error: [],
-          },
+          // phone: {
+          //   inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-phone]') }),
+          //   rule: yup.string().required(i18next.t('required')).trim(),
+          //   defaultMessage: i18next.t('name'),
+          //   valid: false,
+          //   error: [],
+          // },
 
           phone: {
             inputWrapper: new SexyInput({
@@ -66,7 +66,7 @@ formsWithTel.forEach(form => {
             rule: yup
               .string()
               .required(i18next.t('required'))
-              .min(16, i18next.t('field_too_short', { cnt: 19 - 7 })),
+              .min(15, i18next.t('field_too_short', { cnt: 19 - 8 })),
 
             defaultMessage: i18next.t('phone'),
             valid: false,
@@ -113,14 +113,6 @@ contactForms.forEach(form => {
             error: [],
           },
           phone: {
-            inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-phone]') }),
-            rule: yup.string().required(i18next.t('required')).trim(),
-            defaultMessage: i18next.t('name'),
-            valid: false,
-            error: [],
-          },
-
-          phone: {
             inputWrapper: new SexyInput({
               animation: 'none',
               $field: $form.querySelector('[data-field-phone]'),
@@ -129,7 +121,7 @@ contactForms.forEach(form => {
             rule: yup
               .string()
               .required(i18next.t('required'))
-              .min(16, i18next.t('field_too_short', { cnt: 19 - 7 })),
+              .min(15, i18next.t('field_too_short', { cnt: 19 - 8 })),
 
             defaultMessage: i18next.t('phone'),
             valid: false,
