@@ -46,44 +46,43 @@ export default async function genplanSequence(config) {
     let sequenceLength = SEQUENCES.length;
 
 
-    gsap.timeline({
-        scrollTrigger: {
-            trigger: scene,
-            scroller: scroller,
-            start: '0% top',
-            end: '70% top',
-            onEnterBack:()=>{ 
-                gsap.timeline()
-                    .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
-                    .to('.genplan__text2', { autoAlpha: 0 }, '<');
-                    scene.querySelectorAll('.active').forEach(el => {
-                        el.classList.remove('active');
-                    });
-                    document.querySelector('[data-genplan-title]').textContent = '';
-                activeSequence = undefined;
-            },
-            onLeave: () => {
-                cutOnClickInited();
-                gsap.timeline()
-                    .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
-                    .to('.genplan__text2', { autoAlpha: 1 }, '<')
-            },
-        }
-    });
+    // gsap.timeline({
+    //     scrollTrigger: {
+    //         trigger: scene,
+    //         scroller: scroller,
+    //         start: '0% top',
+    //         end: '70% top',
+    //         onEnterBack:()=>{ 
+    //             gsap.timeline()
+    //                 .to('.genplan__text1', { autoAlpha: 1, duration: 0.5 })
+    //                 .to('.genplan__text2', { autoAlpha: 0 }, '<');
+    //                 scene.querySelectorAll('.active').forEach(el => {
+    //                     el.classList.remove('active');
+    //                 });
+    //                 document.querySelector('[data-genplan-title]').textContent = '';
+    //             activeSequence = undefined;
+    //         },
+    //         onLeave: () => {
+    //             cutOnClickInited();
+    //             gsap.timeline()
+    //                 .to('.genplan__text1', { autoAlpha: 0, duration: 0.5 })
+    //                 .to('.genplan__text2', { autoAlpha: 1 }, '<')
+    //         },
+    //     }
+    // });
 
     const entryFramesTl = gsap.timeline({
         paused: true,
     })
         .fromTo('.genplan-point', 
         { autoAlpha: 0, y: 100 }, 
-        { autoAlpha: 1, y: 0, ease:'power4.out', stagger: 0.95, duration: 1.5 })
+        { autoAlpha: 1, y: 0, stagger: 0.65, duration: 1, ease: 'power4.out' })
     const noScrollTrigger = ScrollTrigger.create({
         trigger: scene,
         scroller: scroller,
         start: '0% top',
         end: '80% bottom',
         once: true,
-        markers: true,
         onEnter: () => {
             entryFramesTl.play();
             changeImageSrcByArrayIndex(imgForDisplay, SEQUENCES, 0, SEQUENCES.length - 1, () => {
