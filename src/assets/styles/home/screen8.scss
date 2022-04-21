@@ -118,6 +118,7 @@
     }
     .img-right {
         position: relative;
+        z-index: 2;
         @include shift-left(-4);
         @include from(1921px){
             @include shift-left(-2);
