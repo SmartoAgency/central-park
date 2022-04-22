@@ -19,7 +19,11 @@ export default function splitToLinesAndFadeUp(selector, $scroller) {
             text.querySelectorAll('span>span'),
             { yPercent: 100,  },
             { yPercent: 0,  stagger: 0.05, duration: 1, ease: 'power4.out' },
-          );
+          )
+          .add(() => {
+            text.innerHTML = text.textContent;
+          })
+          ;
 
           // text.addEventListener('click',function(evt){
           //   tl.progress(0).play();
