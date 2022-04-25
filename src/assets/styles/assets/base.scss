@@ -407,7 +407,7 @@ html.has-scroll-dragging {
 	}
 
 	@include from(1025px){
-		
+		// &.with-hover:hover svg 
 		&.with-hover:hover {
 			background-color: transparent;
 			color: var(--color-beige);

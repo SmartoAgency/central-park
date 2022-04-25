@@ -139,7 +139,7 @@ function homeInit() {
   // splitToLinesAndFadeUp('.title,.title-h2, .subtitle');
   // fadeInUp('.screen11__group, .screen11 .title-h2', $scroller);
   // splitToLinesAndFadeUp('.main-screen .title', $scroller);
-  splitToLinesAndFadeUp('.screen7-title, .screen5-hor-block__item-text .title, .screen5-hor-block__item-text .text-beige, :not(.main-screen) .title-h2, .screen8__text .text-white, .screen8__text .title', $scroller);
+  splitToLinesAndFadeUp('.screen7-title, .screen5-hor-block__item-text .title, :not(.main-screen) .title-h2, .screen8__text .text-white, .screen8__text .title', $scroller);
 
 
 
