@@ -7,7 +7,7 @@ import { handleHeader } from "../modules/helpers/helpers";
 
 
 innerPageFrontEffect();
-window.addEventListener('load',function(evt){
+window.addEventListener('DOMContentLoaded',function(evt){
       const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
@@ -55,7 +55,7 @@ const displacementSlider = function(opts) {
     let images = opts.images, image, sliderImages = [];;
     let canvasWidth = images[0].clientWidth;
     // let canvasHeight = window.matchMedia('(max-width: 1024px)').matches ? innerWidth * 0.52 : innerHeight;
-    let canvasHeight = innerWidth / 16 * 10;
+    let canvasHeight = innerWidth / 16 * 9;
     let parent = opts.parent;
     let renderWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     let renderHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -81,10 +81,17 @@ const displacementSlider = function(opts) {
 
     let loader = new THREE.TextureLoader();
     loader.crossOrigin = "anonymous";
-
+    parent.classList.add('pending');
+    let counter = 0;
+    console.log(images, sliderImages);
     images.forEach( ( img ) => {
         // console.log(img.dataset);
-        image = loader.load( img.getAttribute( 'data-info-item-anim-img' ));
+        image = loader.load( img.getAttribute( 'data-info-item-anim-img'), () => {
+            counter++;
+            if (counter>=images.length) {
+                parent.classList.remove('pending');
+            }
+        });
         // console.log(img.getAttribute( 'data-hover-image' ));
         image.magFilter = image.minFilter = THREE.LinearFilter;
         image.anisotropy = renderer.capabilities.getMaxAnisotropy();

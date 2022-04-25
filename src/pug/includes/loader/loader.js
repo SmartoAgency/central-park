@@ -78,6 +78,6 @@ let interval = setInterval(() => {
         clearInterval(interval);
     }
 }, 100);
-window.addEventListener('load',function(evt){
+window.addEventListener('DOMContentLoaded',function(evt){
     loaderStatus.isDOMLoaded = true;
 });

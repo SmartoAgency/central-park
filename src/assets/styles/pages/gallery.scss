@@ -3,6 +3,13 @@
     height: 56.25vw;
     background-color: var(--color-black);
     position: relative;
+    &.pending>*:not(.lds-ring) {
+        pointer-events: none;
+        opacity: 0;
+    }
+    &.pending {
+        pointer-events: none;
+    }
     @include to(575px){
         height: 100vh;
     }
@@ -26,6 +33,63 @@
         }
         @include from-to(576px, 1024px){
         }
+    }
+
+    .lds-ring {
+        --width: 100px;
+        display: inline-block;
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: var(--width);
+        height: var(--width);
+        z-index: 3;
+        @include to(575px){
+            bottom: 20px;
+            left: 20px;
+            transform: none;
+            --width: 40px;
+        }
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            color: var(--color-black);
+            display: none;
+            &:after {
+                content: '%';
+            }
+        }
+        
+        div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            width: calc(var(--width) / 80 * 64);
+            height: calc(var(--width) / 80 * 64);
+            margin: calc(var(--width) / 80 * 8);
+            border: 8px solid var(--color-beige);
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: var(--color-beige) transparent transparent transparent;
+        }
+        div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+    }
+    &.pending .lds-ring {
+        display: inline-block;
     }
     @include to(575px){
         display: flex;
