@@ -52,6 +52,7 @@ function openMenu(button, menu) {
             window.lastScrollPosition = document.documentElement.scrollTop;
             document.body.classList.add('popup-opened');
             document.documentElement.classList.add('popup-opened');
+            menu.classList.add('opened')
         })
     button.addEventListener('click',function(evt){
         window.dispatchEvent(new Event('menu-open'))
@@ -70,6 +71,7 @@ function closeMenu(button, menu) {
         document.body.classList.remove('popup-opened');
         document.documentElement.classList.remove('popup-opened');
         isMobile && window.lastScrollPosition && window.scrollTo(0, window.lastScrollPosition)
+        menu.classList.remove('opened');
     })
     .add(enableCurtainFromTop(), '<')
     .to(menu, { autoAlpha: 0, duration: 0.55 },'<35%')

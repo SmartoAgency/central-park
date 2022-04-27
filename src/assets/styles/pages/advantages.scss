@@ -175,6 +175,9 @@
     }
 
     &__desktop {
+        @include from(1025px){
+            margin-top: -2px;
+        }
         @include to(575px){
             display: none;   
         }

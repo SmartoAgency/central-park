@@ -35,6 +35,9 @@
             height: calc(100vw / 360 * 406);
         }
     }
+    .title .text-white {
+        margin-bottom: 10px;
+    }
     &__text {
         @include shift-left(0.5);
         @include size(11);
@@ -174,6 +177,9 @@
 .screen3 {
     background-color: var(--color-black);
     --v-padding: 80px;
+    @include from(1025px){
+        margin-bottom: -2px;   
+    }
     @include from(1681px) {
         --v-padding: 210px;
     }
