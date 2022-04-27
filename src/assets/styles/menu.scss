@@ -184,7 +184,10 @@
         flex-direction: column;
         z-index: 3;
         .button {
-            width: 230px;
+            @include to(1720px){
+                width: 230px;
+
+            }
             text-align: center;
             justify-content: center;
         }
@@ -205,6 +208,9 @@
             color: var(--color-beige);
             text-decoration: none;
             display: flex;
+            @include from(1720px){
+                font-size: 26px;
+            }
             @include to(575px){
                 font-size: 14px;
             }
