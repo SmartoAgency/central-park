@@ -42,7 +42,7 @@ export default function screen4(scroller) {
         video.addEventListener(videoChangeStateEvent.type, ({ target }) => {
           if (video === null) return;
           video.paused ? video.play() : video.pause();
-          gsap.set('.screen4__video-play',  { autoAlpha:  video.paused ? 1 : 0  })
+          gsap.to('.screen4__video-play, .screen4__title',  { autoAlpha:  video.paused ? 1 : 0  })
           gsap.set('.screen4__video',  { zIndex:  video.paused ? 0 : 3  })
         });
         el.addEventListener('click', () => {

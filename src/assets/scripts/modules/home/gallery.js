@@ -1,6 +1,11 @@
 import {gsap, ScrollTrigger} from 'gsap/all';
 import { transitionBetweenSectionSceneLength } from '../helpers/helpers';
 export default function galleryEffect(scroller) {
+
+
+    gsap.config({
+        force3D: false,
+    })
     const isMobile = window.matchMedia('(max-width: 1024px)').matches;
     const isTablet = window.matchMedia('(max-width: 1024px) and (min-width: 576px)').matches;
     // if (window.matchMedia('(max-width: 575px)').matches) return;
