@@ -17,10 +17,15 @@ export default async function genplanSequence(config) {
             // document.querySelector('.lds-ring span').textContent = Math.floor(progress * 100);
         }
     });
-    gsap.set('.lds-ring', { autoAlpha: 0 })
+    
+
+
     let loadedSequences = {
 
     };
+
+
+    
     let activeSequence;
     // const clickSequences = {
     //     areas_1: 'genplan_1.json',
@@ -32,7 +37,17 @@ export default async function genplanSequence(config) {
         areas_2: '252-265',
         areas_1: '207-234',
     };
-
+    let commerceURL = window.location.href.match(/localhost/) ? './static/commerce.json' : '/wp-content/themes/central-park/static/commerce.json';
+    let commerceSequence = await fetch(commerceURL);
+    commerceSequence = await commerceSequence.json();
+    clickSequences.commerce = commerceSequence;
+    
+    let playgroundsURL = window.location.href.match(/localhost/) ? './static/playgrounds.json' : '/wp-content/themes/central-park/static/playgrounds.json';
+    let playgroundsSequence = await fetch(playgroundsURL);
+    playgroundsSequence = await playgroundsSequence.json();
+    clickSequences.areas_1 = playgroundsSequence;
+    gsap.set('.lds-ring', { autoAlpha: 0 });
+    
     gsap.set('.genplan__inner', { autoAlpha: 0, y: -50 });
     ScrollTrigger.create({
         trigger: scene,
@@ -121,6 +136,7 @@ export default async function genplanSequence(config) {
             if (wasClicked) return;
             // console.log(SEQUENCES);
             Object.entries(clickSequences).forEach(([key, frame]) => {
+                if (key === "areas_1") return;
                 let [from, to] = frame.split('-');
                 from = +from;
                 to = +to;
