@@ -57,7 +57,8 @@ function homePreloaderEffect() {
         }, 
         '<')
       .add(() => {
-        window.dispatchEvent(new Event('preloaderEffectFinish'))
+        window.dispatchEvent(new Event('preloaderEffectFinish'));
+        window.preloaderFinished = true;
       })
       // .fromTo('.main-screen', { yPercent: 20}, { yPercent: 0}, '<')
   }
@@ -67,7 +68,8 @@ window.addEventListener('preloaderOff',function(evt){
     sessionStorage.setItem('home-play', true);
     return;
   };
-  window.dispatchEvent(new Event('preloaderEffectFinish'))
+  window.dispatchEvent(new Event('preloaderEffectFinish'));
+  window.preloaderFinished = true;
 });
 function homeInit() {
   global.gsap = gsap;

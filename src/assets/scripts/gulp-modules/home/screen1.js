@@ -47,8 +47,14 @@ export default function screen1(scroller) {
     .to(render, { scale: isMobile ? 1 : 1.1, duration: 1, yPercent: 15, ease: 'linear', transformOrigin: '100% 100%' }, '<')
     tlScreen1.scrollTrigger.disable();
     window.addEventListener('preloaderEffectFinish', () => {
-        tlScreen1.scrollTrigger.enable();
-    })
+    });
+    const interval = setInterval(() => {
+        console.log(interval);
+        if (window.preloaderFinished) {
+            clearInterval(interval);
+            tlScreen1.scrollTrigger.enable();
+        }
+    }, 500);
 }
 
 
