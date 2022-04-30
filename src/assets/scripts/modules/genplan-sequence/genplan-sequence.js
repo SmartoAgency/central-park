@@ -8,7 +8,7 @@ export default async function genplanSequence(config) {
     const scene = document.querySelector(config.scene);
     const imgForDisplay = getElementBySelector(config.selectorToDisplay);
     const $switchFrames = document.querySelectorAll(config.$switchFrames);
-    let URL = window.location.href.match(/localhost/) ? './static/genplan.json' : '/wp-content/themes/central-park/static/genplan.json';
+    let URL = window.location.href.match(/localhost/) ? './static/genplan-final.json' : '/wp-content/themes/central-park/static/genplan-final.json';
     let SEQUENCES = await axios(URL, {
         onDownloadProgress: (e) => {
             const progress = gsap.utils.mapRange(0, e.total, 0, 1,  e.loaded);
@@ -33,19 +33,20 @@ export default async function genplanSequence(config) {
     //     areas_finals:'genplan_3.json',
     // };
     const clickSequences = {
-        areas_finals: '121-183',
-        areas_2: '252-265',
-        areas_1: '207-234',
+        areas_finals: '121-190',
+        areas_2: '254-267',
+        areas_1: '191-232',
+        commerce: '233-253'
     };
-    let commerceURL = window.location.href.match(/localhost/) ? './static/commerce.json' : '/wp-content/themes/central-park/static/commerce.json';
-    let commerceSequence = await fetch(commerceURL);
-    commerceSequence = await commerceSequence.json();
-    clickSequences.commerce = commerceSequence;
+    // let commerceURL = window.location.href.match(/localhost/) ? './static/commerce.json' : '/wp-content/themes/central-park/static/commerce.json';
+    // let commerceSequence = await fetch(commerceURL);
+    // commerceSequence = await commerceSequence.json();
+    // clickSequences.commerce = commerceSequence;
     
-    let playgroundsURL = window.location.href.match(/localhost/) ? './static/playgrounds.json' : '/wp-content/themes/central-park/static/playgrounds.json';
-    let playgroundsSequence = await fetch(playgroundsURL);
-    playgroundsSequence = await playgroundsSequence.json();
-    clickSequences.areas_1 = playgroundsSequence;
+    // let playgroundsURL = window.location.href.match(/localhost/) ? './static/playgrounds.json' : '/wp-content/themes/central-park/static/playgrounds.json';
+    // let playgroundsSequence = await fetch(playgroundsURL);
+    // playgroundsSequence = await playgroundsSequence.json();
+    // clickSequences.areas_1 = playgroundsSequence;
     gsap.set('.lds-ring', { autoAlpha: 0 });
     
     gsap.set('.genplan__inner', { autoAlpha: 0, y: -50 });
@@ -136,7 +137,7 @@ export default async function genplanSequence(config) {
             if (wasClicked) return;
             // console.log(SEQUENCES);
             Object.entries(clickSequences).forEach(([key, frame]) => {
-                if (key === "areas_1") return;
+                // if (key === "areas_1") return;
                 let [from, to] = frame.split('-');
                 from = +from;
                 to = +to;
