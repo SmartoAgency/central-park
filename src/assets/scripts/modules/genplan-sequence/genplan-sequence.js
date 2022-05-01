@@ -17,7 +17,6 @@ export default async function genplanSequence(config) {
             // document.querySelector('.lds-ring span').textContent = Math.floor(progress * 100);
         }
     });
-    
 
 
     let loadedSequences = {
@@ -34,7 +33,7 @@ export default async function genplanSequence(config) {
     // };
     const clickSequences = {
         areas_finals: '121-190',
-        areas_2: '254-267',
+        areas_2: '262-280',
         areas_1: '191-232',
         commerce: '233-253'
     };
@@ -85,7 +84,6 @@ export default async function genplanSequence(config) {
     // SEQUENCES = await SEQUENCES.json();
     SEQUENCES = await SEQUENCES.data;
     let sequenceLength = SEQUENCES.length;
-
 
     // gsap.timeline({
     //     scrollTrigger: {
