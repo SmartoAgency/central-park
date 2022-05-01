@@ -626,6 +626,9 @@
             @include from(576px){
                 min-height: 3.6em;
             }
+            @include to(575px){
+                margin-bottom: 20px;
+            }
         }
         p {
             margin-bottom: 60px;
@@ -821,10 +824,15 @@
     --ease: .95s ease-in-out;
     --lines-count: 3;
     transition: var(--ease);
+    
     @include to(1680px){
         // min-width: 225px;
         --text-margin: 10px;
         --icon-size: 50px;
+    }
+    @include to(575px){
+        --padding: 7px;
+        --icon-size: 35px;
     }
     &.active {
         pointer-events: none;
