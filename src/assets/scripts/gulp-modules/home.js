@@ -273,6 +273,7 @@ function homeInit() {
 
       arrow.addEventListener('click', () => {
         isTablet ? windowScrollUp() : locoScrollUp();
+        window.dispatchEvent(new Event('scroll-top-reach'));
       });
       function locoScrollUp() {
         if (window.scroller !== undefined) {

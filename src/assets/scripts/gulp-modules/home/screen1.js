@@ -26,6 +26,9 @@ export default function screen1(scroller) {
             scrub: true,
             start: isMobile ? `0 top` :`${innerHeight} bottom`,
             end: isMobile ? `${innerHeight} 10%` : null,
+            // onUpdate: ({progress}) => {
+            //     cloud1.style.setProperty('--x', progress * -180+'px');
+            // }
         }   
     })
     .to(
@@ -43,8 +46,8 @@ export default function screen1(scroller) {
         { yPercent: isMobile ? 0 : 0, duration: isMobile ? 1 : 0.05},
         '<'
         )
-    .to(cloud1, { xPercent: -30, duration: 1, yPercent: 5, }, '<')
-    .to(render, { scale: isMobile ? 1 : 1.1, duration: 1, yPercent: 15, ease: 'linear', transformOrigin: '100% 100%' }, '<')
+    .to(cloud1, { x: isMobile ? -30 : -180, duration: 1 }, '<')
+    .to(render, { scale: isMobile ? 1 : 1.1, duration: 1, y: 50, ease: 'linear' }, '<')
     tlScreen1.scrollTrigger.disable();
     window.addEventListener('preloaderEffectFinish', () => {
     });

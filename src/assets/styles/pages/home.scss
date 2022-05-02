@@ -24,6 +24,7 @@
         pointer-events: none;
         z-index: 3;
         object-fit: cover;
+        transform-origin: 100% 100%;
         @include to(575px) {
             position: relative;
             right: auto;
@@ -83,10 +84,13 @@
         z-index: 2;
         height: 100%;
         width: 100%;
+        --x: 0px;
         object-fit: contain;
+        transform: translateX(var(--x));
         @include to(575px) {
             top: 40%;
             height: auto;
+            // right: 0;
         }
     }
     &__cloud-2 {

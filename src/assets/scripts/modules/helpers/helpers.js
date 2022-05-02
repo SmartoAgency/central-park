@@ -284,6 +284,13 @@ export function handleHeader(scroller) {
   const onScrollThrottle = throttle(onScroll, 100);
   const header = document.querySelector('.header');
   header.state = 'open';
+
+  window.addEventListener('scroll-top-reach', () => {
+    setTimeout(() => {
+      changeState['open']();
+    }, 1000);
+    console.log('scrollTopReact');
+  })
   let prevScrollPosition = 0;
   scroller.on('scroll', ({ scroll }) => {
     onScrollThrottle(scroll);
