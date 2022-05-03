@@ -25,9 +25,10 @@ export default function screen4(scroller) {
         scrollTrigger: {
           trigger: '.screen4',
           scrub: true,
-          start: `${innerHeight * 0.45} bottom`, 
+          start: `0 bottom`, 
           end: `${innerHeight} bottom`, 
           scroller: scroller ? scroller : null,
+          // markers: true,
           // start: '0 top',
         //   markers: true
         }
