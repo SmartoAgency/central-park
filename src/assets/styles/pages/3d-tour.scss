@@ -48,8 +48,12 @@
             width: 100%;
             margin-left: 0;
             margin-right: 0;
+            &.is-playing .block-img-text__text {
+                margin-top: 50px;
+            }
             .block-img-text__text {
                 order: 2;
+                transition: margin .5s ease-in-out;
                 
             }
             .block-img-text__img-wrap {
@@ -104,6 +108,10 @@
             z-index: 2;
             display: inline-block;
             vertical-align: bottom;
+            text-align: center;
+            @include to(575px){
+                bottom: 10px;
+            }
         }
         iframe {
             position: absolute;
