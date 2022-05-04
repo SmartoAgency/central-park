@@ -335,6 +335,9 @@ html.has-scroll-dragging {
 	overflow: hidden;
 	transition: background-color .3s ease-out;
 	-webkit-tap-highlight-color: transparent;
+	&.safari {
+		transform: translateZ(1px);
+	}
 	&[disabled] &__hover {
 		display: none;
 	}

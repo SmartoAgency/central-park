@@ -60,6 +60,18 @@ export default function screen8(scroller) {
     // .from('.img-left img:first-child, .img-left .img-left__decor, .img-center, .img-right', {  yPercent: 7.5, stagger: 0.1  })
     // .to('.screen7__head-block, .screen7__faded-title', { autoAlpha: 0, y: 50, }, '<');
 
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: '.screen8',
+            once: true,
+            scroller: scroller ? scroller : null,
+            onEnter: () => {
+                console.log('enter');
+                if (document.querySelector('[data-screen8-src]') === null) return;
+                document.querySelector('[data-screen8-src]').src = document.querySelector('[data-screen8-src]').dataset.screen8Src;
+            }
+        }
+    })
 
     !isMobile && gsap.timeline({
         scrollTrigger: {
