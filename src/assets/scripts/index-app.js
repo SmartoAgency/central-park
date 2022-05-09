@@ -139,7 +139,7 @@ contactForms.forEach(form => {
 /** ******************************* */
 
 const formWrapper = document.querySelector('[data-form-wrapper]');
-const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call], [data-call-form-popup]');
+const formWrapperCall = document.querySelectorAll('[data-call-form-popup]');
 formWrapperCall.forEach(el => {
   el.addEventListener('click',function(evt){
     window.dispatchEvent(new Event('form-open'))
@@ -154,6 +154,21 @@ formWrapperCall.forEach(el => {
         '<'
       )
   })
+});
+
+document.body.addEventListener('click', (evt) => {
+  if (evt.target.closest('[data-form-wrapper-call]') === null) return;
+  window.dispatchEvent(new Event('form-open'))
+    gsap.timeline()
+      .to( formWrapper, { autoAlpha: 1 } )
+      .fromTo( 
+        '.form-wrapper-left>*, .form-wrapper-right form>*', 
+        { y: 50, autoAlpha: 0}, 
+        { y: 0, autoAlpha: 1 }, 
+        // { webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', stagger: 0.15 }, 
+      // { webkiClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'power2.out' },
+        '<'
+      )
 })
 
 function closeForm() {
