@@ -7,13 +7,13 @@ export default function screen4(scroller) {
         scrollTrigger: {
           trigger: '.screen4',
           scrub: true,
-          start: '0 top',
+          start: '0 bottom',
           scroller: scroller ? scroller : null,
           // start: '0 top',
           end: `${document.querySelector('.screen4').getBoundingClientRect().height} bottom`,
-          pin: '.screen4__inner',
-          pinSpacing: false,
-        //   markers: true
+          // pin: '.screen4__inner',
+          // pinSpacing: false,
+          // markers: true
         }
       })
         .from('.screen4__title :first-child', { x: '-100vw' })

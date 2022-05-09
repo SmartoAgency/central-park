@@ -325,8 +325,11 @@
 
 .screen4 {
     --v-padding: 140px;
+    --v-padding: 0px;
+
     position: relative;
     height: 250vh;
+    height: auto;
     @include to(575px) {
         height: 100vh;
         --v-padding: 0px;
