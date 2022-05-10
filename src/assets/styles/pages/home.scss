@@ -334,6 +334,7 @@
         height: 100vh;
         --v-padding: 0px;
         height: auto;
+        background-color: var(--color-black);
     }
     &__inner {
         height: 100vh;
@@ -628,6 +629,9 @@
         @include to(575px) {
             margin-top: 30px;
             padding-left: 0;
+            margin-top: auto;
+            padding-left: 0;
+            margin-bottom: auto;
             // text-align: left;
         }
         .title-h2 {
