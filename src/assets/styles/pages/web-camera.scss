@@ -92,6 +92,7 @@
         transition-duration: .5s;
         @include to(575px){
             --self-size: 50px;
+            bottom: calc(50% - var(--self-size) / 2 + 30px);
         }
     }
     &.is-playing &__play-button {
