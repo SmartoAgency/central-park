@@ -19,6 +19,9 @@
     .web-item {
         @include size(11);
         @include shift(0);
+        @include from(1025px){
+            align-self: flex-start;
+        }
         @include to(1024px){
             @include size(22);
             margin-bottom: 20px;

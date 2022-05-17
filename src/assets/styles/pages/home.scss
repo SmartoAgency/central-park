@@ -677,6 +677,11 @@
         transform: translateX(30px);
         position: relative;
         height: 100%;
+        @include from-to(993px,
+        1240px) {
+            @include shift-left(0);
+            @include size(16);
+        }
         @include to(575px) {
             height: 60vw;
         }

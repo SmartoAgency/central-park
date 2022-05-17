@@ -293,6 +293,9 @@
         display: flex;
         transform: translateX(25%);
         animation: runner 22s linear infinite;
+        @include to(575px){
+            // animation: none;
+        }
     }
     
     .tiles__line:nth-child(2) {
