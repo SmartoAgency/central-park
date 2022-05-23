@@ -48,29 +48,38 @@ function initZoomSliderOnDesktop() {
   slidesPerView: 4.5,
   loop: true,
   spaceBetween: 40,
-  breakpoints: {
-    // when window width is >= 320px
-    // 320: {
-    //   slidesPerView: 1.25,
-    //   spaceBetween: 20
-    // },
-    // // when window width is >= 480px
-    // 576: {
-    //   slidesPerView: 2.5,
-    //   spaceBetween: 20
-    // },
-    1440: {
-      slidesPerView: 4.5,
-      spaceBetween: 40
-    }
-    // when window width is >= 640px
-  },
+  loopedSlides: 50,
+  // breakpoints: {
+  //   // when window width is >= 320px
+  //   // 320: {
+  //   //   slidesPerView: 1.25,
+  //   //   spaceBetween: 20
+  //   // },
+  //   // // when window width is >= 480px
+  //   // 576: {
+  //   //   slidesPerView: 2.5,
+  //   //   spaceBetween: 20
+  //   // },
+  //   1440: {
+  //     slidesPerView: 4.5,
+  //     spaceBetween: 40
+  //   }
+  //   // when window width is >= 640px
+  // },
   navigation: {
     nextEl: document.querySelector('[data-screen3-next]'),
-    prevEl: document.querySelector('[data-screen3-prev]'),
+    // prevEl: document.querySelector('[]'),
   },
   });
-  
+  document.querySelector('[data-screen3-prev]').addEventListener('click', () =>{
+    const index = (swiper.realIndex === 0) ? swiper.loopedSlides - 1 : swiper.realIndex - 1;
+    const speed = (swiper.realIndex === 0) ? 3500 : 500;
+    swiper.slideToLoop(index, speed);
+  })
+  document.querySelector('[data-screen3-next]').addEventListener('click', () =>{
+    console.log(swiper.realIndex);
+  })
+
   
   swiper.on('touchStart', () => {
   document.querySelector('.zoom-slider-wrapper').classList.add('drag')

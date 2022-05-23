@@ -6,7 +6,7 @@
     height: 100vh;
     padding: 10vh var(--page-side-fields);
     z-index: 62;
-    background-color: #4A4B50;
+    background-color: rgba(74, 75, 80, 0.6);
     @include autoAlpha(0);
     @include to(575px){
         padding: 20px var(--page-side-fields);
