@@ -675,11 +675,13 @@
         @include size(19);
         @include shift-left(0);
         transform: translateX(30px);
+        margin-left: auto;
         position: relative;
         height: 100%;
         @include from-to(993px,
         1240px) {
             @include shift-left(0);
+            margin-left: auto;
             @include size(16);
         }
         @include to(575px) {
@@ -701,8 +703,8 @@
             width: 100%;
             height: 100%;
             @include from(576px){
-                background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 28%), linear-gradient(0deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%);
-                background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 22%), linear-gradient(0deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%);
+                background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 28%), linear-gradient(0deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 10%), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 10%);
+                background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 22%), linear-gradient(0deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 10%), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 10%);
             }
         }
         @include to(992px) {
