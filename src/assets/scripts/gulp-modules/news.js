@@ -18,8 +18,10 @@ window.addEventListener('update-dom', () => {
 })
 
 const newsAction = new FormData();
-  newsAction.append('action', 'news');
-fetch('https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php', {
+newsAction.append('action', 'news');
+
+const URL = window.location.href.match(/localhost/) ? 'https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php' : '/wp-admin/admin-ajax.php';
+fetch(URL, {
   method: 'POST',
   body: newsAction
 })

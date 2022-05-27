@@ -330,6 +330,7 @@
     position: relative;
     height: 250vh;
     height: auto;
+    margin-top: -2px;
     @include to(575px) {
         height: 100vh;
         --v-padding: 0px;
