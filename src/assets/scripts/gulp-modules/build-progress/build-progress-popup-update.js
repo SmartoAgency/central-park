@@ -3,7 +3,7 @@ export default async function buildProgressPopupUpdate(id, popup, onMutation = (
     const action = new FormData()
     action.append('action', 'buildProgress');
     action.append('id', id);
-    let data = await fetch('https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php', {
+    let data = await fetch('/wp-admin/admin-ajax.php', {
         method: 'POST',
         body: action
     });

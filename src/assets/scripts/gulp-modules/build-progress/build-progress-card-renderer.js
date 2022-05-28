@@ -2,7 +2,7 @@ export default async function buildProgressCardRenderer() {
     const $container = document.querySelector('.build-cards-wrapper');
     const action = new FormData()
     action.append('action', 'Constructions');
-    let data = await fetch('https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php', {
+    let data = await fetch('/wp-admin/admin-ajax.php', {
         method: 'POST',
         body: action
     })

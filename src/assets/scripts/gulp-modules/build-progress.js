@@ -128,7 +128,7 @@ async function getProgressPopupData(id, index) {
   // let innerInfo = await fetch(`./static/build-popup-info.php?id=${id}`);
   const url  = window.location.href.match(/localhost/) 
     ? `./static/build-popup-info.php?id=${id}` 
-    : 'https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php';
+    : '/wp-admin/admin-ajax.php';
   let innerInfo = await fetch(url, {
     method: window.location.href.match(/localhost/) ? 'GET' : 'POST',
     body: window.location.href.match(/localhost/) ? undefined : fetchBody,
