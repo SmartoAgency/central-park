@@ -67,6 +67,7 @@ export default async function screen9Handler(scroller) {
     link.setAttribute('href', detailLinks[0]);
     textBlock.innerHTML = testData[0];
     frame.dataset.src = testSrc[0];
+    frame.style.backgroundImage = `url(${frameBgs[0]})`;
     if (counterNext) counterNext.textContent = testData.length;
     navNext.addEventListener('click', () => {
         scaleDownAndUp(svgBg);
