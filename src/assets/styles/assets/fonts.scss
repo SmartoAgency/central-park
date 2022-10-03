@@ -19,6 +19,14 @@
 	font-family: 'Nunito Sans';
 	font-display: swap;
 	src: local('SuisseIntl'),
+		url('../fonts/Inter-Bold.ttf') format('truetype');
+		font-weight: 900;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Nunito Sans';
+	font-display: swap;
+	src: local('SuisseIntl'),
 		url('../fonts/Inter-Regular.ttf') format('truetype');
 	font-style: normal;
 }
