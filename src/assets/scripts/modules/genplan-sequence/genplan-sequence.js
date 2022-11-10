@@ -32,11 +32,13 @@ export default async function genplanSequence(config) {
     //     areas_finals:'genplan_3.json',
     // };
     const clickSequences = {
-        areas_finals: '121-190',
-        areas_2: '262-280',
-        areas_1: '191-232',
-        commerce: '233-253'
+        areas_finals:"121-190",
+        areas_2:"262-280",
+        areas_1:"191-232",
+        commerce:"233-247"
     };
+
+    
     // let commerceURL = window.location.href.match(/localhost/) ? './static/commerce.json' : '/wp-content/themes/central-park/static/commerce.json';
     // let commerceSequence = await fetch(commerceURL);
     // commerceSequence = await commerceSequence.json();
