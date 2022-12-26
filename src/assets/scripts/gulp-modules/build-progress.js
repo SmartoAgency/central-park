@@ -124,7 +124,6 @@ async function getProgressPopupData(id, index) {
   const popupProgressBlock = popup.querySelector('.build-status-popup__progress')
   const fetchBody = new FormData();
   fetchBody.append('action', 'buildInfo');
-  
   // let innerInfo = await fetch(`./static/build-popup-info.php?id=${id}`);
   const url  = window.location.href.match(/localhost/) 
     ? `./static/build-popup-info.php?id=${id}` 
@@ -207,7 +206,8 @@ document.querySelector('.build-progress-conteiner').addEventListener('click', ({
     () => {
       swiper1.update();
       gsap.to('[data-build-popup-progress]', { autoAlpha: 1 });
-    }
+    },
+    target.closest('.build-card').dataset.date, 
   );
   window.dispatchEvent(new Event('popup-open'));
 })

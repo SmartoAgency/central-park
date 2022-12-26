@@ -18,7 +18,7 @@ export default async function buildProgressCardRenderer() {
         const {id, data} = config;
         console.log(data);
         return `
-            <div class="build-card" data-id="${id}">
+            <div class="build-card" data-id="${id}" data-date="${config.data.day}.${config.data.month}.${config.data.year}">
                 <div class="build-card__img"> <img src="${data.gallery[0]}" alt=""></div>
                 <div class="build-card__text">
                     <div class="build-card__span">${data.nameMonth}</div>
