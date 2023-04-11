@@ -17,6 +17,7 @@ import screen1 from './home/screen1';
 import screen8 from './home/screen8';
 import { addIntersectionOnceWithCallback, handleHeader, transitionBetweenSectionSceneLength } from '../modules/helpers/helpers';
 import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
+import screen55 from './home/screen55';
 
 
 
@@ -102,6 +103,7 @@ function homeInit() {
   screen10($scroller);
   paralax('.img-center img', $scroller);
 
+  screen55($scroller);
   /**Screen2 effects */
   // !isMobile() && gsap.timeline({
   //   scrollTrigger: {

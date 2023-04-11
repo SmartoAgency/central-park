@@ -1,6 +1,21 @@
 import axios from "axios";
 import { gsap, ScrollTrigger } from 'gsap/all';
 import { isMobile } from "../helpers/helpers";
+
+
+export function getGenplanSequences({ options = {} }) {
+    let URL = window.location.href.match(/localhost/) ? './static/genplan-final.json' : '/wp-content/themes/central-park/static/genplan-final.json';
+    return axios(URL, {
+        ...options,
+        onDownloadProgress: (e) => {
+            const progress = gsap.utils.mapRange(0, e.total, 0, 1,  e.loaded);
+            // gsap.set('.lds-ring span', { scaleX: progress })
+            // console.log(e);
+            // document.querySelector('.lds-ring span').textContent = Math.floor(progress * 100);
+        }
+    })
+}
+
 export default async function genplanSequence(config) {
     global.gsap = gsap;
     gsap.core.globals("ScrollTrigger", ScrollTrigger);
@@ -8,15 +23,18 @@ export default async function genplanSequence(config) {
     const scene = document.querySelector(config.scene);
     const imgForDisplay = getElementBySelector(config.selectorToDisplay);
     const $switchFrames = document.querySelectorAll(config.$switchFrames);
-    let URL = window.location.href.match(/localhost/) ? './static/genplan-final.json' : '/wp-content/themes/central-park/static/genplan-final.json';
-    let SEQUENCES = await axios(URL, {
+    
+    let SEQUENCES = await getGenplanSequences({
         onDownloadProgress: (e) => {
             const progress = gsap.utils.mapRange(0, e.total, 0, 1,  e.loaded);
             // gsap.set('.lds-ring span', { scaleX: progress })
             // console.log(e);
             // document.querySelector('.lds-ring span').textContent = Math.floor(progress * 100);
         }
-    });
+    })
+    // let SEQUENCES = await axios(URL, {
+        
+    // });
 
 
     let loadedSequences = {
@@ -208,7 +226,7 @@ export default async function genplanSequence(config) {
 
 
 
-function changeImageSrcByArrayIndex(toDisplay, images, start, end, cb = () => {}) {
+export function changeImageSrcByArrayIndex(toDisplay, images, start, end, cb = () => {}) {
     const delay =  1000 / 60;
     function change(i) {
         toDisplay.src = images[i];

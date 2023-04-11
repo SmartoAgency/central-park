@@ -1,0 +1,124 @@
+.screen5-5 {
+    height: 200vh;
+    --side-padding: 85px;
+    &__container {
+        height: 100vh;
+        width: 100%;
+        // background-color: greenyellow;
+        display: flex;
+    }
+
+
+    &__left {
+        width: 28%;
+        height: 100%;
+        padding-left: var(--side-padding);
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 0;
+            height: 100%;
+            width: 7%;
+            background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        // background-color: blue;
+    }
+    &__right {
+        width: 72%;
+        height: 100%;
+        object-fit: contain;
+        object-position: 0 var(--header-h);
+        // background-color: yellow;
+    }
+
+    --legend-item-size: 128px;
+}
+
+
+.genplan-legend{
+    position: relative;
+    --percent: 0;
+    &:after {
+        content: '';
+        position: absolute;
+        left: 65px;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(255,255,0,1) var(--percent), rgba(2,0,36,1) var(--percent));
+        z-index: -1;
+    }
+}
+.genplan-legend-item {
+    --legend-item-size: 128px;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    transition: .25s ease-out;
+    // transform-origin: calc(var(--legend-item-size) / 2) center;
+
+
+    
+    &__circle {
+        width: var(--legend-item-size);
+        height: var( --legend-item-size);
+        background-color: var(--color-beige);
+        color: var(--color-white);
+        border-radius: 50%;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 120%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .25s ease-out;
+        line-height: 120%;
+        font-size: 12px;
+        transform: scale(0.5);
+    }
+    
+    &.active &__circle {
+        background-color: var(--color-black);
+        font-size: 48px;
+        transform: scale(1);
+    }
+
+    &__text {
+        &>:first-child {
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 100%;
+            /* identical to box height, or 48px */
+            color: var(--color-black);
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+        &>:last-child {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 140%;
+            color: var(--text-color);
+        }
+    }
+}
+
+.genplan-legend-item-line {
+    &:first-child {
+        height: 50vh;
+    }
+    &:last-child {
+        height: 50vh;
+    }
+    height: 75vh;
+    width: 1px;
+    background-color: var(--color-black);
+    opacity: 0.1;
+    margin-left: calc(var( --legend-item-size) / 2);
+}
+
+.screen4 {
+    display: none;
+}
