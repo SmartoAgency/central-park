@@ -1,6 +1,13 @@
+import Swiper from 'swiper';
 import { getGenplanSequences, changeImageSrcByArrayIndex } from "../../modules/genplan-sequence/genplan-sequence";
 
 export default async function screen55(scroller) {
+
+
+    if (window.matchMedia('(max-width: 1024px').matches) {
+        screen55Mobile();
+        return;
+    }
 
     const $itemForImageRender = document.querySelector('[data-screen5-image]');
     const $legendItems = document.querySelectorAll('.genplan-legend-item');
@@ -16,12 +23,7 @@ export default async function screen55(scroller) {
         3:"233-247"
     };
 
-    const progressItemsPositionInProgressScene = [
-        0.028552005438477225,
-        0.180,
-        0.41,
-        0.9664,
-    ]
+
 
     
     let previousSequence = false;
@@ -50,12 +52,6 @@ export default async function screen55(scroller) {
             }
             
             if (previousSequence === currentSequenceToRender) return;
-
-            // if (window.scroller) {
-            //     window.scroller.scrollTo(".screen5-5.infrastructure", {
-            //         offset: getHeight(document.querySelector(".screen5-5.infrastructure")) * progressItemsPositionInProgressScene[sequenceIndex]
-            //     })
-            // }
 
 
             isAnimating = true;
@@ -113,10 +109,16 @@ export default async function screen55(scroller) {
             end: "100% bottom",
             pin: ".screen5-5__container",
             invalidateOnRefresh: true,
-            onUpdate: (e) => {
-                console.log(e.progress);
+            onUpdate: ({ start, end, ...e}) => {
 
-                document.querySelector('.genplan-legend').style.cssText = `--percent: ${ 100 - 20 - e.progress * 100}%`;
+
+
+                const distance = end - start;
+                const percenteOfScreenHeightDueToSceneLength = window.innerHeight * 100 / distance / 100;
+                console.log(percenteOfScreenHeightDueToSceneLength);
+
+                document.querySelector('.genplan-legend').style.cssText = `--percent: ${ (100 - (e.progress + (percenteOfScreenHeightDueToSceneLength / 2)) * 100)}%`;
+                // document.querySelector('.genplan-legend').style.cssText = `--percent: ${ 100 - (e.progress) * 100}%`;
                 // const indexForRenderingImage = gsap.utils.mapRange(0, 1, 120, SEQUENCES.data.length, e.progress).toFixed(0);
                 // if (!SEQUENCES.data[indexForRenderingImage] || currentRenderedIndex == indexForRenderingImage) return;
                 // currentRenderedIndex = indexForRenderingImage
@@ -135,4 +137,10 @@ export default async function screen55(scroller) {
 
 function getHeight(el) {
     return el.getBoundingClientRect().height;
+}
+
+function screen55Mobile() {
+    const swiper = new Swiper('.screen5-5-mobile-swiper', {
+        slidesPerView: 1.5
+    });
 }

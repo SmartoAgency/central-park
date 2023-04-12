@@ -147,14 +147,14 @@ function homeInit() {
 
 
 
-  addIntersectionOnceWithCallback(document.querySelector('.screen3'),() => {
-    genplanSequence({
-      scene: '.genplan',
-      selectorToDisplay: '.genplan__img img',
-      scroller: $scroller,
-      $switchFrames: '.genplan__text2 li'
-    })
-  })
+  // addIntersectionOnceWithCallback(document.querySelector('.screen3'),() => {
+  //   genplanSequence({
+  //     scene: '.genplan',
+  //     selectorToDisplay: '.genplan__img img',
+  //     scroller: $scroller,
+  //     $switchFrames: '.genplan__text2 li'
+  //   })
+  // })
   
   
   handleHeader(scroller);

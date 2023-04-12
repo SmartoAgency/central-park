@@ -179,34 +179,45 @@ block content
               div Комерційні приіщення
           .genplan-legend-item-line
       img.screen5-5__right(src="#" alt="genplan" data-screen5-image)
-  .screen6().genplan
-    //- .genplan-curtain-for-prev-block-anim
-    .genplan__inner
-      .genplan__inner-progress-bar
-      <div class="lds-ring">
-        <span></span>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      .genplan__text
-        .title-h2.text-black(data-genplan-title) Продумані маршрути
-        .genplan__text-block-wrapper
-          .genplan__text1
-            p Forest Home запустив віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання ви могли побачити розташування кімнат і навіть оцінити вид з вікон.  віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання.
-            a(class="button button--dark with-hover") 
-              .button__hover
-              span Хід будівництва
-          ul.genplan__text2.genplan__list
-            each val in genplanList
-              li(data-attr=val.attr data-title=val.headTitle class="genplan-point")
-                div.genplan-point__icon !{val.icon}
-                div.genplan-point__text(title=val.text) #{val.text}
-      .genplan__img
-        picture
-          //- source(srcset='./assets/images/screen6/genplan-tablet.jpg' media="(max-width: 992px)")
-          img(src='./assets/images/screen6/genplan.jpg' alt="MDN" data-screen1-paralax)
+  .screen5-5-mobile
+    .screen5-5-mobile__top
+      img(src="egeg" alt='efef')
+    .screen5-5-mobile__bottom
+      .screen5-5-mobile-swiper
+        .swiper-wrapper
+          .swiper-slide
+          .swiper-slide
+          .swiper-slide
+          .swiper-slide
+          .swiper-slide
+  //- .screen6().genplan
+  //-   //- .genplan-curtain-for-prev-block-anim
+  //-   .genplan__inner
+  //-     .genplan__inner-progress-bar
+  //-     <div class="lds-ring">
+  //-       <span></span>
+  //-       <div></div>
+  //-       <div></div>
+  //-       <div></div>
+  //-       <div></div>
+  //-     </div>
+  //-     .genplan__text
+  //-       .title-h2.text-black(data-genplan-title) Продумані маршрути
+  //-       .genplan__text-block-wrapper
+  //-         .genplan__text1
+  //-           p Forest Home запустив віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання ви могли побачити розташування кімнат і навіть оцінити вид з вікон.  віртуальні шоуруми найпопулярніших планувань у будинку, щоб при виборі помешкання.
+  //-           a(class="button button--dark with-hover") 
+  //-             .button__hover
+  //-             span Хід будівництва
+  //-         ul.genplan__text2.genplan__list
+  //-           each val in genplanList
+  //-             li(data-attr=val.attr data-title=val.headTitle class="genplan-point")
+  //-               div.genplan-point__icon !{val.icon}
+  //-               div.genplan-point__text(title=val.text) #{val.text}
+  //-     .genplan__img
+  //-       picture
+  //-         //- source(srcset='./assets/images/screen6/genplan-tablet.jpg' media="(max-width: 992px)")
+  //-         img(src='./assets/images/screen6/genplan.jpg' alt="MDN" data-screen1-paralax)
   .screen7
     .section-decor
       +svg('logo-mini')

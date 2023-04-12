@@ -1,6 +1,12 @@
 .screen5-5 {
     height: 200vh;
     --side-padding: 85px;
+    @include to(1024px){
+        display: none;
+    }
+    @include to(1680px){
+        --side-padding: 40px;
+    }
     &__container {
         height: 100vh;
         width: 100%;
@@ -14,6 +20,9 @@
         height: 100%;
         padding-left: var(--side-padding);
         position: relative;
+        @include to(1024px){
+            display: none;
+        }
         &:before {
             content: '';
             position: absolute;
@@ -30,6 +39,9 @@
         height: 100%;
         object-fit: contain;
         object-position: 0 var(--header-h);
+        @include to(1024px){
+            width: 100%;
+        }
         // background-color: yellow;
     }
 
@@ -39,15 +51,15 @@
 
 .genplan-legend{
     position: relative;
-    --percent: 0;
+    --percent: 100;
     &:after {
         content: '';
         position: absolute;
         left: 65px;
-        top: 0;
+        top: 50vh;
         width: 1px;
-        height: 100%;
-        background: linear-gradient(0deg, rgba(255,255,0,1) var(--percent), rgba(2,0,36,1) var(--percent));
+        height: calc(100% - 100vh);
+        background: linear-gradient(0deg, rgba(255,255,0,0) var(--percent), rgba(2,0,36,1) var(--percent));
         z-index: -1;
     }
 }
@@ -78,12 +90,14 @@
         line-height: 120%;
         font-size: 12px;
         transform: scale(0.5);
+        flex-shrink: 0;
     }
     
     &.active &__circle {
         background-color: var(--color-black);
         font-size: 48px;
         transform: scale(1);
+        transform-origin: top;
     }
 
     &__text {
@@ -108,9 +122,12 @@
 .genplan-legend-item-line {
     &:first-child {
         height: 50vh;
+        
+            opacity: 0;
     }
     &:last-child {
         height: 50vh;
+        opacity: 0;
     }
     height: 75vh;
     width: 1px;
@@ -121,4 +138,44 @@
 
 .screen4 {
     display: none;
+}
+
+
+.screen5-5-mobile {
+    @include from(1025px){
+        display: none;    
+    }
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+    &__top {
+        height: calc(var(--vh, 1vh) * 71);
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: auto;
+        img {
+            height: 100%;
+            max-width: none;
+            width: calc((var(--vh, 1vh) * 71) / 10 * 16);
+        }
+    }
+    &__bottom {
+        height: calc(var(--vh, 1vh) * 29);
+    }
+}
+
+.screen5-5-mobile-swiper {
+    height: 100%;
+    .swiper-slide-prev {
+        background-color: green;
+    }
+    .swiper-slide-next {
+        background-color: yellow;
+    }
+    .swiper-slide-active {
+        background-color: red;
+    }
+
+    .swiper-slide:last-child {
+        opacity: 0;
+    }
 }
