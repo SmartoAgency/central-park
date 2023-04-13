@@ -5,16 +5,65 @@ import gsap from "gsap/all";
 import splitToLinesAndFadeUp from "../modules/effects/splitToLinesAndFadeUp";
 
 innerPageFrontEffect();
+
+
+const tl = gsap.timeline({ paused: true }).to('.inner-front__small-bottom-decor', {
+
+    y: 130,
+    // duration: 0.5,
+    // ease: 'power4.out'
+})
+.to('.inner-front__small-bottom-decor', {
+    autoAlpha: 0
+})
+
+.to('.tour-filter-container', {
+    opacity: 1,
+    // duration: 0.5,
+    // ease: 'power4.out'
+}, '<')
+.to('.tour-filter-container button', {
+    autoAlpha: 0,
+    duration: 0.1
+}, '<')
+.fromTo('.tour-filter-container svg', {
+    autoAlpha: 0,
+    x: (e) => {
+        console.log(e);
+        switch (e) {
+            case 0:
+                return 282.5
+            case 1:
+                return 95.5
+            case 2:
+                return -93
+            case 3:
+                return -282.5
+            return 0
+        }
+    }
+}, {
+    x: 0,
+    autoAlpha: 1,
+    // duration: 0.5,
+    // ease: 'power4.out'
+}, '<')
+.fromTo('.tour-filter-container button', {
+    autoAlpha: 0
+}, {
+    autoAlpha: 1
+});
+
 window.addEventListener('load',function(evt){
     const scroller = locoScroll('.scroller-container');
     scroller.update();
     handleHeader(scroller);
     window.scroller = scroller;
-    splitToLinesAndFadeUp('p, .three-d-title', '.scroller-container')
+    // splitToLinesAndFadeUp('p, .three-d-title', '.scroller-container')
     !isMobile() && document.querySelectorAll('.block-img-text').forEach(block => {
         gsap.timeline({
             scrollTrigger: {
-                scroller: '.scroller-container',
+                scroller: isMobile() ? document.body :'.scroller-container',
                 trigger: block,
                 start: '10% bottom',
                 end: '90% top',
@@ -39,6 +88,11 @@ window.addEventListener('load',function(evt){
     // .to('.header-logo', { rotateY: 0, rotateZ: 0, rotateX: 0 })
     // .to('.header-logo', { rotateY: -30, rotateZ: -5, rotateX: -5 })
     
+
+    window.addEventListener('screen1EffectFinish',function(evt){
+        tl.play();
+        
+    }); 
 });
 
 document.querySelectorAll('.block-img-text').forEach((item) => {
@@ -68,4 +122,30 @@ document.querySelectorAll('.block-img-text').forEach((item) => {
 })
 function morph(path) {
     
+}
+
+const filter = new Set();
+
+window.addEventListener('click',function(evt){
+    const target = evt.target.closest('[data-build]');
+    if (!target) return;
+    target.classList.toggle('active');
+    if (target.classList.contains('active')) {
+        filter.add(target.dataset.build);
+    } else {
+        filter.delete(target.dataset.build);
+    }
+    filterAction();
+});
+
+function filterAction() {
+    console.log(filter);
+    document.querySelectorAll('[data-filter]').forEach(el => {
+        if (filter.has(el.dataset.filter) || filter.size === 0)  {
+            el.style.display = '';
+        } else {
+            el.style.display = 'none';
+        }
+    });
+    if (window.scroller) window.scroller.update();
 }

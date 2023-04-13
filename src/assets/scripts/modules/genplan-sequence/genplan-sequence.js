@@ -1,20 +1,10 @@
 import axios from "axios";
 import { gsap, ScrollTrigger } from 'gsap/all';
 import { isMobile } from "../helpers/helpers";
+import { getGenplanSequences } from "./getGenplanSequence";
+import { changeImageSrcByArrayIndex } from "./changeImgSrcByArrayIndex";
 
 
-export function getGenplanSequences({ options = {} }) {
-    let URL = window.location.href.match(/localhost/) ? './static/genplan-final.json' : '/wp-content/themes/central-park/static/genplan-final.json';
-    return axios(URL, {
-        ...options,
-        onDownloadProgress: (e) => {
-            const progress = gsap.utils.mapRange(0, e.total, 0, 1,  e.loaded);
-            // gsap.set('.lds-ring span', { scaleX: progress })
-            // console.log(e);
-            // document.querySelector('.lds-ring span').textContent = Math.floor(progress * 100);
-        }
-    })
-}
 
 export default async function genplanSequence(config) {
     global.gsap = gsap;
@@ -138,7 +128,7 @@ export default async function genplanSequence(config) {
         end: '80% bottom',
         once: true,
         onEnter: () => {
-            changeImageSrcByArrayIndex(imgForDisplay, SEQUENCES, 0, 120, () => {
+            changeImgSrcByArrayIndex(imgForDisplay, SEQUENCES, 0, 120, () => {
                 gsap.set('.genplan-point', { pointerEvents: '' });
                 gsap.set('.genplan__list', { cursor: '' });
                 cutOnClickInited();
@@ -226,19 +216,7 @@ export default async function genplanSequence(config) {
 
 
 
-export function changeImageSrcByArrayIndex(toDisplay, images, start, end, cb = () => {}) {
-    const delay =  1000 / 60;
-    function change(i) {
-        toDisplay.src = images[i];
-        if (i === end) return cb();
-        setTimeout(() => {
-            requestAnimationFrame(() => {
-                start > end ? change(i - 1) : change(i + 1);
-            })
-        }, delay);
-    }
-    change(start);
-}
+
 function getElementBySelector(arg) {
     if (typeof arg === 'string') return document.querySelector(arg);
     return arg;

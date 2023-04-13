@@ -181,15 +181,34 @@ block content
       img.screen5-5__right(src="#" alt="genplan" data-screen5-image)
   .screen5-5-mobile
     .screen5-5-mobile__top
-      img(src="egeg" alt='efef')
+      img(src="egeg" alt='efef' data-mobile-infrastructure-canvas)
     .screen5-5-mobile__bottom
       .screen5-5-mobile-swiper
         .swiper-wrapper
-          .swiper-slide
-          .swiper-slide
-          .swiper-slide
-          .swiper-slide
-          .swiper-slide
+          .swiper-slide.mob-infra-item
+            .mob-infra-item__top
+              .mob-infra-item__circle 01
+              .mob-infra-item__circle-line
+            .mob-infra-item__title Територія
+            .mob-infra-item__desc Дороги та пішохідні доріжки
+          .swiper-slide.mob-infra-item
+            .mob-infra-item__top
+              .mob-infra-item__circle 02
+              .mob-infra-item__circle-line
+            .mob-infra-item__title рекреація
+            .mob-infra-item__desc Майданчики для відпочинку
+          .swiper-slide.mob-infra-item
+            .mob-infra-item__top
+              .mob-infra-item__circle 03
+              .mob-infra-item__circle-line
+            .mob-infra-item__title комфорт
+            .mob-infra-item__desc Дитячий садок, школа, майданчики
+          .swiper-slide.mob-infra-item
+            .mob-infra-item__top
+              .mob-infra-item__circle 04
+              .mob-infra-item__circle-line
+            .mob-infra-item__title бізнес
+            .mob-infra-item__desc Комерційні приіщення
   //- .screen6().genplan
   //-   //- .genplan-curtain-for-prev-block-anim
   //-   .genplan__inner

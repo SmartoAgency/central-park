@@ -81,7 +81,7 @@ function homeInit() {
   const scroller = locoScroll('.scroller-container');
   scroller.update();
   window.scroller = scroller;
-  const $scroller = document.querySelector('.scroller-container');
+  const $scroller = isMobile() ? document.body : document.querySelector('.scroller-container');
   screen1($scroller);
 
   galleryEffect($scroller);
@@ -103,7 +103,7 @@ function homeInit() {
   screen10($scroller);
   paralax('.img-center img', $scroller);
 
-  screen55($scroller);
+
   /**Screen2 effects */
   // !isMobile() && gsap.timeline({
   //   scrollTrigger: {
@@ -147,14 +147,9 @@ function homeInit() {
 
 
 
-  // addIntersectionOnceWithCallback(document.querySelector('.screen3'),() => {
-  //   genplanSequence({
-  //     scene: '.genplan',
-  //     selectorToDisplay: '.genplan__img img',
-  //     scroller: $scroller,
-  //     $switchFrames: '.genplan__text2 li'
-  //   })
-  // })
+  addIntersectionOnceWithCallback(document.querySelector('.screen3'),() => {
+    screen55($scroller);
+  })
   
   
   handleHeader(scroller);

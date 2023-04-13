@@ -1,3 +1,5 @@
+import { isMobile } from "../helpers/helpers";
+
 export default function splitToLinesAndFadeUp(selector, $scroller) {
     document.querySelectorAll(selector).forEach(text => {
         let mathM = text.innerHTML.match(/<\s*(\w+\b)(?:(?!<\s*\/\s*\1\b)[\s\S])*<\s*\/\s*\1\s*>|\S+/g);
@@ -10,7 +12,7 @@ export default function splitToLinesAndFadeUp(selector, $scroller) {
           .timeline({
             // paused: true,
             scrollTrigger: {
-              scroller: $scroller ? $scroller : null,
+              scroller: $scroller && !isMobile() ? $scroller : null,
               trigger: text,
               once: true,
             },

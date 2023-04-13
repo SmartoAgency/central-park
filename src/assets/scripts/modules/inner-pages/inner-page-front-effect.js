@@ -34,7 +34,10 @@ export default function innerPageFrontEffect() {
             '<'
         )
         .fromTo(innerTemplate.nextElementSibling.children, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0 }, '<')
-        .add(() => tl.kill());
+        .add(() => {
+            tl.kill();
+            window.dispatchEvent(new Event('screen1EffectFinish'))
+        });
     // window.addEventListener('click',function(evt){
     //     tl.progress(0).play();
     // });

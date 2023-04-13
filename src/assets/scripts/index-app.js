@@ -32,8 +32,8 @@ function calcViewportUnits() {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-calcViewportUnits();
-window.addEventListener('resize', calcViewportUnits);
+// calcViewportUnits();
+// window.addEventListener('resize', calcViewportUnits);
 
 
 const formsWithTel = ['[data-home-contact]'];

@@ -18,6 +18,23 @@ block scripts
   script(defer src='./assets/scripts/3d-tour.bundle.js')
 block content
   +InnerPageFront(title_page, 'some', './assets/images/3d-tour/front.jpg')
+  .container.tour-filter-container(style="opacity: 0")
+    <svg width="6" height="50" viewBox="0 0 6 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 0H0V50H6V0Z" fill="#E5CDB7"/>
+      </svg>
+
+    button.tour-filter-button(data-build="1") Будинок 1
+    <svg width="6" height="50" viewBox="0 0 6 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 0H0V50H6V0Z" fill="#E5CDB7"/>
+      </svg>
+    button.tour-filter-button(data-build="2") Будинок 2
+    <svg width="6" height="50" viewBox="0 0 6 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 0H0V50H6V0Z" fill="#E5CDB7"/>
+      </svg>
+    button.tour-filter-button(data-build="3") Будинок 3
+    <svg width="6" height="50" viewBox="0 0 6 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 0H0V50H6V0Z" fill="#E5CDB7"/>
+      </svg>
   .container.three-d-container
     .block-img-text.three-d-text
       .block-img-text__text
