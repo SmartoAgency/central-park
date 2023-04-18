@@ -22,7 +22,7 @@ export default async function screen55(scroller) {
         el.sequenceIndex = index;
     });
 
-    $legendItems[0].classList.add('active');
+    // $legendItems[0].classList.add('active');
     let SEQUENCES = await getGenplanSequences({});
     let isAnimating = false;
     const clickSequences = {
@@ -32,6 +32,8 @@ export default async function screen55(scroller) {
     let sequenceWaiting = false;
 
     function changeActiveSequence(index) {
+
+        console.log('changeActiveSequence');
         const $item = $legendItems[index];
         $legendItems.forEach(el => {
             if ($item === el) return;
@@ -84,6 +86,7 @@ export default async function screen55(scroller) {
             pin: ".screen5-5__container",
             invalidateOnRefresh: true,
             onUpdate: ({ start, end, ...e}) => {
+                if (e.progress === 1) return;
                 const distance = end - start;
                 const percenteOfScreenHeightDueToSceneLength = window.innerHeight * 100 / distance / 100;
                 document.querySelector('.genplan-legend').style.cssText = `--percent: ${ (100 - (e.progress + (percenteOfScreenHeightDueToSceneLength / 2)) * 100)}%`;

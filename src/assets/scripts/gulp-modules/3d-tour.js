@@ -32,13 +32,13 @@ const tl = gsap.timeline({ paused: true }).to('.inner-front__small-bottom-decor'
         console.log(e);
         switch (e) {
             case 0:
-                return 282.5
+                return 170
             case 1:
-                return 95.5
+                return 0
             case 2:
-                return -93
-            case 3:
-                return -282.5
+                return -170
+            // case 3:
+            //     return -282.5
             return 0
         }
     }
