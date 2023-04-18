@@ -214,10 +214,12 @@
         background-color: var(--color-beige);
         border-radius: 50%;
         transition: .25s ease-out;
+        animation: pulse 2s infinite;
     }
     &.swiper-slide-active &__circle {
         background-color: var(--color-black);
         transform: scale(1.25);
+        animation: none;
     }
     &__circle-line {
         height: 1px;
@@ -243,3 +245,29 @@
         color: var(--text-color);
     }
 }
+
+@-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(229,205,183, 0.7);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(229,205,183, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(229,205,183, 0);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(229,205,183, 0.7);
+      box-shadow: 0 0 0 0 rgba(229,205,183, 0.7);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px rgba(229,205,183, 0);
+        box-shadow: 0 0 0 10px rgba(229,205,183, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(229,205,183, 0);
+        box-shadow: 0 0 0 0 rgba(229,205,183, 0);
+    }
+  }

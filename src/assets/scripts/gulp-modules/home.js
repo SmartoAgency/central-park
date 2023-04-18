@@ -147,9 +147,15 @@ function homeInit() {
 
 
 
-  addIntersectionOnceWithCallback(document.querySelector('.screen3'),() => {
-    screen55($scroller);
-  })
+  if (isMobile()) {
+    addIntersectionOnceWithCallback(document.querySelector('.screen5-5-mobile'),() => {
+      screen55($scroller);
+    })
+  } else {
+    addIntersectionOnceWithCallback(document.querySelector('.screen3'),() => {
+      screen55($scroller);
+    })
+  }
   
   
   handleHeader(scroller);

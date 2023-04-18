@@ -26,8 +26,17 @@ export default async function screen55(scroller) {
     let SEQUENCES = await getGenplanSequences({});
     let isAnimating = false;
     const clickSequences = {
-        0: '1-70', 1: '142-160', 2: '71-110', 3: '113-127'
+
+        /*teritorry */ 0: '1-70', 
+        /*confort */ 1: '71-110', 
+        /*business */ 2: '113-127', 
+        /*recreating */ 3: '142-160'
     };
+    
+    // /*teritorry */ 0: '1-70', 
+    // /*recreating */ 1: '142-160', 
+    // /*confort */ 2: '71-110', 
+    // /*business */ 3: '113-127'
     let previousSequence = false;
     let sequenceWaiting = false;
 
@@ -130,12 +139,24 @@ async function screen55Mobile() {
     const $itemForImageRenderContainer = $itemForImageRender.parentElement;
 
     const swiper = new Swiper('.screen5-5-mobile-swiper', {
-        slidesPerView: 1.5
+        slidesPerView: 1.5,
+        slideToClickedSlide: true,
+
     });
     let SEQUENCES = await getGenplanSequences({});
     const clickSequences = {
-        0: '1-70', 1: '142-160', 2: '71-110', 3: '113-127'
+
+        /*teritorry */ 0: '1-70', 
+        /*confort */ 1: '71-110', 
+        /*business */ 2: '113-127', 
+        /*recreating */ 3: '142-160'
     };
+    
+    // /*teritorry */ 0: '1-70', 
+    // /*recreating */ 1: '142-160', 
+    // /*confort */ 2: '71-110', 
+    // /*business */ 3: '113-127'
+
     let previousSequence = false;
 
     $itemForImageRenderContainer.scrollTo(getWidth($itemForImageRender) / 2 - (window.innerWidth / 2),0);
