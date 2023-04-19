@@ -60,20 +60,20 @@ window.addEventListener('load',function(evt){
     handleHeader(scroller);
     window.scroller = scroller;
     // splitToLinesAndFadeUp('p, .three-d-title', '.scroller-container')
-    !isMobile() && document.querySelectorAll('.block-img-text').forEach(block => {
-        gsap.timeline({
-            scrollTrigger: {
-                scroller: isMobile() ? document.body :'.scroller-container',
-                trigger: block,
-                start: '10% bottom',
-                end: '90% top',
-                onLeave: () => gsap.to(block.children, { y: -35, autoAlpha: 0 }),
-                onLeaveBack: () => gsap.to(block.children, { y: 35, autoAlpha: 0 }),
-                onEnter: () => gsap.to(block.children, { y: 0, autoAlpha: 1 }),
-                onEnterBack: () => gsap.to(block.children, { y: 0, autoAlpha: 1 })
-            },
-        })
-    })
+    // !isMobile() && document.querySelectorAll('.block-img-text').forEach(block => {
+    //     gsap.timeline({
+    //         scrollTrigger: {
+    //             scroller: isMobile() ? document.body :'.scroller-container',
+    //             trigger: block,
+    //             start: '10% bottom',
+    //             end: '90% top',
+    //             onLeave: () => gsap.to(block.children, { y: -35, autoAlpha: 0 }),
+    //             onLeaveBack: () => gsap.to(block.children, { y: 35, autoAlpha: 0 }),
+    //             onEnter: () => gsap.to(block.children, { y: 0, autoAlpha: 1 }),
+    //             onEnterBack: () => gsap.to(block.children, { y: 0, autoAlpha: 1 })
+    //         },
+    //     })
+    // })
 
     // gsap.timeline({
     //     scrollTrigger: {
@@ -131,9 +131,15 @@ window.addEventListener('click',function(evt){
     if (!target) return;
     target.classList.toggle('active');
     if (target.classList.contains('active')) {
+        filter.clear();
         filter.add(target.dataset.build);
+        document.querySelectorAll('[data-build]').forEach(el => {
+            if (el === target) return;
+            el.classList.remove('active');
+        })
     } else {
-        filter.delete(target.dataset.build);
+        // filter.delete(target.dataset.build);
+        filter.clear();
     }
     filterAction();
 });
