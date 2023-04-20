@@ -131,15 +131,9 @@ window.addEventListener('click',function(evt){
     if (!target) return;
     target.classList.toggle('active');
     if (target.classList.contains('active')) {
-        filter.clear();
         filter.add(target.dataset.build);
-        document.querySelectorAll('[data-build]').forEach(el => {
-            if (el === target) return;
-            el.classList.remove('active');
-        })
     } else {
-        // filter.delete(target.dataset.build);
-        filter.clear();
+        filter.delete(target.dataset.build);
     }
     filterAction();
 });

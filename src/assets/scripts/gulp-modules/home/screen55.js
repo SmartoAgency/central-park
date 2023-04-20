@@ -159,7 +159,7 @@ async function screen55Mobile() {
 
     let previousSequence = false;
 
-    $itemForImageRenderContainer.scrollTo(getWidth($itemForImageRender) / 2 - (window.innerWidth / 2),0);
+    $itemForImageRenderContainer.scrollTo(getWidth($itemForImageRender) * 0.88 - window.innerWidth,0);
 
     changeImageSrcByArrayIndex($itemForImageRender, SEQUENCES.data, +clickSequences[0].split('-')[0], +clickSequences[0].split('-')[1], () => {
         // isAnimating = false;
