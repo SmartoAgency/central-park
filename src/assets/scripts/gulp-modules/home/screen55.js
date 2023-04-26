@@ -30,7 +30,8 @@ export default async function screen55(scroller) {
         /*teritorry */ 0: '1-70', 
         /*confort */ 1: '71-110', 
         /*business */ 2: '113-127', 
-        /*recreating */ 3: '142-160'
+        // /*recreating */ 3: '142-160'
+        /*recreating */ 3: '164-178'
     };
     
     // /*teritorry */ 0: '1-70', 
@@ -42,7 +43,7 @@ export default async function screen55(scroller) {
 
     function changeActiveSequence(index) {
 
-        console.log('changeActiveSequence');
+
         const $item = $legendItems[index];
         $legendItems.forEach(el => {
             if ($item === el) return;
@@ -149,7 +150,8 @@ async function screen55Mobile() {
         /*teritorry */ 0: '1-70', 
         /*confort */ 1: '71-110', 
         /*business */ 2: '113-127', 
-        /*recreating */ 3: '142-160'
+        // /*recreating */ 3: '142-160'
+        /*recreating */ 3: '164-178'
     };
     
     // /*teritorry */ 0: '1-70', 
