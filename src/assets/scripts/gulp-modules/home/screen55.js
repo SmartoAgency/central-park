@@ -187,7 +187,13 @@ async function screen55Mobile() {
         }
         previousSequence = currentSequenceToRender;
     });
+    mobileFaqHandler();
+}
 
-
-
+function mobileFaqHandler() {
+    document.body.addEventListener('click',function(evt){
+        const target = evt.target.closest('[data-mobile-open-legend-faq]');
+        if (!target) return;
+        target.closest('.genplan-titles-faq').classList.toggle('active');
+    });
 }
