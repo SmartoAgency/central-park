@@ -145,6 +145,8 @@ async function screen55Mobile() {
 
     });
     let SEQUENCES = await getGenplanSequences({});
+
+    document.querySelectorAll('.screen5-5-mobile-loader').forEach(el => el.remove());
     const clickSequences = {
 
         /*teritorry */ 0: '1-70', 
