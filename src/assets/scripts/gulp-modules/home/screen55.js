@@ -147,6 +147,7 @@ async function screen55Mobile() {
     let SEQUENCES = await getGenplanSequences({});
 
     document.querySelectorAll('.screen5-5-mobile-loader').forEach(el => el.remove());
+    document.querySelectorAll('.screen5-5-mobile.loading').forEach(el => el.classList.remove('loading'));
     const clickSequences = {
 
         /*teritorry */ 0: '1-70', 
@@ -190,7 +191,43 @@ async function screen55Mobile() {
         previousSequence = currentSequenceToRender;
     });
     mobileFaqHandler();
+    handleMobileBlockImageHorizontalScroll(document.querySelector('.screen5-5-mobile__scroller svg'));
 }
+
+
+function handleMobileBlockImageHorizontalScroll(el) {
+    const parent = el.closest('.screen5-5-mobile');
+    const slider = parent.querySelector('input');
+    const sliderSvg = el;
+    const slideSvgButton = sliderSvg.querySelector('.swipe');
+    const slideSvgButtonRadius = +slideSvgButton.querySelector('circle').getAttribute('r');
+    const imageScrollContainer = parent.querySelector('.screen5-5-mobile__top');
+    const sliderSvgWidth = sliderSvg.getAttribute('viewBox').split(' ')[2];
+  
+    slider.value = 0;
+    slider.setAttribute('max', imageScrollContainer.scrollWidth);
+  
+    sliderSvg.insertAdjacentHTML('afterbegin', `
+      <circle cx="30" cy="30" r="29.5" stroke="#23242B" stroke-dasharray="1 10" class="Ellipse 83"></circle>
+    `);
+    slider.addEventListener('input', (evt) => {
+      imageScrollContainer.scrollTo({
+        left: evt.target.value - window.innerWidth / 2
+      });
+  
+      const swipeXoffset = gsap.utils.mapRange(
+        0 ,
+        evt.target.getAttribute('max'),
+        slideSvgButtonRadius * 2, sliderSvgWidth,
+        evt.target.value
+      );
+      slideSvgButton.setAttribute('transform', `translate(${swipeXoffset - (slideSvgButtonRadius * 2)} ,0)`)
+    });
+  
+    slider.value = imageScrollContainer.scrollWidth / 2;
+    slider.dispatchEvent(new Event('input'));
+  }
+
 
 function mobileFaqHandler() {
     document.body.addEventListener('click',function(evt){
