@@ -43,9 +43,16 @@
 
     }
     &__left {
-        @include size(4);
+        @include size(11);
         @include shift-left(1);
         @include shift-right(0);
+        @include from(1025px){
+            column-count: 2;
+            column-gap: 8vw;
+            &>* {
+                break-inside: avoid
+            }
+        }
         @include to(992px){ 
             @include size(8);
             @include shift-left(0);
@@ -58,11 +65,12 @@
     }
     &__right {
         position: relative;
-        @include size(14);
-        @include shift-left(5);
-        @include from(1025px){
-            @include shift-padding-right(3);
-        }
+        @include size(10);
+        @include shift-left(2);
+        @include shift-padding(1);
+        padding-top: 80px;
+        padding-bottom: 80px;
+        background: #1A1A1F;
         @include to(992px){ 
             @include shift-left(2);
         }
@@ -80,7 +88,7 @@
         height: 100%;
         z-index: 2;
         background-color: var(--color-black);
-        padding-right: 25%;
+        padding-left: 25%;
     }
     .link-l {
         font-size: 54px;
@@ -289,6 +297,8 @@
         // text-decoration-line: underline;
         color: var(--color-beige);
         position: relative;
+        
+        font-size: 1.25vw;
         @include to(1024px){
             font-size: 18px;
             font-weight: 300;

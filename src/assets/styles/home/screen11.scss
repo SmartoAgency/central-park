@@ -21,9 +21,16 @@
 
     }
     &__left {
-        @include size(4);
+        @include size(11);
         @include shift-left(1);
         @include shift-right(0);
+        @include from(576px){
+            column-count: 2;
+            column-gap: 8vw;
+            &>* {
+                break-inside: avoid
+            }
+        }
         @include to(992px){ 
             @include size(8);
             @include shift-left(0);
@@ -35,8 +42,8 @@
         }
     }
     &__right {
-        @include size(14);
-        @include shift-left(5);
+        @include size(10);
+        @include shift-left(2);
         @include to(992px){ 
             @include shift-left(2);
         }
