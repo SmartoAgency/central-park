@@ -9,6 +9,36 @@ body[class*="gallery"] .scroller-container{
         }
     }
 }
+
+.gallery-slider {
+    height: 100vh;
+    background-color: var(--color-black);
+    .swiper-slide {
+
+        .backdrop {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-image: var(--url);
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            object-fit: cover;
+            z-index: -1;
+            filter: blur(15px) brightness(0.25);
+        }
+    }
+    img {
+        object-fit: contain;
+        height: 100%;
+    }
+    @include to(1024px){
+        height: calc(100vh - var(--header-h));
+        width: 100%;
+    }
+}
+
 .front-block__canvas-wrap {
     width: 100%;
     height: 56.25vw;
@@ -34,6 +64,7 @@ body[class*="gallery"] .scroller-container{
         width: 100%;
         justify-content: space-between;
         padding: 0 var(--page-side-fields);
+        z-index: 2;
         @include from(1025px){
             display: none;
         }
