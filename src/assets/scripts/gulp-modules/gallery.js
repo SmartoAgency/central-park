@@ -4,7 +4,6 @@ import { TweenLite  } from "gsap/all";
 import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import sideSwitchArrow from "../modules/side-switch-arrow";
 import { handleHeader } from "../modules/helpers/helpers";
-import Swiper, { EffectFade } from "swiper";
 
 
 innerPageFrontEffect();
@@ -236,34 +235,20 @@ const displacementSlider = function(opts) {
 
 
 const el = document.querySelector('.scroller-container');
-// const paginations = document.querySelectorAll('[data-info-item-anim]');
-// paginations[0].__proto__.click = function() {
-//     this.dispatchEvent(new Event('click'));
-// }
+const paginations = document.querySelectorAll('[data-info-item-anim]');
+paginations[0].__proto__.click = function() {
+    this.dispatchEvent(new Event('click'));
+}
 const imgs = Array.from(el.querySelectorAll('[data-info-item-anim-img]'));
-
-const swiperContainer = document.querySelector('[data-gallery-slider]');
-const slider = new Swiper(swiperContainer, {
-    
-    loop: true,
-    modules: [EffectFade],
-    effect: 'fade',
-    speed: 1000,
-    fadeEffect: {
-      crossFade: true
-    },
+new displacementSlider({
+    parent: document.querySelector('.front-block__canvas-wrap'),
+    images: imgs
 });
-
-
-// new displacementSlider({
-//     parent: document.querySelector('.front-block__canvas-wrap'),
-//     images: imgs
-// });
 const currentNavDisplay = document.querySelector('[data-gallery-switcher] text:first-child');
 const allNavDisplay = document.querySelector('[data-gallery-switcher] text:last-child');
 let currentIndex = 0;
 const galleryCanvasWrap = document.querySelector('.front-block__canvas-wrap');
-// allNavDisplay.textContent = imgs.length;
+allNavDisplay.textContent = imgs.length;
 
 function addZeroPrefix(index) {
     return index < 10 ? '0'+index.toString() : index;
@@ -273,26 +258,24 @@ let isAnimatingGallery = false;
 sideSwitchArrow(
 {
         onNext: () => {
-            slider.slideNext();
-            // if (isAnimatingGallery) return;
-            // isAnimatingGallery = true;
-            // currentIndex = currentIndex === imgs.length - 1 ? 0 : currentIndex + 1;
-            currentNavDisplay.textContent = addZeroPrefix(swiperContainer.swiper.realIndex + 1);
-            // paginations[currentIndex].click();
+            if (isAnimatingGallery) return;
+            isAnimatingGallery = true;
+            currentIndex = currentIndex === imgs.length - 1 ? 0 : currentIndex + 1;
+            currentNavDisplay.textContent = addZeroPrefix(currentIndex + 1);
+            paginations[currentIndex].click();
         },
         onPrev: () => {
-            slider.slidePrev();
-            // if (isAnimatingGallery) return;
-            // isAnimatingGallery = true;
-            // currentIndex = currentIndex === 0 ? imgs.length - 1 : currentIndex - 1;
-            currentNavDisplay.textContent = addZeroPrefix(swiperContainer.swiper.realIndex + 1);
-            // paginations[currentIndex].click();
+            if (isAnimatingGallery) return;
+            isAnimatingGallery = true;
+            currentIndex = currentIndex === 0 ? imgs.length - 1 : currentIndex - 1;
+            currentNavDisplay.textContent = addZeroPrefix(currentIndex + 1);
+            paginations[currentIndex].click();
             // console.log('prev');
         },
         notOnMobile: true,
     },
     document.querySelector('[data-gallery-switcher]'),
-    swiperContainer,
+    galleryCanvasWrap,
     );
     if (window.matchMedia('(max-width: 1024px)').matches) {
         document.querySelector('[data-gallery-next]').addEventListener('click', () => {
