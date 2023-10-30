@@ -18,7 +18,11 @@ window.addEventListener('load',function(evt){
     }); 
 });
 
-var menu = [];
+// var swiperPagination = document.querySelector('.swiper-pagination');
+// var paginationData = swiperPagination.getAttribute('data-pagination');
+// var pagination = paginationData.split(',');
+var pagination = [];
+
 
 var mySwiper = new Swiper('.swiper-three-d', {
     effect: 'fade',
@@ -27,7 +31,7 @@ var mySwiper = new Swiper('.swiper-three-d', {
         el: '.swiper-pagination',
         clickable: true,
         renderBullet: function (index, className) {
-            return '<div class="' + className + '">' + (menu[index]) + '</div>';
+            return '<div class="' + className + '">' + (pagination[index]) + '</div>';
         },
     },
     on: {
