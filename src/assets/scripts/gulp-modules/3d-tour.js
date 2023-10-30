@@ -18,7 +18,8 @@ window.addEventListener('load',function(evt){
     }); 
 });
 
-var menu = ['1A', '1B', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г', '1Г']
+var menu = [];
+
 var mySwiper = new Swiper('.swiper-three-d', {
     effect: 'fade',
     slidesPerView: 1,
@@ -29,4 +30,42 @@ var mySwiper = new Swiper('.swiper-three-d', {
             return '<div class="' + className + '">' + (menu[index]) + '</div>';
         },
     },
-})
+    on: {
+        init: function () {
+            // При ініціалізації Swiper
+            var firstSlide = this.slides[0]; // Отримуємо перший слайд
+            var iframe = firstSlide.querySelector('.block-img-text__img iframe'); // Знаходимо iframe в першому слайді
+
+            if (iframe) {
+                var src = iframe.getAttribute('data-src'); // Отримуємо значення атрибута data-src
+                if (src) {
+                    iframe.setAttribute('src', src); // Встановлюємо атрибут src для першого слайда
+                }
+            }
+        },
+        slideChange: function () {
+            // При зміні слайда
+            var activeSlide = this.slides[this.activeIndex]; // Отримуємо активний слайд
+            var iframe = activeSlide.querySelector('.block-img-text__img iframe'); // Знаходимо iframe в активному слайді
+
+            if (iframe) {
+                var src = iframe.getAttribute('data-src'); // Отримуємо значення атрибута data-src
+                if (src) {
+                    iframe.setAttribute('src', src); // Встановлюємо атрибут src для початку завантаження iframe
+                }
+            }
+
+            // Видаляємо атрибут src з iframe у всіх інших слайдах
+            for (var i = 0; i < this.slides.length; i++) {
+                if (i !== this.activeIndex) {
+                    var otherIframe = this.slides[i].querySelector('.block-img-text__img iframe');
+                    if (otherIframe) {
+                        otherIframe.removeAttribute('src');
+                    }
+                }
+            }
+        },
+    },
+});
+
+
