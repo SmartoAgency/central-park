@@ -26,6 +26,22 @@ import screen55 from './home/screen55';
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
 window.addEventListener('load', homeInit);
+
+document.addEventListener('DOMContentLoaded', function() {
+  var scrollBtn = document.querySelector('.button-down');
+
+  scrollBtn.addEventListener('click', e => {
+    e.preventDefault();
+    scrollToSection('.screen2');
+  });
+
+  function scrollToSection(sectionId) {
+    var section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+});
 const video = document.querySelector('.main-screen__video');
 
 const soundButton = document.querySelector('.section-1__video-button');
