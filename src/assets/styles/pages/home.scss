@@ -1,6 +1,6 @@
 .main-screen {
   --top-offset: calc(120px + var(--header-h));
-  background: linear-gradient(180deg, #263d6a 3.59%, #dcf7ff 100%);
+  // background: linear-gradient(180deg, #263d6a 3.59%, #dcf7ff 100%);
   width: 100vw;
   // height: calc(100vw / 1920 * 1756);
   height: 100vh;
@@ -41,7 +41,7 @@
 
   .section-1__video-button {
     position: absolute;
-    top: calc(var(--header-h) + 10px);
+    bottom: 40px;
     left: calc(10px + var(--page-side-fields));
 
     width: 45px;
@@ -54,6 +54,7 @@
 
     @include to(575px) {
       left: 20px;
+      top: calc(var(--header-h) + 10px);
     }
   }
 
@@ -68,12 +69,19 @@
 
   .button-down {
     position: absolute;
-    bottom: 20px;
-    right: var(--page-side-fields);
+    bottom: 40px;
+    right: 50%;
+    transform: translateX(50%);
     svg {
       width: 40px;
       height: 40px;
       fill: var(--color-beige);
+    }
+
+    @include to(575px) {
+      right: var(--page-side-fields);
+      bottom: 20px;
+      transform: translateX(0);
     }
   }
   &__render {

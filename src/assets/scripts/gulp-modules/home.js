@@ -27,21 +27,6 @@ import screen55 from './home/screen55';
 
 window.addEventListener('load', homeInit);
 
-document.addEventListener('DOMContentLoaded', function() {
-  var scrollBtn = document.querySelector('.button-down');
-
-  scrollBtn.addEventListener('click', e => {
-    e.preventDefault();
-    scrollToSection('.screen2');
-  });
-
-  function scrollToSection(sectionId) {
-    var section = document.querySelector(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-});
 const video = document.querySelector('.main-screen__video');
 
 const soundButton = document.querySelector('.section-1__video-button');
@@ -149,6 +134,35 @@ function homeInit() {
   scroller.update();
   window.scroller = scroller;
   const $scroller = isMobile() ? document.body : document.querySelector('.scroller-container');
+
+  var scrollBtn = document.querySelector('.button-down');
+
+  if (isMobile()) {
+    scrollBtn.addEventListener('click', e => {
+      e.preventDefault();
+      scrollToSectionMobile('.screen2');
+    });
+  } else {
+    scrollBtn.addEventListener('click', e => {
+      e.preventDefault();
+      scrollToSection('.screen2');
+    });
+  }
+
+  function scrollToSectionMobile(sectionId) {
+    var section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function scrollToSection(sectionId) {
+    const targetSection = document.querySelector(sectionId);
+    if (targetSection) {
+      scroller.scrollTo(targetSection);
+    }
+  }
+
   screen1($scroller);
 
   galleryEffect($scroller);
