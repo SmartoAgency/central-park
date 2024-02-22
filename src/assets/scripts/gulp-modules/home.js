@@ -26,6 +26,12 @@ import screen55 from './home/screen55';
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
 window.addEventListener('load', homeInit);
+const appHeight = () => {
+  const doc = document.documentElement;
+  doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+};
+window.addEventListener('resize', appHeight);
+appHeight();
 
 const video = document.querySelector('.main-screen__video');
 
