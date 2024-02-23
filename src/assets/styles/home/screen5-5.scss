@@ -152,6 +152,7 @@
 }
 
 .screen5-5-mobile {
+  display: none;
   @include from(1025px) {
     display: none;
   }
