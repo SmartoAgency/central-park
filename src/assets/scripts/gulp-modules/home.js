@@ -20,8 +20,8 @@ import {
   handleHeader,
   transitionBetweenSectionSceneLength,
 } from '../modules/helpers/helpers';
-import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
-import screen55 from './home/screen55';
+// import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
+// import screen55 from './home/screen55';
 
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 

@@ -607,7 +607,7 @@
   position: relative;
   --v-padding: 140px;
   @include from(1025px) {
-    height: 280vh;
+    height: 200vh;
   }
   @include to(575px) {
     height: 100vh;
