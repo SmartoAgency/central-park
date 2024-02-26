@@ -163,10 +163,10 @@ export default function sideSwitchArrow(opts, arrowArgs, conArgs) {
 
   const navigate = {
     leftSide: () => {
-      opts.onPrev();
+      opts.slidePrev();
     },
     rightSide: () => {
-      opts.onNext();
+      opts.slideNext();
     },
   };
 
