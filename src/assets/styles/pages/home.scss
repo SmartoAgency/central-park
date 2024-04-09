@@ -209,6 +209,8 @@
     padding: 9px 35px 9px 9px;
     text-decoration: none;
     transition: 0.25s ease-out;
+    background-color: var(--color-beige);
+
     @include to(1025px) {
       padding-left: 14px;
     }
@@ -220,6 +222,12 @@
     &:hover {
       background-color: var(--color-black);
       border-color: var(--color-black);
+      .promotion__left {
+        color: var(--color-beige);
+      }
+      .promotion__right {
+        color: var(--color-beige);
+      }
     }
     .promotion__left {
       width: 70px;
@@ -230,7 +238,7 @@
       text-align: right;
       letter-spacing: -0.03em;
       text-transform: uppercase;
-      color: var(--color-beige);
+      color: var(--color-black);
       margin-right: 20px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -262,7 +270,7 @@
 
       /* White */
 
-      color: var(--color-white);
+      color: var(--color-black);
       overflow: hidden;
       text-overflow: ellipsis;
       display: -moz-box;
@@ -282,6 +290,7 @@
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         line-clamp: 3;
+        color: var(--color-white);
       }
     }
   }
