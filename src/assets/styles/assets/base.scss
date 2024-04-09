@@ -477,10 +477,10 @@ html.has-scroll-dragging {
 	overflow-x: hidden;
 	overflow-y: visible;
 	@include from(1025px){
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100%;
+		// position: fixed;
+		// left: 0;
+		// top: 0;
+		// width: 100%;
 	}
 	@include to(575px){
 		// overflow-y: initial !important;

@@ -6,6 +6,14 @@ import { getGenplanSequences } from '../../modules/genplan-sequence/getGenplanSe
 import { changeImageSrcByArrayIndex } from '../../modules/genplan-sequence/changeImgSrcByArrayIndex';
 
 
+const clickSequences = {
+    
+        /*'5 заїздів'*/ 0: '0-81',
+        /*'Територія'*/ 1: '82-142',
+        /*'Рекреація'*/ 2: '143-158',
+        /*'Комфорт'*/ 3: '159-175',
+        /*'Бізнес'*/ 4: '183-196',
+}
 
 export default async function screen55(scroller) {
     global.gsap = gsap;
@@ -25,14 +33,18 @@ export default async function screen55(scroller) {
     // $legendItems[0].classList.add('active');
     let SEQUENCES = await getGenplanSequences({});
     let isAnimating = false;
-    const clickSequences = {
 
-        /*teritorry */ 0: '1-70', 
-        /*confort */ 1: '71-110', 
-        /*business */ 2: '113-127', 
-        // /*recreating */ 3: '142-160'
-        /*recreating */ 3: '164-178'
-    };
+    document.querySelectorAll('.screen5-5-loader').forEach(el => el.remove());
+    document.querySelectorAll('.screen5-5.loading').forEach(el => el.classList.remove('loading'));
+
+    // const clickSequences = {
+
+    //     /*'5 заїздів'*/ 0: '0-81',
+    //     /*'Територія'*/ 1: '82-142',
+    //     /*'Рекреація'*/ 2: '143-158',
+    //     /*'Комфорт'*/ 3: '162-181',
+    //     /*'Бізнес'*/ 4: '179-200',
+    // };
     
     // /*teritorry */ 0: '1-70', 
     // /*recreating */ 1: '142-160', 
@@ -148,14 +160,19 @@ async function screen55Mobile() {
 
     document.querySelectorAll('.screen5-5-mobile-loader').forEach(el => el.remove());
     document.querySelectorAll('.screen5-5-mobile.loading').forEach(el => el.classList.remove('loading'));
-    const clickSequences = {
+    // const clickSequences = {
 
-        /*teritorry */ 0: '1-70', 
-        /*confort */ 1: '71-110', 
-        /*business */ 2: '113-127', 
-        // /*recreating */ 3: '142-160'
-        /*recreating */ 3: '164-178'
-    };
+    //     /*'5 заїздів'*/ 0: '0-81',
+    //     /*'Територія'*/ 1: '82-144',
+    //     /*'Рекреація'*/ 2: '145-161',
+    //     /*'Комфорт'*/ 3: '162-178',
+    //     /*'Бізнес'*/ 4: '179-203',
+    //     // /*teritorry */ 0: '1-70', 
+    //     // /*confort */ 1: '71-110', 
+    //     // /*business */ 2: '113-127', 
+    //     // // /*recreating */ 3: '142-160'
+    //     // /*recreating */ 3: '164-178'
+    // };
     
     // /*teritorry */ 0: '1-70', 
     // /*recreating */ 1: '142-160', 

@@ -28,6 +28,14 @@ block variable
       ['#E1A6A8', 'Дитячі та спортивні майданчики'],
       ['#A0BADF', 'Комерційні приміщення'],
     ]
+
+    var genplanMapPoints = [
+      ['5 заїздів', "Дороги"],
+      ['Територія', "Пішохідні доріжки"],
+      ['Рекреація', "Майданчики для відпочинку, дитячі та спортивні майданчики"],
+      ['Комфорт', "Дитячий садок, школа"],
+      ['Бізнес', "Комерційні приміщення"],
+    ]
 block meta
   title= 'Главная'
   meta(name='description' content='')
@@ -194,8 +202,11 @@ block content
                 .title.text-beige #{val.title}
                 p.text-beige #{val.text}
                 div.text-beige #{index + 1} / #{scr5.length}
-  .screen5-5.infrastructure
+  .screen5-5.infrastructure.loading
     .screen5-5__container
+      .screen5-5-loader(data-text="Генплан завантажується, будь ласка зачекайте")
+        .loader1
+        .screen5-5-mobile-loader-percentage
       .genplan-titles-faq
         .genplan-titles-faq__item
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -208,30 +219,31 @@ block content
             .genplan-titles-faq__text #{val[1]}
       .screen5-5__left
         .genplan-legend
-          .genplan-legend-item-line
-          .genplan-legend-item
-            .genplan-legend-item__circle 01
-            .genplan-legend-item__text 
-              div Територія
-              div Дороги та пішохідні доріжки
-          .genplan-legend-item-line
-          .genplan-legend-item
-            .genplan-legend-item__circle 02
-            .genplan-legend-item__text 
-              div комфорт
-              div Дитячий садок, школа, майданчики
-          .genplan-legend-item-line
-          .genplan-legend-item
-            .genplan-legend-item__circle 03
-            .genplan-legend-item__text 
-              div бізнес
-              div Комерційні приіщення
-          .genplan-legend-item-line
-          .genplan-legend-item
-            .genplan-legend-item__circle 04
-            .genplan-legend-item__text 
-              div рекреація
-              div Майданчики для відпочинку
+          each val, index in genplanMapPoints
+            .genplan-legend-item-line
+            .genplan-legend-item
+              .genplan-legend-item__circle 0#{index+1}
+              .genplan-legend-item__text 
+                div #{val[0]}
+                div #{val[1]}
+          //- .genplan-legend-item-line
+          //- .genplan-legend-item
+          //-   .genplan-legend-item__circle 02
+          //-   .genplan-legend-item__text 
+          //-     div комфорт
+          //-     div Дитячий садок, школа, майданчики
+          //- .genplan-legend-item-line
+          //- .genplan-legend-item
+          //-   .genplan-legend-item__circle 03
+          //-   .genplan-legend-item__text 
+          //-     div бізнес
+          //-     div Комерційні приіщення
+          //- .genplan-legend-item-line
+          //- .genplan-legend-item
+          //-   .genplan-legend-item__circle 04
+          //-   .genplan-legend-item__text 
+          //-     div рекреація
+          //-     div Майданчики для відпочинку
           .genplan-legend-item-line
       img.screen5-5__right(src="#" alt="genplan" data-screen5-image)
   .screen5-5-mobile.loading
@@ -287,30 +299,31 @@ block content
             .genplan-titles-faq__text #{val[1]}
       .screen5-5-mobile-swiper
         .swiper-wrapper
-          .swiper-slide.mob-infra-item
-            .mob-infra-item__top
-              .mob-infra-item__circle 01
-              .mob-infra-item__circle-line
-            .mob-infra-item__title Територія
-            .mob-infra-item__desc Дороги та пішохідні доріжки
-          .swiper-slide.mob-infra-item
-            .mob-infra-item__top
-              .mob-infra-item__circle 02
-              .mob-infra-item__circle-line
-            .mob-infra-item__title рекреація
-            .mob-infra-item__desc Майданчики для відпочинку
-          .swiper-slide.mob-infra-item
-            .mob-infra-item__top
-              .mob-infra-item__circle 03
-              .mob-infra-item__circle-line
-            .mob-infra-item__title комфорт
-            .mob-infra-item__desc Дитячий садок, школа, майданчики
-          .swiper-slide.mob-infra-item
-            .mob-infra-item__top
-              .mob-infra-item__circle 04
-              .mob-infra-item__circle-line
-            .mob-infra-item__title бізнес
-            .mob-infra-item__desc Комерційні приіщення
+          each val, index in genplanMapPoints
+            .swiper-slide.mob-infra-item
+              .mob-infra-item__top
+                .mob-infra-item__circle #{index+1}
+                .mob-infra-item__circle-line
+              .mob-infra-item__title #{val[0]}
+              .mob-infra-item__desc #{val[1]}
+          //- .swiper-slide.mob-infra-item
+          //-   .mob-infra-item__top
+          //-     .mob-infra-item__circle 02
+          //-     .mob-infra-item__circle-line
+          //-   .mob-infra-item__title рекреація
+          //-   .mob-infra-item__desc Майданчики для відпочинку
+          //- .swiper-slide.mob-infra-item
+          //-   .mob-infra-item__top
+          //-     .mob-infra-item__circle 03
+          //-     .mob-infra-item__circle-line
+          //-   .mob-infra-item__title комфорт
+          //-   .mob-infra-item__desc Дитячий садок, школа, майданчики
+          //- .swiper-slide.mob-infra-item
+          //-   .mob-infra-item__top
+          //-     .mob-infra-item__circle 04
+          //-     .mob-infra-item__circle-line
+          //-   .mob-infra-item__title бізнес
+          //-   .mob-infra-item__desc Комерційні приіщення
   //- .screen6().genplan
   //-   //- .genplan-curtain-for-prev-block-anim
   //-   .genplan__inner

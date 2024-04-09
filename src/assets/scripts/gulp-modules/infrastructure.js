@@ -23,7 +23,7 @@ window.addEventListener('load',function(evt){
     // screen6($scroller);
     // addIntersectionOnceWithCallback(document.querySelector('.genplan'),() => {
     // })
-    screen55($scroller);
+    screen55(document.body);
 });
 function disableScroll(locoScroll) {
     const containersScroll = document.querySelectorAll('[data-disable-page-scroll]');

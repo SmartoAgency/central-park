@@ -21,7 +21,7 @@ import {
   transitionBetweenSectionSceneLength,
 } from '../modules/helpers/helpers';
 // import genplanSequence from '../modules/genplan-sequence/genplan-sequence';
-// import screen55 from './home/screen55';
+import screen55 from './home/screen55';
 
 // import paralax from '../../../../../forest-home-site/src/assets/scripts/modules/animation/effect/paralax';
 
@@ -139,7 +139,7 @@ function homeInit() {
   const scroller = locoScroll('.scroller-container');
   scroller.update();
   window.scroller = scroller;
-  const $scroller = isMobile() ? document.body : document.querySelector('.scroller-container');
+  const $scroller = isMobile() ? document.body : document.body; //document.querySelector('.scroller-container');
 
   var scrollBtn = document.querySelector('.button-down');
 
@@ -201,18 +201,18 @@ function homeInit() {
   //   }
   // })
   //   .from('.screen2>*', { y: 30, autoAlpha: 0})
-
-  ScrollTrigger.create({
-    trigger: '.screen2',
-    scroller: $scroller,
-    end: '100% 12.5%',
-    onLeave: () => {
-      gsap.to('.screen2>*', { y: -50, autoAlpha: 0 });
-    },
-    onEnterBack: () => {
-      gsap.to('.screen2>*', { y: 0, autoAlpha: 1 });
-    },
-  });
+  console.log(document.querySelector('.screen2'));
+  // ScrollTrigger.create({
+  //   trigger: '.screen2',
+  //   scroller: $scroller,
+  //   end: '100% 12.5%',
+  //   onLeave: () => {
+  //     gsap.to('.screen2>*', { y: -50, autoAlpha: 0 });
+  //   },
+  //   onEnterBack: () => {
+  //     gsap.to('.screen2>*', { y: 0, autoAlpha: 1 });
+  //   },
+  // });
   paralaxNoCurtains('.screen2 .img-with-logo:first-child img', $scroller, 80);
   paralaxNoCurtains('.screen2 .img-with-logo:last-child img', $scroller, 40);
   /**Screen2 effects END */
@@ -239,9 +239,15 @@ function homeInit() {
       screen55($scroller);
     });
   } else {
-    addIntersectionOnceWithCallback(document.querySelector('.screen3'), () => {
+
+    if (document.querySelector('.screen3').getBoundingClientRect().top < 0) {
       screen55($scroller);
-    });
+    } else {
+      addIntersectionOnceWithCallback(document.querySelector('.screen3'), () => {
+        screen55($scroller);
+      });
+
+    }
   }
 
   handleHeader(scroller);
@@ -333,7 +339,7 @@ function homeInit() {
     });
     function locoScrollUp() {
       if (window.scroller !== undefined) {
-        window.scroller.scrollTo('top');
+        window.scroller.scrollTo(0);
       }
     }
     function windowScrollUp() {

@@ -45,6 +45,11 @@ function config(mode = 'development') {
     plugins: [
       new UglifyJSPlugin({
         sourceMap: true,
+        uglifyOptions: {
+          compress: {
+            drop_console: mode === 'production',
+          }
+        }
       }),
     ],
   };
