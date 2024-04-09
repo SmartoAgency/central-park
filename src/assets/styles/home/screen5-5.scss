@@ -1,7 +1,11 @@
 .screen5-5 {
   // display: none;
   height: 100vh;
+  
+  height: 41.45vw;
   --side-padding: 85px;
+  background: #23242b;
+  padding-top: calc((100vh - 41.45vw) / 2);
   @include to(1024px) {
     display: none;
   }
@@ -11,9 +15,14 @@
   position: relative;
   &__container {
     height: 100vh;
+    height: 41.45vw;
+    
+    // height: calc(100vw / 1920 * 796);
     width: 100%;
     // background-color: greenyellow;
     display: flex;
+    overflow: hidden;
+    align-self: center;
   }
   .genplan-titles-faq {
     position: absolute;
