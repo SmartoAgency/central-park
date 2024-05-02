@@ -8,11 +8,11 @@ import { changeImageSrcByArrayIndex } from '../../modules/genplan-sequence/chang
 
 const clickSequences = {
     
-        /*'5 заїздів'*/ 0: '0-79',
-        /*'Територія'*/ 1: '80-141',
-        /*'Рекреація'*/ 2: '142-164',
-        /*'Комфорт'*/ 3: '165-180',
-        /*'Бізнес'*/ 4: '184-189',
+        /*'5 заїздів roads'*/ 0: '0-79',
+        /*'Територія sidewalks'*/ 1: '80-141',
+        /*'Рекреація playground'*/ 2: '142-164',
+        /*'Комфорт school'*/ 3: '165-179',
+        /*'Бізнес commerce '*/ 4: '184-188',
 }
 
 export default async function screen55(scroller) {
@@ -52,6 +52,10 @@ export default async function screen55(scroller) {
     // /*business */ 3: '113-127'
     let previousSequence = false;
     let sequenceWaiting = false;
+
+    window.foToMapIndex = (index) => {
+        $itemForImageRender.src = SEQUENCES.data[index];
+    }
 
     function changeActiveSequence(index) {
 
