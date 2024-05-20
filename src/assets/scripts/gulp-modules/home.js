@@ -234,17 +234,18 @@ function homeInit() {
     $scroller,
   );
 
+  
   if (isMobile()) {
     addIntersectionOnceWithCallback(document.querySelector('.screen5-5-mobile'), () => {
-      // screen55($scroller);
+      screen55(document.body);
     });
   } else {
 
     if (document.querySelector('.screen3').getBoundingClientRect().top < 0) {
-      // screen55($scroller);
+      screen55(document.body);
     } else {
       addIntersectionOnceWithCallback(document.querySelector('.screen3'), () => {
-        // screen55($scroller);
+        screen55(document.body);
       });
 
     }

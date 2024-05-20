@@ -1,6 +1,6 @@
 .screen5-5 {
   &:not(.infrastructure) {
-    display: none;
+    // display: none;
   }
   height: 100vh;
   
@@ -222,7 +222,7 @@ linear-gradient(270deg, rgba(0, 0, 0, 0) -2.77%, #000000 100%);
 
 .screen5-5-mobile {
   &:not(.infrastructure-genplan-mobile) {
-    display: none;
+    // display: none;
   }
   @include from(1025px) {
     display: none;
