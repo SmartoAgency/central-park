@@ -3,7 +3,7 @@
     // display: none;
   }
   height: 100vh;
-  
+
   height: 40vw;
   --side-padding: 85px;
   background: #23242b;
@@ -18,7 +18,7 @@
   &__container {
     height: 100vh;
     height: 40vw;
-    
+
     // height: calc(100vw / 1920 * 796);
     width: 100%;
     // background-color: greenyellow;
@@ -133,12 +133,10 @@
     top: 0;
     width: calc(200% + var(--side-padding));
     height: 120%;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) -2.77%, #000000 100%),
-linear-gradient(270deg, rgba(0, 0, 0, 0) -2.77%, #000000 100%);
+    // background: linear-gradient(270deg, rgba(0, 0, 0, 0) -2.77%, #000000 100%),
+    //   linear-gradient(270deg, rgba(0, 0, 0, 0) -2.77%, #000000 100%);
     pointer-events: none;
     z-index: -1;
-
-    
   }
 }
 .genplan-legend-item {
@@ -152,7 +150,7 @@ linear-gradient(270deg, rgba(0, 0, 0, 0) -2.77%, #000000 100%);
   &__circle {
     width: var(--legend-item-size);
     height: var(--legend-item-size);
-    background-color: var(--color-beige);
+    background-color: #000;
     color: var(--color-white);
     border-radius: 50%;
     font-style: normal;
@@ -170,7 +168,8 @@ linear-gradient(270deg, rgba(0, 0, 0, 0) -2.77%, #000000 100%);
   }
 
   &.active &__circle {
-    background-color: var(--color-black);
+    // background-color: var(--color-black);
+    background-color: var(--color-beige);
     font-size: 48px;
     transform: scale(1);
     transform-origin: top;
@@ -326,10 +325,7 @@ linear-gradient(270deg, rgba(0, 0, 0, 0) -2.77%, #000000 100%);
       bottom: calc(100% + 90px);
     }
   }
-
-
 }
-
 
 .loader1 {
   color: var(--color-black);
