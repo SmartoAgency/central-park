@@ -107,6 +107,7 @@ contactForms.forEach(form => {
         successAction: () => {
           const succesPoup = document.querySelector('.succes-popup');
           const closePopup = succesPoup.querySelector('button');
+          window.dispatchEvent(new Event('succesFormSend'));
           closePopup.addEventListener('click', function removeThanks() {
             gsap.to(succesPoup, { autoAlpha: 0, clearProps: 'all' });
             closePopup.removeEventListener('click', removeThanks);
