@@ -3,6 +3,7 @@ import locoScroll from '../modules/smooth-scrolls/locoScroll';
 import { handleHeader } from '../modules/helpers/helpers';
 
 innerPageFrontEffect();
+
 window.addEventListener('load', function(evt) {
   const scroller = locoScroll('.scroller-container');
   scroller.update();
@@ -29,7 +30,7 @@ fetch(URL, {
 })
   .then(el => el.json())
   .then(({ data }) => {
-    renderNewsByPortions(data, document.querySelector('.scroller-container .news'));
+    renderNewsByPortions(data, document.querySelector('.scroller-container .news .news-container'));
   });
 
 function renderNewsByPortions(data, $container) {
@@ -38,19 +39,26 @@ function renderNewsByPortions(data, $container) {
   let portionForRender = 2;
   let startIndex = 0;
   let currentRenderedIndex = 0;
+
   portionForRender = initialPortionForRender;
+
   for (let i = 0; i < portionForRender; i++) {
     const day = data[i];
+
     if (day === undefined) break;
+
     currentRenderedIndex = i;
     $container.insertAdjacentHTML('beforeend', day);
   }
+
   startIndex = portionForRender;
   portionForRender += initialPortionForRender;
   window.dispatchEvent(new Event('update-dom'));
+
   $container.lastElementChild &&
     addIntersectionOnceWithCallback($container.lastElementChild, () => {
-      if (currentRenderedIndex >= data.length) return;
+      // if (currentRenderedIndex >= data.length) return;
+      if (currentRenderedIndex + 1 >= data.length) return;
       additionalRender();
       window.dispatchEvent(new Event('update-dom'));
     });
@@ -67,14 +75,18 @@ function renderNewsByPortions(data, $container) {
     portionForRender += initialPortionForRender;
 
     // console.log(currentRenderedIndex);
-    if (currentRenderedIndex >= data.length || portionForRender >= data.length) return;
+    // if (currentRenderedIndex >= data.length || portionForRender >= data.length) return;
+    if (currentRenderedIndex >= data.length - 1) return;
+
     $container.lastElementChild &&
       addIntersectionOnceWithCallback($container.lastElementChild, () => {
-        if (currentRenderedIndex >= data.length || portionForRender >= data.length) return;
+        // if (currentRenderedIndex >= data.length || portionForRender >= data.length) return;
+        if (currentRenderedIndex >= data.length - 1) return;
         additionalRender();
         window.dispatchEvent(new Event('update-dom'));
       });
   }
+
   function addIntersectionOnceWithCallback(el, cb = () => {}) {
     const image = el;
     const target = image;
