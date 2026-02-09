@@ -413,21 +413,23 @@
     }
   }
   .swiper-slide {
-    height: 45vh;
+    // height: 45vh;
     color: #b2a9a0;
     font-size: 18px;
     text-transform: uppercase;
+    flex-shrink: 0;
     @include from(1681px) {
-      height: 60vh;
+      // height: 60vh;
     }
     @include to(1680px) {
-      height: 60vh;
+      // height: 60vh;
     }
     @include to(575px) {
       font-size: 14px;
     }
     img {
       height: calc(100% - 55px);
+      max-height: 520px;
       margin-bottom: 20px;
       object-fit: cover;
     }

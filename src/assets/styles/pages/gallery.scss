@@ -164,6 +164,7 @@ body[class*='gallery'] .scroller-container {
       width: 100%;
       overflow: hidden;
       background: var(--color-black);
+      flex-shrink: 0;
     }
   }
 
