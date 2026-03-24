@@ -1,10 +1,16 @@
 
-// import {gsap, ScrollTrigger} from 'gsap/all';
+import {gsap, ScrollTrigger} from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger);
+
+ScrollTrigger.config({
+  ignoreMobileResize: true 
+});
 
 export default function paralax(selector, scroller, amplitude = 35) {
-  // gsap.registerPlugin(ScrollTrigger)
   const paralaxImages = document.querySelectorAll(selector);
   paralaxImages.forEach((image) => {
+    image.style.willChange = 'transform';
     const wrap = document.createElement('div');
 
     wrap.style.overflow = 'hidden';
@@ -42,8 +48,9 @@ export default function paralax(selector, scroller, amplitude = 35) {
       ease: 'none',
       scrollTrigger: {
         trigger: wrap,
-        scrub: 0.5,
+        scrub: true,
         scroller: scroller ? scroller : null,
+        invalidateOnRefresh: true,
         // markers: true,
       },
     })
@@ -52,6 +59,7 @@ export default function paralax(selector, scroller, amplitude = 35) {
       }, {
         y: amplitude * -1,
         ease: 'linear',
+        force3D: true 
       });
   });
 }
