@@ -22,7 +22,8 @@
     height: var(--app-height);
   }
   @include to(575px) {
-    height: var(--app-height);
+    // height: var(--app-height);
+    height: 100svh;
     --top-offset: calc(45px + var(--header-h));
     display: flex;
     align-items: flex-end;
@@ -33,7 +34,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--app-height);
+    // height: var(--app-height);
+    height: 100svh;
     &::after {
       content: '';
       position: absolute;
@@ -413,21 +415,23 @@
     }
   }
   .swiper-slide {
-    height: 45vh;
+    // height: 45vh;
     color: #b2a9a0;
     font-size: 18px;
     text-transform: uppercase;
+    flex-shrink: 0;
     @include from(1681px) {
-      height: 60vh;
+      // height: 60vh;
     }
     @include to(1680px) {
-      height: 60vh;
+      // height: 60vh;
     }
     @include to(575px) {
       font-size: 14px;
     }
     img {
       height: calc(100% - 55px);
+      max-height: 520px;
       margin-bottom: 20px;
       object-fit: cover;
     }
@@ -1198,6 +1202,7 @@
   }
   img {
     margin-top: 0;
+    aspect-ratio: 1 / 1;
   }
 }
 

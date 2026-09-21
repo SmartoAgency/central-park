@@ -109,6 +109,7 @@
 .three-d-container .swiper-slide {
   opacity: 0 !important;
   visibility: hidden;
+  flex-shrink: 0;
   & .block-img-text__text {
     opacity: 0;
     transform: translate(50%, 50%);

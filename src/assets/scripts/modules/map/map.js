@@ -41,8 +41,8 @@ function initMap() {
   const gmarkers1 = [];
   //28.4600074, 49.2384203
   const center = {
-    lat: 49.2384203,
-    lng: 28.4600074,
+    lat: 49.2388906899485,
+    lng: 28.46166556855355,
   };
   /** Массив, куда записываются выбраные категории */
   const choosedCategories = new Set();
@@ -62,8 +62,8 @@ function initMap() {
   });
   window.googleMap = map;
   var polygonCoords = [
-    new google.maps.LatLng(49.2384203, 28.4600074),
-    new google.maps.LatLng(49.238585, 28.459887),
+    new google.maps.LatLng(49.2388906899485, 28.46166556855355),
+    new google.maps.LatLng(49.23775150405502, 28.463126839717884),
     new google.maps.LatLng(49.2391278, 28.4600104),
     new google.maps.LatLng(49.2391559, 28.4597287),
     new google.maps.LatLng(49.2395569, 28.4598146),
