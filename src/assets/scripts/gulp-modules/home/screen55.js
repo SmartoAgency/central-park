@@ -158,7 +158,10 @@ async function screen55Mobile() {
     const swiper = new Swiper('.screen5-5-mobile-swiper', {
         slidesPerView: 1.5,
         slideToClickedSlide: true,
-
+        // запас справа, щоб останній слайд теж притискався до лівого краю
+        slidesOffsetAfter() {
+            return this.size - this.size / this.params.slidesPerView;
+        },
     });
     let SEQUENCES = await getGenplanSequences({});
 
@@ -183,36 +186,62 @@ async function screen55Mobile() {
     // /*confort */ 2: '71-110', 
     // /*business */ 3: '113-127'
 
-    let previousSequence = false;
-
     $itemForImageRenderContainer.scrollTo(getWidth($itemForImageRender) * 0.88 - window.innerWidth,0);
 
-    changeImageSrcByArrayIndex($itemForImageRender, SEQUENCES.data, +clickSequences[0].split('-')[0], +clickSequences[0].split('-')[1], () => {
-        // isAnimating = false;
-        swiper.enable();
-    })
+    const playSequence = createSequencePlayer($itemForImageRender, SEQUENCES.data);
+    playSequence(swiper.activeIndex);
 
     swiper.on('activeIndexChange', ({ activeIndex }) => {
-        // console.log(e);
-        let currentSequenceToRender = clickSequences[activeIndex];
-        if (!currentSequenceToRender) return;
-        swiper.disable();
-        if (previousSequence) {
-            changeImageSrcByArrayIndex($itemForImageRender, SEQUENCES.data, +previousSequence.split('-')[1], +previousSequence.split('-')[0], () => {
-                changeImageSrcByArrayIndex($itemForImageRender, SEQUENCES.data, +currentSequenceToRender.split('-')[0], +currentSequenceToRender.split('-')[1], () => {
-                    swiper.enable();
-                });                
-            })
-        } else {
-            changeImageSrcByArrayIndex($itemForImageRender, SEQUENCES.data, +currentSequenceToRender.split('-')[0], +currentSequenceToRender.split('-')[1], () => {
-                // isAnimating = false;
-                swiper.enable();
-            })
-        }
-        previousSequence = currentSequenceToRender;
+        playSequence(activeIndex);
     });
     mobileFaqHandler();
     handleMobileBlockImageHorizontalScroll(document.querySelector('.screen5-5-mobile__scroller svg'));
+}
+
+
+// Програє кадри генплану до обраної секвенції, не блокуючи слайдер.
+// Нову ціль можна задати будь-коли: поточна секвенція відмотується до свого початку, далі програється нова.
+function createSequencePlayer($img, frames) {
+    const delay = 1000 / 30;
+    const getRange = (index) => clickSequences[index].split('-').map(Number);
+    let currentIndex = null;
+    let targetIndex = null;
+    let frame = 0;
+    let timer = null;
+
+    function tick() {
+        timer = null;
+        if (currentIndex !== targetIndex) {
+            if (frame > getRange(currentIndex)[0]) {
+                frame--;
+            } else {
+                currentIndex = targetIndex;
+                frame = getRange(currentIndex)[0];
+            }
+        } else if (frame < getRange(currentIndex)[1]) {
+            frame++;
+        } else {
+            return;
+        }
+        $img.src = frames[frame];
+        schedule();
+    }
+
+    function schedule() {
+        if (timer) return;
+        timer = setTimeout(() => requestAnimationFrame(tick), delay);
+    }
+
+    return function playSequence(index) {
+        if (!clickSequences[index]) return;
+        targetIndex = index;
+        if (currentIndex === null) {
+            currentIndex = index;
+            frame = getRange(index)[0];
+            $img.src = frames[frame];
+        }
+        schedule();
+    };
 }
 
 

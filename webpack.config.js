@@ -12,7 +12,9 @@ function config(mode = 'development') {
       const path1 = item.split('/');
       // path1.pop();
       const name = path1.pop().replace(/\.js/, '');
-      console.warn('\x1b[31m', 'Dont use index.js in gulp-modules folder, it will be ignored');
+      if (name === 'index') {
+        console.warn('\x1b[31m', 'Dont use index.js in gulp-modules folder, it will be ignored');
+      }
       if (name === 'index-app') {
         acc[name] = './src/assets/scripts/index-app.js';
       }
