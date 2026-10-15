@@ -20,7 +20,7 @@ export default function galleryEffect(scroller) {
         centerText = gallery.querySelector('.screen7__head-block-text');
         ;
     
-    const sideImagesScaleValue = 1.7;
+    const sideImagesScaleValue = 1.8;
     const centerRatio = innerWidth*0.95 / center.getBoundingClientRect().width;
     // const imgScaleRatio = 
     !isMobile && gsap.timeline({
@@ -41,7 +41,7 @@ export default function galleryEffect(scroller) {
     // isMobile ? centerRatio * 2 : centerRatio * 1.45
      .to(centerImg, { scale: () => {
          if (isTablet) return 1.5;
-         return isMobile ? centerRatio * 2 : centerRatio * 1.45;
+         return isMobile ? centerRatio * 1.1 : centerRatio * 0.7;
      }, transformOrigin: '50% 100%' })
      .to(center, { scale: centerRatio, transformOrigin: '50% 100%' }, '<')
     .to(left, { xPercent: -51, ease: 'linear' },'<')
@@ -75,7 +75,7 @@ export default function galleryEffect(scroller) {
     })
     .to(centerImg, {  scale: () => {
         if (isTablet) return 1.5;
-        return isMobile ? centerRatio * 2 : centerRatio * 1.45;
+        return isMobile ? centerRatio * 1.1 : centerRatio * 0.7;
     }})
     .to(center, { scale: centerRatio, transformOrigin: '50% 100%' }, '<')
    //  .to(centerText, { scale: center.getBoundingClientRect().width / innerWidth, autoAlpha: 1, duration: 0.25 }, '<')
